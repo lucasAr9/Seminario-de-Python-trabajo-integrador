@@ -28,16 +28,11 @@ class MenuInicio:
         """
         layout = [
             [sg.Text(size=(None, 2), )],
-            [sg.Text("Menu", justification=('center'), expand_x=True,
-                     font=FONT_INDICADOR, size=(14, None),)],
-            [sg.Button("Jugar", key='-JUGAR-',
-                       expand_x=True, font=FONT_BOTONES)],
-            [sg.Button("Configuración", key='-CONFIGURACION-',
-                       expand_x=True, font=FONT_BOTONES)],
-            [sg.Button("Puntajes", key='-PUNTAJES-',
-                       expand_x=True, font=FONT_BOTONES)],
-            [sg.Button("Perfil", key='-PERFIL-',
-                       expand_x=True, font=FONT_BOTONES)]
+            [sg.Text("Menu", justification=('center'), expand_x=True, font=FONT_INDICADOR, size=(14, None),)],
+            [sg.Button("Jugar", key='-JUGAR-', expand_x=True, font=FONT_BOTONES)],
+            [sg.Button("Configuración", key='-CONFIGURACION-', expand_x=True, font=FONT_BOTONES)],
+            [sg.Button("Puntajes", key='-PUNTAJES-', expand_x=True, font=FONT_BOTONES)],
+            [sg.Button("Perfil", key='-PERFIL-', expand_x=True, font=FONT_BOTONES)]
         ]
         return layout
 
@@ -45,32 +40,15 @@ class MenuInicio:
         """
         :return: el layout que contendra la selccion de usuario y dificultad
         """
+        # ruta para la imagen
+        ruta_imagen = os.path.join(os.path.realpath('...'), "recursos", "imagenes", "juego-de-cartas.png")
+        # layout
         layout = [
-            [
-                sg.Combo(
-                    self._lista_usuarios,
-                    key='-USUARIOS-',
-                    default_value="Seleccione su usuario",
-                    enable_events=True,
-                    size=TAM_COMBO,
-                    font=FONT_COMBO,
-                )
-            ],
-            [
-                sg.Combo(
-                    ['Facíl', 'Normal', 'Difícil', 'Experto'],
-                    key='-DIFICULTAD-',
-                    default_value='Seleccione la dificultad',
-                    enable_events=True,
-                    size=TAM_COMBO,
-                    font=FONT_COMBO,
-                )
-            ],
-            ruta_imagen =
-            [
-                sg.Image("juego-de-cartas.png")
-            ]
-
+            [sg.Combo(self._lista_usuarios, key='-USUARIOS-', default_value="Seleccione su usuario", enable_events=True,
+                    size=TAM_COMBO, font=FONT_COMBO)],
+            [sg.Combo(['Facíl', 'Normal', 'Difícil', 'Experto'], key='-DIFICULTAD-', 
+                    default_value='Seleccione la dificultad', enable_events=True, size=TAM_COMBO, font=FONT_COMBO)],
+            [sg.Image(ruta_imagen)]
         ]
         return layout
 
@@ -83,30 +61,18 @@ class MenuInicio:
         un Boton con el cual se cierra la ventana.
         """
         sg.theme('DarkAmber')
+        # rutas para las imagenes
+        ruta_titlebar_icon = os.path.join(os.path.realpath('...'), "recursos", "imagenes", "cartas_icon.png")
+        ruta_icon = os.path.join(os.path.realpath('...'), "recursos", "imagenes", "cartas_icon.ico")
+        # layouts 
         l_principal = self._layout_op_principales()
         l_user_dif = self._layout_usuario_dificultad()
         layout = [
-            [sg.Push(),
-             sg.Text("FIGURACE", justification='center',
-                     expand_x=True, font=FONT_TITULO),
-             sg.Push()],
-
-            [sg.Push(),
-             sg.Col(l_principal,
-                    size=TAM_COLUMNAS, expand_y=True),
-             sg.Col(l_user_dif,  size=TAM_COLUMNAS, expand_y=True,
-                    element_justification='center'),
-             sg.Push()],
-
-            [sg.Push(),
-             sg.Button("Salir", key='-SALIR-',
-                       font=FONT_BOTONES),
-             sg.Push()]
+            [sg.Push(), sg.Text("FIGURACE", justification='center', expand_x=True, font=FONT_TITULO), sg.Push()],
+            [sg.Push(), sg.Col(l_principal, size=TAM_COLUMNAS, expand_y=True), sg.Col(l_user_dif,  size=TAM_COLUMNAS, 
+            expand_y=True, element_justification='center'), sg.Push()],
+            [sg.Push(), sg.Button("Salir", key='-SALIR-', font=FONT_BOTONES), sg.Push()]
         ]
-        window = sg.Window(
-            "Figurace", layout, size=TAM_VENTANA, finalize=True,
-
-            use_custom_titlebar=True, titlebar_icon=("cartas_icon.png"),
-            icon=("cartas_icon.ico")
-        )
+        window = sg.Window("Figurace", layout, size=TAM_VENTANA, finalize=True, use_custom_titlebar=True, 
+        titlebar_icon=(ruta_titlebar_icon), icon=(ruta_icon))
         return window
