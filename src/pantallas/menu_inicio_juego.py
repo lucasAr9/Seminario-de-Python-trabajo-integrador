@@ -22,7 +22,8 @@ class MenuInicio:
     def lista_usuarios(self, usuarios):
         self._lista_usuarios = usuarios
 
-    def _layout_op_principales(self):
+    @staticmethod
+    def _layout_op_principales():
         """
         :return: el layout que contendra las funciones principales del menu de inicio.
         """
@@ -41,7 +42,7 @@ class MenuInicio:
         :return: el layout que contendra la selccion de usuario y dificultad
         """
         # ruta para la imagen
-        ruta_imagen = os.path.join(os.path.realpath('...'), "recursos", "imagenes", "juego-de-cartas.png")
+        ruta_imagen = os.path.join(os.path.realpath('..'), "recursos", "imagenes", "juego-de-cartas.png")
         # layout
         layout = [
             [sg.Combo(self._lista_usuarios, key='-USUARIOS-', default_value="Seleccione su usuario", enable_events=True,
@@ -62,8 +63,8 @@ class MenuInicio:
         """
         sg.theme('DarkAmber')
         # rutas para las imagenes
-        ruta_titlebar_icon = os.path.join(os.path.realpath('...'), "recursos", "imagenes", "cartas_icon.png")
-        ruta_icon = os.path.join(os.path.realpath('...'), "recursos", "imagenes", "cartas_icon.ico")
+        ruta_titlebar_icon = os.path.join(os.path.realpath('..'), "recursos", "imagenes", "cartas_icon.png")
+        ruta_icon = os.path.join(os.path.realpath('..'), "recursos", "imagenes", "cartas_icon.ico")
         # layouts 
         l_principal = self._layout_op_principales()
         l_user_dif = self._layout_usuario_dificultad()
@@ -74,5 +75,5 @@ class MenuInicio:
             [sg.Push(), sg.Button("Salir", key='-SALIR-', font=FONT_BOTONES), sg.Push()]
         ]
         window = sg.Window("Figurace", layout, size=TAM_VENTANA, finalize=True, use_custom_titlebar=True, 
-        titlebar_icon=(ruta_titlebar_icon), icon=(ruta_icon))
+        titlebar_icon=ruta_titlebar_icon, icon=ruta_icon)
         return window

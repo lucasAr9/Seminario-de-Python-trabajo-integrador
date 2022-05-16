@@ -11,8 +11,6 @@ FONT_INDICADOR = 'Verdana 34'
 FONT_BOTONES = 'Verdana 30'
 FONT_COMBO = 'Verdana 18'
 
-COLOR_FONDO = '#2E2E2E'
-
 
 class Configuracion:
     """
@@ -24,11 +22,11 @@ class Configuracion:
     __incorrecto = [x for x in range(1, 21)]  # del 1 al 20
     __nivel = [1, 2, 3, 4, 5]
 
-    __titulo = [sg.Push(background_color=COLOR_FONDO),
-                sg.Text("CONFIGURACIÓN", background_color=COLOR_FONDO, expand_x=True, font=FONT_TITULO),
-                sg.Push(background_color=COLOR_FONDO)]
+    __titulo = [sg.Push(),
+                sg.Text("CONFIGURACIÓN", expand_x=True, font=FONT_TITULO),
+                sg.Push()]
 
-    __volver = [sg.Button("volver", key='-VOLVER-', font=FONT_BOTONES), sg.Push(background_color=COLOR_FONDO)]
+    __volver = [sg.Button("volver", key='-VOLVER-', font=FONT_BOTONES), sg.Push()]
 
     tiempo_u = 0
     rondas = 0
@@ -38,45 +36,45 @@ class Configuracion:
 
     def __layout_opciones(self):
         __layout = [
-            [sg.Push(background_color=COLOR_FONDO),
+            [sg.Push(),
              sg.Text('Tiempo límite', key='-TIEMPO_T-',
-                     expand_x=True, background_color=COLOR_FONDO, font=FONT_INDICADOR),
-             sg.Push(background_color=COLOR_FONDO),
+                     expand_x=True, font=FONT_INDICADOR),
+             sg.Push(),
              sg.Combo(self.__tiempos, key='-TIEMPO_C-', default_value=self.tiempo_u,
                       enable_events=True, expand_x=True, font=FONT_COMBO),
-             sg.Push(background_color=COLOR_FONDO)],
+             sg.Push()],
 
-            [sg.Push(background_color=COLOR_FONDO),
+            [sg.Push(),
              sg.Text('Rondas por juego', key='-RONDAS_T-',
-                     expand_x=True, background_color=COLOR_FONDO, font=FONT_INDICADOR),
-             sg.Push(background_color=COLOR_FONDO),
+                     expand_x=True, font=FONT_INDICADOR),
+             sg.Push(),
              sg.Combo(self.__rondas, key='-RONDAS_C-', default_value=self.rondas,
                       enable_events=True, expand_x=True, font=FONT_COMBO),
-             sg.Push(background_color=COLOR_FONDO)],
+             sg.Push()],
 
-            [sg.Push(background_color=COLOR_FONDO),
+            [sg.Push(),
              sg.Text('Puntaje por respuesta correcta', key='-CORRECTO_T-',
-                     expand_x=True, background_color=COLOR_FONDO, font=FONT_INDICADOR),
-             sg.Push(background_color=COLOR_FONDO),
+                     expand_x=True, font=FONT_INDICADOR),
+             sg.Push(),
              sg.Combo(self.__correcto, key='-CORRECTO_C-', default_value=self.correctas,
                       enable_events=True, expand_x=True, font=FONT_COMBO),
-             sg.Push(background_color=COLOR_FONDO)],
+             sg.Push()],
 
-            [sg.Push(background_color=COLOR_FONDO),
+            [sg.Push(),
              sg.Text('Puntaje por respuesta incorrecta', key='-INCORRECTO_T-',
-                     expand_x=True, background_color=COLOR_FONDO, font=FONT_INDICADOR),
-             sg.Push(background_color=COLOR_FONDO),
+                     expand_x=True, font=FONT_INDICADOR),
+             sg.Push(),
              sg.Combo(self.__incorrecto, key='-INCORRECTO_C-', default_value=self.incorrectas,
                       enable_events=True, expand_x=True, font=FONT_COMBO),
-             sg.Push(background_color=COLOR_FONDO)],
+             sg.Push()],
 
-            [sg.Push(background_color=COLOR_FONDO),
+            [sg.Push(),
              sg.Text('Cantidad de características', key='-CARACTERISTICAS_T-',
-                     expand_x=True, background_color=COLOR_FONDO, font=FONT_INDICADOR),
-             sg.Push(background_color=COLOR_FONDO),
+                     expand_x=True, font=FONT_INDICADOR),
+             sg.Push(),
              sg.Combo(self.__nivel, key='-CARACTERISTICAS_C-', default_value=self.nivel,
                       enable_events=True, expand_x=True, font=FONT_COMBO),
-             sg.Push(background_color=COLOR_FONDO)]
+             sg.Push()]
         ]
         return __layout
 
@@ -88,8 +86,7 @@ class Configuracion:
         self.nivel = datos["nivel"]
 
     def __get_config(self):
-        nombre_arch = 'configuracion.json'
-        ruta_completa = os.path.join(os.getcwd(), nombre_arch)
+        ruta_completa = os.path.join(os.path.realpath('..'), "recursos", "datos", "configuracion.json")
         try:
             with open(ruta_completa, 'r', encoding='utf-8') as config:
                 datos = json.load(config)
@@ -114,12 +111,11 @@ class Configuracion:
         self.__set_datos(datos)
         layout = [
             [self.__titulo],
-            [sg.Col(self.__layout_opciones(), background_color=COLOR_FONDO, expand_x=True)],
+            [sg.Col(self.__layout_opciones(), expand_x=True)],
             [self.__volver]
         ]
         window = sg.Window(
-            "Configuracion", layout, size=TAM_VENTANA, finalize=True,
-            background_color=COLOR_FONDO, use_custom_titlebar=True
+            "Configuracion", layout, size=TAM_VENTANA, finalize=True, use_custom_titlebar=True
         )
         return window
 
