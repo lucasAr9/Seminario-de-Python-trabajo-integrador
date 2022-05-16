@@ -46,9 +46,10 @@ class MenuInicio:
         # layout
         layout = [
             [sg.Combo(self._lista_usuarios, key='-USUARIOS-', default_value="Seleccione su usuario", enable_events=True,
-                    size=TAM_COMBO, font=FONT_COMBO)],
+                    readonly=True, size=TAM_COMBO, font=FONT_COMBO)],
             [sg.Combo(['Facíl', 'Normal', 'Difícil', 'Experto'], key='-DIFICULTAD-', 
-                    default_value='Seleccione la dificultad', enable_events=True, size=TAM_COMBO, font=FONT_COMBO)],
+                    default_value='Seleccione la dificultad', enable_events=True, readonly=True, size=TAM_COMBO, 
+                    font=FONT_COMBO)],
             [sg.Image(ruta_imagen)]
         ]
         return layout
