@@ -23,7 +23,7 @@ class Configuracion:
     __cant_niveles = [1, 2, 3, 4, 5]
 
     def __int__(self):
-        """Variables de la clase que se usan para configurar el juego"""
+        """Variables de instancia de la clase que se usan para configurar el juego"""
         self.__tiempo_u = 0
         self.__rondas = 0
         self.__correctas = 0
@@ -53,6 +53,10 @@ class Configuracion:
 
     # setters de la configuracion
     def __set_datos(self, datos):
+        """
+        Establecer los valores de las variables de instancia.
+        :param datos: el diccionario leido del archivo configuracion.json
+        """
         self.__tiempo_u = datos["-TIEMPO_C-"]
         self.__rondas = datos["-RONDAS_C-"]
         self.__correctas = datos["-CORRECTO_C-"]
@@ -60,6 +64,11 @@ class Configuracion:
         self.__nivel = datos["-CARACTERISTICAS_C-"]
 
     def __get_config(self):
+        """
+        Abrir el archivo configuracion.json y leer los valores, o si no se encontro el archivo,
+        crearlo con valores por defecto.
+        :return: el diccionario con los datos del archivo configuracion.json
+        """
         ruta_completa = os.path.join(os.path.realpath('..'), "recursos", "datos", "configuracion.json")
         try:
             with open(ruta_completa, 'r', encoding='utf-8') as config:
@@ -80,11 +89,25 @@ class Configuracion:
 
     @staticmethod
     def set_config(values):
+        """
+        Reescribir el archivo json con la configuracion que el usuario establezca.
+        :param values: valores que establezca el usuario en los sg.Combo() con valores a elegir.
+        """
         ruta_completa = os.path.join(os.path.realpath('..'), "recursos", "datos", "configuracion.json")
         with open(ruta_completa, 'w', encoding='utf-8') as config:
             json.dump(values, config, indent=4)
 
     def __layout_opciones(self):
+        """
+        Con los valores privados de la clase
+            __cant_tiempos
+            __cant_rondas
+            __cant_correcto
+            __cant_incorrecto
+            __cant_niveles
+        se settean los valores que se muestran en los sg.Combo() con los que el usuario puede elegir.
+        :return: la configuracion del layout de los botones de la ventana
+        """
         __layout = [
             [sg.Push(),
              sg.Text('Tiempo límite', key='-TIEMPO_T-',
@@ -134,8 +157,16 @@ class Configuracion:
         return __layout
 
     def crear_ventana(self):
+        """
+        Establecer las rutas de iconos, cargar los valores del archivo de configuracion.json y el tema del juego.
+        :return: la ventana de configuracion con los ultimos valores de configuracion ingresados.
+        """
         datos = self.__get_config()
         self.__set_datos(datos)
+
+        ruta_titlebar_icon = os.path.join(os.path.realpath('..'), "recursos", "imagenes", "cartas_icon.png")
+        ruta_icon = os.path.join(os.path.realpath('..'), "recursos", "imagenes", "cartas_icon.ico")
+
         sg.theme('DarkAmber')
         layout = [
             [sg.Text("CONFIGURACIÓN", key="-TITULO-", expand_x=True, font='Arial 45', justification='center')],
@@ -145,7 +176,8 @@ class Configuracion:
             [sg.Push(), sg.Button("Confirmar cambios", key="-CAMBIOS_CONFIG-", font=FONT_COMBO), sg.Push()],
             [sg.Button("volver", key='-VOLVER_CONFIG-', font=FONT_COMBO), sg.Push()]
         ]
-        window = sg.Window("Configuracion", layout, size=TAM_VENTANA, finalize=True, use_custom_titlebar=True)
+        window = sg.Window("Configuracion", layout, size=TAM_VENTANA, finalize=True, use_custom_titlebar=True,
+                           titlebar_icon=ruta_titlebar_icon, icon=ruta_icon)
         return window
 
 
