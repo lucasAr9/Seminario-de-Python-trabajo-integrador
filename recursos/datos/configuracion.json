@@ -1,7 +1,7 @@
 {
-    "tiempo": 5,
-    "rondas": 1,
-    "correcto": 1,
-    "incorrecto": 1,
-    "nivel": 4
+    "-TIEMPO_C-": 5,
+    "-RONDAS_C-": 1,
+    "-CORRECTO_C-": 1,
+    "-INCORRECTO_C-": 1,
+    "-CARACTERISTICAS_C-": 5
 }

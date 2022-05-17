@@ -2,7 +2,7 @@ import json
 import os
 import PySimpleGUI as sg
 
-TAM_VENTANA = (1200, 800)
+TAM_VENTANA = (800, 800)
 TAM_COLUMNAS = (400, 400)
 TAM_COMBO = (20, 50)
 
@@ -16,107 +16,136 @@ class Configuracion:
     """
     Menu de opciones para la configuracion de las caracteristicas del juego.
     """
-    __tiempos = [x for x in range(5, 31) if (x % 5) == 0]  # del 5 al 30, de 5 en 5
-    __rondas = [x for x in range(1, 11)]  # del 1 al 10
-    __correcto = [x for x in range(1, 21)]  # del 1 al 20
-    __incorrecto = [x for x in range(1, 21)]  # del 1 al 20
-    __nivel = [1, 2, 3, 4, 5]
+    __cant_tiempos = [x for x in range(5, 31) if (x % 5) == 0]  # del 5 al 30, de 5 en 5
+    __cant_rondas = [x for x in range(1, 11)]  # del 1 al 10
+    __cant_correcto = [x for x in range(1, 21)]  # del 1 al 20
+    __cant_incorrecto = [x for x in range(1, 21)]  # del 1 al 20
+    __cant_niveles = [1, 2, 3, 4, 5]
 
-    __titulo = [sg.Push(),
-                sg.Text("CONFIGURACIÓN", expand_x=True, font=FONT_TITULO),
-                sg.Push()]
+    def __int__(self):
+        """Variables de la clase que se usan para configurar el juego"""
+        self.__tiempo_u = 0
+        self.__rondas = 0
+        self.__correctas = 0
+        self.__incorrectas = 0
+        self.__nivel = 0
 
-    __volver = [sg.Button("volver", key='-VOLVER-', font=FONT_BOTONES), sg.Push()]
+    # getters de la configuracion
+    @property
+    def tiempo(self):
+        return self.__tiempo_u
 
-    tiempo_u = 0
-    rondas = 0
-    correctas = 0
-    incorrectas = 0
-    nivel = 0
+    @property
+    def rondas(self):
+        return self.__rondas
 
-    def __layout_opciones(self):
-        __layout = [
-            [sg.Push(),
-             sg.Text('Tiempo límite', key='-TIEMPO_T-',
-                     expand_x=True, font=FONT_INDICADOR),
-             sg.Push(),
-             sg.Combo(self.__tiempos, key='-TIEMPO_C-', default_value=self.tiempo_u,
-                      enable_events=True, expand_x=True, font=FONT_COMBO),
-             sg.Push()],
+    @property
+    def correctas(self):
+        return self.__correctas
 
-            [sg.Push(),
-             sg.Text('Rondas por juego', key='-RONDAS_T-',
-                     expand_x=True, font=FONT_INDICADOR),
-             sg.Push(),
-             sg.Combo(self.__rondas, key='-RONDAS_C-', default_value=self.rondas,
-                      enable_events=True, expand_x=True, font=FONT_COMBO),
-             sg.Push()],
+    @property
+    def incorrectas(self):
+        return self.__incorrectas
 
-            [sg.Push(),
-             sg.Text('Puntaje por respuesta correcta', key='-CORRECTO_T-',
-                     expand_x=True, font=FONT_INDICADOR),
-             sg.Push(),
-             sg.Combo(self.__correcto, key='-CORRECTO_C-', default_value=self.correctas,
-                      enable_events=True, expand_x=True, font=FONT_COMBO),
-             sg.Push()],
+    @property
+    def nivel(self):
+        return self.__nivel
 
-            [sg.Push(),
-             sg.Text('Puntaje por respuesta incorrecta', key='-INCORRECTO_T-',
-                     expand_x=True, font=FONT_INDICADOR),
-             sg.Push(),
-             sg.Combo(self.__incorrecto, key='-INCORRECTO_C-', default_value=self.incorrectas,
-                      enable_events=True, expand_x=True, font=FONT_COMBO),
-             sg.Push()],
-
-            [sg.Push(),
-             sg.Text('Cantidad de características', key='-CARACTERISTICAS_T-',
-                     expand_x=True, font=FONT_INDICADOR),
-             sg.Push(),
-             sg.Combo(self.__nivel, key='-CARACTERISTICAS_C-', default_value=self.nivel,
-                      enable_events=True, expand_x=True, font=FONT_COMBO),
-             sg.Push()]
-        ]
-        return __layout
-
+    # setters de la configuracion
     def __set_datos(self, datos):
-        self.tiempo_u = datos["tiempo"]
-        self.rondas = datos["rondas"]
-        self.correctas = datos["correcto"]
-        self.incorrectas = datos["incorrecto"]
-        self.nivel = datos["nivel"]
+        self.__tiempo_u = datos["-TIEMPO_C-"]
+        self.__rondas = datos["-RONDAS_C-"]
+        self.__correctas = datos["-CORRECTO_C-"]
+        self.__incorrectas = datos["-INCORRECTO_C-"]
+        self.__nivel = datos["-CARACTERISTICAS_C-"]
 
     def __get_config(self):
         ruta_completa = os.path.join(os.path.realpath('..'), "recursos", "datos", "configuracion.json")
         try:
             with open(ruta_completa, 'r', encoding='utf-8') as config:
                 datos = json.load(config)
+            return datos
         except FileNotFoundError:
             # si ocurre el error de que no encontro el archivo, que lo cree con valores default y lo retorne
             datos_d = {
-                "tiempo": self.__tiempos[0],
-                "rondas": self.__rondas[0],
-                "correcto": self.__correcto[0],
-                "incorrecto": self.__incorrecto[0],
-                "nivel": self.__nivel[len(self.__nivel)]
+                "-TIEMPO_C-": self.__cant_tiempos[0],
+                "-RONDAS_C-": self.__cant_rondas[0],
+                "-CORRECTO_C-": self.__cant_correcto[0],
+                "-INCORRECTO_C-": self.__cant_incorrecto[0],
+                "-CARACTERISTICAS_C-": self.__cant_niveles[len(self.__cant_niveles) - 1]
             }
             with open(ruta_completa, 'w', encoding='utf-8') as config:
                 json.dump(datos_d, config, indent=4)
-        return datos
+            return datos_d
 
-    def __set_config(self):
-        pass
+    @staticmethod
+    def set_config(values):
+        ruta_completa = os.path.join(os.path.realpath('..'), "recursos", "datos", "configuracion.json")
+        with open(ruta_completa, 'w', encoding='utf-8') as config:
+            json.dump(values, config, indent=4)
+
+    def __layout_opciones(self):
+        __layout = [
+            [sg.Push(),
+             sg.Text('Tiempo límite', key='-TIEMPO_T-',
+                     expand_x=True, font=FONT_BOTONES, justification='center'),
+             sg.Push()],
+            [sg.Push(),
+             sg.Combo(self.__cant_tiempos, key='-TIEMPO_C-', default_value=self.__tiempo_u,
+                      readonly=True, enable_events=True, size=(10, 5), font=FONT_COMBO),
+             sg.Push()],
+
+            [sg.Push(),
+             sg.Text('Rondas por juego', key='-RONDAS_T-',
+                     expand_x=True, font=FONT_BOTONES, justification='center'),
+             sg.Push()],
+            [sg.Push(),
+             sg.Combo(self.__cant_rondas, key='-RONDAS_C-', default_value=self.__rondas,
+                      readonly=True, enable_events=True, size=(10, 5), font=FONT_COMBO),
+             sg.Push()],
+
+            [sg.Push(),
+             sg.Text('Puntaje por respuesta correcta', key='-CORRECTO_T-',
+                     expand_x=True, font=FONT_BOTONES, justification='center'),
+             sg.Push()],
+            [sg.Push(),
+             sg.Combo(self.__cant_correcto, key='-CORRECTO_C-', default_value=self.__correctas,
+                      readonly=True, enable_events=True, size=(10, 5), font=FONT_COMBO),
+             sg.Push()],
+
+            [sg.Push(),
+             sg.Text('Puntaje por respuesta incorrecta', key='-INCORRECTO_T-',
+                     expand_x=True, font=FONT_BOTONES, justification='center'),
+             sg.Push()],
+            [sg.Push(),
+             sg.Combo(self.__cant_incorrecto, key='-INCORRECTO_C-', default_value=self.__incorrectas,
+                      readonly=True, enable_events=True, size=(10, 5), font=FONT_COMBO),
+             sg.Push()],
+
+            [sg.Push(),
+             sg.Text('Cantidad de características', key='-CARACTERISTICAS_T-',
+                     expand_x=True, font=FONT_BOTONES, justification='center'),
+             sg.Push()],
+            [sg.Push(),
+             sg.Combo(self.__cant_niveles, key='-CARACTERISTICAS_C-', default_value=self.__nivel,
+                      readonly=True, enable_events=True, size=(10, 5), font=FONT_COMBO),
+             sg.Push()]
+        ]
+        return __layout
 
     def crear_ventana(self):
         datos = self.__get_config()
         self.__set_datos(datos)
+        sg.theme('DarkAmber')
         layout = [
-            [self.__titulo],
+            [sg.Text("CONFIGURACIÓN", key="-TITULO-", expand_x=True, font='Arial 45', justification='center')],
+            [sg.Text(size=(None, 2), )],
             [sg.Col(self.__layout_opciones(), expand_x=True)],
-            [self.__volver]
+            [sg.Text(size=(None, 2), )],
+            [sg.Push(), sg.Button("Confirmar cambios", key="-CAMBIOS_CONFIG-", font=FONT_COMBO), sg.Push()],
+            [sg.Button("volver", key='-VOLVER_CONFIG-', font=FONT_COMBO), sg.Push()]
         ]
-        window = sg.Window(
-            "Configuracion", layout, size=TAM_VENTANA, finalize=True, use_custom_titlebar=True
-        )
+        window = sg.Window("Configuracion", layout, size=TAM_VENTANA, finalize=True, use_custom_titlebar=True)
         return window
 
 

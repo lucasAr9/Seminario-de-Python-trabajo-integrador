@@ -26,11 +26,7 @@ def accion_jugar():
 def accion_configuracion():
     config = Configuracion()
     wondow = config.crear_ventana()
-    # layout = [
-    #     [sg.Text('ACA SE CONFIGURA :O', font=FONT_TEXTOS)],
-    #     [sg.Button("SALIR", key='-VOLVER_AL_MENU-', font=FONT_BOTONES)]
-    # ]
-    # return sg.Window("Ventana de juego", layout, finalize=True)
+    return wondow
 
 
 def accion_puntajes():
@@ -55,6 +51,7 @@ window = menu.crear_menu()
 
 while True:
     current_window, event, values = sg.read_all_windows()
+
     if event == sg.WIN_CLOSED:
         current_window.close()
         break
@@ -78,5 +75,9 @@ while True:
         accion_perfil()
         current_window.close()
     elif event == '-VOLVER_AL_MENU-':
+        menu.crear_menu()
+        current_window.close()
+
+    elif event == '-VOLVER_CONFIG-':
         menu.crear_menu()
         current_window.close()
