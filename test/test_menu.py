@@ -1,6 +1,6 @@
 import PySimpleGUI as sg
-from pantallas.menu_inicio_juego import MenuInicio  # no se como hacer que ande este import :C
-from pantallas.Configuracion import Configuracion
+from src.pantallas.menu_inicio_juego import MenuInicio  # no se como hacer que ande este import :C
+from src.pantallas.Configuracion import Configuracion
 
 TAM_VENTANAS = (800, 800)
 FONT_TEXTOS = 'Arial 40'
@@ -25,8 +25,8 @@ def accion_jugar():
 
 def accion_configuracion():
     config = Configuracion()
-    wondow = config.crear_ventana()
-    return wondow
+    window = config.crear_ventana()
+    return window
 
 
 def accion_puntajes():
