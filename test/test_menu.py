@@ -1,6 +1,6 @@
 import PySimpleGUI as sg
 from src.pantallas.menu_inicio_juego import MenuInicio  # no se como hacer que ande este import :C
-from src.pantallas.Configuracion import Configuracion
+from src.juego.config_dificultad import Configuracion
 
 TAM_VENTANAS = (800, 800)
 FONT_TEXTOS = 'Arial 40'
