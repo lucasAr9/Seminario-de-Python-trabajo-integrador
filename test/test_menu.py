@@ -1,6 +1,7 @@
 import PySimpleGUI as sg
 from src.pantallas.menu_inicio_juego import MenuInicio  # no se como hacer que ande este import :C
-from src.juego.config_dificultad import Configuracion
+from src.pantallas import configuracion as c_pantalla
+from src.pantallas.cuentas import Perfiles
 
 TAM_VENTANAS = (800, 800)
 FONT_TEXTOS = 'Arial 40'
@@ -24,9 +25,8 @@ def accion_jugar():
 
 
 def accion_configuracion():
-    config = Configuracion()
-    window = config.crear_ventana()
-    return window
+    ventana_config = c_pantalla.crear_ventana()
+    return ventana_config
 
 
 def accion_puntajes():
@@ -37,16 +37,13 @@ def accion_puntajes():
     return sg.Window("Ventana de juego", layout, finalize=True)
 
 
-def accion_perfil():
-    layout = [
-        [sg.Text('ACA SE PERFILEA :P', font=FONT_TEXTOS)],
-        [sg.Button("SALIR", key='-VOLVER_AL_MENU-', font=FONT_BOTONES)]
-    ]
-    return sg.Window("Ventana de juego", layout, finalize=True)
+def accion_perfil(perfil):
+    return perfil.crear_pantalla({"tam_ventana": TAM_VENTANAS, "font_botones": "Verdana 25"})
 
 
 usuarios = ["Anto", "Vero", "Lucas", "Tomás"]
 menu = MenuInicio(usuarios)
+perfil = Perfiles()
 window = menu.crear_menu()
 
 while True:
@@ -72,7 +69,7 @@ while True:
         accion_puntajes()
         current_window.close()
     elif event == '-PERFIL-':
-        accion_perfil()
+        accion_perfil(perfil)
         current_window.close()
     elif event == '-VOLVER_AL_MENU-':
         menu.crear_menu()
@@ -81,3 +78,10 @@ while True:
     elif event == '-VOLVER_CONFIG-':
         menu.crear_menu()
         current_window.close()
+
+    elif event == "-VOLVER_PERFILES-":
+        menu.lista_usuarios = perfil.perfiles()
+        menu.crear_menu()
+        current_window.close()
+
+    perfil.analisis_event_editar(current_window, event, values)
