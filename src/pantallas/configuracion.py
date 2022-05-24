@@ -1,7 +1,7 @@
 import os
 import PySimpleGUI as sg
 
-from src.pantallas import font_size as fs
+from src.pantallas import caracteristicas_generales as fs
 from src.juego import config_dificultad as config
 
 
@@ -21,8 +21,8 @@ def crear_ventana():
         [sg.Text(size=(None, 2), )],
         [sg.Col(layout, expand_x=True)],
         [sg.Text(size=(None, 2), )],
-        [sg.Push(), sg.Button("Confirmar cambios", key="-CAMBIOS_CONFIG-", font=fs.FONT_COMBO), sg.Push()],
-        [sg.Button("volver", key='-VOLVER_CONFIG-', font=fs.FONT_COMBO), sg.Push()]
+        [sg.Push(), sg.Button("Confirmar cambios", key="-CAMBIOS_CONFIG-", font=fs.FUENTE_COMBO), sg.Push()],
+        [sg.Button("volver", key='-VOLVER_CONFIG-', font=fs.FUENTE_COMBO), sg.Push()]
     ]
     window = sg.Window("Configuracion", crear_layout, size=fs.TAM_VENTANA, finalize=True, use_custom_titlebar=True,
                        titlebar_icon=ruta_titlebar_icon, icon=ruta_icon)
@@ -42,7 +42,7 @@ datos = dificultad.get_config()
 dificultad.set_datos(datos)
 
 """tema de las ventanas"""
-sg.theme('DarkAmber')
+sg.theme(fs.TEMA)
 
 """
 Con los valores privados de la clase
@@ -56,45 +56,45 @@ se settean los valores que se muestran en los sg.Combo() con los que el usuario 
 layout = [
     [sg.Push(),
      sg.Text('Tiempo límite', key='-TIEMPO_T-',
-             expand_x=True, font=fs.FONT_BOTONES, justification='center'),
+             expand_x=True, font=fs.FUENTE_BOTONES, justification='center'),
      sg.Push()],
     [sg.Push(),
      sg.Combo(cant_tiempos, key='-TIEMPO_C-', default_value=dificultad.tiempo,
-              readonly=True, enable_events=True, size=(10, 5), font=fs.FONT_COMBO),
+              readonly=True, enable_events=True, size=(10, 5), font=fs.FUENTE_COMBO),
      sg.Push()],
 
     [sg.Push(),
      sg.Text('Rondas por juego', key='-RONDAS_T-',
-             expand_x=True, font=fs.FONT_BOTONES, justification='center'),
+             expand_x=True, font=fs.FUENTE_BOTONES, justification='center'),
      sg.Push()],
     [sg.Push(),
      sg.Combo(cant_rondas, key='-RONDAS_C-', default_value=dificultad.rondas,
-              readonly=True, enable_events=True, size=(10, 5), font=fs.FONT_COMBO),
+              readonly=True, enable_events=True, size=(10, 5), font=fs.FUENTE_COMBO),
      sg.Push()],
 
     [sg.Push(),
      sg.Text('Puntaje por respuesta correcta', key='-CORRECTO_T-',
-             expand_x=True, font=fs.FONT_BOTONES, justification='center'),
+             expand_x=True, font=fs.FUENTE_BOTONES, justification='center'),
      sg.Push()],
     [sg.Push(),
      sg.Combo(cant_correcto, key='-CORRECTO_C-', default_value=dificultad.correctas,
-              readonly=True, enable_events=True, size=(10, 5), font=fs.FONT_COMBO),
+              readonly=True, enable_events=True, size=(10, 5), font=fs.FUENTE_COMBO),
      sg.Push()],
 
     [sg.Push(),
      sg.Text('Puntaje por respuesta incorrecta', key='-INCORRECTO_T-',
-             expand_x=True, font=fs.FONT_BOTONES, justification='center'),
+             expand_x=True, font=fs.FUENTE_BOTONES, justification='center'),
      sg.Push()],
     [sg.Push(),
      sg.Combo(cant_incorrecto, key='-INCORRECTO_C-', default_value=dificultad.incorrectas,
-              readonly=True, enable_events=True, size=(10, 5), font=fs.FONT_COMBO),
+              readonly=True, enable_events=True, size=(10, 5), font=fs.FUENTE_COMBO),
      sg.Push()],
 
     [sg.Push(),
      sg.Text('Cantidad de características', key='-CARACTERISTICAS_T-',
-             expand_x=True, font=fs.FONT_BOTONES, justification='center'),
+             expand_x=True, font=fs.FUENTE_BOTONES, justification='center'),
      sg.Push()],
     [sg.Push(),
      sg.Combo(cant_niveles, key='-CARACTERISTICAS_C-', default_value=dificultad.nivel,
-              readonly=True, enable_events=True, size=(10, 5), font=fs.FONT_COMBO),
+              readonly=True, enable_events=True, size=(10, 5), font=fs.FUENTE_COMBO),
      sg.Push()]]
