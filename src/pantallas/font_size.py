@@ -1,7 +1,10 @@
+import PySimpleGUI as sg
+
+ancho, alto = sg.Window.get_screen_size()
 # tamaños de ventanas y botones
-TAM_VENTANA = (800, 800)
-TAM_COLUMNAS = (400, 400)
-TAM_COMBO = (20, 50)
+TAM_VENTANA = (ancho, alto)
+TAM_COLUMNAS = (int(ancho/4), int(alto/2))
+TAM_COMBO = (int(ancho/80), int(alto/80))
 
 # fuentes de los textos y botones
 FONT_TITULO = 'Verdana 72'

@@ -1,5 +1,5 @@
 import PySimpleGUI as sg
-from src.pantallas.menu_inicio_juego import MenuInicio  # no se como hacer que ande este import :C
+from src.pantallas.menu_inicio_juego import crear_menu
 from src.pantallas import configuracion as c_pantalla
 from src.pantallas.cuentas import Perfiles
 
@@ -41,11 +41,8 @@ def accion_perfil(perfil):
     return perfil.crear_pantalla({"tam_ventana": TAM_VENTANAS, "font_botones": "Verdana 25"})
 
 
-usuarios = ["Anto", "Vero", "Lucas", "Tomás"]
-menu = MenuInicio(usuarios)
 perfil = Perfiles()
-window = menu.crear_menu()
-
+crear_menu(perfil.perfiles())
 while True:
     current_window, event, values = sg.read_all_windows()
 
@@ -72,16 +69,16 @@ while True:
         accion_perfil(perfil)
         current_window.close()
     elif event == '-VOLVER_AL_MENU-':
-        menu.crear_menu()
+        crear_menu(perfil.perfiles())
         current_window.close()
 
     elif event == '-VOLVER_CONFIG-':
-        menu.crear_menu()
+        crear_menu(perfil.perfiles())
         current_window.close()
 
     elif event == "-VOLVER_PERFILES-":
-        menu.lista_usuarios = perfil.perfiles()
-        menu.crear_menu()
+        lista_usuarios = perfil.perfiles()
+        crear_menu(perfil.perfiles())
         current_window.close()
 
     perfil.analisis_event_editar(current_window, event, values)

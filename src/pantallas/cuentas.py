@@ -232,6 +232,7 @@ class Perfiles:
                 window["-MSJ_EDITAR-"].update(visible=True)
 
     def perfiles(self):
+            self.__cargar_perfiles()
             return [a["nombre"] for a in self.__perfiles]
 
 
