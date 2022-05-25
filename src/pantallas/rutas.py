@@ -25,7 +25,7 @@ def ruta_datos(nombre):
         case 'peliculas':
             ruta_datos = os.path.join(os.getcwd(), ruta_extra, 'dataset_peliculas.csv')
         case 'fifa':
-            ruta_datos = os.path.join(os.getcwd(), ruta_extra, 'fifa.csv')
+            ruta_datos = os.path.join(os.getcwd(), ruta_extra, 'dataset_fifa21.csv')
         case 'spotify':
             ruta_datos = os.path.join(os.getcwd(), ruta_extra, 'dataset_spotify.csv')
         case 'puntajes':
