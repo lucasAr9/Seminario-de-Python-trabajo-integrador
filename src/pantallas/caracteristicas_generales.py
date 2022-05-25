@@ -15,17 +15,16 @@ FUENTE_BOTONES = 'Verdana 26'
 FUENTE_COMBO = 'Verdana 18'
 
 # colores
-    # sg.LOOK_AND_FEEL_TABLE['figurace_tema'] = {'BACKGROUND': '#A02800',
-    #                                            'TEXT': '#F4E3B2',
-    #                                            'INPUT': '#CF5C36',
-    #                                            'TEXT_INPUT': '#F1EEE9',
-    #                                            'SCROLL': '#99CC99',
-    #                                            'BUTTON': ('#CF0036', '#E8C65E'),
-    #                                            'PROGRESS': ('#D1826B', '#E8C65E'),
-    #                                            'BORDER': 2, 'SLIDER_DEPTH': 0,
-    #                                            'PROGRESS_DEPTH': 0, }
-    #  TEMA = 'figurace_tema'
-TEMA = 'DarkAmber'
+sg.LOOK_AND_FEEL_TABLE['figurace_tema'] = {'BACKGROUND': '#A02800',
+                                           'TEXT': '#F4E3B2',
+                                           'INPUT': '#CF5C36',
+                                           'TEXT_INPUT': '#F1EEE9',
+                                           'SCROLL': '#99CC99',
+                                           'BUTTON': ('#CF0036', '#E8C65E'),
+                                           'PROGRESS': ('#D1826B', '#E8C65E'),
+                                           'BORDER': 2, 'SLIDER_DEPTH': 0,
+                                           'PROGRESS_DEPTH': 0, }
+TEMA = 'figurace_tema'
 
 
 # ventana para chequear salidas

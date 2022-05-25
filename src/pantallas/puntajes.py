@@ -61,9 +61,9 @@ def armar_layout():
                                      key=f'-PANTALLA_TAB{str(i)}-')] for i in range(4)],
                             expand_y=True, expand_x=True, pad=30, enable_events=True)
 
-    layout = [[sg.Image(rutas.ruta_imagen('icono'), pad=((20, 0),(20, 0))),
+    layout = [[sg.Image(rutas.ruta_imagen('icono_png'), pad=((20, 0),(20, 0))),
                sg.Text('Puntajes', font=cgen.FUENTE_TITULO, justification='c', expand_x=True),
-               sg.Image(rutas.ruta_imagen('icono'), pad=((0, 20),(20, 0)))],
+               sg.Image(rutas.ruta_imagen('icono_png'), pad=((0, 20),(20, 0)))],
               [sg.Text('Los 20 mejores puntajes por nivel',
                        font=cgen.FUENTE_INDICADOR, justification='c', expand_x=True)],
               [sg.HSep()],
@@ -81,7 +81,7 @@ def armar_ventana():
     window = sg.Window("Puntajes", armar_layout(), finalize=True,
                        size=cgen.TAM_VENTANA, enable_close_attempted_event=True,
                        no_titlebar=False, grab_anywhere=True, margins=(20, 20),
-                       resizable=True, use_custom_titlebar=True, titlebar_icon=rutas.ruta_imagen('icono'))
+                       resizable=True, use_custom_titlebar=True, titlebar_icon=rutas.ruta_imagen('icono_png'))
     return window
 
 

@@ -1,11 +1,8 @@
 import PySimpleGUI as sg
+import src.pantallas.caracteristicas_generales as cg
 from src.pantallas.menu_inicio_juego import crear_menu
 from src.pantallas import configuracion as c_pantalla
 from src.pantallas.cuentas import Perfiles
-
-TAM_VENTANAS = (800, 800)
-FONT_TEXTOS = 'Arial 40'
-FONT_BOTONES = 'Arial 20'
 
 
 def accion_usuario(usuario):
@@ -18,8 +15,8 @@ def accion_dificultad(dificultad):
 
 def accion_jugar():
     layout = [
-        [sg.Text('ACA SE JUEGA :)', font=FONT_TEXTOS)],
-        [sg.Button("SALIR", key='-VOLVER_AL_MENU-', font=FONT_BOTONES)]
+        [sg.Text('ACA SE JUEGA :)', font=cg.FUENTE_INDICADOR)],
+        [sg.Button("SALIR", key='-VOLVER_AL_MENU-', font=cg.FUENTE_BOTONES)]
     ]
     return sg.Window("Ventana de juego", layout, finalize=True)
 
@@ -38,7 +35,7 @@ def accion_puntajes():
 
 
 def accion_perfil(perfil):
-    return perfil.crear_pantalla({"tam_ventana": TAM_VENTANAS, "font_botones": "Verdana 25"})
+    return perfil.crear_pantalla({"tam_ventana": cg.TAM_VENTANA, "font_botones": "Verdana 25"})
 
 
 perfil = Perfiles()
