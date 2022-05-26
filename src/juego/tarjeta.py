@@ -1,4 +1,4 @@
-import rutas
+from src.pantallas import rutas
 import csv
 import random
 
@@ -21,5 +21,7 @@ def datos_tarjeta(dataset, cant_pistas):
     dicc_respuestas = {'Titulo': cabecera[-1], 'Correcta': respuesta_correcta, 'Posibles': respuestas_posibles}
 
     dicc_pistas = {tipo: dato for tipo, dato in zip(cabecera[:cant_pistas], linea_dataset[:cant_pistas])}
+
+    print(dicc_pistas)
 
     return dicc_pistas, dicc_respuestas

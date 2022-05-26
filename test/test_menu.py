@@ -3,6 +3,8 @@ import src.pantallas.caracteristicas_generales as cg
 from src.pantallas.menu_inicio_juego import crear_menu
 from src.pantallas import configuracion as c_pantalla
 from src.pantallas.cuentas import Perfiles
+from src.pantallas import puntajes
+from src.pantallas import juego
 
 
 def accion_usuario(usuario):
@@ -14,11 +16,8 @@ def accion_dificultad(dificultad):
 
 
 def accion_jugar():
-    layout = [
-        [sg.Text('ACA SE JUEGA :)', font=cg.FUENTE_INDICADOR)],
-        [sg.Button("SALIR", key='-VOLVER_AL_MENU-', font=cg.FUENTE_BOTONES)]
-    ]
-    return sg.Window("Ventana de juego", layout, finalize=True)
+    ventana_juego = juego.armar_ventana()
+    return ventana_juego
 
 
 def accion_configuracion():
@@ -27,11 +26,8 @@ def accion_configuracion():
 
 
 def accion_puntajes():
-    layout = [
-        [sg.Text('ACA SE PUNTUA B)', font=FONT_TEXTOS)],
-        [sg.Button("SALIR", key='-VOLVER_AL_MENU-', font=FONT_BOTONES)]
-    ]
-    return sg.Window("Ventana de juego", layout, finalize=True)
+    ventana_puntajes = puntajes.armar_ventana()
+    return ventana_puntajes
 
 
 def accion_perfil(perfil):
@@ -42,7 +38,6 @@ perfil = Perfiles()
 crear_menu(perfil.perfiles())
 while True:
     current_window, event, values = sg.read_all_windows()
-
     if event == sg.WIN_CLOSED:
         current_window.close()
         break
@@ -68,6 +63,16 @@ while True:
     elif event == '-VOLVER_AL_MENU-':
         crear_menu(perfil.perfiles())
         current_window.close()
+    elif (event == '-JUEGO_ABANDONAR-' and
+          cg.ventana_chequear_accion('Se darán por perdidas la ronda actual\ny las rondas restantes!\n\n'
+                                     'Segurx que querés volver al menú?') == 'Sí'):
+        crear_menu(perfil.perfiles())
+        current_window.close()
+
+    #  https://github.com/PySimpleGUI/PySimpleGUI/issues/3771
+    elif event == (sg.WINDOW_CLOSE_ATTEMPTED_EVENT and
+                   cg.ventana_chequear_accion() == 'Sí'):
+        break
 
     elif event == '-VOLVER_CONFIG-':
         crear_menu(perfil.perfiles())

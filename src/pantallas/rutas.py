@@ -1,8 +1,8 @@
 import os
 
 def ruta_imagen(nombre):
-    ruta_extra = os.path.join(os.path.realpath('..'), 'recursos', 'imagenes')  # desde test_menu.py
-    # ruta_extra = os.path.join('..', '..', 'recursos', 'imagenes') # para que funcionen las imagenes desde puntajes.py
+    # ruta_extra = os.path.join(os.path.realpath('..'), 'recursos', 'imagenes')  # desde test_menu.py
+    ruta_extra = os.path.join('..', 'recursos', 'imagenes') # para que funcionen las imagenes desde puntajes.py
     match nombre:
         case 'volcanes':
             ruta_imagen = os.path.join(os.getcwd(), ruta_extra, 'volcan.png')
@@ -18,7 +18,7 @@ def ruta_imagen(nombre):
     return ruta_imagen
 
 def ruta_datos(nombre):
-    ruta_extra = os.path.join('..', '..', 'recursos', 'datos')
+    ruta_extra = os.path.join('..', 'recursos', 'datos')
     match nombre:
         case 'volcanes':
             ruta_datos = os.path.join(os.getcwd(), ruta_extra, 'dataset_erupciones_volcanicas.csv')

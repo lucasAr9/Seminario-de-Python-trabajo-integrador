@@ -1,6 +1,6 @@
 import PySimpleGUI as sg
-import caracteristicas_generales as cgen
-import rutas
+from src.pantallas import caracteristicas_generales as cgen
+from src.pantallas import rutas
 import csv
 
 sg.theme(cgen.TEMA)
@@ -8,21 +8,27 @@ sg.theme(cgen.TEMA)
 niveles = ['Fácil', 'Medio', 'Difícil', 'Experto']
 
 
-def procesar_archivo():
-    with(open(rutas.ruta_datos('puntajes'), 'r', encoding='utf-8', newline='')) as archivo:
-        csv_reader = csv.reader(archivo)
-        cabecera, contenido = csv_reader.__next__(), [linea for linea in csv_reader]
-    puntajes_ordenados = sorted(contenido, key=lambda x:int(x[3]), reverse=True)
-    nivel_facil = [linea[2:4] for linea in puntajes_ordenados if linea[1] == 'Fácil']
-    list(map(lambda x, y: x.insert(0, y), nivel_facil, list(range(1, 21))))
-    nivel_medio = [linea[2:4] for linea in puntajes_ordenados if linea[1] == 'Medio']
-    list(map(lambda x, y: x.insert(0, y), nivel_medio, list(range(1, 21))))
-    nivel_dificil = [linea[2:4] for linea in puntajes_ordenados if linea[1] == 'Difícil']
-    list(map(lambda x, y: x.insert(0, y), nivel_dificil, list(range(1, 21))))
-    nivel_experto = [linea[2:4] for linea in puntajes_ordenados if linea[1] == 'Experto']
-    list(map(lambda x, y: x.insert(0, y), nivel_experto, list(range(1, 21))))
+def procesar_dificultad(puntajes_ordenados, nivel):
+    nivel = [linea[2:4] for linea in puntajes_ordenados if linea[1] == niveles[nivel]]
+    list(map(lambda x, y: x.insert(0, y), nivel, list(range(1, 21))))
+    nivel = nivel[:20]
+    return nivel
 
-    return nivel_facil[:20], nivel_medio[:20], nivel_dificil[:20], nivel_experto[:20]
+
+def procesar_archivo():
+    try:
+        with(open(rutas.ruta_datos('puntajes'), 'r', encoding='utf-8', newline='')) as archivo:
+            csv_reader = csv.reader(archivo)
+            cabecera, contenido = csv_reader.__next__(), [linea for linea in csv_reader]
+    except FileNotFoundError:
+        sg.popup('El archivo de registro de jugadas no existe, juegue al menos una vez para crearlo')
+    puntajes_ordenados = sorted(contenido, key=lambda x: int(x[3]), reverse=True)
+    nivel_facil = procesar_dificultad(puntajes_ordenados, 0)
+    nivel_medio = procesar_dificultad(puntajes_ordenados, 1)
+    nivel_dificil = procesar_dificultad(puntajes_ordenados, 2)
+    nivel_experto = procesar_dificultad(puntajes_ordenados, 3)
+
+    return nivel_facil, nivel_medio, nivel_dificil, nivel_experto
 
 
 def layouts_pestanias(num):
@@ -61,15 +67,15 @@ def armar_layout():
                                      key=f'-PANTALLA_TAB{str(i)}-')] for i in range(4)],
                             expand_y=True, expand_x=True, pad=30, enable_events=True)
 
-    layout = [[sg.Image(rutas.ruta_imagen('icono_png'), pad=((20, 0),(20, 0))),
+    layout = [[sg.Image(rutas.ruta_imagen('icono_png'), pad=((20, 0), (20, 0))),
                sg.Text('Puntajes', font=cgen.FUENTE_TITULO, justification='c', expand_x=True),
-               sg.Image(rutas.ruta_imagen('icono_png'), pad=((0, 20),(20, 0)))],
+               sg.Image(rutas.ruta_imagen('icono_png'), pad=((0, 20), (20, 0)))],
               [sg.Text('Los 20 mejores puntajes por nivel',
                        font=cgen.FUENTE_INDICADOR, justification='c', expand_x=True)],
               [sg.HSep()],
               [tab_group],
               [sg.VPush()],
-              [sg.Button('Volver', key='-PUNTAJES_VOLVER-',
+              [sg.Button('Volver', key='-VOLVER_AL_MENU-',
                          tooltip='Volver al menú principal', pad=5), sg.Push(), sg.Sizegrip()]
               ]
 
@@ -81,17 +87,18 @@ def armar_ventana():
     window = sg.Window("Puntajes", armar_layout(), finalize=True,
                        size=cgen.TAM_VENTANA, enable_close_attempted_event=True,
                        no_titlebar=False, grab_anywhere=True, margins=(20, 20),
-                       resizable=True, use_custom_titlebar=True, titlebar_icon=rutas.ruta_imagen('icono_png'))
+                       resizable=True, use_custom_titlebar=True,
+                       titlebar_icon=rutas.ruta_imagen('icono_png'))
     return window
 
 
-window = armar_ventana()
-while True:
-    event, values = window.read()
-    if event == sg.WINDOW_CLOSE_ATTEMPTED_EVENT and \
-            (cgen.ventana_chequear_accion() == 'Sí'):
-        break
-    if event == '-PUNTAJES_VOLVER-':
-        break
-
-window.close()
+# window = armar_ventana()
+# while True:
+#     event, values = window.read()
+#     if event == sg.WINDOW_CLOSE_ATTEMPTED_EVENT and \
+#             (cgen.ventana_chequear_accion() == 'Sí'):
+#         break
+#     if event == '-PUNTAJES_VOLVER-':
+#         break
+#
+# window.close()
