@@ -2,7 +2,7 @@ import PySimpleGUI as sg
 import src.pantallas.caracteristicas_generales as cg
 from src.pantallas.menu_inicio_juego import crear_menu
 from src.pantallas import configuracion as c_pantalla
-from src.pantallas.cuentas import Perfiles
+import src.pantallas.cuentas as cuentas
 from src.pantallas import puntajes
 from src.pantallas import juego
 
@@ -30,12 +30,13 @@ def accion_puntajes():
     return ventana_puntajes
 
 
-def accion_perfil(perfil):
-    return perfil.crear_pantalla({"tam_ventana": cg.TAM_VENTANA, "font_botones": "Verdana 25"})
+def accion_perfil():
+    return cuentas.crear_cuentas({"tam_ventana": cg.TAM_VENTANA, "font_botones": "Verdana 25"})
 
 
-perfil = Perfiles()
-crear_menu(perfil.perfiles())
+conf_cuentas = {"perfiles": cuentas.cargar_perfiles(), "act": 0}
+perfiles = list(map(lambda datos: datos['nombre'], conf_cuentas['perfiles']))
+crear_menu(perfiles)
 while True:
     current_window, event, values = sg.read_all_windows()
     if event == sg.WIN_CLOSED:
@@ -58,15 +59,15 @@ while True:
         accion_puntajes()
         current_window.close()
     elif event == '-PERFIL-':
-        accion_perfil(perfil)
+        accion_perfil()
         current_window.close()
     elif event == '-VOLVER_AL_MENU-':
-        crear_menu(perfil.perfiles())
+        crear_menu(perfiles)
         current_window.close()
     elif (event == '-JUEGO_ABANDONAR-' and
           cg.ventana_chequear_accion('Se darán por perdidas la ronda actual\ny las rondas restantes!\n\n'
                                      'Segurx que querés volver al menú?') == 'Sí'):
-        crear_menu(perfil.perfiles())
+        crear_menu(perfiles)
         current_window.close()
 
     #  https://github.com/PySimpleGUI/PySimpleGUI/issues/3771
@@ -75,12 +76,13 @@ while True:
         break
 
     elif event == '-VOLVER_CONFIG-':
-        crear_menu(perfil.perfiles())
+        crear_menu(perfiles)
         current_window.close()
 
     elif event == "-VOLVER_PERFILES-":
-        lista_usuarios = perfil.perfiles()
-        crear_menu(perfil.perfiles())
+        conf_cuentas = {"perfiles": cuentas.cargar_perfiles(), "act": 0}
+        perfiles = list(map(lambda datos: datos['nombre'], conf_cuentas['perfiles']))
+        crear_menu(perfiles)
         current_window.close()
 
-    perfil.analisis_event_editar(current_window, event, values)
+    cuentas.analisis_event_cuentas(current_window, event, values,conf_cuentas)

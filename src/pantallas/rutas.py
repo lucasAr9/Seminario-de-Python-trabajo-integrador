@@ -6,6 +6,12 @@ def ruta_imagen(nombre):
     match nombre:
         case 'volcanes':
             ruta_imagen = os.path.join(os.getcwd(), ruta_extra, 'volcan.png')
+        case 'fifa':
+            ruta_imagen = os.path.join(os.getcwd(), ruta_extra, 'fifa.png')
+        case 'spotify':
+            ruta_imagen = os.path.join(os.getcwd(), ruta_extra, 'spotify.png')
+        case 'peliculas':
+            ruta_imagen = os.path.join(os.getcwd(), ruta_extra, 'peliculas.png')
         case 'icono_png':
             ruta_imagen = os.path.join(os.getcwd(), ruta_extra, 'cartas_icon.png')
         case 'icono_ico':
