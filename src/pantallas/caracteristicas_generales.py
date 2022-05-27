@@ -1,9 +1,9 @@
 import PySimpleGUI as sg
 
-ancho, alto = sg.Window.get_screen_size()
+# ancho, alto = sg.Window.get_screen_size()
 # tamaños de ventanas y botones
-    # ancho = 700
-    # alto = 680
+ancho = 700
+alto = 680
 TAM_VENTANA = (ancho, alto)
 TAM_COLUMNAS = (int(ancho/4), int(alto/2))
 TAM_COMBO = (int(ancho/80), int(alto/80))
@@ -15,13 +15,13 @@ FUENTE_BOTONES = 'Verdana 26'
 FUENTE_COMBO = 'Verdana 18'
 
 # colores
-sg.LOOK_AND_FEEL_TABLE['figurace_tema'] = {'BACKGROUND': '#A02800',
-                                           'TEXT': '#F4E3B2',
-                                           'INPUT': '#CF5C36',
-                                           'TEXT_INPUT': '#F1EEE9',
-                                           'SCROLL': '#99CC99',
-                                           'BUTTON': ('#CF0036', '#E8C65E'),
-                                           'PROGRESS': ('#D1826B', '#E8C65E'),
+sg.LOOK_AND_FEEL_TABLE['figurace_tema'] = {'BACKGROUND': '#1f1f1f',
+                                           'TEXT': '#d7d0b7',
+                                           'INPUT': '#6d6552',
+                                           'TEXT_INPUT': '#eeeeee',
+                                           'SCROLL': '#9b9b9b',
+                                           'BUTTON': ('#eeeeee', '#6897bb'),
+                                           'PROGRESS': ('#eeeeee', '#eeeeee'),
                                            'BORDER': 2, 'SLIDER_DEPTH': 0,
                                            'PROGRESS_DEPTH': 0, }
 TEMA = 'figurace_tema'
