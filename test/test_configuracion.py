@@ -1,7 +1,7 @@
 import PySimpleGUI as sg
 
 from src.pantallas import configuracion as c_pantalla
-from src.juego import config_dificultad as config
+from src.juego import dificultad as config
 
 
 c_pantalla.crear_ventana()
@@ -17,4 +17,4 @@ while True:
         current_window.close()
         break
     elif event == '-CAMBIOS_CONFIG-':
-        dificultad.set_config(value)
+        config.settear_config(value)

@@ -1,14 +1,14 @@
 import PySimpleGUI as sg
 import random
 from src.pantallas import caracteristicas_generales as cgen
-from src.juego import config_dificultad as config
+from src.juego import dificultad as config
 from src.pantallas import rutas
 from src.juego import tarjeta
 
 
 def obtener_datos():
     cant_pistas = 5
-    valores = config.Configuracion().get_config()
+    valores = config.leer_configuracion()
     opciones = valores['-CARACTERISTICAS_C-']
     seg_por_respuesta = valores['-TIEMPO_C-']
     rondas_por_juego = valores['-RONDAS_C-']
