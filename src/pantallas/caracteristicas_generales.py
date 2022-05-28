@@ -1,9 +1,9 @@
 import PySimpleGUI as sg
 
-# ancho, alto = sg.Window.get_screen_size()
+ancho, alto = sg.Window.get_screen_size()
 # tamaños de ventanas y botones
-ancho = 700
-alto = 680
+# ancho = 700
+# alto = 680
 TAM_VENTANA = (ancho, alto)
 TAM_COLUMNAS = (int(ancho/4), int(alto/2))
 TAM_COMBO = (int(ancho/80), int(alto/80))
@@ -26,6 +26,10 @@ sg.LOOK_AND_FEEL_TABLE['figurace_tema'] = {'BACKGROUND': '#1f1f1f',
                                            'PROGRESS_DEPTH': 0, }
 TEMA = 'figurace_tema'
 
+# datasets
+# datasets = ['spotify', 'fifa', 'peliculas', 'spotify', 'volcanes'] # faltan en la rama pantallas pelis y volcanes, y
+# agregar a tarjeta.py el procedimiento de cada uno para obtener los datos correctos, segun el dataset
+datasets = ['spotify']
 
 # ventana para chequear salidas
 def ventana_chequear_accion(mensaje='Segurx que querés salir?'):

@@ -19,7 +19,7 @@ def _layout_op_principales():
     return layout
 
 
-def _layout_usuario_dificultad(usuarios=('',)):
+def _layout_usuario_dificultad(usuarios):
     """
     :return: el layout que contendra la selccion de usuario y dificultad
     """
