@@ -63,7 +63,7 @@ def crear_menu(usuarios=("",)):
         [sg.Push(), sg.Button("Salir", key='-SALIR-', font=cg.FUENTE_BOTONES), sg.Push()]
     ]
     window = sg.Window("Figurace", layout, size=cg.TAM_VENTANA, finalize=True, use_custom_titlebar=True,
-                       titlebar_icon=ruta_icon_png, icon=ruta_icon_ico)
+                       titlebar_icon=ruta_icon_png, icon=ruta_icon_ico, enable_close_attempted_event=True)
     return window
 
 

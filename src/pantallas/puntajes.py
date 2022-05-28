@@ -3,15 +3,15 @@ from src.pantallas import caracteristicas_generales as cgen
 from src.pantallas import rutas
 import csv
 
-sg.theme(cgen.TEMA)
 
-niveles = ['Fácil', 'Medio', 'Difícil', 'Experto']
+niveles = ['Fácil', 'Medio', 'Difícil', 'Experto']  # definir cómo recibe el dato
 
 
 def procesar_dificultad(puntajes_ordenados, nivel):
     nivel = [linea[2:4] for linea in puntajes_ordenados if linea[1] == niveles[nivel]]
     list(map(lambda x, y: x.insert(0, y), nivel, list(range(1, 21))))
     nivel = nivel[:20]
+    print(nivel)
     return nivel
 
 
@@ -21,38 +21,39 @@ def procesar_archivo():
             csv_reader = csv.reader(archivo)
             cabecera, contenido = csv_reader.__next__(), [linea for linea in csv_reader]
     except FileNotFoundError:
-        sg.popup('El archivo de registro de jugadas no existe, juegue al menos una vez para crearlo')
-    puntajes_ordenados = sorted(contenido, key=lambda x: int(x[3]), reverse=True)
-    nivel_facil = procesar_dificultad(puntajes_ordenados, 0)
-    nivel_medio = procesar_dificultad(puntajes_ordenados, 1)
-    nivel_dificil = procesar_dificultad(puntajes_ordenados, 2)
-    nivel_experto = procesar_dificultad(puntajes_ordenados, 3)
+        sg.popup('No existe registro de puntajes, juegue al menos una vez para crearlo')
+        nivel_facil, nivel_medio, nivel_dificil, nivel_experto = [], [], [], []
+    else:
+        puntajes_ordenados = sorted(contenido, key=lambda x: int(x[3]), reverse=True)
+        nivel_facil = procesar_dificultad(puntajes_ordenados, 0)
+        nivel_medio = procesar_dificultad(puntajes_ordenados, 1)
+        nivel_dificil = procesar_dificultad(puntajes_ordenados, 2)
+        nivel_experto = procesar_dificultad(puntajes_ordenados, 3)
 
     return nivel_facil, nivel_medio, nivel_dificil, nivel_experto
 
 
-def layouts_pestanias(num):
+def layouts_pestanias(num, mejores_puntajes):
     """"""
-    mejores_nivel1, mejores_nivel2, mejores_nivel3, mejores_nivel4 = procesar_archivo()
     titulos = ['Puesto', 'Nick', 'Puntaje']
     match num:
         case 0:
-            layout = [[sg.Table(values=mejores_nivel1, headings=titulos,
+            layout = [[sg.Table(values=mejores_puntajes, headings=titulos,
                                 max_col_width=25, auto_size_columns=True,
                                 justification='center', key='-JUEGO_TABLA-',
                                 row_height=25, expand_x=True, expand_y=True)]]
         case 1:
-            layout = [[sg.Table(values=mejores_nivel2, headings=titulos,
+            layout = [[sg.Table(values=mejores_puntajes, headings=titulos,
                                 max_col_width=25, auto_size_columns=True,
                                 justification='center', key='-JUEGO_TABLA-',
                                 row_height=25, expand_x=True, expand_y=True)]]
         case 2:
-            layout = [[sg.Table(values=mejores_nivel3, headings=titulos,
+            layout = [[sg.Table(values=mejores_puntajes, headings=titulos,
                                 max_col_width=25, auto_size_columns=True,
                                 justification='center', key='-JUEGO_TABLA-',
                                 row_height=25, expand_x=True, expand_y=True)]]
         case 3:
-            layout = [[sg.Table(values=mejores_nivel4, headings=titulos,
+            layout = [[sg.Table(values=mejores_puntajes, headings=titulos,
                                 max_col_width=25, auto_size_columns=True,
                                 justification='center', key='-JUEGO_TABLA-',
                                 row_height=25, expand_x=True, expand_y=True)]]
@@ -62,8 +63,9 @@ def layouts_pestanias(num):
 
 
 def armar_layout():
+    mejores_por_nivel = procesar_archivo()
     tab_group = sg.TabGroup([[sg.Tab(niveles[i],
-                                     layouts_pestanias(i),
+                                     layouts_pestanias(i, mejores_por_nivel[i]),
                                      key=f'-PANTALLA_TAB{str(i)}-')] for i in range(4)],
                             expand_y=True, expand_x=True, pad=30, enable_events=True)
 
@@ -84,21 +86,11 @@ def armar_layout():
 
 
 def armar_ventana():
+    sg.theme(cgen.TEMA)
     window = sg.Window("Puntajes", armar_layout(), finalize=True,
-                       size=cgen.TAM_VENTANA, enable_close_attempted_event=True,
-                       no_titlebar=False, grab_anywhere=True, margins=(20, 20),
-                       resizable=True, use_custom_titlebar=True,
+                       size=cgen.TAM_VENTANA, grab_anywhere=True,
+                       margins=(20, 20), resizable=True,
+                       use_custom_titlebar=True,
                        titlebar_icon=rutas.ruta_imagen('icono_png'))
     return window
 
-
-# window = armar_ventana()
-# while True:
-#     event, values = window.read()
-#     if event == sg.WINDOW_CLOSE_ATTEMPTED_EVENT and \
-#             (cgen.ventana_chequear_accion() == 'Sí'):
-#         break
-#     if event == '-PUNTAJES_VOLVER-':
-#         break
-#
-# window.close()

@@ -2,10 +2,9 @@ import PySimpleGUI as sg
 from src.pantallas import caracteristicas_generales as cgen
 from src.pantallas import rutas
 from src.juego import tarjeta
-import time
 
-sg.theme(cgen.TEMA)
 
+# definir cómo recibe los datos, dataset por random?
 seg_por_respuesta = 30
 cant_pistas = 5
 rondas_por_juego = 5
@@ -69,6 +68,7 @@ def armar_layout(dataset_elegido, cant_pistas, seg_por_respuesta, rondas_por_jue
 
 
 def armar_ventana():
+    sg.theme(cgen.TEMA)
     window = sg.Window('Juego', armar_layout(dataset_elegido,
                                              cant_pistas,
                                              seg_por_respuesta,
