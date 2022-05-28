@@ -1,14 +1,15 @@
 import json
 import os
 
-from src.pantallas import configuracion as c_pantalla
+from configuracion import RECURSOS_DIR
+from configuracion import PANTALLAS_DIR as c_pantalla
 
 
 class Configuracion:
     """Caracteristicas que permite la configuracion del juego segun su dificultad."""
 
     def __init__(self):
-        """Variables para configurar la dificultad el juego"""
+        """Variables para configurar la dificultad del juego"""
         self.__nivel = None
         self.__incorrectas = None
         self.__correctas = None
@@ -55,7 +56,7 @@ class Configuracion:
         crearlo con valores por defecto.
         :return: el diccionario con los datos del archivo configuracion.json
         """
-        ruta_completa = os.path.join(os.path.realpath('..'), "recursos", "datos", "configuracion.json")
+        ruta_completa = os.path.join(RECURSOS_DIR, "datos", "configuracion.json")
         try:
             with open(ruta_completa, 'r', encoding='utf-8') as config:
                 datos = json.load(config)
