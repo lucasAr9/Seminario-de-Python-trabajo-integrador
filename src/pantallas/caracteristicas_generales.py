@@ -16,12 +16,12 @@ FUENTE_COMBO = 'Verdana 18'
 
 # colores
 sg.LOOK_AND_FEEL_TABLE['figurace_tema'] = {'BACKGROUND': '#1f1f1f',
-                                           'TEXT': '#d7d0b7',
-                                           'INPUT': '#6d6552',
+                                           'TEXT': '#B1BCE6',
+                                           'INPUT': '#eeeeee',
                                            'TEXT_INPUT': '#eeeeee',
-                                           'SCROLL': '#9b9b9b',
+                                           'SCROLL': '#1f1f1f',
                                            'BUTTON': ('#eeeeee', '#6897bb'),
-                                           'PROGRESS': ('#eeeeee', '#eeeeee'),
+                                           'PROGRESS': ('#57CC99', '#eeeeee'),
                                            'BORDER': 2, 'SLIDER_DEPTH': 0,
                                            'PROGRESS_DEPTH': 0, }
 TEMA = 'figurace_tema'
