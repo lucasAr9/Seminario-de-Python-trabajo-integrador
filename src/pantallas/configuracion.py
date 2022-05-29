@@ -143,7 +143,7 @@ def mostrar_configuracion():
         [sg.Text(size=(None, 2), )],
 
         [sg.Push(),
-         sg.Text('Elija una dificultad o personalize su dificultád', key='-TEXTO-',
+         sg.Text('Elija una dificultad o personalice su dificultád', key='-TEXTO-',
                  expand_x=True, font=cg.FUENTE_BOTONES, justification='center'),
          sg.Push()],
 
