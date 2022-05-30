@@ -69,7 +69,7 @@ def crear_ventana():
 
 def layout_nivel(nivel):
     """
-    Con los valores de las variables cant_tiempos, cant_rondas, cant_correcto, cant_incorrecto, cant_niveles,
+    Con los valores de las variables CANT_TIEMPOS, CANT_RONDAS, CANT_CORRECTO, CANT_INCORRECTO, CANT_NIVELES,
     se settean los valores que se muestran en los sg.Combo() con los que el usuario puede elegir.
     Y por defecto muestra el ultimo valores seleccionado por el usuario.
     """
@@ -142,7 +142,7 @@ def layout_personalizado(nivel):
                  expand_x=True, font='Arial 20', justification='center'),
          sg.Push()],
         [sg.Push(),
-         sg.Combo(dificultad.cant_tiempos, key='-TIEMPO_C-', default_value=datos[nivel]['-TIEMPO_C-'],
+         sg.Combo(dificultad.CANT_TIEMPOS, key='-TIEMPO_C-', default_value=datos[nivel]['-TIEMPO_C-'],
                   readonly=True, enable_events=True, size=(10, 5), font=cg.FUENTE_COMBO),
          sg.Push()],
 
@@ -151,7 +151,7 @@ def layout_personalizado(nivel):
                  expand_x=True, font='Arial 20', justification='center'),
          sg.Push()],
         [sg.Push(),
-         sg.Combo(dificultad.cant_rondas, key='-RONDAS_C-', default_value=datos[nivel]['-RONDAS_C-'],
+         sg.Combo(dificultad.CANT_RONDAS, key='-RONDAS_C-', default_value=datos[nivel]['-RONDAS_C-'],
                   readonly=True, enable_events=True, size=(10, 5), font=cg.FUENTE_COMBO),
          sg.Push()],
 
@@ -160,7 +160,7 @@ def layout_personalizado(nivel):
                  expand_x=True, font='Arial 20', justification='center'),
          sg.Push()],
         [sg.Push(),
-         sg.Combo(dificultad.cant_correcto, key='-CORRECTO_C-', default_value=datos[nivel]['-CORRECTO_C-'],
+         sg.Combo(dificultad.CANT_CORRECTO, key='-CORRECTO_C-', default_value=datos[nivel]['-CORRECTO_C-'],
                   readonly=True, enable_events=True, size=(10, 5), font=cg.FUENTE_COMBO),
          sg.Push()],
 
@@ -169,7 +169,7 @@ def layout_personalizado(nivel):
                  expand_x=True, font='Arial 20', justification='center'),
          sg.Push()],
         [sg.Push(),
-         sg.Combo(dificultad.cant_incorrecto, key='-INCORRECTO_C-', default_value=datos[nivel]['-INCORRECTO_C-'],
+         sg.Combo(dificultad.CANT_INCORRECTO, key='-INCORRECTO_C-', default_value=datos[nivel]['-INCORRECTO_C-'],
                   readonly=True, enable_events=True, size=(10, 5), font=cg.FUENTE_COMBO),
          sg.Push()],
 
@@ -178,7 +178,7 @@ def layout_personalizado(nivel):
                  expand_x=True, font='Arial 20', justification='center'),
          sg.Push()],
         [sg.Push(),
-         sg.Combo(dificultad.cant_niveles, key='-CARACTERISTICAS_C-', default_value=datos[nivel]['-CARACTERISTICAS_C-'],
+         sg.Combo(dificultad.CANT_NIVELES, key='-CARACTERISTICAS_C-', default_value=datos[nivel]['-CARACTERISTICAS_C-'],
                   readonly=True, enable_events=True, size=(10, 5), font=cg.FUENTE_COMBO),
          sg.Push()]]
     return layout
@@ -186,7 +186,7 @@ def layout_personalizado(nivel):
 
 def dificultad_personalizada():
     """
-    Con los valores de las variables cant_tiempos, cant_rondas, cant_correcto, cant_incorrecto, cant_niveles,
+    Con los valores de las variables CANT_TIEMPOS, CANT_RONDAS, CANT_CORRECTO, CANT_INCORRECTO, CANT_NIVELES,
     se settean los valores que se muestran en los sg.Combo() con los que el usuario puede elegir.
     Y por defecto muestra el ultimo valores seleccionado por el usuario.
     """
