@@ -75,9 +75,9 @@ def abrir_perfiles():
     return
 
 
-def abrir_juego():
+def abrir_juego(dificultad_elegida, usuario_elegido):
     """"""
-    window = juego.armar_ventana()
+    window = juego.armar_ventana(dificultad_elegida, usuario_elegido)
     tiempo_comienzo = time.time()
     while True:
         event, values = window.read(timeout=100)
@@ -86,9 +86,8 @@ def abrir_juego():
                                             'Segurx que querés volver al menú?') == 'Sí')):
             break
         delta_tiempo = time.time() - tiempo_comienzo
-        current_time = int(30 - delta_tiempo)
-        minutos, segundos = divmod(current_time, 60)
-        tiempo = f'{minutos:02d}:{segundos:02d}'
+        tiempo_transcurrido = int(5 - delta_tiempo)
+        minutos, segundos = divmod(tiempo_transcurrido, 60)
         window['-JUEGO_TIEMPO-'].update(f'{minutos:02d}:{segundos:02d}')
         window['-JUEGO_BARRA-'].update(current_count=delta_tiempo + 1)
     window.close()
@@ -97,23 +96,32 @@ def abrir_juego():
 
 def main():
     """"""
+    usuario_elegido = False
+    dificultad_elegida = False
     niveles = ['Fácil', 'Medio', 'Difícil', 'Experto']
     conf_cuentas = {"perfiles": cuentas.cargar_perfiles(), "act": 0}
     perfiles = list(map(lambda datos: datos['nombre'], conf_cuentas['perfiles']))
     window = crear_menu(perfiles)
+    if len(perfiles) == 0:
+        sg.Popup('Aun no hay ningún usuario existente. Por favor, cree el suyo en "PERFIL" ', no_titlebar=True,
+                 font=cg.FUENTE_POPUP)
     while True:
         event, values = window.read()
         if (event in (sg.WINDOW_CLOSE_ATTEMPTED_EVENT, '-SALIR-') and
                 (cg.ventana_chequear_accion() == 'Sí')):
             break
         elif event == '-USUARIOS-':
-            sg.Popup(f"Usuario seleccionado: {window['-USUARIOS-'].Get()}")
+            usuario_elegido = window['-USUARIOS-'].Get()
         elif event == '-DIFICULTAD-':
-            sg.Popup(f"Dificultad seleccionada: {window['-DIFICULTAD-'].Get()}")
+            dificultad_elegida = window['-DIFICULTAD-'].Get()
         elif event == '-JUGAR-':
-            window.hide()
-            abrir_juego()
-            window.un_hide()
+            if usuario_elegido and dificultad_elegida:
+                window.hide()
+                abrir_juego(dificultad_elegida, usuario_elegido)
+                window.un_hide()
+            else:
+                sg.Popup('Por favor seleccione una dificultad y usuario, antes de comenzar a jugar.', no_titlebar=True,
+                         font=cg.FUENTE_POPUP)
         elif event == '-CONFIGURACION-':
             window.hide()
             abrir_configuracion()

@@ -21,7 +21,8 @@ def procesar_archivo():
             csv_reader = csv.reader(archivo)
             cabecera, contenido = csv_reader.__next__(), [linea for linea in csv_reader]
     except FileNotFoundError:
-        sg.popup('No existe registro de puntajes, juegue al menos una vez para crearlo')
+        sg.popup('No existe registro de puntajes, juegue al menos una vez para crearlo',
+                 no_titlebar=True, grab_anywhere=True, keep_on_top=True)
         nivel_facil, nivel_medio, nivel_dificil, nivel_experto = [], [], [], []
     else:
         puntajes_ordenados = sorted(contenido, key=lambda x: int(x[3]), reverse=True)

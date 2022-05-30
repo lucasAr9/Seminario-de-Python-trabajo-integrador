@@ -19,7 +19,7 @@ def obtener_datos():
     return datos
 
 
-def armar_layout(datos):
+def armar_layout(datos, dificultad_elegida, usuario_elegido):
     """"""
 
     titulos = ['Pregunta', 'Resultado']
@@ -28,13 +28,14 @@ def armar_layout(datos):
     columna_izq = [[sg.Frame('Tema',
                              [[sg.Text(datos['dataset_elegido'].title()),
                                sg.Image(rutas.ruta_imagen(datos['dataset_elegido']))]])],
+                   [sg.Frame('Usuario', [[sg.Text(usuario_elegido)]])],
                    [sg.Table(values=list(enumerate(resultados, start=1)),
                              headings=titulos,
                              max_col_width=25,
                              auto_size_columns=True,
                              # display_row_numbers=True,
                              justification='center',
-                             num_rows=datos['rondas_por_juego'],
+                             num_rows=5,
                              key='-JUEGO_TABLA-',
                              row_height=25)],
                    [sg.VPush()],
@@ -42,7 +43,7 @@ def armar_layout(datos):
                               key='-JUEGO_ABANDONAR-',
                               tooltip='Volver al menú principal')]
                    ]
-    columna_der = [[sg.Frame('Dificultad', [[sg.Text('Fácil')]])],
+    columna_der = [[sg.Frame('Dificultad', [[sg.Text(dificultad_elegida)]])],
                    [sg.Frame('Tiempo restante', [[sg.Text(f'00:00', key='-JUEGO_TIEMPO-'),
                                                   sg.ProgressBar(datos['seg_por_respuesta'],
                                                                  orientation='h',
@@ -57,15 +58,17 @@ def armar_layout(datos):
                                         key=f'-JUEGO_RESPUESTA{str(i)}-')]
                               for i in range(datos['opciones'])] +
                              [[sg.Ok(pad=15), sg.Push(), sg.Button('Pasar >', pad=15, key='-JUEGO_PASAR-')]]
-                             )],
-                   [sg.Push(), sg.Sizegrip()]
+                             )]
                    ]
 
     layout = [[sg.Text('FiguRace', justification='c', expand_x=True, font=cgen.FUENTE_TITULO)],
               [sg.HSep(pad=10)],
               # [sg.Button('Comenzar', key='-JUEGO_COMENZAR-')],
-              [sg.Column(columna_izq, expand_x=True, expand_y=True),
-               sg.Column(columna_der, element_justification='l', expand_x=True, expand_y=True)],
+              [sg.Push(),
+               sg.Column(columna_izq, expand_y=True),
+               sg.Column(columna_der, expand_y=True),
+               sg.Push()],
+              [sg.Push(), sg.Sizegrip()]
               ]
 
     layout_encuadre = [[sg.Frame('', layout, expand_x=True)]]
@@ -73,12 +76,12 @@ def armar_layout(datos):
     return layout_encuadre
 
 
-def armar_ventana():
+def armar_ventana(dificultad_elegida, usuario_elegido):
     sg.theme(cgen.TEMA)
     datos = obtener_datos()
-    window = sg.Window('Juego', armar_layout(datos),
+    window = sg.Window('Juego', armar_layout(datos, dificultad_elegida, usuario_elegido),
                        size=cgen.TAM_VENTANA, resizable=True, no_titlebar=True,
-                       grab_anywhere=True, keep_on_top=True, finalize=True)
+                       grab_anywhere=True, finalize=True)
     return window
 
 
