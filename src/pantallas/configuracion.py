@@ -16,7 +16,7 @@ sg.theme(cg.TEMA)
 Crear el objeto Dificultad para leer los datos del archivo json con los valores
 de la dificultad y el ultimo nivel de dificultad seleccionado por el usuario.
 """
-dificultad.cargar_configuracion()
+dificultad.cargar_configuracion('-FACIL-')
 config = dificultad.Dificultad()
 
 

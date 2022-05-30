@@ -1,5 +1,6 @@
 import PySimpleGUI as sg
 import src.pantallas.caracteristicas_generales as cg
+from src.juego import dificultad as dificultad
 from src.pantallas.menu_inicio_juego import crear_menu
 from src.pantallas import configuracion as c_pantalla
 import src.pantallas.cuentas as cuentas
@@ -44,7 +45,7 @@ def abrir_configuracion():
                 if event in (sg.WIN_CLOSED, '-VOLVER_PERSONALIZADO-'):
                     break
                 if event == '-CAMBIOS_CONFIRMADOS-':
-                    pass
+                    dificultad.guardar_nivel_personalizado(values)
             if event == '-VOLVER_PERSONALIZADO-':
                 window_otra.close()
             window_dificultad.un_hide()
