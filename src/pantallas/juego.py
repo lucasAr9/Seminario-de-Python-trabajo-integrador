@@ -18,6 +18,7 @@ def obtener_datos():
                      [seg_por_respuesta, rondas_por_juego, dataset_elegido, pistas, respuestas, opciones]))
     return datos
 
+
 def armar_layout(datos):
     """"""
 
@@ -80,20 +81,21 @@ def armar_ventana():
                        grab_anywhere=True, keep_on_top=True, finalize=True)
     return window
 
-if __name__ == '__main__':
-    window = armar_ventana()
-    tiempo_comienzo = time.time()
-    while True:
-         event, values = window.read(timeout=1000)
-         if ((event == '-JUEGO_ABANDONAR-') and
-             (cgen.ventana_chequear_accion('Se darán por perdidas la ronda actual\ny las rondas restantes!\n\n'
-                                          'Segurx que querés volver al menú?') == 'Sí')):
-             break
-         delta_tiempo = time.time() - tiempo_comienzo
-         current_time = int(seg_por_respuesta - delta_tiempo)
-         minutos, segundos = divmod(current_time, 60)
-         tiempo = f'{minutos:02d}:{segundos:02d}'
-         window['-JUEGO_TIEMPO-'].update(f'{minutos:02d}:{segundos:02d}')
-         window['-JUEGO_BARRA-'].update(current_count=delta_tiempo+1)
 
-    window.close()
+# if __name__ == '__main__':
+#     window = armar_ventana()
+#     tiempo_comienzo = time.time()
+#     while True:
+#          event, values = window.read(timeout=1000)
+#          if ((event == '-JUEGO_ABANDONAR-') and
+#              (cgen.ventana_chequear_accion('Se darán por perdidas la ronda actual\ny las rondas restantes!\n\n'
+#                                           'Segurx que querés volver al menú?') == 'Sí')):
+#              break
+#          delta_tiempo = time.time() - tiempo_comienzo
+#          current_time = int(seg_por_respuesta - delta_tiempo)
+#          minutos, segundos = divmod(current_time, 60)
+#          tiempo = f'{minutos:02d}:{segundos:02d}'
+#          window['-JUEGO_TIEMPO-'].update(f'{minutos:02d}:{segundos:02d}')
+#          window['-JUEGO_BARRA-'].update(current_count=delta_tiempo+1)
+#
+#     window.close()

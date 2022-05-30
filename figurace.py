@@ -10,12 +10,52 @@ import time
 
 def abrir_configuracion():
     """"""
-    window = c_pantalla.crear_ventana()
+    window_dificultad = c_pantalla.crear_ventana()
     while True:
-        event, values = window.read()
+        event, values = window_dificultad.read()
+
         if event in (sg.WIN_CLOSED, '-VOLVER_CONFIG-'):
             break
-    window.close()
+
+        """eventos de la ventana de configuracion"""
+        if event == '-FACIL-':
+            window_otra = c_pantalla.dificultad_elegida()
+            window_dificultad.un_hide()
+            event, values = window_otra.read()
+            if event == '-VOLVER_CUSTOM-':
+                window_otra.close()
+            window_dificultad.un_hide()
+
+        elif event == '-NORMAL-':
+            window_otra = c_pantalla.dificultad_elegida()
+            window_dificultad.un_hide()
+            event, values = window_otra.read()
+            if event == '-VOLVER_CUSTOM-':
+                window_otra.close()
+            window_dificultad.un_hide()
+
+        elif event == '-DIFICIL-':
+            window_otra = c_pantalla.dificultad_elegida()
+            window_dificultad.un_hide()
+            event, values = window_otra.read()
+            if event == '-VOLVER_CUSTOM-':
+                window_otra.close()
+            window_dificultad.un_hide()
+
+        elif event == '-CUSTOM-':
+            window_otra = c_pantalla.dificultad_elegida()
+            window_dificultad.un_hide()
+            event, values = window_otra.read()
+            while True:
+                if event in (sg.WIN_CLOSED, '-VOLVER_CUSTOM-'):
+                    break
+                if event == '-CAMBIOS_CONFIG-':
+                    pass
+            if event == '-VOLVER_CUSTOM-':
+                window_otra.close()
+            window_dificultad.un_hide()
+
+    window_dificultad.close()
     return
 
 

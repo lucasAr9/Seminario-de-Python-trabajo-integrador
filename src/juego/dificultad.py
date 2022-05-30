@@ -114,7 +114,7 @@ def settear_ultima_seleccion(event):
     datos = {}
     if event == "FACIL":
         datos["-DIFICULTAD-C"] = '-FACIL-'
-        datos["-TIEMPO_C-"] = cant_tiempos[len(cant_tiempos)]
+        datos["-TIEMPO_C-"] = cant_tiempos[0]
         datos["-RONDAS_C-"] = cant_rondas[len(cant_rondas)]
         datos["-CORRECTO_C-"] = cant_correcto[len(cant_correcto)]
         datos["-INCORRECTO_C-"] = cant_incorrecto[len(cant_incorrecto)]
@@ -130,7 +130,7 @@ def settear_ultima_seleccion(event):
         guardar_configuracion(datos)
     elif event == "-DFICIL-":
         datos["-DIFICULTAD-C"] = '-DIFICIL-'
-        datos["-TIEMPO_C-"] = cant_tiempos[0]
+        datos["-TIEMPO_C-"] = cant_tiempos[len(cant_tiempos)]
         datos["-RONDAS_C-"] = cant_rondas[0]
         datos["-CORRECTO_C-"] = cant_correcto[0]
         datos["-INCORRECTO_C-"] = cant_incorrecto[0]

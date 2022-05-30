@@ -4,7 +4,7 @@ ancho, alto = sg.Window.get_screen_size()
 # tamaños de ventanas y botones
 # ancho = 700
 # alto = 680
-TAM_VENTANA = (ancho, alto)
+TAM_VENTANA = (int(ancho), int(alto))
 TAM_COLUMNAS = (int(ancho/4), int(alto/2))
 TAM_COMBO = (int(ancho/80), int(alto/80))
 
@@ -17,7 +17,7 @@ FUENTE_COMBO = 'Verdana 18'
 # colores
 sg.LOOK_AND_FEEL_TABLE['figurace_tema'] = {'BACKGROUND': '#1f1f1f',
                                            'TEXT': '#B1BCE6',
-                                           'INPUT': '#eeeeee',
+                                           'INPUT': '#1f1f1f',
                                            'TEXT_INPUT': '#eeeeee',
                                            'SCROLL': '#1f1f1f',
                                            'BUTTON': ('#eeeeee', '#6897bb'),
@@ -30,6 +30,7 @@ TEMA = 'figurace_tema'
 # datasets = ['spotify', 'fifa', 'peliculas', 'spotify', 'volcanes'] # faltan en la rama pantallas pelis y volcanes, y
 # agregar a tarjeta.py el procedimiento de cada uno para obtener los datos correctos, segun el dataset
 datasets = ['spotify']
+
 
 # ventana para chequear salidas
 def ventana_chequear_accion(mensaje='Segurx que querés salir?'):
