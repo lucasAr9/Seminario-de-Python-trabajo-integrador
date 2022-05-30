@@ -13,6 +13,7 @@ FUENTE_TITULO = 'Verdana 48'
 FUENTE_INDICADOR = 'Verdana 28'
 FUENTE_BOTONES = 'Verdana 26'
 FUENTE_COMBO = 'Verdana 18'
+FUENTE_POPUP = 'Verdana 10'
 
 # colores
 sg.LOOK_AND_FEEL_TABLE['figurace_tema'] = {'BACKGROUND': '#1f1f1f',
