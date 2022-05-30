@@ -114,6 +114,9 @@ def main():
             usuario_elegido = window['-USUARIOS-'].Get()
         elif event == '-DIFICULTAD-':
             dificultad_elegida = window['-DIFICULTAD-'].Get()
+            if dificultad_elegida == 'Personalizado':
+                sg.Popup('Esta dificultad es personalizable, puede ingresar en Configuracion para editarla.',
+                         no_titlebar=True, font=cg.FUENTE_POPUP)
         elif event == '-JUGAR-':
             if usuario_elegido and dificultad_elegida:
                 window.hide()
