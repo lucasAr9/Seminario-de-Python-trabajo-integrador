@@ -12,12 +12,9 @@ ruta_icon = os.path.join(IMAGENES_DIR, "cartas_icon.ico")
 """tema de las ventanas"""
 sg.theme(cg.TEMA)
 
-"""
-Crear el objeto Dificultad para leer los datos del archivo json con los valores
-de la dificultad y el ultimo nivel de dificultad seleccionado por el usuario.
-"""
-dificultad.cargar_configuracion('-FACIL-')
-config = dificultad.Dificultad()
+"""Crear el objeto Dificultad para poder acceder a sus atributos."""
+# config = dificultad.Dificultad('-FACIL-')
+# aca va una variable con la dificultad seleccionada, TAMBIEN VA EN EL MAIN, y hay que cambiarlo en la pantalla juego.
 
 
 def layout_configuracion():
@@ -76,7 +73,7 @@ def layout_nivel(nivel):
     se settean los valores que se muestran en los sg.Combo() con los que el usuario puede elegir.
     Y por defecto muestra el ultimo valores seleccionado por el usuario.
     """
-    datos = dificultad.leer_configuracion()
+    datos = dificultad.leer_archivo_json()
     layout = [
         [sg.Push(),
          sg.Text(nivel, key='-DIFICULTAD_T-',  # aca va una variable que cambia segun el nivel
@@ -110,12 +107,11 @@ def layout_nivel(nivel):
     return layout
 
 
-def dificultad_elegida(nivel):
+def nivel_elegida(nivel):
     """
     Con los valores de las variables de cada nivel predefinidos muestra los valores
     que el usuario puede elegir.
     """
-    nivel_elegido = nivel
     layout = layout_nivel(nivel)
     crear_layout = [
         [sg.Text(size=(None, 2), )],
@@ -130,13 +126,14 @@ def dificultad_elegida(nivel):
     return window
 
 
-def layout_personalizado():
+def layout_personalizado(nivel):
     """
     :return: layout de la ventana de configuracion personalizada.
     """
+    datos = dificultad.leer_archivo_json()
     layout = [
         [sg.Push(),
-         sg.Text('PERSONALIZADO', key='-DIFICULTAD_T-',
+         sg.Text('-PERSONALIZADO-', key='-DIFICULTAD_T-',
                  expand_x=True, font='Arial 27', justification='center'),
          sg.Push()],
 
@@ -145,7 +142,7 @@ def layout_personalizado():
                  expand_x=True, font='Arial 20', justification='center'),
          sg.Push()],
         [sg.Push(),
-         sg.Combo(dificultad.cant_tiempos, key='-TIEMPO_C-', default_value=config.tiempo,
+         sg.Combo(dificultad.cant_tiempos, key='-TIEMPO_C-', default_value=datos[nivel]['-TIEMPO_C-'],
                   readonly=True, enable_events=True, size=(10, 5), font=cg.FUENTE_COMBO),
          sg.Push()],
 
@@ -154,7 +151,7 @@ def layout_personalizado():
                  expand_x=True, font='Arial 20', justification='center'),
          sg.Push()],
         [sg.Push(),
-         sg.Combo(dificultad.cant_rondas, key='-RONDAS_C-', default_value=config.rondas,
+         sg.Combo(dificultad.cant_rondas, key='-RONDAS_C-', default_value=datos[nivel]['-RONDAS_C-'],
                   readonly=True, enable_events=True, size=(10, 5), font=cg.FUENTE_COMBO),
          sg.Push()],
 
@@ -163,7 +160,7 @@ def layout_personalizado():
                  expand_x=True, font='Arial 20', justification='center'),
          sg.Push()],
         [sg.Push(),
-         sg.Combo(dificultad.cant_correcto, key='-CORRECTO_C-', default_value=config.correctas,
+         sg.Combo(dificultad.cant_correcto, key='-CORRECTO_C-', default_value=datos[nivel]['-CORRECTO_C-'],
                   readonly=True, enable_events=True, size=(10, 5), font=cg.FUENTE_COMBO),
          sg.Push()],
 
@@ -172,7 +169,7 @@ def layout_personalizado():
                  expand_x=True, font='Arial 20', justification='center'),
          sg.Push()],
         [sg.Push(),
-         sg.Combo(dificultad.cant_incorrecto, key='-INCORRECTO_C-', default_value=config.incorrectas,
+         sg.Combo(dificultad.cant_incorrecto, key='-INCORRECTO_C-', default_value=datos[nivel]['-INCORRECTO_C-'],
                   readonly=True, enable_events=True, size=(10, 5), font=cg.FUENTE_COMBO),
          sg.Push()],
 
@@ -181,7 +178,7 @@ def layout_personalizado():
                  expand_x=True, font='Arial 20', justification='center'),
          sg.Push()],
         [sg.Push(),
-         sg.Combo(dificultad.cant_niveles, key='-CARACTERISTICAS_C-', default_value=config.nivel,
+         sg.Combo(dificultad.cant_niveles, key='-CARACTERISTICAS_C-', default_value=datos[nivel]['-CARACTERISTICAS_C-'],
                   readonly=True, enable_events=True, size=(10, 5), font=cg.FUENTE_COMBO),
          sg.Push()]]
     return layout
@@ -193,7 +190,7 @@ def dificultad_personalizada():
     se settean los valores que se muestran en los sg.Combo() con los que el usuario puede elegir.
     Y por defecto muestra el ultimo valores seleccionado por el usuario.
     """
-    layout = layout_personalizado()
+    layout = layout_personalizado('-PERSONALIZADO-')
     crear_layout = [
         [sg.Text(size=(None, 2), )],
         [sg.Col(layout, expand_x=True)],

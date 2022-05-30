@@ -9,6 +9,15 @@ from src.pantallas import juego
 import time
 
 
+def nivel(window_dificultad, elegido):
+    window_otra = c_pantalla.nivel_elegida(elegido)
+    window_dificultad.hide()
+    event, values = window_otra.read()
+    if event == '-VOLVER_VALORES-':
+        window_otra.close()
+    window_dificultad.un_hide()
+
+
 def abrir_configuracion():
     """"""
     window_dificultad = c_pantalla.crear_ventana()
@@ -17,31 +26,17 @@ def abrir_configuracion():
         if event in (sg.WIN_CLOSED, '-VOLVER_CONFIG-'):
             break
         if event == '-FACIL-':
-            window_otra = c_pantalla.dificultad_elegida('-FACIL-')
-            window_dificultad.un_hide()
-            event, values = window_otra.read()
-            if event == '-VOLVER_VALORES-':
-                window_otra.close()
-            window_dificultad.un_hide()
+            nivel(window_dificultad, '-FACIL-')
         elif event == '-NORMAL-':
-            window_otra = c_pantalla.dificultad_elegida('-NORMAL-')
-            window_dificultad.un_hide()
-            event, values = window_otra.read()
-            if event == '-VOLVER_VALORES-':
-                window_otra.close()
-            window_dificultad.un_hide()
+            nivel(window_dificultad, '-NORMAL-')
         elif event == '-DIFICIL-':
-            window_otra = c_pantalla.dificultad_elegida('-DIFICIL-')
-            window_dificultad.un_hide()
-            event, values = window_otra.read()
-            if event == '-VOLVER_VALORES-':
-                window_otra.close()
-            window_dificultad.un_hide()
+            nivel(window_dificultad, '-DIFICIL-')
+
         elif event == '-PERSONALIZADO-':
             window_otra = c_pantalla.dificultad_personalizada()
-            window_dificultad.un_hide()
-            event, values2 = window_otra.read()
+            window_dificultad.hide()
             while True:
+                event, values2 = window_otra.read()
                 if event in (sg.WIN_CLOSED, '-VOLVER_PERSONALIZADO-'):
                     break
                 if event == '-CAMBIOS_CONFIRMADOS-':

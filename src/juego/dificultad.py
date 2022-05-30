@@ -22,6 +22,22 @@ class Dificultad:
     __incorrectas = None
     __nivel = None
 
+    def __init__(self, dificultad_actual):
+        """
+        Llama a la funcion que lee los datos de configuracion.json
+        y lo settea a las variables de la clase para poder usarse en la pantalla de juego.
+        :param dificultad_actual: la clave de la dificultad a settear.
+        """
+        try:
+            datos = leer_archivo_json()
+            actuales = datos[dificultad_actual]
+            self.settear_dificultad_elegida(actuales)
+        except KeyError:
+            # si ocurre el error de que no se encontro alguna key en el archivo, que lo cree con valores por defecto.
+            datos = establecer_dificultades()
+            actuales = datos[dificultad_actual]
+            self.settear_dificultad_elegida(actuales)
+
     """Getters de la dificultad"""
     @property
     def tiempo(self):
@@ -43,65 +59,40 @@ class Dificultad:
     def nivel(self):
         return self.__nivel
 
-    """setters de la dificultad"""
-    @tiempo.setter
-    def tiempo(self, tiempo):
-        self.__tiempo_u = tiempo
-
-    @rondas.setter
-    def rondas(self, rondas):
-        self.__rondas = rondas
-
-    @correctas.setter
-    def correctas(self, correctas):
-        self.__correctas = correctas
-
-    @incorrectas.setter
-    def incorrectas(self, incorrectas):
-        self.__incorrectas = incorrectas
-
-    @nivel.setter
-    def nivel(self, nivel):
-        self.__nivel = nivel
+    @staticmethod
+    def settear_dificultad_elegida(actuales):
+        """
+        Settear los valores de la clase Dificultad con los valores del archivo configuracion.json.
+        :param actuales: el diccionario con los datos de la dificultad elegida.
+        """
+        __tiempo = actuales['-TIEMPO_C-']
+        __rondas = actuales['-RONDAS_C-']
+        __correctas = actuales['-CORRECTO_C-']
+        __incorrectas = actuales['-INCORRECTO_C-']
+        __nivel = actuales['-CARACTERISTICAS_C-']
 
 
-def cargar_dificultad_actual(actuales):
-    Dificultad.tiempo = actuales['-TIEMPO_C-']
-    Dificultad.rondas = actuales['-RONDAS_C-']
-    Dificultad.correctas = actuales['-CORRECTO_C-']
-    Dificultad.incorrectas = actuales['-INCORRECTO_C-']
-    Dificultad.nivel = actuales['-CARACTERISTICAS_C-']
-
-
-def cargar_configuracion(dificultad_actual):
-    """Lee los valores del archivo configuracion.json y los guarda en las variables de la clase Dificultad."""
-    # try:
-    datos = leer_configuracion()
-    actuales = datos[dificultad_actual]
-    cargar_dificultad_actual(actuales)
-    # except KeyError:
-    #     datos = settear_dificultades()
-    #     actuales = datos[dificultad_actual]
-    #     cargar_dificultad_actual(actuales)
-
-
-def leer_configuracion():
+def leer_archivo_json():
     """
     Abrir el archivo configuracion.json y leer los valores, si no se encontro el archivo,
     lo crea con valores por defecto.
-    :return: el diccionario con los datos del archivo configuracion.json
+    :return: el diccionario con los datos del archivo configuracion.json.
     """
     try:
         with open(RUTA_JSON, 'r', encoding='utf-8') as config:
             datos = json.load(config)
         return datos
     except FileNotFoundError:
-        # si ocurre el error de que no se encontro alguna key en el archivo, que lo cree con valores default
-        datos = settear_dificultades()
+        # si ocurre el error de que no se encontro el archivo, que lo cree con valores por defecto.
+        datos = establecer_dificultades()
         return datos
 
 
-def settear_dificultades():
+def establecer_dificultades():
+    """
+    Configuraciones por defecto para el archivo configuracion.json.
+    :return: los datos por defecto en un diccionario.
+    """
     datos = {'-FACIL-': {
         '-TIEMPO_C-': cant_tiempos[len(cant_tiempos) - 1],
         '-RONDAS_C-': cant_rondas[len(cant_rondas) - 1],
@@ -145,7 +136,6 @@ def guardar_nivel_personalizado(valores):
     Guarda en el archivo configuracion.json los valores que el usuario establezca en los sg.Combo()
     con valores a elegir para la dificultad personalizada.
     """
-    datos = leer_configuracion()
+    datos = leer_archivo_json()
     datos['-PERSONALIZADO-'] = valores
     guardar_en_json(datos)
-    cargar_dificultad_actual(valores)
