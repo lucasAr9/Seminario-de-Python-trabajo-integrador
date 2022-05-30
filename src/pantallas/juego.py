@@ -34,7 +34,7 @@ def armar_layout(datos):
                              auto_size_columns=True,
                              # display_row_numbers=True,
                              justification='center',
-                             num_rows=datos['rondas_por_juego'],
+                             num_rows=5,
                              key='-JUEGO_TABLA-',
                              row_height=25)],
                    [sg.VPush()],
@@ -57,15 +57,17 @@ def armar_layout(datos):
                                         key=f'-JUEGO_RESPUESTA{str(i)}-')]
                               for i in range(datos['opciones'])] +
                              [[sg.Ok(pad=15), sg.Push(), sg.Button('Pasar >', pad=15, key='-JUEGO_PASAR-')]]
-                             )],
-                   [sg.Push(), sg.Sizegrip()]
+                             )]
                    ]
 
     layout = [[sg.Text('FiguRace', justification='c', expand_x=True, font=cgen.FUENTE_TITULO)],
               [sg.HSep(pad=10)],
               # [sg.Button('Comenzar', key='-JUEGO_COMENZAR-')],
-              [sg.Column(columna_izq, expand_x=True, expand_y=True),
-               sg.Column(columna_der, element_justification='l', expand_x=True, expand_y=True)],
+              [sg.Push(),
+               sg.Column(columna_izq, expand_y=True),
+               sg.Column(columna_der, expand_y=True),
+               sg.Push()],
+              [sg.Push(), sg.Sizegrip()]
               ]
 
     layout_encuadre = [[sg.Frame('', layout, expand_x=True)]]
@@ -78,7 +80,7 @@ def armar_ventana():
     datos = obtener_datos()
     window = sg.Window('Juego', armar_layout(datos),
                        size=cgen.TAM_VENTANA, resizable=True, no_titlebar=True,
-                       grab_anywhere=True, keep_on_top=True, finalize=True)
+                       grab_anywhere=True, finalize=True)
     return window
 
 

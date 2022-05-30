@@ -92,9 +92,8 @@ def abrir_juego():
                                             'Segurx que querés volver al menú?') == 'Sí')):
             break
         delta_tiempo = time.time() - tiempo_comienzo
-        current_time = int(30 - delta_tiempo)
-        minutos, segundos = divmod(current_time, 60)
-        tiempo = f'{minutos:02d}:{segundos:02d}'
+        tiempo_transcurrido = int(5 - delta_tiempo)
+        minutos, segundos = divmod(tiempo_transcurrido, 60)
         window['-JUEGO_TIEMPO-'].update(f'{minutos:02d}:{segundos:02d}')
         window['-JUEGO_BARRA-'].update(current_count=delta_tiempo + 1)
     window.close()
