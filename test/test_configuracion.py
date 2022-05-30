@@ -1,20 +1,45 @@
 import PySimpleGUI as sg
 
 from src.pantallas import configuracion as c_pantalla
-from src.juego import dificultad as config
+from src.juego import dificultad as dificultad
 
 
-c_pantalla.crear_ventana()
-dificultad = config.Configuracion()
-
+window_dificultad = c_pantalla.crear_ventana()
 while True:
-    current_window, event, value = sg.read_all_windows()
-
-    if event == sg.WIN_CLOSED:
-        current_window.close()
+    event, values = window_dificultad.read()
+    if event in (sg.WIN_CLOSED, '-VOLVER_CONFIG-'):
         break
-    elif event == '-VOLVER_CONFIG-':
-        current_window.close()
-        break
-    elif event == '-CAMBIOS_CONFIG-':
-        config.settear_config(value)
+    if event == '-FACIL-':
+        window_otra = c_pantalla.dificultad_elegida('-FACIL-')
+        window_dificultad.un_hide()
+        event, values = window_otra.read()
+        if event == '-VOLVER_VALORES-':
+            window_otra.close()
+        window_dificultad.un_hide()
+    elif event == '-NORMAL-':
+        window_otra = c_pantalla.dificultad_elegida('-NORMAL-')
+        window_dificultad.un_hide()
+        event, values = window_otra.read()
+        if event == '-VOLVER_VALORES-':
+            window_otra.close()
+        window_dificultad.un_hide()
+    elif event == '-DIFICIL-':
+        window_otra = c_pantalla.dificultad_elegida('-DIFICIL-')
+        window_dificultad.un_hide()
+        event, values = window_otra.read()
+        if event == '-VOLVER_VALORES-':
+            window_otra.close()
+        window_dificultad.un_hide()
+    elif event == '-PERSONALIZADO-':
+        window_otra = c_pantalla.dificultad_personalizada()
+        window_dificultad.un_hide()
+        event, values2 = window_otra.read()
+        while True:
+            if event in (sg.WIN_CLOSED, '-VOLVER_PERSONALIZADO-'):
+                break
+            if event == '-CAMBIOS_CONFIRMADOS-':
+                dificultad.guardar_nivel_personalizado(values2)
+        if event == '-VOLVER_PERSONALIZADO-':
+            window_otra.close()
+        window_dificultad.un_hide()
+window_dificultad.close()

@@ -65,24 +65,24 @@ class Dificultad:
         self.__nivel = nivel
 
 
-def cargar_configuracion(dificultad_actual):
-    """Lee los valores del archivo configuracion.json y los guarda en las variables de la clase."""
-    try:
-        datos = leer_configuracion()
-        actuales = datos[dificultad_actual]
-        cargar_dificultad_actual(actuales)
-    except KeyError:
-        datos = settear_dificultades()
-        actuales = datos[dificultad_actual]
-        cargar_dificultad_actual(actuales)
-
-
 def cargar_dificultad_actual(actuales):
     Dificultad.tiempo = actuales['-TIEMPO_C-']
     Dificultad.rondas = actuales['-RONDAS_C-']
     Dificultad.correctas = actuales['-CORRECTO_C-']
     Dificultad.incorrectas = actuales['-INCORRECTO_C-']
     Dificultad.nivel = actuales['-CARACTERISTICAS_C-']
+
+
+def cargar_configuracion(dificultad_actual):
+    """Lee los valores del archivo configuracion.json y los guarda en las variables de la clase Dificultad."""
+    # try:
+    datos = leer_configuracion()
+    actuales = datos[dificultad_actual]
+    cargar_dificultad_actual(actuales)
+    # except KeyError:
+    #     datos = settear_dificultades()
+    #     actuales = datos[dificultad_actual]
+    #     cargar_dificultad_actual(actuales)
 
 
 def leer_configuracion():
@@ -143,9 +143,9 @@ def guardar_en_json(valores):
 def guardar_nivel_personalizado(valores):
     """
     Guarda en el archivo configuracion.json los valores que el usuario establezca en los sg.Combo()
-    con valores a elegir.
+    con valores a elegir para la dificultad personalizada.
     """
     datos = leer_configuracion()
     datos['-PERSONALIZADO-'] = valores
     guardar_en_json(datos)
-    cargar_dificultad_actual(datos['-PERSONALIZADO-'])
+    cargar_dificultad_actual(valores)

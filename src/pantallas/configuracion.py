@@ -70,51 +70,53 @@ def crear_ventana():
     return window
 
 
-def layout_nivel():
+def layout_nivel(nivel):
     """
     Con los valores de las variables cant_tiempos, cant_rondas, cant_correcto, cant_incorrecto, cant_niveles,
     se settean los valores que se muestran en los sg.Combo() con los que el usuario puede elegir.
     Y por defecto muestra el ultimo valores seleccionado por el usuario.
     """
+    datos = dificultad.leer_configuracion()
     layout = [
         [sg.Push(),
-         sg.Text('NORMAL', key='-DIFICULTAD_T-',  # aca va una variable que cambia segun el nivel
+         sg.Text(nivel, key='-DIFICULTAD_T-',  # aca va una variable que cambia segun el nivel
                  expand_x=True, font=cg.FUENTE_BOTONES, justification='center'),
          sg.Push()],
 
         [sg.Push(),
-         sg.Text('Tiempo límite: ' + str(20), key='-TIEMPO_T-',
+         sg.Text('Tiempo límite: ' + str(datos[nivel]['-TIEMPO_C-']), key='-TIEMPO_T-',
                  expand_x=True, font=cg.FUENTE_BOTONES, justification='center'),
          sg.Push()],
 
         [sg.Push(),
-         sg.Text('Rondas por juego: ' + str(10), key='-RONDAS_T-',
+         sg.Text('Rondas por juego: ' + str(datos[nivel]['-RONDAS_C-']), key='-RONDAS_T-',
                  expand_x=True, font=cg.FUENTE_BOTONES, justification='center'),
          sg.Push()],
 
         [sg.Push(),
-         sg.Text('Puntaje por respuesta correcta: ' + str(10), key='-CORRECTO_T-',
+         sg.Text('Puntaje por respuesta correcta: ' + str(datos[nivel]['-CORRECTO_C-']), key='-CORRECTO_T-',
                  expand_x=True, font=cg.FUENTE_BOTONES, justification='center'),
          sg.Push()],
 
         [sg.Push(),
-         sg.Text('Puntaje por respuesta incorrecta: ' + str(10), key='-INCORRECTO_T-',
+         sg.Text('Puntaje por respuesta incorrecta: ' + str(datos[nivel]['-INCORRECTO_C-']), key='-INCORRECTO_T-',
                  expand_x=True, font=cg.FUENTE_BOTONES, justification='center'),
          sg.Push()],
 
         [sg.Push(),
-         sg.Text('Cantidad de características: ' + str(5), key='-CARACTERISTICAS_T-',
+         sg.Text('Cantidad de características: ' + str(datos[nivel]['-CARACTERISTICAS_C-']), key='-CARACTERISTICAS_T-',
                  expand_x=True, font=cg.FUENTE_BOTONES, justification='center'),
          sg.Push()]]
     return layout
 
 
-def dificultad_elegida():
+def dificultad_elegida(nivel):
     """
     Con los valores de las variables de cada nivel predefinidos muestra los valores
     que el usuario puede elegir.
     """
-    layout = layout_nivel()
+    nivel_elegido = nivel
+    layout = layout_nivel(nivel)
     crear_layout = [
         [sg.Text(size=(None, 2), )],
         [sg.Col(layout, expand_x=True)],
