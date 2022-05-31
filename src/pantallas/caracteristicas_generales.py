@@ -1,9 +1,9 @@
 import PySimpleGUI as sg
 
-ancho, alto = sg.Window.get_screen_size()
+# ancho, alto = sg.Window.get_screen_size()
 # tamaños de ventanas y botones
-# ancho = 700
-# alto = 680
+ancho = 700
+alto = 680
 TAM_VENTANA = (int(ancho), int(alto))
 TAM_COLUMNAS = (int(ancho/4), int(alto/2))
 TAM_COMBO = (int(ancho/80), int(alto/80))
@@ -14,6 +14,8 @@ FUENTE_INDICADOR = 'Verdana 28'
 FUENTE_BOTONES = 'Verdana 26'
 FUENTE_COMBO = 'Verdana 18'
 FUENTE_POPUP = 'Verdana 10'
+
+CANT_RESPUESTAS = 5
 
 # colores
 sg.LOOK_AND_FEEL_TABLE['figurace_tema'] = {'BACKGROUND': '#1f1f1f',

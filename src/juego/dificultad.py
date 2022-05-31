@@ -16,11 +16,6 @@ RUTA_JSON = os.path.join(CONFIG_DIR, "configuracion.json")
 
 class Dificultad:
     """Caracteristicas que permite la configuracion del juego segun su dificultad."""
-    __tiempo_u = None
-    __rondas = None
-    __correctas = None
-    __incorrectas = None
-    __nivel = None
 
     def __init__(self, dificultad_actual):
         """
@@ -28,10 +23,16 @@ class Dificultad:
         y lo settea a las variables de la clase para poder usarse en la pantalla de juego.
         :param dificultad_actual: la clave de la dificultad a settear.
         """
+        self.__tiempo_u = None
+        self.__rondas = None
+        self.__correctas = None
+        self.__incorrectas = None
+        self.__nivel = None
         try:
             datos = leer_archivo_json()
             actuales = datos[dificultad_actual]
             self.settear_dificultad_elegida(actuales)
+            print(self.tiempo)
         except KeyError:
             # si ocurre el error de que no se encontro alguna key en el archivo, que lo cree con valores por defecto.
             datos = establecer_dificultades()
@@ -59,17 +60,16 @@ class Dificultad:
     def nivel(self):
         return self.__nivel
 
-    @staticmethod
-    def settear_dificultad_elegida(actuales):
+    def settear_dificultad_elegida(self, actuales):
         """
         Settear los valores de la clase Dificultad con los valores del archivo configuracion.json.
         :param actuales: el diccionario con los datos de la dificultad elegida.
         """
-        __tiempo = actuales['-TIEMPO_C-']
-        __rondas = actuales['-RONDAS_C-']
-        __correctas = actuales['-CORRECTO_C-']
-        __incorrectas = actuales['-INCORRECTO_C-']
-        __nivel = actuales['-CARACTERISTICAS_C-']
+        self.__tiempo_u = actuales['-TIEMPO_C-']
+        self.__rondas = actuales['-RONDAS_C-']
+        self.__correctas = actuales['-CORRECTO_C-']
+        self.__incorrectas = actuales['-INCORRECTO_C-']
+        self.__nivel = actuales['-CARACTERISTICAS_C-']
 
 
 def leer_archivo_json():

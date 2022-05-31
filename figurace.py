@@ -99,7 +99,7 @@ def main():
     window = crear_menu(perfiles)
     if len(perfiles) == 0:
         sg.Popup('Aun no hay ningún usuario existente. Por favor, cree el suyo en "PERFIL" ', no_titlebar=True,
-                 font=cg.FUENTE_POPUP)
+                 font=cg.FUENTE_POPUP, keep_on_top=True)
     while True:
         event, values = window.read()
         if (event in (sg.WINDOW_CLOSE_ATTEMPTED_EVENT, '-SALIR-') and
