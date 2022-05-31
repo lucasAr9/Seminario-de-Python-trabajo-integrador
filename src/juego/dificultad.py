@@ -32,7 +32,6 @@ class Dificultad:
             datos = leer_archivo_json()
             actuales = datos[dificultad_actual]
             self.settear_dificultad_elegida(actuales)
-            print(self.tiempo)
         except KeyError:
             # si ocurre el error de que no se encontro alguna key en el archivo, que lo cree con valores por defecto.
             datos = establecer_dificultades()

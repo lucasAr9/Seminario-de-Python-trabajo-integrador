@@ -45,7 +45,8 @@ def armar_layout(datos, dificultad_elegida, usuario_elegido):
                              [[sg.Radio(respuestas['Posibles'][i], group_id='respuestas',
                                         key=f'-JUEGO_RESPUESTA{str(i)}-')]
                               for i in range(cgen.CANT_RESPUESTAS)] +
-                             [[sg.Ok(pad=15), sg.Push(), sg.Button('Pasar >', pad=15, key='-JUEGO_PASAR-')]]
+                             [[sg.Ok(pad=15), sg.Push(), sg.Button('Pasar >', pad=15, key='-JUEGO_PASAR-')]],
+                             expand_x=True
                              )]
                    ]
 

@@ -20,6 +20,8 @@ def ruta_imagen(nombre):
             ruta_imagen = os.path.join(os.getcwd(), ruta_extra, 'titulo_figurace.png')
         case 'logo':
             ruta_imagen = os.path.join(os.getcwd(), ruta_extra, 'imagen_menu_principal.png')
+        case'puntaje':
+            ruta_imagen = os.path.join(os.getcwd(), ruta_extra, 'puntaje.png')
         case _: ruta_imagen = os.getcwd()  # poner ruta a imagen en blanco, con try except?
     return ruta_imagen
 

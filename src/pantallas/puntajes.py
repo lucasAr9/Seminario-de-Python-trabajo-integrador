@@ -70,11 +70,11 @@ def armar_layout():
                                      key=f'-PANTALLA_TAB{str(i)}-')] for i in range(4)],
                             expand_y=True, expand_x=True, pad=30, enable_events=True)
 
-    layout = [[sg.Image(rutas.ruta_imagen('icono_png'), pad=((20, 0), (20, 0))),
-               sg.Text('Puntajes', font=cgen.FUENTE_TITULO, justification='c', expand_x=True),
-               sg.Image(rutas.ruta_imagen('icono_png'), pad=((0, 20), (20, 0)))],
-              [sg.Text('Los 20 mejores puntajes por nivel',
-                       font=cgen.FUENTE_INDICADOR, justification='c', expand_x=True)],
+    layout = [[sg.Push(), sg.Image(rutas.ruta_imagen('puntaje'), pad=10), sg.Push(),
+               sg.Column([[sg.Text('Puntajes', font=cgen.FUENTE_TITULO, justification='c', expand_x=True)],
+                          [sg.Text('Los 20 mejores puntajes por nivel',
+                                   font=cgen.FUENTE_COMBO, justification='c', expand_x=True)]]),
+               sg.Push(), sg.Image(rutas.ruta_imagen('puntaje'), pad=10), sg.Push()],
               [sg.HSep()],
               [tab_group],
               [sg.VPush()],

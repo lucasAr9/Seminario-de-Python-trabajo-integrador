@@ -176,109 +176,118 @@ def crear_cuentas(conf):
                      use_custom_titlebar=True, titlebar_icon=ruta_titlebar_icon, icon=ruta_icon)
 
 
-def analisis_event_cuentas(window, event, values, conf):
-    """
-    Verifica los eventos y ejecuta los cambios correspondientes
-    :param
-        window, event y values: variables para controlar y acceder a los componentes de la pantalla.
-    :return: variable perf si no se cierra la pantalla, lo contrario una lista con los nombres de los perfiles.
-    """
-    if event == "-PERFIL_NUEVO-":
-        window["-NUEVO_USUARIO-"].update(visible=True)
-        window["-BTN_PRIN-"].update(visible=False)
-        window["-MOSTRAR_DATOS-"].update(visible=False)
-        window["-BTNS_EDITAR-"].update(visible=False)
+# def analisis_event_cuentas(window, event, values, conf):
+#     """
+#     Verifica los eventos y ejecuta los cambios correspondientes
+#     :param
+#         window, event y values: variables para controlar y acceder a los componentes de la pantalla.
+#     :return: variable perf si no se cierra la pantalla, lo contrario una lista con los nombres de los perfiles.
+#     """
 
-    elif event == "-BTN_CANCELAR_CREAR-":
+
+def crear_perfil(window):
+    window["-NUEVO_USUARIO-"].update(visible=True)
+    window["-BTN_PRIN-"].update(visible=False)
+    window["-MOSTRAR_DATOS-"].update(visible=False)
+    window["-BTNS_EDITAR-"].update(visible=False)
+
+
+def cancelar_crear(window):
+    window["-NUEVO_NOMBRE-"].update(value="")
+    window["-NUEVO_EDAD-"].update(value="")
+    window["-NUEVO_GENERO-"].update(value="")
+
+    window["-NUEVO_USUARIO-"].update(visible=False)
+    window["-BTN_PRIN-"].update(visible=True)
+    window["-MSJ_CREAR-"].update(visible=False)
+
+
+def aceptar_crear(window, values, conf):
+    if comprobar_y_cargar(window, values, 2, conf):
         window["-NUEVO_NOMBRE-"].update(value="")
         window["-NUEVO_EDAD-"].update(value="")
         window["-NUEVO_GENERO-"].update(value="")
 
         window["-NUEVO_USUARIO-"].update(visible=False)
         window["-BTN_PRIN-"].update(visible=True)
-        window["-MSJ_CREAR-"].update(visible=False)
+        window["-PERFILES-"].update(values=[a["nombre"] for a in conf["perfiles"]])
+    else:
+        window["-MSJ_CREAR-"].update(visible=True)
 
-    elif event == "-BTN_CREAR-":
-        if comprobar_y_cargar(window, values, 2, conf):
-            window["-NUEVO_NOMBRE-"].update(value="")
-            window["-NUEVO_EDAD-"].update(value="")
-            window["-NUEVO_GENERO-"].update(value="")
 
-            window["-NUEVO_USUARIO-"].update(visible=False)
-            window["-BTN_PRIN-"].update(visible=True)
-            window["-PERFILES-"].update(values=[a["nombre"] for a in conf["perfiles"]])
-        else:
-            window["-MSJ_CREAR-"].update(visible=True)
+def seleccionar_perfil(window, values, conf):
+    if len(values["-PERFILES-"]) == 1:
+        conf["act"] = 0
+        while conf["act"] != len(conf["perfiles"]) and \
+                conf["perfiles"][conf["act"]]["nombre"] != values["-PERFILES-"][0]:
+            conf["act"] += 1
+        if conf["perfiles"][conf["act"]]["nombre"] == values["-PERFILES-"][0]:
+            window["-MOSTRAR_DATOS-"].update(visible=True)
+            window["-BTNS_EDITAR-"].update(visible=True)
 
-    elif event == "-ACEPTAR_PERFIL-":
-        if len(values["-PERFILES-"]) == 1:
-            conf["act"] = 0
-            while conf["act"] != len(conf["perfiles"]) and \
-                    conf["perfiles"][conf["act"]]["nombre"] != values["-PERFILES-"][0]:
-                conf["act"] += 1
-            if conf["perfiles"][conf["act"]]["nombre"] == values["-PERFILES-"][0]:
-                window["-MOSTRAR_DATOS-"].update(visible=True)
-                window["-BTNS_EDITAR-"].update(visible=True)
+            window["-NOMBRE_MOSTRAR-"].update(value=conf["perfiles"][conf["act"]]["nombre"])
+            window["-EDAD_MOSTRAR-"].update(value=conf["perfiles"][conf["act"]]["edad"])
+            window["-GENERO_MOSTRAR-"].update(value=conf["perfiles"][conf["act"]]["genero"])
 
-                window["-NOMBRE_MOSTRAR-"].update(value=conf["perfiles"][conf["act"]]["nombre"])
-                window["-EDAD_MOSTRAR-"].update(value=conf["perfiles"][conf["act"]]["edad"])
-                window["-GENERO_MOSTRAR-"].update(value=conf["perfiles"][conf["act"]]["genero"])
+            window["-BTN_APLICAR_EDICION-"].update(visible=False)
+            window["-BTN_EDITAR_CANCELAR-"].update(visible=False)
+            window["-BTN_EDITAR-"].update(visible=True)
+            window["-BTN_EDITAR_ELIMINAR-"].update(visible=True)
 
-                window["-BTN_APLICAR_EDICION-"].update(visible=False)
-                window["-BTN_EDITAR_CANCELAR-"].update(visible=False)
-                window["-BTN_EDITAR-"].update(visible=True)
-                window["-BTN_EDITAR_ELIMINAR-"].update(visible=True)
 
-    elif event == "-BTN_EDITAR-":
-        window["-MOSTRAR_DATOS-"].update(visible=False)
-        window["-BTN_APLICAR_EDICION-"].update(visible=True)
-        window["-BTN_PRIN-"].update(visible=False)
-        window["-BTN_EDITAR-"].update(visible=False)
-        window["-BTN_EDITAR_CANCELAR-"].update(visible=True)
-        window["-BTN_EDITAR_ELIMINAR-"].update(visible=False)
+def editar_perfil(window, conf):
+    window["-MOSTRAR_DATOS-"].update(visible=False)
+    window["-BTN_APLICAR_EDICION-"].update(visible=True)
+    window["-BTN_PRIN-"].update(visible=False)
+    window["-BTN_EDITAR-"].update(visible=False)
+    window["-BTN_EDITAR_CANCELAR-"].update(visible=True)
+    window["-BTN_EDITAR_ELIMINAR-"].update(visible=False)
 
-        window["-INPUT_NOMBRE-"].update(value=conf["perfiles"][conf["act"]]["nombre"])
-        window["-INPUT_EDAD-"].update(value=conf["perfiles"][conf["act"]]["edad"])
-        window["-INPUT_GENERO-"].update(value=conf["perfiles"][conf["act"]]["genero"])
+    window["-INPUT_NOMBRE-"].update(value=conf["perfiles"][conf["act"]]["nombre"])
+    window["-INPUT_EDAD-"].update(value=conf["perfiles"][conf["act"]]["edad"])
+    window["-INPUT_GENERO-"].update(value=conf["perfiles"][conf["act"]]["genero"])
 
-        window["-BTN_EDITAR_CANCELAR-"].update(visible=True)
-        window["-EDITAR_DATOS-"].update(visible=True)
+    window["-BTN_EDITAR_CANCELAR-"].update(visible=True)
+    window["-EDITAR_DATOS-"].update(visible=True)
 
-    elif event == "-BTN_EDITAR_CANCELAR-":
+
+def cancelar_edicion(window):
+    window["-MOSTRAR_DATOS-"].update(visible=True)
+    window["-BTN_APLICAR_EDICION-"].update(visible=False)
+    window["-BTN_PRIN-"].update(visible=True)
+    window["-BTN_EDITAR-"].update(visible=True)
+    window["-BTN_EDITAR_ELIMINAR-"].update(visible=True)
+
+    window["-BTN_EDITAR_CANCELAR-"].update(visible=False)
+    window["-EDITAR_DATOS-"].update(visible=False)
+    window["-MSJ_EDITAR-"].update(visible=False)
+
+
+def aplicar_edicion(window, values, conf):
+    if comprobar_y_cargar(window, values, 1, conf):
         window["-MOSTRAR_DATOS-"].update(visible=True)
         window["-BTN_APLICAR_EDICION-"].update(visible=False)
         window["-BTN_PRIN-"].update(visible=True)
         window["-BTN_EDITAR-"].update(visible=True)
         window["-BTN_EDITAR_ELIMINAR-"].update(visible=True)
 
+        window["-EDAD_MOSTRAR-"].update(value=conf["perfiles"][conf["act"]]["edad"])
+        window["-GENERO_MOSTRAR-"].update(value=conf["perfiles"][conf["act"]]["genero"])
+
         window["-BTN_EDITAR_CANCELAR-"].update(visible=False)
         window["-EDITAR_DATOS-"].update(visible=False)
-        window["-MSJ_EDITAR-"].update(visible=False)
+    else:
+        window["-MSJ_EDITAR-"].update(visible=True)
 
-    elif event == "-BTN_APLICAR_EDICION-":
-        if comprobar_y_cargar(window, values, 1, conf):
-            window["-MOSTRAR_DATOS-"].update(visible=True)
-            window["-BTN_APLICAR_EDICION-"].update(visible=False)
-            window["-BTN_PRIN-"].update(visible=True)
-            window["-BTN_EDITAR-"].update(visible=True)
-            window["-BTN_EDITAR_ELIMINAR-"].update(visible=True)
 
-            window["-EDAD_MOSTRAR-"].update(value=conf["perfiles"][conf["act"]]["edad"])
-            window["-GENERO_MOSTRAR-"].update(value=conf["perfiles"][conf["act"]]["genero"])
+def eliminar_perfil(window, conf):
+    window["-BTN_APLICAR_EDICION-"].update(visible=True)
+    window["-BTN_EDITAR_CANCELAR-"].update(visible=True)
+    window["-BTN_EDITAR-"].update(visible=False)
+    window["-BTN_EDITAR_ELIMINAR-"].update(visible=False)
+    window["-MOSTRAR_DATOS-"].update(visible=False)
+    window["-BTNS_EDITAR-"].update(visible=False)
 
-            window["-BTN_EDITAR_CANCELAR-"].update(visible=False)
-            window["-EDITAR_DATOS-"].update(visible=False)
-        else:
-            window["-MSJ_EDITAR-"].update(visible=True)
-
-    elif event == "-BTN_EDITAR_ELIMINAR-":
-        window["-BTN_APLICAR_EDICION-"].update(visible=True)
-        window["-BTN_EDITAR_CANCELAR-"].update(visible=True)
-        window["-BTN_EDITAR-"].update(visible=False)
-        window["-BTN_EDITAR_ELIMINAR-"].update(visible=False)
-        window["-MOSTRAR_DATOS-"].update(visible=False)
-        window["-BTNS_EDITAR-"].update(visible=False)
-
-        conf["perfiles"] = [x for x in conf["perfiles"] if x["nombre"] != conf["perfiles"][conf["act"]]["nombre"]]
-        conf["perfiles"] = actualizar_perfiles(conf["perfiles"])
-        window["-PERFILES-"].update(values=[a["nombre"] for a in conf["perfiles"]])
+    conf["perfiles"] = [x for x in conf["perfiles"] if x["nombre"] != conf["perfiles"][conf["act"]]["nombre"]]
+    conf["perfiles"] = actualizar_perfiles(conf["perfiles"])
+    window["-PERFILES-"].update(values=[a["nombre"] for a in conf["perfiles"]])

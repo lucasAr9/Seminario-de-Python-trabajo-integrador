@@ -1,11 +1,12 @@
 import PySimpleGUI as sg
 
-# ancho, alto = sg.Window.get_screen_size()
+
 # tamaños de ventanas y botones
-ancho = 700
-alto = 680
-TAM_VENTANA = (int(ancho), int(alto))
-TAM_COLUMNAS = (int(ancho/4), int(alto/2))
+ancho, alto = sg.Window.get_screen_size()
+ancho_ventana = int(ancho*80/100)
+alto_ventana = int(alto*95/100)
+TAM_VENTANA = (ancho_ventana, alto_ventana)
+TAM_COLUMNAS = (int(ancho_ventana/3), int(alto_ventana/3))
 TAM_COMBO = (int(ancho/80), int(alto/80))
 
 # fuentes de los textos y botones
@@ -18,21 +19,19 @@ FUENTE_POPUP = 'Verdana 10'
 CANT_RESPUESTAS = 5
 
 # colores
-sg.LOOK_AND_FEEL_TABLE['figurace_tema'] = {'BACKGROUND': '#1f1f1f',
-                                           'TEXT': '#B1BCE6',
-                                           'INPUT': '#1f1f1f',
-                                           'TEXT_INPUT': '#eeeeee',
+sg.LOOK_AND_FEEL_TABLE['figurace_tema'] = {'BACKGROUND': '#3A1F5D',
+                                           'TEXT': '#F1D6AB',
+                                           'INPUT': '#F58B54',
+                                           'TEXT_INPUT': '#000000',
                                            'SCROLL': '#1f1f1f',
-                                           'BUTTON': ('#eeeeee', '#6897bb'),
-                                           'PROGRESS': ('#57CC99', '#eeeeee'),
+                                           'BUTTON': ('#000000', '#F9D276'),
+                                           'PROGRESS': ('#F58B54', '#F1D6AB'),
                                            'BORDER': 2, 'SLIDER_DEPTH': 0,
                                            'PROGRESS_DEPTH': 0, }
 TEMA = 'figurace_tema'
 
 # datasets
-# datasets = ['spotify', 'fifa', 'peliculas', 'spotify', 'volcanes'] # faltan en la rama pantallas pelis y volcanes, y
-# agregar a tarjeta.py el procedimiento de cada uno para obtener los datos correctos, segun el dataset
-datasets = ['spotify']
+datasets = ['fifa', 'peliculas', 'spotify', 'volcanes']
 
 
 # ventana para chequear salidas
