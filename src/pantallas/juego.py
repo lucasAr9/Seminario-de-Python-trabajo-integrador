@@ -8,8 +8,7 @@ from src.juego import tarjeta
 
 def armar_layout(datos, dificultad_elegida, usuario_elegido):
     """"""
-    # dataset_elegido = random.choice(cgen.datasets)
-    dataset_elegido = 'volcanes'
+    dataset_elegido = random.choice(cgen.datasets)
     pistas, respuestas = tarjeta.datos_tarjeta(dataset_elegido, datos.nivel)
     titulos = ['Pregunta', 'Resultado']
     resultados = ['Bien', 'Mal', 'Bien', 'Mal', 'Bien', 'Mal', 'Bien', 'Mal', 'Bien', 'Mal']
@@ -57,9 +56,7 @@ def armar_layout(datos, dificultad_elegida, usuario_elegido):
                              row_height=25, font=cgen.FUENTE_OPCIONES, expand_x=True)]
                    ]
 
-    layout = [[sg.Text('FiguRace',
-                       justification='c', expand_x=True,
-                       font=cgen.FUENTE_TITULO)],
+    layout = [[sg.Image(rutas.ruta_imagen('titulo'), expand_x=True)],
               [sg.HSep(pad=10)],
               # [sg.Button('Comenzar', key='-JUEGO_COMENZAR-')],
               [sg.Push(),

@@ -50,7 +50,7 @@ def crear_menu(usuarios=("",)):
     # rutas para las imagenes
     ruta_icon_png = rutas.ruta_imagen('icono_png')
     ruta_icon_ico = rutas.ruta_imagen('icono_ico')
-    ruta_image_titulo = rutas.ruta_imagen('titulo_menu')
+    ruta_image_titulo = rutas.ruta_imagen('titulo')
     # layouts
     l_principal = _layout_op_principales()
     l_user_dif = _layout_usuario_dificultad(usuarios)

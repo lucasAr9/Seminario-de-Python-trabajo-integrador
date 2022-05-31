@@ -16,7 +16,7 @@ def ruta_imagen(nombre):
             ruta_imagen = os.path.join(os.getcwd(), ruta_extra, 'cartas_icon.png')
         case 'icono_ico':
             ruta_imagen = os.path.join(os.getcwd(), ruta_extra, 'cartas_icon.ico')
-        case 'titulo_menu':
+        case 'titulo':
             ruta_imagen = os.path.join(os.getcwd(), ruta_extra, 'titulo_figurace.png')
         case 'logo':
             ruta_imagen = os.path.join(os.getcwd(), ruta_extra, 'imagen_menu_principal.png')

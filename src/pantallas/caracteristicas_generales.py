@@ -20,15 +20,15 @@ FUENTE_POPUP = 'Verdana 10'
 CANT_RESPUESTAS = 5
 
 # colores
-sg.LOOK_AND_FEEL_TABLE['figurace_tema'] = {'BACKGROUND': '#3A1F5D',
-                                           'TEXT': '#F1D6AB',
-                                           'INPUT': '#F58B54',
+sg.LOOK_AND_FEEL_TABLE['figurace_tema'] = {'BACKGROUND': '#3e206d',
+                                           'TEXT': '#FEC260',
+                                           'INPUT': '#FEC260',
                                            'TEXT_INPUT': '#000000',
                                            'SCROLL': '#1f1f1f',
-                                           'BUTTON': ('#000000', '#F9D276'),
+                                           'BUTTON': ('#000000', '#D6C5F0'),
                                            'PROGRESS': ('#F58B54', '#F1D6AB'),
-                                           'BORDER': 2, 'SLIDER_DEPTH': 0,
-                                           'PROGRESS_DEPTH': 0, }
+                                           'BORDER': 5, 'SLIDER_DEPTH': 0,
+                                           'PROGRESS_DEPTH': 5, }
 TEMA = 'figurace_tema'
 
 # datasets
