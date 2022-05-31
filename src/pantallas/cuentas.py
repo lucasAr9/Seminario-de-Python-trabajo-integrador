@@ -3,9 +3,8 @@ import os
 import json
 import sys
 
-sys.path.append(os.getcwd())
-
-import src.pantallas.caracteristicas_generales as fs
+import src.pantallas.caracteristicas_generales as cg
+import rutas as ruta
 
 
 def cargar_perfiles():
@@ -13,24 +12,14 @@ def cargar_perfiles():
     Carga como valor privado de la clase los perfiles.
     :return: Los datos de cada perfil que hay.
     """
+    archivo_url = os.path.join(ruta.CONFIG_DIR, "perfiles.json")
     try:
-        archivo_url = os.path.join(os.path.realpath('..'), "recursos", "datos", "perfiles.json")
-        try:
-            with open(archivo_url, "r", encoding="utf-8") as arch_perfiles:
-                perfiles = json.load(arch_perfiles)
-        except FileNotFoundError:
-            with open(archivo_url, "w", encoding="utf-8") as arch_perfiles:
-                perfiles = []
-                json.dump(perfiles, arch_perfiles)
+        with open(archivo_url, "r", encoding="utf-8") as arch_perfiles:
+            perfiles = json.load(arch_perfiles)
     except FileNotFoundError:
-        archivo_url = os.path.join(os.getcwd(), "recursos", "datos", "perfiles.json")
-        try:
-            with open(archivo_url, "r", encoding="utf-8") as arch_perfiles:
-                perfiles = json.load(arch_perfiles)
-        except FileNotFoundError:
-            with open(archivo_url, "w", encoding="utf-8") as arch_perfiles:
-                perfiles = []
-                json.dump(perfiles, arch_perfiles)
+        with open(archivo_url, "w", encoding="utf-8") as arch_perfiles:
+            perfiles = []
+            json.dump(perfiles, arch_perfiles)
     return perfiles
 
 
@@ -45,14 +34,9 @@ def actualizar_perfiles(perfiles, nuevo_perfil=None):
     if nuevo_perfil is not None:
         perfiles.append(nuevo_perfil)
 
-    try:
-        archivo_url = os.path.join(os.getcwd(), "recursos", "datos", "perfiles.json")
-        with open(archivo_url, "w", encoding="utf-8") as arch_perfiles:
-            json.dump(perfiles, arch_perfiles)
-    except FileNotFoundError:
-        archivo_url = os.path.join(os.path.realpath('..'), "recursos", "datos", "perfiles.json")
-        with open(archivo_url, "w", encoding="utf-8") as arch_perfiles:
-            json.dump(perfiles, arch_perfiles)
+    archivo_url = os.path.join(ruta.CONFIG_DIR, "perfiles.json")
+    with open(archivo_url, "w", encoding="utf-8") as arch_perfiles:
+        json.dump(perfiles, arch_perfiles)
     return perfiles
 
 
@@ -78,6 +62,7 @@ def comprobar_y_cargar(window, values, op, conf):
             conf["perfiles"][conf["act"]]["genero"] = values["-INPUT_GENERO-"]
             conf["perfiles"] = actualizar_perfiles(conf["perfiles"])
             return True
+
     elif op == 2:
         if values["-NUEVO_NOMBRE-"] == "" or values["-NUEVO_EDAD-"] == "" or values["-NUEVO_GENERO-"] == "":
             window["-MSJ_CREAR-"].update(value="*Ingrese todos los datos.")
@@ -98,6 +83,14 @@ def comprobar_y_cargar(window, values, op, conf):
             return True
 
 
+def nombre_perfiles():
+    """
+    Devuelve los nombres de los perfiles.
+    :return: Lista con los nombres de los perfiles.
+    """
+    return list(map(lambda datos: datos['nombre'], cargar_perfiles()))
+
+
 def crear_cuentas(conf):
     """
     Genera los elementos para la pantalla de creacion/edicion de perfil.
@@ -106,54 +99,55 @@ def crear_cuentas(conf):
     conf["perfiles"] = cargar_perfiles()
     sg.theme('figurace_tema')
     crear = [
-        [sg.Text("Ingrese un Nick:    ", font=fs.FUENTE_BOTONES),
-            sg.Input("", key="-NUEVO_NOMBRE-", font=fs.FUENTE_BOTONES)],
-        [sg.Text("Ingrese su Edad:    ", font=fs.FUENTE_BOTONES),
-            sg.Input("", key="-NUEVO_EDAD-", font=fs.FUENTE_BOTONES)],
-        [sg.Text("Ingrese su Genero:  ", font=fs.FUENTE_BOTONES),
-            sg.Input("", key="-NUEVO_GENERO-", font=fs.FUENTE_BOTONES)],
-        [sg.Text("Ingrese una edad valida", key="-MSJ_CREAR-", visible=False, font=fs.FUENTE_BOTONES)],
+        [sg.Text("Ingrese un Nick:    ", font=cg.FUENTE_BOTONES),
+            sg.Input("", key="-NUEVO_NOMBRE-", font=cg.FUENTE_BOTONES)],
+        [sg.Text("Ingrese su Edad:    ", font=cg.FUENTE_BOTONES),
+            sg.Input("", key="-NUEVO_EDAD-", font=cg.FUENTE_BOTONES)],
+        [sg.Text("Ingrese su Genero:  ", font=cg.FUENTE_BOTONES),
+            sg.Input("", key="-NUEVO_GENERO-", font=cg.FUENTE_BOTONES)],
+        [sg.Text("Ingrese una edad valida", key="-MSJ_CREAR-", visible=False, font=cg.FUENTE_BOTONES)],
         [sg.Text()],
-        [sg.Button("Crear", key="-BTN_CREAR-", font=fs.FUENTE_BOTONES),
-            sg.Button("Cancelar", key="-BTN_CANCELAR_CREAR-", font=fs.FUENTE_BOTONES)]
+        [sg.Button("Crear", key="-BTN_CREAR-", font=cg.FUENTE_BOTONES),
+            sg.Button("Cancelar", key="-BTN_CANCELAR_CREAR-", font=cg.FUENTE_BOTONES)]
     ]
 
     datos = [
-            [sg.Text("Nick:    ", font=fs.FUENTE_BOTONES),
-                sg.Text("", key="-NOMBRE_MOSTRAR-", font=fs.FUENTE_BOTONES)],
-            [sg.Text("Edad:    ", font=fs.FUENTE_BOTONES),
-                sg.Text("", key="-EDAD_MOSTRAR-", font=fs.FUENTE_BOTONES)],
-            [sg.Text("Genero:  ", font=fs.FUENTE_BOTONES),
-                sg.Text("", key="-GENERO_MOSTRAR-", font=fs.FUENTE_BOTONES)]
+            [sg.Text("Nick:    ", font=cg.FUENTE_BOTONES),
+                sg.Text("", key="-NOMBRE_MOSTRAR-", font=cg.FUENTE_BOTONES)],
+            [sg.Text("Edad:    ", font=cg.FUENTE_BOTONES),
+                sg.Text("", key="-EDAD_MOSTRAR-", font=cg.FUENTE_BOTONES)],
+            [sg.Text("Genero:  ", font=cg.FUENTE_BOTONES),
+                sg.Text("", key="-GENERO_MOSTRAR-", font=cg.FUENTE_BOTONES)]
     ]
 
     editar = [
-        [sg.pin(sg.Button("Editar", key="-BTN_EDITAR-", font=fs.FUENTE_BOTONES)),
-            sg.pin(sg.Button("Eliminar", key="-BTN_EDITAR_ELIMINAR-", font=fs.FUENTE_BOTONES)),
-            sg.pin(sg.Button("Cancelar", key="-BTN_EDITAR_CANCELAR-", font=fs.FUENTE_BOTONES)),
-            sg.pin(sg.Button("Aplicar", key="-BTN_APLICAR_EDICION-", font=fs.FUENTE_BOTONES))]
+        [sg.pin(sg.Button("Editar", key="-BTN_EDITAR-", font=cg.FUENTE_BOTONES)),
+            sg.pin(sg.Button("Eliminar", key="-BTN_EDITAR_ELIMINAR-", font=cg.FUENTE_BOTONES)),
+            sg.pin(sg.Button("Cancelar", key="-BTN_EDITAR_CANCELAR-", font=cg.FUENTE_BOTONES)),
+            sg.pin(sg.Button("Aplicar", key="-BTN_APLICAR_EDICION-", font=cg.FUENTE_BOTONES))]
     ]
 
     datos_edit = [
-            [sg.Text("Nick:    ", font=fs.FUENTE_BOTONES),
-                sg.Text("", key="-INPUT_NOMBRE-", font=fs.FUENTE_BOTONES)],
-            [sg.Text("Edad:    ", font=fs.FUENTE_BOTONES),
-                sg.Input("", key="-INPUT_EDAD-", font=fs.FUENTE_BOTONES)],
-            [sg.Text("Genero:  ", font=fs.FUENTE_BOTONES),
-                sg.Input("", key="-INPUT_GENERO-", font=fs.FUENTE_BOTONES)],
-            [sg.Text("Ingrese una edad valida", key="-MSJ_EDITAR-", visible=False, font=fs.FUENTE_BOTONES)]
+            [sg.Text("Nick:    ", font=cg.FUENTE_BOTONES),
+                sg.Text("", key="-INPUT_NOMBRE-", font=cg.FUENTE_BOTONES)],
+            [sg.Text("Edad:    ", font=cg.FUENTE_BOTONES),
+                sg.Input("", key="-INPUT_EDAD-", font=cg.FUENTE_BOTONES)],
+            [sg.Text("Genero:  ", font=cg.FUENTE_BOTONES),
+                sg.Input("", key="-INPUT_GENERO-", font=cg.FUENTE_BOTONES)],
+            [sg.Text("Ingrese una edad valida", key="-MSJ_EDITAR-", visible=False, font=cg.FUENTE_BOTONES)]
     ]
 
     menu_prin = [
-        [sg.Push(), sg.Listbox([a["nombre"] for a in conf["perfiles"]], size=(fs.TAM_COLUMNAS[0]//10,
-                                                                              fs.TAM_COLUMNAS[0]//80),
-                               key="-PERFILES-", font=fs.FUENTE_BOTONES)],
-        [sg.Push(), sg.Button("Aceptar", key="-ACEPTAR_PERFIL-", font=fs.FUENTE_BOTONES),
-            sg.Button("Crear Perfil", key="-PERFIL_NUEVO-", font=fs.FUENTE_BOTONES), sg.Push()]
+        [sg.Push(), sg.Listbox([a["nombre"] for a in conf["perfiles"]], size=(cg.TAM_COLUMNAS[0]//10,
+                                                                              cg.TAM_COLUMNAS[0]//80),
+                               key="-PERFILES-", font=cg.FUENTE_BOTONES)],
+        [sg.Push(), sg.Button("Aceptar", key="-ACEPTAR_PERFIL-", font=cg.FUENTE_BOTONES),
+            sg.Button("Crear Perfil", key="-PERFIL_NUEVO-", font=cg.FUENTE_BOTONES), sg.Push()]
     ]
 
     layout = [
-            [sg.Push(), sg.Text("Editar Perfil", font=fs.FUENTE_TITULO), sg.Push()],
+            [sg.Push(), sg.Text("Editar Perfil", font=cg.FUENTE_TITULO), sg.Push()],
+            [sg.HSep()],
             [sg.VPush()],
             [sg.Push(), sg.pin(sg.Col(menu_prin, key="-BTN_PRIN-", visible=True)), sg.Push()],
             [sg.VPush()],
@@ -163,29 +157,19 @@ def crear_cuentas(conf):
             [sg.VPush()],
             [sg.Push(), sg.Push(), sg.pin(sg.Col(editar, key="-BTNS_EDITAR-", visible=False)), sg.Push()],
             [sg.VPush()],
-            [sg.Button("Volver", key='-VOLVER_PERFILES-', font=fs.FUENTE_BOTONES), sg.Push()]
+            [sg.Button("Volver", key='-VOLVER_PERFILES-', font=cg.FUENTE_BOTONES), sg.Push()]
         ]
-    ruta_titlebar_icon = os.path.join(os.getcwd(), "recursos", "imagenes", "cartas_icon.png")
-    if os.path.exists(ruta_titlebar_icon):
-        ruta_icon = os.path.join(os.getcwd(), "recursos", "imagenes", "cartas_icon.ico")
-    else:
-        ruta_titlebar_icon = os.path.join(os.path.realpath('..'), "recursos", "imagenes", "cartas_icon.png")
-        ruta_icon = os.path.join(os.path.realpath('..'), "recursos", "imagenes", "cartas_icon.ico")
-
-    return sg.Window("FiguRace - Edición de Perfil", layout, size=fs.TAM_VENTANA, finalize=True,
+    ruta_titlebar_icon = os.path.join(ruta.IMAGENES_DIR, "cartas_icon.png")
+    ruta_icon = os.path.join(ruta.IMAGENES_DIR, "cartas_icon.ico")
+    return sg.Window("FiguRace - Edición de Perfil", layout, size=cg.TAM_VENTANA, finalize=True,
                      use_custom_titlebar=True, titlebar_icon=ruta_titlebar_icon, icon=ruta_icon)
 
 
-# def analisis_event_cuentas(window, event, values, conf):
-#     """
-#     Verifica los eventos y ejecuta los cambios correspondientes
-#     :param
-#         window, event y values: variables para controlar y acceder a los componentes de la pantalla.
-#     :return: variable perf si no se cierra la pantalla, lo contrario una lista con los nombres de los perfiles.
-#     """
-
-
 def crear_perfil(window):
+    """
+    Abre la interfaz para crear nuevo perfil y oculta las demás interfaces.
+    :param window: variable con los elementos de la pantalla.
+    """
     window["-NUEVO_USUARIO-"].update(visible=True)
     window["-BTN_PRIN-"].update(visible=False)
     window["-MOSTRAR_DATOS-"].update(visible=False)
@@ -193,6 +177,10 @@ def crear_perfil(window):
 
 
 def cancelar_crear(window):
+    """
+    Cierra la interfaz para crear nuevo perfil y muestra la interfaz principal de la pantalla.
+    :param window: variable con los elementos de la pantalla.
+    """
     window["-NUEVO_NOMBRE-"].update(value="")
     window["-NUEVO_EDAD-"].update(value="")
     window["-NUEVO_GENERO-"].update(value="")
@@ -203,6 +191,12 @@ def cancelar_crear(window):
 
 
 def aceptar_crear(window, values, conf):
+    """
+    Valida el nuevo perfil, lo carga y vuelve a la interfaz principal si está bien, sino muestra un mensaje.
+    :param
+     window y values: variables para controlar y acceder a los componentes de la pantalla.
+     conf: diccionario con los perfiles y numero de perfil usado.
+    """
     if comprobar_y_cargar(window, values, 2, conf):
         window["-NUEVO_NOMBRE-"].update(value="")
         window["-NUEVO_EDAD-"].update(value="")
@@ -216,6 +210,12 @@ def aceptar_crear(window, values, conf):
 
 
 def seleccionar_perfil(window, values, conf):
+    """
+    Busca el perfil seleccionado y muestra sus datos.
+    :param
+     window y values: variables para controlar y acceder a los componentes de la pantalla.
+     conf: diccionario con los perfiles y numero de perfil usado.
+    """
     if len(values["-PERFILES-"]) == 1:
         conf["act"] = 0
         while conf["act"] != len(conf["perfiles"]) and \
@@ -236,6 +236,12 @@ def seleccionar_perfil(window, values, conf):
 
 
 def editar_perfil(window, conf):
+    """
+    Muestra la interfaz para editar el perfil seleccionado.
+    :param
+     window : variables para controlar los componentes de la pantalla.
+     conf: diccionario con los perfiles y numero de perfil usado.
+    """
     window["-MOSTRAR_DATOS-"].update(visible=False)
     window["-BTN_APLICAR_EDICION-"].update(visible=True)
     window["-BTN_PRIN-"].update(visible=False)
@@ -252,6 +258,11 @@ def editar_perfil(window, conf):
 
 
 def cancelar_edicion(window):
+    """
+    Cierra la interfaz para editar el perfil seleccionado y vuelve a la interfaz de los datos.
+    :param
+     window : variables para controlar los componentes de la pantalla.
+    """
     window["-MOSTRAR_DATOS-"].update(visible=True)
     window["-BTN_APLICAR_EDICION-"].update(visible=False)
     window["-BTN_PRIN-"].update(visible=True)
@@ -264,6 +275,12 @@ def cancelar_edicion(window):
 
 
 def aplicar_edicion(window, values, conf):
+    """
+    Verifica los datos ingresados y actualiza el perfil seleccionado.
+    :param
+     window y values: variables para controlar y acceder a los componentes de la pantalla.
+     conf: diccionario con los perfiles y numero de perfil usado.
+    """
     if comprobar_y_cargar(window, values, 1, conf):
         window["-MOSTRAR_DATOS-"].update(visible=True)
         window["-BTN_APLICAR_EDICION-"].update(visible=False)
@@ -281,6 +298,12 @@ def aplicar_edicion(window, values, conf):
 
 
 def eliminar_perfil(window, conf):
+    """
+    Cierra la interfaz para editar el perfil seleccionado y vuelve a la interfaz de los datos.
+    :param
+     window : variables para controlar los componentes de la pantalla.
+     conf: diccionario con los perfiles y numero de perfil usado.
+    """
     window["-BTN_APLICAR_EDICION-"].update(visible=True)
     window["-BTN_EDITAR_CANCELAR-"].update(visible=True)
     window["-BTN_EDITAR-"].update(visible=False)
