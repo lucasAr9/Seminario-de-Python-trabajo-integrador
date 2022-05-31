@@ -28,7 +28,7 @@ def _layout_usuario_dificultad(usuarios):
     # layout
     layout = [
         [sg.Combo(usuarios, key='-USUARIOS-', default_value="Seleccione su usuario", enable_events=True,
-                  readonly=True, size=cg.TAM_COMBO, font=cg.FUENTE_COMBO)],
+                  readonly=True, size=cg.TAM_COMBO, font=cg.FUENTE_COMBO, pad=((0, 0), (100, 0)))],
         [sg.Combo(['Facil', 'Normal', 'Dificil', 'Personalizado'], key='-DIFICULTAD-',
                   default_value='Seleccione la dificultad', enable_events=True, readonly=True, size=cg.TAM_COMBO,
                   font=cg.FUENTE_COMBO)],
