@@ -1,7 +1,8 @@
 # Menú de inicio del juego
 import PySimpleGUI as sg
+import rutas
+import os
 from src.pantallas import caracteristicas_generales as cg
-from src.pantallas import rutas
 
 
 def _layout_op_principales():
@@ -24,7 +25,7 @@ def _layout_usuario_dificultad(usuarios):
     :return: el layout que contendra la selccion de usuario y dificultad
     """
     # ruta para la imagen
-    ruta_imagen = rutas.ruta_imagen('logo')
+    ruta_imagen = os.path.join(rutas.IMAGENES_DIR, 'imagen_menu_principal.png')
     # layout
     layout = [
         [sg.Combo(usuarios, key='-USUARIOS-', default_value="Seleccione su usuario", enable_events=True,
@@ -48,9 +49,9 @@ def crear_menu(usuarios=("",)):
     """
     sg.theme(cg.TEMA)
     # rutas para las imagenes
-    ruta_icon_png = rutas.ruta_imagen('icono_png')
-    ruta_icon_ico = rutas.ruta_imagen('icono_ico')
-    ruta_image_titulo = rutas.ruta_imagen('titulo')
+    ruta_icon_png = os.path.join(rutas.IMAGENES_DIR, 'cartas_icon.png')
+    ruta_icon_ico = os.path.join(rutas.IMAGENES_DIR, 'cartas_icon.ico')
+    ruta_image_titulo = os.path.join(rutas.IMAGENES_DIR, 'titulo_figurace.png')
     # layouts
     l_principal = _layout_op_principales()
     l_user_dif = _layout_usuario_dificultad(usuarios)

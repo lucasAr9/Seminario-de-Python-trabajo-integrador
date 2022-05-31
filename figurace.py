@@ -116,7 +116,7 @@ def main():
     conf_cuentas = {"perfiles": cuentas.cargar_perfiles(), "act": 0}
     perfiles = list(map(lambda datos: datos['nombre'], conf_cuentas['perfiles']))
     window = crear_menu(perfiles)
-    if len(perfiles) == 0:
+    if not perfiles:
         sg.Popup('Aun no hay ningún usuario existente. Por favor, cree el suyo en "PERFIL" ', no_titlebar=True,
                  font=cg.FUENTE_POPUP, keep_on_top=True)
     while True:
