@@ -154,7 +154,7 @@ def main():
             window.un_hide()
         elif event == '-PERFIL-':
             window.hide()
-            abrir_perfiles(conf_cuentas)
+            perfiles = abrir_perfiles(conf_cuentas)
             window.un_hide()
             window['-USUARIOS-'].update('Seleccione su usuario', values=perfiles)
             usuario_elegido = ''

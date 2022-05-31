@@ -21,10 +21,10 @@
         "-CARACTERISTICAS_C-": 1
     },
     "-PERSONALIZADO-": {
-        "-TIEMPO_C-": 30,
+        "-TIEMPO_C-": 20,
         "-RONDAS_C-": 4,
         "-CORRECTO_C-": 1,
-        "-INCORRECTO_C-": 16,
-        "-CARACTERISTICAS_C-": 1
+        "-INCORRECTO_C-": 18,
+        "-CARACTERISTICAS_C-": 5
     }
 }
