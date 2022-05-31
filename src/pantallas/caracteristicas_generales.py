@@ -14,6 +14,7 @@ FUENTE_TITULO = 'Verdana 48'
 FUENTE_INDICADOR = 'Verdana 28'
 FUENTE_BOTONES = 'Verdana 26'
 FUENTE_COMBO = 'Verdana 18'
+FUENTE_OPCIONES = 'Verdana 12'
 FUENTE_POPUP = 'Verdana 10'
 
 CANT_RESPUESTAS = 5
@@ -31,7 +32,7 @@ sg.LOOK_AND_FEEL_TABLE['figurace_tema'] = {'BACKGROUND': '#3A1F5D',
 TEMA = 'figurace_tema'
 
 # datasets
-datasets = ['fifa', 'peliculas', 'spotify', 'volcanes']
+datasets = ['volcanes', 'peliculas', 'spotify', 'fifa']
 
 
 # ventana para chequear salidas

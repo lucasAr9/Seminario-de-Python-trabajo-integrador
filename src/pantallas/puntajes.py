@@ -4,14 +4,13 @@ from src.pantallas import rutas
 import csv
 
 
-niveles = ['Fácil', 'Medio', 'Difícil', 'Experto']  # definir cómo recibe el dato
+niveles = ['Fácil', 'Medio', 'Difícil', 'Personalizado']  # definir cómo recibe el dato
 
 
 def procesar_dificultad(puntajes_ordenados, nivel):
     nivel = [linea[2:4] for linea in puntajes_ordenados if linea[1] == niveles[nivel]]
     list(map(lambda x, y: x.insert(0, y), nivel, list(range(1, 21))))
     nivel = nivel[:20]
-    print(nivel)
     return nivel
 
 
@@ -26,11 +25,8 @@ def procesar_archivo():
         nivel_facil, nivel_medio, nivel_dificil, nivel_experto = [], [], [], []
     else:
         puntajes_ordenados = sorted(contenido, key=lambda x: int(x[3]), reverse=True)
-        nivel_facil = procesar_dificultad(puntajes_ordenados, 0)
-        nivel_medio = procesar_dificultad(puntajes_ordenados, 1)
-        nivel_dificil = procesar_dificultad(puntajes_ordenados, 2)
-        nivel_experto = procesar_dificultad(puntajes_ordenados, 3)
-
+        nivel_facil, nivel_medio, nivel_dificil, nivel_experto = [procesar_dificultad(puntajes_ordenados, i)
+                                                                  for i in range(4)]
     return nivel_facil, nivel_medio, nivel_dificil, nivel_experto
 
 
@@ -42,22 +38,26 @@ def layouts_pestanias(num, mejores_puntajes):
             layout = [[sg.Table(values=mejores_puntajes, headings=titulos,
                                 max_col_width=25, auto_size_columns=True,
                                 justification='center', key='-JUEGO_TABLA-',
-                                row_height=25, expand_x=True, expand_y=True)]]
+                                row_height=25, expand_x=True, expand_y=True,
+                                font=cgen.FUENTE_OPCIONES)]]
         case 1:
             layout = [[sg.Table(values=mejores_puntajes, headings=titulos,
                                 max_col_width=25, auto_size_columns=True,
                                 justification='center', key='-JUEGO_TABLA-',
-                                row_height=25, expand_x=True, expand_y=True)]]
+                                row_height=25, expand_x=True, expand_y=True,
+                                font=cgen.FUENTE_OPCIONES)]]
         case 2:
             layout = [[sg.Table(values=mejores_puntajes, headings=titulos,
                                 max_col_width=25, auto_size_columns=True,
                                 justification='center', key='-JUEGO_TABLA-',
-                                row_height=25, expand_x=True, expand_y=True)]]
+                                row_height=25, expand_x=True, expand_y=True,
+                                font=cgen.FUENTE_OPCIONES)]]
         case 3:
             layout = [[sg.Table(values=mejores_puntajes, headings=titulos,
                                 max_col_width=25, auto_size_columns=True,
                                 justification='center', key='-JUEGO_TABLA-',
-                                row_height=25, expand_x=True, expand_y=True)]]
+                                row_height=25, expand_x=True, expand_y=True,
+                                font=cgen.FUENTE_OPCIONES)]]
         case _:
             layout = [[]]
     return layout
@@ -68,7 +68,7 @@ def armar_layout():
     tab_group = sg.TabGroup([[sg.Tab(niveles[i],
                                      layouts_pestanias(i, mejores_por_nivel[i]),
                                      key=f'-PANTALLA_TAB{str(i)}-')] for i in range(4)],
-                            expand_y=True, expand_x=True, pad=30, enable_events=True)
+                            expand_y=True, expand_x=True, pad=30, font=cgen.FUENTE_COMBO)
 
     layout = [[sg.Push(), sg.Image(rutas.ruta_imagen('puntaje'), pad=10), sg.Push(),
                sg.Column([[sg.Text('Puntajes', font=cgen.FUENTE_TITULO, justification='c', expand_x=True)],
@@ -78,7 +78,7 @@ def armar_layout():
               [sg.HSep()],
               [tab_group],
               [sg.VPush()],
-              [sg.Button('Volver', key='-VOLVER_AL_MENU-',
+              [sg.Button('Volver', key='-VOLVER_AL_MENU-', font=cgen.FUENTE_COMBO,
                          tooltip='Volver al menú principal', pad=5), sg.Push(), sg.Sizegrip()]
               ]
 
