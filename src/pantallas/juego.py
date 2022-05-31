@@ -1,9 +1,9 @@
 import PySimpleGUI as sg
 import random
 from src.pantallas import caracteristicas_generales as cgen
-from src.juego import dificultad as dificultad
+from src.funcionalidad import dificultad as dificultad
 from src.pantallas import rutas
-from src.juego import tarjeta
+from src.funcionalidad import tarjeta
 
 
 def armar_layout(datos, dificultad_elegida, usuario_elegido):

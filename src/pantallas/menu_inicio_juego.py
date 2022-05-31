@@ -1,4 +1,4 @@
-# Menú de inicio del juego
+# Menú de inicio del funcionalidad
 import PySimpleGUI as sg
 import rutas
 import os

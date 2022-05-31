@@ -15,12 +15,12 @@ RUTA_JSON = os.path.join(CONFIG_DIR, "configuracion.json")
 
 
 class Dificultad:
-    """Caracteristicas que permite la configuracion del juego segun su dificultad."""
+    """Caracteristicas que permite la configuracion del funcionalidad segun su dificultad."""
 
     def __init__(self, dificultad_actual):
         """
         Llama a la funcion que lee los datos de configuracion.json
-        y lo settea a las variables de la clase para poder usarse en la pantalla de juego.
+        y lo settea a las variables de la clase para poder usarse en la pantalla de funcionalidad.
         :param dificultad_actual: la clave de la dificultad a settear.
         """
         self.__tiempo_u = None

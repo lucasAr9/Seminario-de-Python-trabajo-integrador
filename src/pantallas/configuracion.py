@@ -2,7 +2,7 @@ import os
 import PySimpleGUI as sg
 
 from src.pantallas import caracteristicas_generales as cg
-from src.juego import dificultad as dificultad
+from src.funcionalidad import dificultad as dificultad
 from rutas import IMAGENES_DIR
 
 """Ruta de las imagenes de la ventana de configuracion"""
@@ -11,10 +11,6 @@ ruta_icon = os.path.join(IMAGENES_DIR, "cartas_icon.ico")
 
 """tema de las ventanas"""
 sg.theme(cg.TEMA)
-
-"""Crear el objeto Dificultad para poder acceder a sus atributos."""
-# config = dificultad.Dificultad('-FACIL-')
-# aca va una variable con la dificultad seleccionada, TAMBIEN VA EN EL MAIN, y hay que cambiarlo en la pantalla juego.
 
 
 def layout_configuracion():
@@ -40,7 +36,7 @@ def layout_configuracion():
 
 def crear_ventana():
     """
-    Menu de opciones para la configuracion de las caracteristicas del juego.
+    Menu de opciones para la configuracion de las caracteristicas del funcionalidad.
     :return: la ventana de configuracion con los niveles de dificultad que se pueden elegir.
     """
     layout = layout_configuracion()
@@ -86,7 +82,7 @@ def layout_nivel(nivel):
          sg.Push()],
 
         [sg.Push(),
-         sg.Text('Rondas por juego: ' + str(datos[nivel]['-RONDAS_C-']), key='-RONDAS_T-',
+         sg.Text('Rondas por funcionalidad: ' + str(datos[nivel]['-RONDAS_C-']), key='-RONDAS_T-',
                  expand_x=True, font=cg.FUENTE_BOTONES, justification='center'),
          sg.Push()],
 
@@ -147,7 +143,7 @@ def layout_personalizado(nivel):
          sg.Push()],
 
         [sg.Push(),
-         sg.Text('Rondas por juego', key='-RONDAS_T-',
+         sg.Text('Rondas por funcionalidad', key='-RONDAS_T-',
                  expand_x=True, font='Arial 20', justification='center'),
          sg.Push()],
         [sg.Push(),

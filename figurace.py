@@ -2,7 +2,7 @@ import PySimpleGUI as sg
 import time
 
 from src.pantallas import caracteristicas_generales as cg
-from src.juego import dificultad as dificultad
+from src.funcionalidad import dificultad as dificultad
 from src.pantallas.menu_inicio_juego import crear_menu
 from src.pantallas import configuracion as c_pantalla
 from src.pantallas import cuentas as cuentas
@@ -133,7 +133,7 @@ def main():
                                      "Esta dificultad es personalizable, \n"
                                      "puede ingresar en Configuracion \n"
                                      "para editarla.",
-                                     display_duration_in_ms=1000, location=(800, 800), icon="")
+                                     display_duration_in_ms=300, icon="", alpha=1)
         elif event == '-JUGAR-':
             if usuario_elegido and dificultad_elegida:
                 window.hide()
@@ -143,7 +143,7 @@ def main():
                 sg.SystemTray.notify("Creación de usuario",
                                      "Por favor seleccione una dificultad \n"
                                      "y usuario, antes de comenzar a jugar.",
-                                     display_duration_in_ms=1000, location=(800, 800), icon="")
+                                     display_duration_in_ms=300, icon="", alpha=1)
         elif event == '-CONFIGURACION-':
             window.hide()
             abrir_configuracion()

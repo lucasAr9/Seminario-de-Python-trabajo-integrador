@@ -1,7 +1,7 @@
 import PySimpleGUI as sg
 
 from src.pantallas import configuracion as c_pantalla
-from src.juego import dificultad as dificultad
+from src.funcionalidad import dificultad as dificultad
 
 
 def nivel(window_dificultad, elegido):
