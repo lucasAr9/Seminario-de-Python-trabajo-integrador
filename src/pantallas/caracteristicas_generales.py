@@ -36,8 +36,9 @@ datasets = ['volcanes', 'peliculas', 'spotify', 'fifa']
 
 
 # ventana para chequear salidas
-def ventana_chequear_accion(mensaje='Segurx que querés salir?'):
+def ventana_chequear_accion(ventana_actual, mensaje='Segurx que querés salir?'):
     """"""
+    ventana_actual.hide()
     fondo = 'Black'
     layout = [[sg.T(mensaje, background_color=fondo, text_color='White')],
               [sg.Push(background_color=fondo),
@@ -48,4 +49,5 @@ def ventana_chequear_accion(mensaje='Segurx que querés salir?'):
                        background_color=fondo, keep_on_top=True,)
     event, values = window.read()
     window.close()
+    ventana_actual.un_hide()
     return event

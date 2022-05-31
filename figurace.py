@@ -1,12 +1,13 @@
 import PySimpleGUI as sg
-import src.pantallas.caracteristicas_generales as cg
+import time
+
+from src.pantallas import caracteristicas_generales as cg
 from src.juego import dificultad as dificultad
 from src.pantallas.menu_inicio_juego import crear_menu
 from src.pantallas import configuracion as c_pantalla
-import src.pantallas.cuentas as cuentas
+from src.pantallas import cuentas as cuentas
 from src.pantallas import puntajes
 from src.pantallas import juego
-import time
 
 
 def nivel(window_dificultad, elegido):
@@ -95,8 +96,8 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
     while True:
         event, values = window.read(timeout=100)
         if ((event == '-JUEGO_ABANDONAR-') and
-                (cg.ventana_chequear_accion('Se darán por perdidas la ronda actual\ny las rondas restantes!\n\n'
-                                            'Segurx que querés volver al menú?') == 'Sí')):
+                (cg.ventana_chequear_accion(window, 'Se darán por perdidas la ronda actual\ny las rondas restantes!\n\n'
+                                                    'Segurx que querés volver al menú?') == 'Sí')):
             break
         delta_tiempo = time.time() - tiempo_comienzo
         tiempo_transcurrido = int(5 - delta_tiempo)
@@ -121,23 +122,28 @@ def main():
     while True:
         event, values = window.read()
         if (event in (sg.WINDOW_CLOSE_ATTEMPTED_EVENT, '-SALIR-') and
-                (cg.ventana_chequear_accion() == 'Sí')):
+                (cg.ventana_chequear_accion(window) == 'Sí')):
             break
         elif event == '-USUARIOS-':
             usuario_elegido = window['-USUARIOS-'].Get()
         elif event == '-DIFICULTAD-':
             dificultad_elegida = window['-DIFICULTAD-'].Get()
             if dificultad_elegida == 'Personalizado':
-                sg.Popup('Esta dificultad es personalizable, puede ingresar en Configuracion para editarla.',
-                         no_titlebar=True, font=cg.FUENTE_POPUP)
+                sg.SystemTray.notify("Edición posible",
+                                     "Esta dificultad es personalizable, \n"
+                                     "puede ingresar en Configuracion \n"
+                                     "para editarla.",
+                                     display_duration_in_ms=1000, location=(800, 800), icon="")
         elif event == '-JUGAR-':
             if usuario_elegido and dificultad_elegida:
                 window.hide()
                 abrir_juego(dificultad_elegida, usuario_elegido)
                 window.un_hide()
             else:
-                sg.Popup('Por favor seleccione una dificultad y usuario, antes de comenzar a jugar.', no_titlebar=True,
-                         font=cg.FUENTE_POPUP)
+                sg.SystemTray.notify("Creación de usuario",
+                                     "Por favor seleccione una dificultad \n"
+                                     "y usuario, antes de comenzar a jugar.",
+                                     display_duration_in_ms=1000, location=(800, 800), icon="")
         elif event == '-CONFIGURACION-':
             window.hide()
             abrir_configuracion()
