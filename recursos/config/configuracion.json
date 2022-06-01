@@ -22,9 +22,9 @@
     },
     "-PERSONALIZADO-": {
         "-TIEMPO_C-": 20,
-        "-RONDAS_C-": 4,
-        "-CORRECTO_C-": 1,
+        "-RONDAS_C-": 6,
+        "-CORRECTO_C-": 3,
         "-INCORRECTO_C-": 18,
-        "-CARACTERISTICAS_C-": 5
+        "-CARACTERISTICAS_C-": 3
     }
 }

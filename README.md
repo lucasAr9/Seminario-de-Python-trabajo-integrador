@@ -37,15 +37,20 @@ Botón Juego: antes de elegir esta opción tenés que seleccionar tu usuario y n
 en la parte derecha del menú de inicio. Este botón te permite comenzar a jugar FiguRace.<br>
 ![juego](https://user-images.githubusercontent.com/101846040/171333207-73ebda4c-d10d-430a-a8f8-d62fc82a714b.png)
 
-Para conocer con más detalle la obtención de los dataset, podés consultar
-las guías en los cuadernos de Jupyter Notebook que se encuentran en
--> "grupo10" -> "recursos" -> "datos" -> "notebook"
+### __Datasets__
+El juego utiliza como origen de datos para las tarjetas archivos _.csv_. La versión final
+de los archivos se obtuvo luego de realizar cambios a archivos descargados de la web.
 
-### __Sitios de obtención de los dataset originales__
-- Spotify: https://www.kaggle.com/datasets/muhmores/spotify-top-100-songs-of-20152019
-- Fifa: https://www.kaggle.com/datasets/aayushmishra1512/fifa-2021-complete-player-data?resource=download
-- Películas: https://www.kaggle.com/datasets/disham993/9000-movies-dataset
-- Volcanes: https://public.opendatasoft.com/explore/dataset/significant-volcanic-eruption-database/table/
+#### __Sitios de obtención de los dataset originales__
+- [Spotify](https://www.kaggle.com/datasets/muhmores/spotify-top-100-songs-of-20152019)
+- [Fifa](https://www.kaggle.com/datasets/aayushmishra1512/fifa-2021-complete-player-data?resource=download)
+- [Películas](https://www.kaggle.com/datasets/disham993/9000-movies-dataset)
+- [Volcanes](https://public.opendatasoft.com/explore/dataset/significant-volcanic-eruption-database/table/)
+
+Para conocer con más detalle el procesamiento de los dataset, podés consultar
+las guías en los cuadernos de Jupyter Notebook que se encuentran en
+-> "grupo10" -> "recursos" -> "datos" -> "notebook". Cada uno fue realizada por
+un integrante del grupo
 
 ### __Imágenes del juego__
 
@@ -61,11 +66,16 @@ las guías en los cuadernos de Jupyter Notebook que se encuentran en
 - Con la cita de autoría requerida <a href="http://www.freepik.com">Designed by gstudioimagen / Freepik</a>
     - [puntajes.py](https://www.freepik.es/vector-gratis/cinta-premio_5254203.htm)
 
-### __Librerias usadas__
-Disponibles para su instalación en el archivo requirements.txt
+### __Librerías usadas__
 
 * Jupyter notebook
 * PySimpleGUI
+
+Es necesario instalarlas para poder correr todos los aspectos del juego.
+Están disponibles para su instalación en el archivo requirements.txt.
+Para hacerlo ingrese a la terminal y utilice la instalación mediante pip
+con el comando <br>
+`pip install -r requirements.txt`
 
 ---
 
@@ -73,12 +83,12 @@ Disponibles para su instalación en el archivo requirements.txt
 
 ### **Integrantes:**
 
-Antonella Denisse Cuenca
+Antonella Denisse Cuenca. Legajo 19452/4
 
-Lucas Manuel Arrigoni
+Lucas Manuel Arrigoni. Legajo 19352/0
 
-Verónica Cecilia Cao
+Verónica Cecilia Cao. Legajo 20219/2
 
-Tomás Ezequiel Campanella
+Tomás Ezequiel Campanella. Legajo 19415/8
 
 </div>
