@@ -61,9 +61,10 @@ def abrir_puntajes():
     return
 
 
-def abrir_perfiles(conf_cuentas):
+def abrir_perfiles():
     """Crear la ventana de perfiles y responder a los eventos en la misma."""
-    window = cuentas.crear_cuentas({"tam_ventana": cg.TAM_VENTANA, "font_botones": "Verdana 25"})
+    conf_cuentas = {"perfiles": cuentas.cargar_perfiles(), "act": 0}
+    window = cuentas.crear_cuentas(conf_cuentas)
     while True:
         event, values = window.read()
         if event in (sg.WIN_CLOSED, '-VOLVER_PERFILES-'):
@@ -114,8 +115,7 @@ def main():
     usuario_elegido = False
     dificultad_elegida = False
     niveles = ['Fácil', 'Medio', 'Difícil', 'Experto']
-    conf_cuentas = {"perfiles": cuentas.cargar_perfiles(), "act": 0}
-    perfiles = list(map(lambda datos: datos['nombre'], conf_cuentas['perfiles']))
+    perfiles = cuentas.nombre_perfiles()
     window = crear_menu(perfiles)
     if not perfiles:
         sg.Popup('Aun no hay ningún usuario existente. Por favor, cree el suyo en "PERFIL" ', no_titlebar=True,
@@ -155,7 +155,7 @@ def main():
             window.un_hide()
         elif event == '-PERFIL-':
             window.hide()
-            perfiles = abrir_perfiles(conf_cuentas)
+            perfiles = abrir_perfiles()
             window.un_hide()
             window['-USUARIOS-'].update('Seleccione su usuario', values=perfiles)
             usuario_elegido = ''

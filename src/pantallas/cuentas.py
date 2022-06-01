@@ -51,7 +51,7 @@ def comprobar_y_cargar(window, values, op, conf):
     :return: False si la informacion no es correcta, True de lo contrario.
     """
     if op == 1:
-        if values["-INPUT_EDAD-"] == "" or values["-INPUT_GENERO-"] == "":
+        if not values["-INPUT_EDAD-"] or not values["-INPUT_GENERO-"]:
             window["-MSJ_EDITAR-"].update(value="*Ingrese todos los datos.")
             return False
         elif list(filter(lambda x: x > "9" or x < "0", values["-INPUT_EDAD-"])):
@@ -64,7 +64,7 @@ def comprobar_y_cargar(window, values, op, conf):
             return True
 
     elif op == 2:
-        if values["-NUEVO_NOMBRE-"] == "" or values["-NUEVO_EDAD-"] == "" or values["-NUEVO_GENERO-"] == "":
+        if not values["-NUEVO_NOMBRE-"]or not values["-NUEVO_EDAD-"] or not values["-NUEVO_GENERO-"]:
             window["-MSJ_CREAR-"].update(value="*Ingrese todos los datos.")
             return False
         elif [x for x in conf["perfiles"] if x["nombre"] == values["-NUEVO_NOMBRE-"]]:
@@ -174,6 +174,7 @@ def crear_perfil(window):
     window["-BTN_PRIN-"].update(visible=False)
     window["-MOSTRAR_DATOS-"].update(visible=False)
     window["-BTNS_EDITAR-"].update(visible=False)
+    window["-MSJ_CREAR-"].update(visible=False)
 
 
 def cancelar_crear(window):
@@ -216,7 +217,7 @@ def seleccionar_perfil(window, values, conf):
      window y values: variables para controlar y acceder a los componentes de la pantalla.
      conf: diccionario con los perfiles y numero de perfil usado.
     """
-    if len(values["-PERFILES-"]) == 1:
+    if values["-PERFILES-"]:
         conf["act"] = 0
         while conf["act"] != len(conf["perfiles"]) and \
                 conf["perfiles"][conf["act"]]["nombre"] != values["-PERFILES-"][0]:
