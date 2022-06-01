@@ -1,8 +1,9 @@
 import PySimpleGUI as sg
 import random
+import os
+import rutas
 from src.pantallas import caracteristicas_generales as cgen
 from src.funcionalidad import dificultad as dificultad
-from src.pantallas import rutas
 from src.funcionalidad import tarjeta
 
 
@@ -18,7 +19,7 @@ def armar_layout(datos, dificultad_elegida, usuario_elegido):
                              expand_x=True)],
                    [sg.Frame('Tema',
                              [[sg.Text(dataset_elegido.title(), font=cgen.FUENTE_OPCIONES),
-                               sg.Image(rutas.ruta_imagen(dataset_elegido))]])],
+                               sg.Image(os.path.join(rutas.IMAGENES_DIR, f'{dataset_elegido}.png'))]])],
                    [sg.VPush()],
                    [sg.Button('Abandonar',
                               key='-JUEGO_ABANDONAR-',
@@ -56,7 +57,7 @@ def armar_layout(datos, dificultad_elegida, usuario_elegido):
                              row_height=25, font=cgen.FUENTE_OPCIONES, expand_x=True)]
                    ]
 
-    layout = [[sg.Image(rutas.ruta_imagen('titulo'), expand_x=True)],
+    layout = [[sg.Image(os.path.join(rutas.IMAGENES_DIR, 'titulo_figurace.png'), expand_x=True)],
               [sg.HSep(pad=10)],
               # [sg.Button('Comenzar', key='-JUEGO_COMENZAR-')],
               [sg.Push(),

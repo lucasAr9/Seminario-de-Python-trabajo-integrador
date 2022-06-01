@@ -5,7 +5,7 @@ def ruta_imagen(nombre):
     ruta_extra = os.path.join('recursos', 'imagenes') # para que funcionen las imagenes desde puntajes.py
     match nombre:
         case 'volcanes':
-            ruta_imagen = os.path.join(os.getcwd(), ruta_extra, 'volcan.png')
+            ruta_imagen = os.path.join(os.getcwd(), ruta_extra, 'volcanes.png')
         case 'fifa':
             ruta_imagen = os.path.join(os.getcwd(), ruta_extra, 'fifa.png')
         case 'spotify':
