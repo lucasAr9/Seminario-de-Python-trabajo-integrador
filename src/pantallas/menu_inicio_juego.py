@@ -11,7 +11,7 @@ def _layout_op_principales():
     """
     layout = [
         [sg.Text(size=(None, 2), )],
-        [sg.Text("Menu", justification='center', expand_x=True, font=cg.FUENTE_INDICADOR, size=(14, None), )],
+        [sg.Text("Menú", justification='center', expand_x=True, font=cg.FUENTE_INDICADOR, size=(14, None), )],
         [sg.Button("Jugar", key='-JUGAR-', expand_x=True, font=cg.FUENTE_BOTONES)],
         [sg.Button("Configuración", key='-CONFIGURACION-', expand_x=True, font=cg.FUENTE_BOTONES)],
         [sg.Button("Puntajes", key='-PUNTAJES-', expand_x=True, font=cg.FUENTE_BOTONES)],
@@ -61,7 +61,7 @@ def crear_menu(usuarios=("",)):
                                                                                      expand_y=True,
                                                                                      element_justification='center'),
          sg.Push()],
-        [sg.Push(), sg.Button("Salir", key='-SALIR-', font=cg.FUENTE_BOTONES), sg.Push()]
+        [sg.Push(), sg.Button("Salir", key='-SALIR-', font=cg.FUENTE_COMBO), sg.Push()]
     ]
     window = sg.Window("Figurace", layout, size=cg.TAM_VENTANA, finalize=True, use_custom_titlebar=True,
                        titlebar_icon=ruta_icon_png, icon=ruta_icon_ico, enable_close_attempted_event=True)

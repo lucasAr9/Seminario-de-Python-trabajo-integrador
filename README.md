@@ -1,28 +1,53 @@
 <div align="center">
 
-# FiguRace
+![titulo_figurace](https://user-images.githubusercontent.com/101846040/171325942-61b0ac49-d56b-430f-888f-3953b80418f5.png)
 
 </div>
 
 ___
 
-## Hola gente de FiguRace!
+## Hola usuario de FiguRace!
 FiguRace es un juego para probar tu conocimiento.
 Consta de cuatro temáticas: Música, Volcanes, Fútbol y películas.
 Podrás elegir el nivel de dificultad o personalizarlo como vos quieras.
-Se te darán cinco opciones de las cuales una es la correcta, tendrás que
-guiarte mediante las pistas que se te darán para poder acertar.
+El objetivo es adivinar el dato que se te pide en la tarjeta entre las cinco opciones
+que se muestran, tendrás que guiarte con el resto de las características en la tarjeta
+para poder acertar.
 
-### Consideraciones de uso
+### __Consideraciones de uso__
+Para correr el juego, ejecutá el archivo figurace.py desde tu editor o IDE
+favorito y se abrirá la ventana del menú proncipal.
+Desde allí podrás ingresar a todas las opciones del juego a través de los botones.<br>
+![menu_inicio](https://user-images.githubusercontent.com/101846040/171327746-710ceb02-8970-4894-a169-0f40f4431d28.png)
 
-Para correr el juego, ejecute el archivo figurace.py desde tu editor o IDE
-favorito y te aparecera la ventana de menu proncipal del juego.
+Botón Perfiles: te lleva a la pantalla _Editar Perfil_ en la que podés crear un perfil nuevo
+o seleccionar alguno ya creado para modificar los datos o eliminarlo.<br>
+![perfiles](https://user-images.githubusercontent.com/101846040/171329671-965bb9bb-342f-407f-83c1-800e9fd6ae42.png)
 
-Para conocer con mas detalle la obtencion de los dataset, puede consultar
-las guias en los cuadernos de jupyter notebook que se encuentran en
--> "recursos" -> "datos" -> "notebook"
+Botón Configuración: accedés a la pantalla _Configuración_ en la que podés ver las características
+de los niveles de dificultad fijos del juego o elegir la opción Personalizado para ajustar las condiciones
+del juego a tus preferencias.<br>
+![configuracion](https://user-images.githubusercontent.com/101846040/171333202-4761c812-4b41-4fba-a58b-5852a2786887.png)
 
-### Imagenes del juego
+Botón Puntajes: ingresás a la pantalla _Puntajes_ en la que podés visualizar los
+mejores puntajes de cada nivel de dificultad.<br>
+![puntajes](https://user-images.githubusercontent.com/101846040/171333219-4fe91b1f-9e3a-4ec4-96ed-8ddec2c0e618.png)
+
+Botón Juego: antes de elegir esta opción tenés que seleccionar tu usuario y nivel deseados
+en la parte derecha del menú de inicio. Este botón te permite comenzar a jugar FiguRace.<br>
+![juego](https://user-images.githubusercontent.com/101846040/171333207-73ebda4c-d10d-430a-a8f8-d62fc82a714b.png)
+
+Para conocer con más detalle la obtención de los dataset, podés consultar
+las guías en los cuadernos de Jupyter Notebook que se encuentran en
+-> "grupo10" -> "recursos" -> "datos" -> "notebook"
+
+### __Sitios de obtención de los dataset originales__
+- Spotify: https://www.kaggle.com/datasets/muhmores/spotify-top-100-songs-of-20152019
+- Fifa: https://www.kaggle.com/datasets/aayushmishra1512/fifa-2021-complete-player-data?resource=download
+- Películas: https://www.kaggle.com/datasets/disham993/9000-movies-dataset
+- Volcanes: https://public.opendatasoft.com/explore/dataset/significant-volcanic-eruption-database/table/
+
+### __Imágenes del juego__
 
 - Diseñado con [Canva](https://www.canva.com/):
     - [volcan.png](https://www.canva.com/design/DAFCTsJQX6E/MsfOvsjl2Sl-wdH-sbzmtA/view?utm_content=DAFCTsJQX6E&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
@@ -33,8 +58,11 @@ las guias en los cuadernos de jupyter notebook que se encuentran en
     - [titulo_figurace.png](https://www.canva.com/design/DAFCR75-3pE/x6S_mGUGkOukIWoBxiAVwQ/watch?utm_content=DAFCR75-3pE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 - Bajo la [licencia](https://www.freepikcompany.com/legal#nav-flaticon) de libre uso de [Flaticon](https://www.flaticon.es/)
     - [cartas_icon](https://www.flaticon.es/icono-gratis/juego-de-cartas_4072061?term=cartas&page=1&position=16&page=1&position=16&related_id=4072061&origin=search)
+- Con la cita de autoría requerida <a href="http://www.freepik.com">Designed by gstudioimagen / Freepik</a>
+    - [puntajes.py](https://www.freepik.es/vector-gratis/cinta-premio_5254203.htm)
 
-### Librerias usadas en el requirements.txt
+### __Librerias usadas__
+Disponibles para su instalación en el archivo requirements.txt
 
 * Jupyter notebook
 * PySimpleGUI
@@ -45,12 +73,12 @@ las guias en los cuadernos de jupyter notebook que se encuentran en
 
 ### **Integrantes:**
 
-Antonella Denisse, Cuenca
+Antonella Denisse Cuenca
 
-Lucas Manuel, Arrigoni
+Lucas Manuel Arrigoni
 
-Verónica Cecilia, Cao
+Verónica Cecilia Cao
 
-Tomás Ezequiel, Campanella
+Tomás Ezequiel Campanella
 
 </div>

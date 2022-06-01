@@ -157,7 +157,7 @@ def crear_cuentas(conf):
             [sg.VPush()],
             [sg.Push(), sg.Push(), sg.pin(sg.Col(editar, key="-BTNS_EDITAR-", visible=False)), sg.Push()],
             [sg.VPush()],
-            [sg.Button("Volver", key='-VOLVER_PERFILES-', font=cg.FUENTE_BOTONES), sg.Push()]
+            [sg.Button("Volver", key='-VOLVER_PERFILES-', font=cg.FUENTE_COMBO), sg.Push()]
         ]
     ruta_titlebar_icon = os.path.join(ruta.IMAGENES_DIR, "cartas_icon.png")
     ruta_icon = os.path.join(ruta.IMAGENES_DIR, "cartas_icon.ico")

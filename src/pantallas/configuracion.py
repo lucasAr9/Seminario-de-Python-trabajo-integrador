@@ -41,22 +41,21 @@ def crear_ventana():
     """
     layout = layout_configuracion()
     crear_layout = [
-        [sg.Image(ruta_titlebar_icon, pad=((20, 0), (20, 0))),
+        [sg.Image(ruta_titlebar_icon, pad=((60, 0), (20, 20))),
          sg.Text("CONFIGURACIÓN", key="-TITULO-", expand_x=True, font='Arial 45', justification='center'),
-         sg.Image(ruta_titlebar_icon, pad=((0, 20), (20, 0)))],
+         sg.Image(ruta_titlebar_icon, pad=((0, 60), (20, 20)))],
         [sg.HSep()],
 
-        [sg.Text(size=(None, 2), )],
+        [sg.Text(size=(None, 1), )],
         [sg.Col(layout, expand_x=True)],
-        [sg.Text(size=(None, 2), )],
 
-        [sg.Push(), sg.Text('Ver las caracteristicas de los niveles',
-         expand_x=True, font=cg.FUENTE_BOTONES, justification='center'), sg.Push()],
-        [sg.Push(), sg.Text('o personalice su dificultád.',
-         expand_x=True, font=cg.FUENTE_BOTONES, justification='center'), sg.Push()],
+        [sg.Push(), sg.Text('Vea las características de los niveles',
+         expand_x=True, font=cg.FUENTE_COMBO, justification='center'), sg.Push()],
+        [sg.Push(), sg.Text('o personalice su dificultad.',
+         expand_x=True, font=cg.FUENTE_COMBO, justification='center'), sg.Push()],
 
         [sg.VPush()],
-        [sg.Button("volver", key='-VOLVER_CONFIG-', font=cg.FUENTE_COMBO), sg.Push()]
+        [sg.Button("Volver", key='-VOLVER_CONFIG-', font=cg.FUENTE_COMBO), sg.Push()]
     ]
     window = sg.Window("Configuracion", crear_layout, size=cg.TAM_VENTANA, finalize=True,
                        use_custom_titlebar=True, titlebar_icon=ruta_titlebar_icon, icon=ruta_icon)
