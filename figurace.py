@@ -11,6 +11,7 @@ from src.pantallas import juego
 
 
 def nivel(window_dificultad, elegido):
+    """Crear la ventana que muestra las características de cada nivel no modificable."""
     window_otra = c_pantalla.nivel_elegida(elegido)
     window_dificultad.hide()
     event, values = window_otra.read()
@@ -20,7 +21,7 @@ def nivel(window_dificultad, elegido):
 
 
 def abrir_configuracion():
-    """"""
+    """Crear la ventana de configuración y responder a los eventos en la misma."""
     window_dificultad = c_pantalla.crear_ventana()
     while True:
         event, values = window_dificultad.read()
@@ -50,7 +51,7 @@ def abrir_configuracion():
 
 
 def abrir_puntajes():
-    """"""
+    """Crear la ventana de puntajes y responder a los eventos en la misma."""
     window = puntajes.armar_ventana()
     while True:
         event, values = window.read()
@@ -61,7 +62,7 @@ def abrir_puntajes():
 
 
 def abrir_perfiles(conf_cuentas):
-    """"""
+    """Crear la ventana de perfiles y responder a los eventos en la misma."""
     window = cuentas.crear_cuentas({"tam_ventana": cg.TAM_VENTANA, "font_botones": "Verdana 25"})
     while True:
         event, values = window.read()
@@ -90,7 +91,7 @@ def abrir_perfiles(conf_cuentas):
 
 
 def abrir_juego(dificultad_elegida, usuario_elegido):
-    """"""
+    """Crear la ventana de juego y responder a los eventos en la misma."""
     window = juego.armar_ventana(dificultad_elegida, usuario_elegido)
     tiempo_comienzo = time.time()
     while True:
@@ -109,7 +110,7 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
 
 
 def main():
-    """"""
+    """Crear la ventana menú inicial y responder a los eventos en la misma."""
     usuario_elegido = False
     dificultad_elegida = False
     niveles = ['Fácil', 'Medio', 'Difícil', 'Experto']

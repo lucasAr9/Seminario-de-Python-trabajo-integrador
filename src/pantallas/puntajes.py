@@ -69,7 +69,7 @@ def layouts_pestanias(num, mejores_puntajes):
 
 
 def armar_layout():
-    """Devolver la organización de botones de una ventana en una variable."""
+    """Devolver la organización de botones de una ventana de puntajes."""
     mejores_por_nivel = procesar_archivo()
     tab_group = sg.TabGroup([[sg.Tab(niveles[i],
                                      layouts_pestanias(i, mejores_por_nivel[i]),
