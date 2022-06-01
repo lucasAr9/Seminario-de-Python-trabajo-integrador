@@ -1,13 +1,14 @@
-from src.pantallas import rutas
+import rutas
 import csv
 import random
+import os
 
 from src.pantallas import caracteristicas_generales as cg
 
 
 def datos_tarjeta(dataset, cant_pistas):
     """"""
-    with (open(rutas.ruta_datos(dataset), 'r', encoding='utf=8', newline='')) as archivo:
+    with (open(os.path.join(rutas.DATOS_DIR, f'dataset_{dataset}.csv'), 'r', encoding='utf=8', newline='')) as archivo:
         csv_reader = csv.reader(archivo)
         cabecera, contenido = csv_reader.__next__(), [linea for linea in csv_reader]
 

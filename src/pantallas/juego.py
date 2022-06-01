@@ -8,7 +8,7 @@ from src.funcionalidad import tarjeta
 
 
 def armar_layout(datos, dificultad_elegida, usuario_elegido):
-    """"""
+    """Devolver la organización de botones de la ventana de juego."""
     dataset_elegido = random.choice(cgen.datasets)
     pistas, respuestas = tarjeta.datos_tarjeta(dataset_elegido, datos.nivel)
     titulos = ['Pregunta', 'Resultado']
@@ -76,6 +76,7 @@ def armar_layout(datos, dificultad_elegida, usuario_elegido):
 
 
 def armar_ventana(dificultad_elegida, usuario_elegido):
+    """Crear y devolver la ventana en la que se juega."""
     sg.theme(cgen.TEMA)
     datos = dificultad.Dificultad('-' + dificultad_elegida.upper() + '-')
     window = sg.Window('Juego', armar_layout(datos, dificultad_elegida, usuario_elegido),
