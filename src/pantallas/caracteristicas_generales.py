@@ -1,5 +1,6 @@
 import PySimpleGUI as sg
-
+import os
+import rutas
 
 # tamaños de ventanas y botones
 ancho, alto = sg.Window.get_screen_size()
@@ -9,13 +10,13 @@ TAM_VENTANA = (ancho_ventana, alto_ventana)
 TAM_COLUMNAS = (int(ancho_ventana/3), int(alto_ventana/3))
 TAM_COMBO = (int(ancho/80), int(alto/80))
 
-# fuentes de los textos y botones
-FUENTE_TITULO = 'Verdana 48'
-FUENTE_INDICADOR = 'Verdana 28'
-FUENTE_BOTONES = 'Verdana 26'
-FUENTE_COMBO = 'Verdana 18'
-FUENTE_OPCIONES = 'Verdana 12'
-FUENTE_POPUP = 'Verdana 10'
+# fuentes de los textos y botones (La anterior fuente era Verdana)
+FUENTE_TITULO = 'Impact 48'
+FUENTE_INDICADOR = 'Impact 28'
+FUENTE_BOTONES = 'Impact 26'
+FUENTE_COMBO = 'Impact 18'
+FUENTE_OPCIONES = 'Impact 12'
+FUENTE_POPUP = 'Impact 12'
 
 CANT_RESPUESTAS = 5
 
@@ -48,6 +49,24 @@ def ventana_chequear_accion(ventana_actual, mensaje='Segurx que querés salir?')
     window = sg.Window('Salir', layout, no_titlebar=True, grab_anywhere=True,
                        background_color=fondo, keep_on_top=True,)
     event, values = window.read()
+    window.close()
+    ventana_actual.un_hide()
+    return event
+
+
+def ventana_popup(ventana_actual, mensaje='?', nombre_gif='capoo_inesperado.gif'):
+    """"""
+    ventana_actual.hide()
+    gif = os.path.join(rutas.IMAGENES_DIR, nombre_gif)
+    layout_aviso = [[sg.Text(mensaje, font=FUENTE_POPUP)], [sg.Push(), sg.Button('OK', key='-OK-', s=10), sg.Push()]]
+    layout = [[sg.Col([[sg.Image(gif, key='-GIF-')]]), sg.Col(layout_aviso)]]
+    window = sg.Window('Aviso', layout, no_titlebar=True, grab_anywhere=True, keep_on_top=True,
+                       element_justification='center')
+    while True:
+        event, values = window.read(timeout=100)
+        if event == '-OK-':
+            break
+        window['-GIF-'].update_animation(gif, time_between_frames=20)
     window.close()
     ventana_actual.un_hide()
     return event

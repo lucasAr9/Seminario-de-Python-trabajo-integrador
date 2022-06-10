@@ -118,10 +118,10 @@ def main():
     perfiles = cuentas.nombre_perfiles()
     window = crear_menu(perfiles)
     if not perfiles:
-        sg.Popup('Aun no hay ningún usuario existente. Por favor, cree el suyo en "PERFIL" ', no_titlebar=True,
-                 font=cg.FUENTE_POPUP, keep_on_top=True)
+        cg.ventana_popup(window, '¿Nuevx en FiguRace?, Comienza por crear un usuario en PERFIL!',
+                         'capoo_sin_usuarios.gif')
     while True:
-        event, values = window.read()
+        event, values = window.read(timeout=100)
         if (event in (sg.WINDOW_CLOSE_ATTEMPTED_EVENT, '-SALIR-') and
                 (cg.ventana_chequear_accion(window) == 'Sí')):
             break
@@ -130,21 +130,15 @@ def main():
         elif event == '-DIFICULTAD-':
             dificultad_elegida = window['-DIFICULTAD-'].Get()
             if dificultad_elegida == 'Personalizado':
-                sg.SystemTray.notify("Edición posible",
-                                     "Esta dificultad es personalizable, \n"
-                                     "puede ingresar en Configuracion \n"
-                                     "para editarla.",
-                                     display_duration_in_ms=300, icon="", alpha=1)
+                cg.ventana_popup(window, 'Esta dificultad es personalizable, puede ingresar en '
+                                         'Configuracion para editarla.')
         elif event == '-JUGAR-':
             if usuario_elegido and dificultad_elegida:
                 window.hide()
                 abrir_juego(dificultad_elegida, usuario_elegido)
                 window.un_hide()
             else:
-                sg.SystemTray.notify("Creación de usuario",
-                                     "Por favor seleccione una dificultad \n"
-                                     "y usuario, antes de comenzar a jugar.",
-                                     display_duration_in_ms=300, icon="", alpha=1)
+                cg.ventana_popup(window, 'Por favor seleccione una dificultad y usuario, antes de comenzar a jugar.')
         elif event == '-CONFIGURACION-':
             window.hide()
             abrir_configuracion()
