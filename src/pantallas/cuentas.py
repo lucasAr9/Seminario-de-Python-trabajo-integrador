@@ -40,48 +40,70 @@ def actualizar_perfiles(perfiles, nuevo_perfil=None):
     return perfiles
 
 
-def comprobar_y_cargar(window, values, op, conf):
+def comprobar_perfil(window, values, conf):
     """
     Verifica si los datos ingresados son correctos, si lo son carga el perfil, sino envia un mensaje al usuario.
     :param
         window: variable para actualizar el contenido de la pantalla.
         values: variable para acceder a los valores de la pantalla.
-        op: variable que indica si la llamada proviende de la creacion o edicion de un perfil.
         conf: las variables internas de la pantalla configuracion.
     :return: False si la informacion no es correcta, True de lo contrario.
     """
-    if op == 1:
-        if not values["-INPUT_EDAD-"] or not values["-INPUT_GENERO-"]:
-            window["-MSJ_EDITAR-"].update(value="*Ingrese todos los datos.")
+    if not values["-INPUT_EDAD-"] or  values["-INPUT_GENERO-"] == 'Seleccione su género':
+        window["-MSJ_EDITAR-"].update(value="*Ingrese todos los datos.")
+        return False
+    else:
+        try:
+            int(values["-INPUT_EDAD-"])
+            if len(values["-INPUT_EDAD-"]) < 1 or len(values["-INPUT_EDAD-"]) > 2:
+                window["-MSJ_EDITAR-"].update(value="*Ingrese una edad correcta.")
+                return False
+            else:
+                conf["perfiles"][conf["act"]]["edad"] = values["-INPUT_EDAD-"]
+                conf["perfiles"][conf["act"]]["genero"] = values["-INPUT_GENERO-"]
+                conf["perfiles"] = actualizar_perfiles(conf["perfiles"])
+                return True
+        except ValueError:
+            window["-MSJ_EDITAR-"].update(value="*La edad solo puede tener números.")
             return False
-        elif list(filter(lambda x: x > "9" or x < "0", values["-INPUT_EDAD-"])):
-            window["-MSJ_EDITAR-"].update(value="*La edad no es correcta.")
-            return False
-        else:
-            conf["perfiles"][conf["act"]]["edad"] = values["-INPUT_EDAD-"]
-            conf["perfiles"][conf["act"]]["genero"] = values["-INPUT_GENERO-"]
-            conf["perfiles"] = actualizar_perfiles(conf["perfiles"])
-            return True
+    
 
-    elif op == 2:
-        if not values["-NUEVO_NOMBRE-"]or not values["-NUEVO_EDAD-"] or not values["-NUEVO_GENERO-"]:
-            window["-MSJ_CREAR-"].update(value="*Ingrese todos los datos.")
+def comprobar_nuevo(window, values, conf):
+    """
+    Verifica si los datos ingresados son correctos, si lo son carga el perfil, sino envia un mensaje al usuario.
+    :param
+        window: variable para actualizar el contenido de la pantalla.
+        values: variable para acceder a los valores de la pantalla.
+        conf: las variables internas de la pantalla configuracion.
+    :return: False si la informacion no es correcta, True de lo contrario.
+    """
+    if not values["-NUEVO_NOMBRE-"]or not values["-NUEVO_EDAD-"] or values["-NUEVO_GENERO-"] == 'Seleccione su género':
+        window["-MSJ_CREAR-"].update(value="*Ingrese todos los datos.")
+        return False
+    else:
+        try:
+            int(values["-NUEVO_EDAD-"])
+            if len(values["-NUEVO_NOMBRE-"]) > 20:
+                window["-MSJ_CREAR-"].update(value="*El nick puede tener hasta 20 caracteres.")
+                return False
+            elif [x for x in conf["perfiles"] if x["nombre"] == values["-NUEVO_NOMBRE-"]]:
+                window["-MSJ_CREAR-"].update(value="*El nick ya existe.")
+                return False
+            elif len(values["-NUEVO_EDAD-"]) < 1 or len(values["-NUEVO_EDAD-"]) > 2:
+                window["-MSJ_CREAR-"].update(value="*Ingrese una edad correcta.")
+                return False
+            else:
+                nuevo_perfil = {
+                    "nombre": values["-NUEVO_NOMBRE-"],
+                    "edad": values["-NUEVO_EDAD-"],
+                    "genero": values["-NUEVO_GENERO-"]
+                }
+                conf["perfiles"] = actualizar_perfiles(conf["perfiles"], nuevo_perfil)
+                return True
+        except ValueError:
+            window["-MSJ_CREAR-"].update(value="*La edad solo puede tener números.")
             return False
-        elif [x for x in conf["perfiles"] if x["nombre"] == values["-NUEVO_NOMBRE-"]]:
-            window["-MSJ_CREAR-"].update(value="*El nick ya existe.")
-            return False
-        elif list(filter(lambda x: x > "9" or x < "0", values["-NUEVO_EDAD-"])):
-            window["-MSJ_CREAR-"].update(value="*La edad no es correcta.")
-            return False
-        else:
-            nuevo_perfil = {
-                "nombre": values["-NUEVO_NOMBRE-"],
-                "edad": values["-NUEVO_EDAD-"],
-                "genero": values["-NUEVO_GENERO-"]
-            }
-            conf["perfiles"] = actualizar_perfiles(conf["perfiles"], nuevo_perfil)
-            return True
-
+            
 
 def nombre_perfiles():
     """
@@ -104,7 +126,8 @@ def crear_cuentas(conf):
         [sg.Text("Ingrese su Edad:    ", font=cg.FUENTE_BOTONES),
             sg.Input("", key="-NUEVO_EDAD-", font=cg.FUENTE_BOTONES)],
         [sg.Text("Ingrese su Genero:  ", font=cg.FUENTE_BOTONES),
-            sg.Input("", key="-NUEVO_GENERO-", font=cg.FUENTE_BOTONES)],
+            sg.Combo(['Masculino', 'Femenino', 'Trans','No Binario', 'Otro'], key="-NUEVO_GENERO-",
+                default_value='Seleccione su género', readonly=True, size=cg.TAM_COMBO, font=cg.FUENTE_COMBO)],
         [sg.Text("Ingrese una edad valida", key="-MSJ_CREAR-", visible=False, font=cg.FUENTE_BOTONES)],
         [sg.Text()],
         [sg.Button("Crear", key="-BTN_CREAR-", font=cg.FUENTE_BOTONES),
@@ -133,7 +156,8 @@ def crear_cuentas(conf):
             [sg.Text("Edad:    ", font=cg.FUENTE_BOTONES),
                 sg.Input("", key="-INPUT_EDAD-", font=cg.FUENTE_BOTONES)],
             [sg.Text("Genero:  ", font=cg.FUENTE_BOTONES),
-                sg.Input("", key="-INPUT_GENERO-", font=cg.FUENTE_BOTONES)],
+                sg.Combo(['Masculino', 'Femenino', 'Trans','No Binario', 'Otro'], key="-INPUT_GENERO-",
+                    default_value='Seleccione su género', readonly=True, size=cg.TAM_COMBO, font=cg.FUENTE_COMBO)],
             [sg.Text("Ingrese una edad valida", key="-MSJ_EDITAR-", visible=False, font=cg.FUENTE_BOTONES)]
     ]
 
@@ -161,7 +185,7 @@ def crear_cuentas(conf):
         ]
     ruta_titlebar_icon = os.path.join(ruta.IMAGENES_DIR, "cartas_icon.png")
     ruta_icon = os.path.join(ruta.IMAGENES_DIR, "cartas_icon.ico")
-    return sg.Window("FiguRace - Edición de Perfil", layout, size=cg.TAM_VENTANA, finalize=True,
+    return sg.Window("Figurace - Edición de Perfil", layout, size=cg.TAM_VENTANA, finalize=True,
                      use_custom_titlebar=True, titlebar_icon=ruta_titlebar_icon, icon=ruta_icon)
 
 
@@ -175,6 +199,8 @@ def crear_perfil(window):
     window["-MOSTRAR_DATOS-"].update(visible=False)
     window["-BTNS_EDITAR-"].update(visible=False)
     window["-MSJ_CREAR-"].update(visible=False)
+    window["-NUEVO_GENERO-"].update(value='Seleccione su género')
+
 
 
 def cancelar_crear(window):
@@ -188,7 +214,6 @@ def cancelar_crear(window):
 
     window["-NUEVO_USUARIO-"].update(visible=False)
     window["-BTN_PRIN-"].update(visible=True)
-    window["-MSJ_CREAR-"].update(visible=False)
 
 
 def aceptar_crear(window, values, conf):
@@ -198,7 +223,7 @@ def aceptar_crear(window, values, conf):
      window y values: variables para controlar y acceder a los componentes de la pantalla.
      conf: diccionario con los perfiles y numero de perfil usado.
     """
-    if comprobar_y_cargar(window, values, 2, conf):
+    if comprobar_nuevo(window, values, conf):
         window["-NUEVO_NOMBRE-"].update(value="")
         window["-NUEVO_EDAD-"].update(value="")
         window["-NUEVO_GENERO-"].update(value="")
@@ -249,6 +274,7 @@ def editar_perfil(window, conf):
     window["-BTN_EDITAR-"].update(visible=False)
     window["-BTN_EDITAR_CANCELAR-"].update(visible=True)
     window["-BTN_EDITAR_ELIMINAR-"].update(visible=False)
+    window["-MSJ_EDITAR-"].update(visible=False)
 
     window["-INPUT_NOMBRE-"].update(value=conf["perfiles"][conf["act"]]["nombre"])
     window["-INPUT_EDAD-"].update(value=conf["perfiles"][conf["act"]]["edad"])
@@ -272,7 +298,6 @@ def cancelar_edicion(window):
 
     window["-BTN_EDITAR_CANCELAR-"].update(visible=False)
     window["-EDITAR_DATOS-"].update(visible=False)
-    window["-MSJ_EDITAR-"].update(visible=False)
 
 
 def aplicar_edicion(window, values, conf):
@@ -282,7 +307,7 @@ def aplicar_edicion(window, values, conf):
      window y values: variables para controlar y acceder a los componentes de la pantalla.
      conf: diccionario con los perfiles y numero de perfil usado.
     """
-    if comprobar_y_cargar(window, values, 1, conf):
+    if comprobar_perfil(window, values, conf):
         window["-MOSTRAR_DATOS-"].update(visible=True)
         window["-BTN_APLICAR_EDICION-"].update(visible=False)
         window["-BTN_PRIN-"].update(visible=True)
@@ -305,13 +330,14 @@ def eliminar_perfil(window, conf):
      window : variables para controlar los componentes de la pantalla.
      conf: diccionario con los perfiles y numero de perfil usado.
     """
-    window["-BTN_APLICAR_EDICION-"].update(visible=True)
-    window["-BTN_EDITAR_CANCELAR-"].update(visible=True)
-    window["-BTN_EDITAR-"].update(visible=False)
-    window["-BTN_EDITAR_ELIMINAR-"].update(visible=False)
-    window["-MOSTRAR_DATOS-"].update(visible=False)
-    window["-BTNS_EDITAR-"].update(visible=False)
+    if cg.ventana_chequear_accion(window, "¿Está seguro de eliminar este perfil?") == "Sí":
+        window["-BTN_APLICAR_EDICION-"].update(visible=True)
+        window["-BTN_EDITAR_CANCELAR-"].update(visible=True)
+        window["-BTN_EDITAR-"].update(visible=False)
+        window["-BTN_EDITAR_ELIMINAR-"].update(visible=False)
+        window["-MOSTRAR_DATOS-"].update(visible=False)
+        window["-BTNS_EDITAR-"].update(visible=False)
 
-    conf["perfiles"] = [x for x in conf["perfiles"] if x["nombre"] != conf["perfiles"][conf["act"]]["nombre"]]
-    conf["perfiles"] = actualizar_perfiles(conf["perfiles"])
-    window["-PERFILES-"].update(values=[a["nombre"] for a in conf["perfiles"]])
+        conf["perfiles"] = [x for x in conf["perfiles"] if x["nombre"] != conf["perfiles"][conf["act"]]["nombre"]]
+        conf["perfiles"] = actualizar_perfiles(conf["perfiles"])
+        window["-PERFILES-"].update(values=[a["nombre"] for a in conf["perfiles"]])
