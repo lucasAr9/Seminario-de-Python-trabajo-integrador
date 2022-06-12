@@ -47,7 +47,6 @@ def abrir_configuracion():
                 window_otra.close()
             window_dificultad.un_hide()
     window_dificultad.close()
-    return
 
 
 def abrir_puntajes():
@@ -58,7 +57,6 @@ def abrir_puntajes():
         if event in (sg.WIN_CLOSED, '-VOLVER_AL_MENU-'):
             break
     window.close()
-    return
 
 
 def abrir_perfiles():
@@ -107,13 +105,13 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
         window['-JUEGO_TIEMPO-'].update(f'{minutos:02d}:{segundos:02d}')
         window['-JUEGO_BARRA-'].update(current_count=delta_tiempo + 1)
     window.close()
-    return
 
 
 def main():
     """Crear la ventana menú inicial y responder a los eventos en la misma."""
     usuario_elegido = False
     dificultad_elegida = False
+    indicador_visible = False
     niveles = ['Fácil', 'Medio', 'Difícil', 'Experto']
     perfiles = cuentas.nombre_perfiles()
     window = crear_menu(perfiles)
@@ -125,34 +123,42 @@ def main():
         if (event in (sg.WINDOW_CLOSE_ATTEMPTED_EVENT, '-SALIR-') and
                 (cg.ventana_chequear_accion(window) == 'Sí')):
             break
-        elif event == '-USUARIOS-':
-            usuario_elegido = window['-USUARIOS-'].Get()
-        elif event == '-DIFICULTAD-':
-            dificultad_elegida = window['-DIFICULTAD-'].Get()
-            if dificultad_elegida == 'Personalizado':
-                cg.ventana_popup(window, 'Esta dificultad es personalizable, puede ingresar en '
-                                         'Configuracion para editarla.')
-        elif event == '-JUGAR-':
-            if usuario_elegido and dificultad_elegida:
+        match event:
+            case '-USUARIOS-':
+                usuario_elegido = window['-USUARIOS-'].Get()
+            case '-DIFICULTAD-':
+                dificultad_elegida = window['-DIFICULTAD-'].Get()
+                if dificultad_elegida == 'Personalizado':
+                    cg.ventana_popup(window, 'Esta dificultad es personalizable, puede ingresar en '
+                                             'Configuracion para editarla.', 'capoo_personalizado.gif')
+            case '-JUGAR-':
+                if usuario_elegido and dificultad_elegida:
+                    window.hide()
+                    abrir_juego(dificultad_elegida, usuario_elegido)
+                    window.un_hide()
+                else:
+                    cg.ventana_popup(window, 'Por favor seleccione una dificultad y usuario, antes de comenzar a jugar.')
+            case '-CONFIGURACION-':
                 window.hide()
-                abrir_juego(dificultad_elegida, usuario_elegido)
+                abrir_configuracion()
                 window.un_hide()
-            else:
-                cg.ventana_popup(window, 'Por favor seleccione una dificultad y usuario, antes de comenzar a jugar.')
-        elif event == '-CONFIGURACION-':
-            window.hide()
-            abrir_configuracion()
-            window.un_hide()
-        elif event == '-PUNTAJES-':
-            window.hide()
-            abrir_puntajes()
-            window.un_hide()
-        elif event == '-PERFIL-':
-            window.hide()
-            perfiles = abrir_perfiles()
-            window.un_hide()
-            window['-USUARIOS-'].update('Seleccione su usuario', values=perfiles)
-            usuario_elegido = ''
+            case '-PUNTAJES-':
+                window.hide()
+                abrir_puntajes()
+                window.un_hide()
+            case '-PERFIL-':
+                window.hide()
+                perfiles = abrir_perfiles()
+                window.un_hide()
+                window['-USUARIOS-'].update('Seleccione su usuario', values=perfiles)
+                usuario_elegido = ''
+        # Control de indicador_perfiles
+        if not perfiles and not indicador_visible:
+            window['-INDICADOR-'].update(visible=True)
+            indicador_visible = True
+        elif perfiles:
+            window['-INDICADOR-'].update(visible=False)
+            indicador_visible = False
 
     window.close()
 

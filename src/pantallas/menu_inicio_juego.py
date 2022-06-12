@@ -9,13 +9,15 @@ def _layout_op_principales():
     """
     :return: el layout que contendra las funciones principales del menu de inicio.
     """
+    ruta_imagen = os.path.join(rutas.IMAGENES_DIR, 'indicador_perfil.png')
     layout = [
         [sg.Text(size=(None, 2), )],
         [sg.Text("Menú", justification='center', expand_x=True, font=cg.FUENTE_INDICADOR, size=(14, None), )],
         [sg.Button("Jugar", key='-JUGAR-', expand_x=True, font=cg.FUENTE_BOTONES)],
         [sg.Button("Configuración", key='-CONFIGURACION-', expand_x=True, font=cg.FUENTE_BOTONES)],
         [sg.Button("Puntajes", key='-PUNTAJES-', expand_x=True, font=cg.FUENTE_BOTONES)],
-        [sg.Button("Perfil", key='-PERFIL-', expand_x=True, font=cg.FUENTE_BOTONES)]
+        [sg.Button("Perfil", key='-PERFIL-', expand_x=True, font=cg.FUENTE_BOTONES)],
+        [sg.Image(ruta_imagen, key='-INDICADOR-', visible=False)]
     ]
     return layout
 
