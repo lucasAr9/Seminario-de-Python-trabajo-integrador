@@ -37,24 +37,24 @@ datasets = ['volcanes', 'peliculas', 'spotify', 'fifa']
 
 
 # ventana para chequear salidas
-def ventana_chequear_accion(ventana_actual, mensaje='Segurx que querés salir?'):
+def ventana_chequear_accion(ventana_actual, mensaje='Segurx que querés salir?', imagen='confirmacion.png'):
     """"""
+    ruta_imagen = os.path.join(rutas.IMAGENES_DIR, imagen)
     ventana_actual.hide()
-    fondo = 'Black'
-    layout = [[sg.T(mensaje, background_color=fondo, text_color='White')],
-              [sg.Push(background_color=fondo),
-               sg.Button('Sí', s=10), sg.Button('No', s=10),
-               sg.Push(background_color=fondo)]
-              ]
-    window = sg.Window('Salir', layout, no_titlebar=True, grab_anywhere=True,
-                       background_color=fondo, keep_on_top=True,)
+    layout_mensaje = [[sg.Push(), sg.T(mensaje, font=FUENTE_POPUP), sg.Push()],
+                      [sg.Push(),
+                       sg.Button('Sí', s=10), sg.Button('No', s=10),
+                       sg.Push()]
+                      ]
+    layout = [[sg.Col([[sg.Image(ruta_imagen)]]), sg.Col(layout_mensaje)]]
+    window = sg.Window('Salir', layout, no_titlebar=True, grab_anywhere=True, keep_on_top=True,)
     event, values = window.read()
     window.close()
     ventana_actual.un_hide()
     return event
 
 
-def ventana_popup(ventana_actual, mensaje='?', nombre_gif='capoo_inesperado.gif'):
+def ventana_popup(ventana_actual, mensaje='?', nombre_gif='aviso.gif'):
     """"""
     ventana_actual.hide()
     gif = os.path.join(rutas.IMAGENES_DIR, nombre_gif)

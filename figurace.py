@@ -115,9 +115,6 @@ def main():
     niveles = ['Fácil', 'Medio', 'Difícil', 'Experto']
     perfiles = cuentas.nombre_perfiles()
     window = crear_menu(perfiles)
-    if not perfiles:
-        cg.ventana_popup(window, '¿Nuevx en FiguRace?, Comienza por crear un usuario en PERFIL!',
-                         'capoo_sin_usuarios.gif')
     while True:
         event, values = window.read(timeout=100)
         if (event in (sg.WINDOW_CLOSE_ATTEMPTED_EVENT, '-SALIR-') and
@@ -129,8 +126,9 @@ def main():
             case '-DIFICULTAD-':
                 dificultad_elegida = window['-DIFICULTAD-'].Get()
                 if dificultad_elegida == 'Personalizado':
-                    cg.ventana_popup(window, 'Esta dificultad es personalizable, puede ingresar en '
-                                             'Configuracion para editarla.', 'capoo_personalizado.gif')
+                    window['-AVISO_PER-'].update(visible=True)
+                else:
+                    window['-AVISO_PER-'].update(visible=False)
             case '-JUGAR-':
                 if usuario_elegido and dificultad_elegida:
                     window.hide()

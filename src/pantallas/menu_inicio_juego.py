@@ -28,14 +28,16 @@ def _layout_usuario_dificultad(usuarios):
     """
     # ruta para la imagen
     ruta_imagen = os.path.join(rutas.IMAGENES_DIR, 'imagen_menu_principal.png')
+    ruta_imagen_aviso = os.path.join(rutas.IMAGENES_DIR, 'tip_personalizado.png')
     # layout
     layout = [
         [sg.Combo(usuarios, key='-USUARIOS-', default_value="Seleccione su usuario", enable_events=True,
                   readonly=True, size=cg.TAM_COMBO, font=cg.FUENTE_COMBO, pad=((0, 0), (100, 0)))],
         [sg.Combo(['Facil', 'Normal', 'Dificil', 'Personalizado'], key='-DIFICULTAD-',
                   default_value='Seleccione la dificultad', enable_events=True, readonly=True, size=cg.TAM_COMBO,
-                  font=cg.FUENTE_COMBO)],
-        [sg.Image(ruta_imagen)]
+                  font=cg.FUENTE_COMBO), ],
+        [sg.Image(ruta_imagen)],
+        [sg.Image(ruta_imagen_aviso, key='-AVISO_PER-', visible=False)]
     ]
     return layout
 

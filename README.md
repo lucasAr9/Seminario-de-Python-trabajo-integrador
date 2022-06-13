@@ -61,6 +61,10 @@ un integrante del grupo
     - [peliculas.png](https://www.canva.com/design/DAFCTifR0pE/Y4vk1WeQyHr_-89TBT2ehA/view?utm_content=DAFCTifR0pE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
     - [imagen_menu_principal](https://www.canva.com/design/DAFCSn6YrPo/4e8v3-OIFGfDgBu06yI0-g/view?utm_content=DAFCSn6YrPo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
     - [titulo_figurace.png](https://www.canva.com/design/DAFCR75-3pE/x6S_mGUGkOukIWoBxiAVwQ/watch?utm_content=DAFCR75-3pE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+    - [tip_personalizado.png](https://www.canva.com/design/DAFDhXSubaU/p6xDn0kM7VBZWld-45JYwA/view?utm_content=DAFDhXSubaU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+    - [indicador_perfil.png](https://www.canva.com/design/DAFDhrvRD8Y/nbEZmttuTWRqoH6L-9yalg/view?utm_content=DAFDhrvRD8Y&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+    - [aviso.gif](https://www.canva.com/design/DAFDh_R56TY/eISHykq34PLKpZ_-LwMJzQ/watch?utm_content=DAFDh_R56TY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+    - [confirmacion.png](https://www.canva.com/design/DAFDh2AAeU4/u_ru-InI7C5khlBoPkt-Sg/view?utm_content=DAFDh2AAeU4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 - Bajo la [licencia](https://www.freepikcompany.com/legal#nav-flaticon) de libre uso de [Flaticon](https://www.flaticon.es/)
     - [cartas_icon](https://www.flaticon.es/icono-gratis/juego-de-cartas_4072061?term=cartas&page=1&position=16&page=1&position=16&related_id=4072061&origin=search)
 - Con la cita de autoría requerida <a href="http://www.freepik.com">Designed by gstudioimagen / Freepik</a>
