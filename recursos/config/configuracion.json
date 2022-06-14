@@ -25,6 +25,6 @@
         "-RONDAS_C-": 10,
         "-CORRECTO_C-": 20,
         "-INCORRECTO_C-": 1,
-        "-CARACTERISTICAS_C-": 5
+        "-CARACTERISTICAS_C-": 1
     }
 }

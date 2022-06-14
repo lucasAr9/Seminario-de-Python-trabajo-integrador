@@ -10,16 +10,6 @@ from src.pantallas import puntajes
 from src.pantallas import juego
 
 
-def nivel(window_dificultad, elegido):
-    """Crear la ventana que muestra las características de cada nivel no modificable."""
-    window_otra = c_pantalla.nivel_elegida(elegido)
-    window_dificultad.hide()
-    event, values = window_otra.read()
-    if event == '-VOLVER_VALORES-':
-        window_otra.close()
-    window_dificultad.un_hide()
-
-
 def abrir_configuracion():
     """Crear la ventana de configuración y responder a los eventos en la misma."""
     window_dificultad = c_pantalla.crear_ventana()
@@ -27,27 +17,10 @@ def abrir_configuracion():
         event, values = window_dificultad.read()
         if event in (sg.WIN_CLOSED, '-VOLVER_CONFIG-'):
             break
-        if event == '-FACIL-':
-            nivel(window_dificultad, '-FACIL-')
-        elif event == '-NORMAL-':
-            nivel(window_dificultad, '-NORMAL-')
-        elif event == '-DIFICIL-':
-            nivel(window_dificultad, '-DIFICIL-')
-
-        elif event == '-PERSONALIZADO-':
-            window_otra = c_pantalla.dificultad_personalizada()
-            window_dificultad.hide()
-            while True:
-                event, values2 = window_otra.read()
-                if event in (sg.WIN_CLOSED, '-VOLVER_PERSONALIZADO-'):
-                    break
-                if event == '-CAMBIOS_CONFIRMADOS-':
-                    dificultad.guardar_nivel_personalizado(values2)
-                    cg.ventana_popup(window_otra, 'Se guardaron los cambios personalizados.',
-                                     nombre_gif='capoo_sin_usuarios.gif')
-            if event == '-VOLVER_PERSONALIZADO-':
-                window_otra.close()
-            window_dificultad.un_hide()
+        elif event == '-CONFIRMAR_CAMBIOS-':
+            dificultad.guardar_nivel_personalizado(values)
+            cg.ventana_popup(window_dificultad, 'Se guardaron los cambios personalizados.',
+                             nombre_gif='capoo_sin_usuarios.gif')
     window_dificultad.close()
 
 

@@ -10,7 +10,7 @@ from src.funcionalidad import tarjeta
 def armar_layout(datos, dificultad_elegida, usuario_elegido):
     """Devolver la organización de botones de la ventana de juego."""
     dataset_elegido = random.choice(cgen.datasets)
-    pistas, respuestas = tarjeta.datos_tarjeta(dataset_elegido, datos.nivel)
+    pistas, respuestas = tarjeta.datos_tarjeta(dataset_elegido, datos.get_caracteristicas())
     titulos = ['Pregunta', 'Resultado']
     resultados = ['Bien', 'Mal', 'Bien', 'Mal', 'Bien', 'Mal', 'Bien', 'Mal', 'Bien', 'Mal']
 
@@ -29,7 +29,7 @@ def armar_layout(datos, dificultad_elegida, usuario_elegido):
     columna_centro = [[sg.Frame('Tiempo restante',
                                 [[sg.Text(f'00:00', key='-JUEGO_TIEMPO-',
                                   font=cgen.FUENTE_COMBO),
-                                  sg.ProgressBar(datos.tiempo,
+                                  sg.ProgressBar(datos.get_tiempo(),
                                                  orientation='h',
                                                  size=(18, 20),
                                                  key='-JUEGO_BARRA-')
