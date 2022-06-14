@@ -35,36 +35,20 @@ def procesar_archivo():
     return nivel_1, nivel_2, nivel_3, nivel_4
 
 
-def layouts_pestanias(num, mejores_puntajes):
+def layouts_pestanias(mejores_puntajes, mejores_promedios):
     """Devolver la estructura de tabla en la que se muestran los puntajes del juego."""
-    titulos = ['Puesto', 'Nick', 'Puntaje']
-    match num:
-        case 0:
-            layout = [[sg.Table(values=mejores_puntajes, headings=titulos,
-                                max_col_width=25, auto_size_columns=True,
-                                justification='center', key='-JUEGO_TABLA-',
-                                row_height=25, expand_x=True, expand_y=True,
-                                font=cgen.FUENTE_OPCIONES)]]
-        case 1:
-            layout = [[sg.Table(values=mejores_puntajes, headings=titulos,
-                                max_col_width=25, auto_size_columns=True,
-                                justification='center', key='-JUEGO_TABLA-',
-                                row_height=25, expand_x=True, expand_y=True,
-                                font=cgen.FUENTE_OPCIONES)]]
-        case 2:
-            layout = [[sg.Table(values=mejores_puntajes, headings=titulos,
-                                max_col_width=25, auto_size_columns=True,
-                                justification='center', key='-JUEGO_TABLA-',
-                                row_height=25, expand_x=True, expand_y=True,
-                                font=cgen.FUENTE_OPCIONES)]]
-        case 3:
-            layout = [[sg.Table(values=mejores_puntajes, headings=titulos,
-                                max_col_width=25, auto_size_columns=True,
-                                justification='center', key='-JUEGO_TABLA-',
-                                row_height=25, expand_x=True, expand_y=True,
-                                font=cgen.FUENTE_OPCIONES)]]
-        case _:
-            layout = [[]]
+    titulos = [['Puesto', 'Nick', 'Puntaje'], ['Puesto', 'Nick', 'Promedio']]    # mejorar
+    layout = [[sg.Table(values=mejores_puntajes, headings=titulos[0],
+                        max_col_width=25, auto_size_columns=True,
+                        justification='center', key='-JUEGO_TABLA-',
+                        row_height=25, expand_x=True, expand_y=True,
+                        font=cgen.FUENTE_OPCIONES),
+               sg.Table(values=mejores_promedios, headings=titulos[1],
+                        max_col_width=25, auto_size_columns=True,
+                        justification='center', key='-JUEGO_TABLA-',
+                        row_height=25, expand_x=True, expand_y=True,
+                        font=cgen.FUENTE_OPCIONES)]
+              ]
     return layout
 
 
@@ -72,13 +56,13 @@ def armar_layout():
     """Devolver la organización de botones de una ventana de puntajes."""
     mejores_por_nivel = procesar_archivo()
     tab_group = sg.TabGroup([[sg.Tab(niveles[i],
-                                     layouts_pestanias(i, mejores_por_nivel[i]),
+                                     layouts_pestanias(mejores_por_nivel[i], mejores_por_nivel[i]),
                                      key=f'-PANTALLA_TAB{str(i)}-')] for i in range(4)],
                             expand_y=True, expand_x=True, pad=30, font=cgen.FUENTE_COMBO)
 
     layout = [[sg.Push(), sg.Image(os.path.join(rutas.IMAGENES_DIR, 'puntaje.png'), pad=10), sg.Push(),
                sg.Column([[sg.Text('Puntajes', font=cgen.FUENTE_TITULO, justification='c', expand_x=True)],
-                          [sg.Text('Los 20 mejores puntajes por nivel',
+                          [sg.Text('Los 20 mejores puntajes y promedios por nivel',
                                    font=cgen.FUENTE_COMBO, justification='c', expand_x=True)]]),
                sg.Push(), sg.Image(os.path.join(rutas.IMAGENES_DIR, 'puntaje.png'), pad=10), sg.Push()],
               [sg.HSep()],
