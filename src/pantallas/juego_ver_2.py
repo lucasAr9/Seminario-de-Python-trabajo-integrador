@@ -79,3 +79,9 @@ def armar_ventana(tarjeta, dificultad_elegida, dataset_elegido, usuario_elegido)
                        size=cgen.TAM_VENTANA, resizable=True, no_titlebar=True,
                        grab_anywhere=True, finalize=True)
     return window
+
+
+def cambiar_tarjeta(tarjeta, window , dificultad, dataset, usuario):
+    nueva_ventana = armar_ventana(tarjeta, dificultad, dataset, usuario)
+    window.close()
+    return nueva_ventana

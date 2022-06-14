@@ -54,7 +54,7 @@ def ventana_chequear_accion(ventana_actual, mensaje='Segurx que querés salir?',
     return event
 
 
-def ventana_popup(ventana_actual, mensaje='?', nombre_gif='aviso.gif'):
+def ventana_popup(ventana_actual, mensaje='?', nombre_gif='capoo_aviso.gif'):
     """"""
     ventana_actual.hide()
     gif = os.path.join(rutas.IMAGENES_DIR, nombre_gif)

@@ -1,14 +1,13 @@
 import PySimpleGUI as sg
 import time
 
-from src.pantallas import caracteristicas_generales as cg
+from src.pantallas import caracteristicas_generales as cg, juego_ver_2
 from src.funcionalidad import dificultad as dificultad
 from src.pantallas.menu_inicio_juego import crear_menu
 from src.pantallas import configuracion as c_pantalla
 from src.pantallas import cuentas as cuentas
 from src.pantallas import puntajes
-from src.pantallas import juego
-from src.funcionalidad import tarjeta_ver_2, juego_ver_2
+from src.funcionalidad import tarjeta_ver_2
 from src.pantallas import eleccion_dataset
 
 
@@ -21,8 +20,7 @@ def abrir_configuracion():
             break
         elif event == '-CONFIRMAR_CAMBIOS-':
             dificultad.guardar_nivel_personalizado(values)
-            cg.ventana_popup(window_dificultad, 'Se guardaron los cambios personalizados.',
-                             nombre_gif='capoo_sin_usuarios.gif')
+            cg.ventana_popup(window_dificultad, 'Se guardaron los cambios personalizados.')
     window_dificultad.close()
 
 
@@ -85,6 +83,7 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
     dataset_elegido = eleccion_dataset.eleccion_dataset()
     if dataset_elegido:
         tarjeta = tarjeta_ver_2.Tarjeta(dataset_elegido, dificultad_elegida)
+        tarjeta.cargar_datos()
         window = juego_ver_2.armar_ventana(tarjeta, dificultad_elegida, dataset_elegido, usuario_elegido)
         tiempo_comienzo = time.time()
         while True:
@@ -93,18 +92,40 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                     (cg.ventana_chequear_accion(window,
                                                 'Se darán por perdidas la ronda actual\ny las rondas restantes!\n\n'
                                                 'Segurx que querés volver al menú?') == 'Sí')):
+                tarjeta.set_puntos_acumulados(0) # si abandona, no suma puntos
                 break
             delta_tiempo = time.time() - tiempo_comienzo
             tiempo_transcurrido = int(tarjeta.get_datos_dificultad().get_tiempo() - delta_tiempo)
             minutos, segundos = divmod(tiempo_transcurrido, 60)
             window['-JUEGO_TIEMPO-'].update(f'{minutos:02d}:{segundos:02d}')
             window['-JUEGO_BARRA-'].update(current_count=delta_tiempo + 1)
+            if window['-JUEGO_TIEMPO-'].Get() == '00:00':
+                cg.ventana_popup(window, f'SE ACABO EL TIEMPO!. PASASTE TODAS LAS RONDAS!. '
+                                         f'TU PUNTAJE TOTAL ES DE:{tarjeta.get_puntos_acumulados()}')
+                break
             match event:
                 case '-JUEGO_PASAR-' | '-ELECCION-':
                     eleccion = (dict(filter(lambda x: x[1], values.items())))
-                    eleccion = (list(eleccion.keys())[0])
-                    tarjeta.analizar_respuesta(eleccion)
-                    print(tarjeta.get_puntos_acumulados())
+                    # Pos si confirman/pasan sin seleccionar nada
+                    try:
+                        if event == '-JUEGO_PASAR-':
+                            eleccion = None
+                        else:
+                            eleccion = (list(eleccion.keys())[0])
+                    except IndexError:
+                        pass
+                    else:
+                        if tarjeta.analizar_respuesta(eleccion) == 'SIGUE':
+                            window['-JUEGO_TABLA-'].update(values=list(enumerate(tarjeta.get_resultados(), start=1)))
+                            tarjeta.cargar_datos() # nuevos datos
+                            window = juego_ver_2.cambiar_tarjeta(tarjeta, window,
+                                                                 dificultad_elegida, dataset_elegido, usuario_elegido)
+                        else:
+                            cg.ventana_popup(window, f'PASASTE TODAS LAS RONDAS!. '
+                                             f'TU PUNTAJE TOTAL ES DE:{tarjeta.get_puntos_acumulados()}')
+                            break
+            # despues con los datos que almacena la tarjeta y este loop hay que armar el csv de la partida
+            # el tema de el cambio de pantallas no me quedo muy bien
         window.close()
 
 

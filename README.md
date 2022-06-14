@@ -63,8 +63,9 @@ un integrante del grupo
     - [titulo_figurace.png](https://www.canva.com/design/DAFCR75-3pE/x6S_mGUGkOukIWoBxiAVwQ/watch?utm_content=DAFCR75-3pE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
     - [tip_personalizado.png](https://www.canva.com/design/DAFDhXSubaU/p6xDn0kM7VBZWld-45JYwA/view?utm_content=DAFDhXSubaU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
     - [indicador_perfil.png](https://www.canva.com/design/DAFDhrvRD8Y/nbEZmttuTWRqoH6L-9yalg/view?utm_content=DAFDhrvRD8Y&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
-    - [aviso.gif](https://www.canva.com/design/DAFDh_R56TY/eISHykq34PLKpZ_-LwMJzQ/watch?utm_content=DAFDh_R56TY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
     - [confirmacion.png](https://www.canva.com/design/DAFDh2AAeU4/u_ru-InI7C5khlBoPkt-Sg/view?utm_content=DAFDh2AAeU4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+- Bajo la [licencia](https://tenor.com/assets/dist/licenses.txt) de [Tenor](https://tenor.com/). Creador [Yara](https://linktr.ee/capoo)
+  - [capoo_aviso.gif](https://tenor.com/view/capoo-bugcat-blue-cat-computer-gif-19551056)
 - Bajo la [licencia](https://www.freepikcompany.com/legal#nav-flaticon) de libre uso de [Flaticon](https://www.flaticon.es/)
     - [cartas_icon](https://www.flaticon.es/icono-gratis/juego-de-cartas_4072061?term=cartas&page=1&position=16&page=1&position=16&related_id=4072061&origin=search)
 - Con la cita de autoría requerida <a href="http://www.freepik.com">Designed by gstudioimagen / Freepik</a>
