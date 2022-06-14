@@ -83,54 +83,65 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
     dataset_elegido = eleccion_dataset.eleccion_dataset()
     if dataset_elegido:
         tarjeta = tarjeta_ver_2.Tarjeta(dataset_elegido, dificultad_elegida)
-        tarjeta.cargar_datos()  # Se cargan los primeros datos de la tarjeta
-        window = juego_ver_2.armar_ventana(tarjeta, dificultad_elegida, dataset_elegido, usuario_elegido)
-        tiempo_comienzo = time.time()
-        while True:
-            event, values = window.read(timeout=100)
-            if ((event == '-JUEGO_ABANDONAR-') and
-                    (cg.ventana_chequear_accion(window,
-                                                'Se darán por perdidas la ronda actual\ny las rondas restantes!\n\n'
-                                                'Segurx que querés volver al menú?') == 'Sí')):
-                tarjeta.set_puntos_acumulados(0)  # si abandona, no suma/resta puntos
-                break
-            # CONTROL DEL TIEMPO DE LA PARTIDA
-            delta_tiempo = time.time() - tiempo_comienzo
-            tiempo_transcurrido = int(tarjeta.get_datos_dificultad().get_tiempo() - delta_tiempo)
-            minutos, segundos = divmod(tiempo_transcurrido, 60)
-            window['-JUEGO_TIEMPO-'].update(f'{minutos:02d}:{segundos:02d}')
-            window['-JUEGO_BARRA-'].update(current_count=delta_tiempo + 1)
-            if window['-JUEGO_TIEMPO-'].Get() == '00:00':
-                # Si se acaba el tiempo de termina la partida
-                cg.ventana_popup(window, f'SE ACABO EL TIEMPO!. PASASTE TODAS LAS RONDAS!. '
-                                         f'TU PUNTAJE TOTAL ES DE:{tarjeta.get_puntos_acumulados()}')
-                break
-
-            # CONTROL DE LA ELECCION DE RESPUESTA
-            match event:
-                case '-JUEGO_PASAR-' | '-ELECCION-':
-                    eleccion = (dict(filter(lambda x: x[1], values.items())))
-                    # Si intenta confirmar sin seleccionar respuesta, no ocurre nada
-                    try:
-                        if event == '-JUEGO_PASAR-':
-                            eleccion = None  # Se le asigna un valor None para poder pasar la tarjera sin seleccionar
-                        else:
-                            eleccion = (list(eleccion.keys())[0])
-                    except IndexError:
-                        pass
+        window_inicial = juego_ver_2.armar_ventana(tarjeta, tarjeta.layout_vacio(), dificultad_elegida, dataset_elegido, usuario_elegido)
+        event, values = window_inicial.read()
+        if event == '-JUEGO_COMENZAR-':
+            tarjeta.cargar_datos()  # Se cargan los primeros datos de la tarjeta
+            window = juego_ver_2.armar_ventana(tarjeta, tarjeta.layout_datos(), dificultad_elegida, dataset_elegido, usuario_elegido)
+            window_inicial.close()
+            window['-JUEGO_COMENZAR-'].update(visible=False)
+            tiempo_comienzo = time.time()
+            while True:
+                event, values = window.read(timeout=100)
+                # CONTROL DEL TIEMPO DE LA PARTIDA
+                delta_tiempo = time.time() - tiempo_comienzo
+                tiempo_transcurrido = int(tarjeta.get_datos_dificultad().get_tiempo() - delta_tiempo)
+                minutos, segundos = divmod(tiempo_transcurrido, 60)
+                window['-JUEGO_TIEMPO-'].update(f'{minutos:02d}:{segundos:02d}')
+                window['-JUEGO_BARRA-'].update(current_count=delta_tiempo + 1)
+                if event == '-JUEGO_ABANDONAR-':
+                    if (cg.ventana_chequear_accion(window,
+                      'Se darán por perdidas la ronda actual\ny las rondas restantes!\n\n'
+                      'Segurx que querés volver al menú?') == 'Sí'):
+                        tarjeta.set_puntos_acumulados(0)  # si abandona, no suma/resta puntos
+                        break
                     else:
-                        if tarjeta.analizar_respuesta(eleccion) == 'SIGUE':
-                            window['-JUEGO_TABLA-'].update(values=list(enumerate(tarjeta.get_resultados(), start=1)))
-                            tarjeta.cargar_datos()  # Se actualizan los datos de la tarjeta
-                            window = juego_ver_2.cambiar_tarjeta(tarjeta, window,
-                                                                 dificultad_elegida, dataset_elegido, usuario_elegido)
-                        else:
-                            # Si se terminaron las rondas se termina la partida
-                            cg.ventana_popup(window, f'PASASTE TODAS LAS RONDAS!. '
+                        window['-JUEGO_TIEMPO-'].update('00:00')
+                        window['-JUEGO_BARRA-'].update(current_count=0)
+                        window.refresh()
+                if window['-JUEGO_TIEMPO-'].Get() == '00:00':
+                    # Si se acaba el tiempo de termina la partida
+                    cg.ventana_popup(window, f'SE ACABO EL TIEMPO!. PASASTE TODAS LAS RONDAS!. '
                                              f'TU PUNTAJE TOTAL ES DE:{tarjeta.get_puntos_acumulados()}')
-                            break
-            # despues con los datos que almacena la tarjeta y este loop hay que armar el csv de la partida
-            # el tema de el cambio de pantallas no me quedo muy bien
+                    break
+
+                # CONTROL DE LA ELECCION DE RESPUESTA
+                match event:
+                    case '-JUEGO_PASAR-' | '-ELECCION-':
+                        eleccion = (dict(filter(lambda x: x[1], values.items())))
+                        # Si intenta confirmar sin seleccionar respuesta, no ocurre nada
+                        try:
+                            if event == '-JUEGO_PASAR-':
+                                eleccion = None  # Se le asigna un valor None para poder pasar la tarjera sin seleccionar
+                            else:
+                                eleccion = (list(eleccion.keys())[0])
+                        except IndexError:
+                            pass
+                        else:
+                            if tarjeta.analizar_respuesta(eleccion) == 'SIGUE':
+                                window['-JUEGO_TABLA-'].update(values=list(enumerate(tarjeta.get_resultados(), start=1)))
+                                tarjeta.cargar_datos()  # Se actualizan los datos de la tarjeta
+                                tiempo_comienzo = time.time()
+                                window = juego_ver_2.cambiar_tarjeta(tarjeta, tarjeta.layout_datos(),
+                                                                     window, dificultad_elegida,
+                                                                     dataset_elegido, usuario_elegido)
+                            else:
+                                # Si se terminaron las rondas se termina la partida
+                                cg.ventana_popup(window, f'PASASTE TODAS LAS RONDAS!. '
+                                                 f'TU PUNTAJE TOTAL ES DE:{tarjeta.get_puntos_acumulados()}')
+                                break
+                # despues con los datos que almacena la tarjeta y este loop hay que armar el csv de la partida
+                # el tema de el cambio de pantallas no me quedo muy bien
         window.close()
 
 

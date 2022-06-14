@@ -2,6 +2,8 @@ import pandas as pd
 import rutas
 import os
 import random
+import PySimpleGUI as sg
+from src.pantallas import caracteristicas_generales as cgen
 from src.funcionalidad.dificultad import Dificultad
 
 
@@ -98,3 +100,30 @@ class Tarjeta:
         else:
             return 'SIGUE'
 
+    def layout_datos(self):
+        layout = [sg.Frame('Tarjeta',
+                  [[sg.Text(f'{nombre}: {dato}', font=cgen.FUENTE_OPCIONES)]
+                   for nombre, dato in self._dict_pistas.items()] +
+                  [[sg.Text(f'{self._dict_respuestas["Titulo"]}: ', pad=5, font=cgen.FUENTE_COMBO)]] +
+                  [[sg.Radio(self._dict_respuestas['Posibles'][i], group_id='respuestas',
+                             font=cgen.FUENTE_OPCIONES, key=self._dict_respuestas['Posibles'][i])]
+                   for i in range(cgen.CANT_RESPUESTAS)] +
+                  [[sg.Button('Confirmar', pad=15, key='-ELECCION-', font=cgen.FUENTE_COMBO),
+                    sg.Push(),
+                    sg.Button('Pasar >', pad=15, key='-JUEGO_PASAR-', font=cgen.FUENTE_COMBO)]],
+                  expand_x=True
+                  )]
+        return layout
+
+    def layout_vacio(self):
+        layout = [sg.Frame('Tarjeta',
+                  [[sg.Text('')]
+                   for nombre, dato in self._dict_pistas.items()] +
+                  [[sg.Text('')]] +
+                  [[sg.Radio(['', '', '', '', ''], group_id='respuestas')]] +
+                  [[sg.Button('Confirmar', pad=15, key='-ELECCION-', font=cgen.FUENTE_COMBO, disabled=True),
+                    sg.Push(),
+                    sg.Button('Pasar >', pad=15, key='-JUEGO_PASAR-', font=cgen.FUENTE_COMBO, disabled=True)]],
+                  expand_x=True
+                  )]
+        return layout

@@ -4,19 +4,21 @@ import rutas
 
 # tamaños de ventanas y botones
 ancho, alto = sg.Window.get_screen_size()
-ancho_ventana = int(ancho*80/100)
-alto_ventana = int(alto*95/100)
+ancho_ventana = int(ancho*90/100)
+alto_ventana = int(alto*98/100)
 TAM_VENTANA = (ancho_ventana, alto_ventana)
 TAM_COLUMNAS = (int(ancho_ventana/3), int(alto_ventana/3))
 TAM_COMBO = (int(ancho/80), int(alto/80))
 
 # fuentes de los textos y botones (La anterior fuente era Verdana)
-FUENTE_TITULO = 'Impact 48'
-FUENTE_INDICADOR = 'Impact 28'
-FUENTE_BOTONES = 'Impact 26'
-FUENTE_COMBO = 'Impact 18'
-FUENTE_OPCIONES = 'Impact 12'
-FUENTE_POPUP = 'Impact 12'
+FUENTE = 'Impact'
+FUENTE_TITULO = f'{FUENTE} 48'
+FUENTE_INDICADOR = f'{FUENTE} 28'
+FUENTE_BOTONES = f'{FUENTE} 26'
+FUENTE_PRUEBA = f'{FUENTE} 22'
+FUENTE_COMBO = f'{FUENTE} 18'
+FUENTE_OPCIONES = f'{FUENTE} 12'
+FUENTE_POPUP = f'{FUENTE} 12'
 
 CANT_RESPUESTAS = 5
 

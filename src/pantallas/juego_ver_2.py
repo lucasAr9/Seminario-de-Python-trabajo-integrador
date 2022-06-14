@@ -5,10 +5,8 @@ import rutas
 from src.pantallas import caracteristicas_generales as cgen
 
 
-def armar_layout(tarjeta, dificultad_elegida, dataset_elegido, usuario_elegido):
+def armar_layout(tarjeta, layout_tarjeta, dificultad_elegida, dataset_elegido, usuario_elegido):
     """Devolver la organización de botones de la ventana de juego."""
-    respuestas = tarjeta.get_respuestas()
-    pistas = tarjeta.get_pistas()
     resultados = tarjeta.get_resultados()
     datos = tarjeta.get_datos_dificultad()
 
@@ -32,18 +30,7 @@ def armar_layout(tarjeta, dificultad_elegida, dataset_elegido, usuario_elegido):
                                                  size=(18, 20),
                                                  key='-JUEGO_BARRA-')
                                   ]])],
-                      [sg.Frame('Tarjeta',
-                                [[sg.Text(f'{nombre}: {dato}', font=cgen.FUENTE_OPCIONES)]
-                                 for nombre, dato in pistas.items()] +
-                                [[sg.Text(f'{respuestas["Titulo"]}: ', pad=5, font=cgen.FUENTE_COMBO)]] +
-                                [[sg.Radio(respuestas['Posibles'][i], group_id='respuestas',
-                                           font=cgen.FUENTE_OPCIONES, key=respuestas['Posibles'][i])]
-                                 for i in range(cgen.CANT_RESPUESTAS)] +
-                                [[sg.Button('Confirmar', pad=15, key='-ELECCION-', font=cgen.FUENTE_COMBO),
-                                  sg.Push(),
-                                  sg.Button('Pasar >', pad=15, key='-JUEGO_PASAR-', font=cgen.FUENTE_COMBO)]],
-                                expand_x=True
-                                )]
+                      layout_tarjeta
                       ]
     columna_der = [[sg.Frame('Usuario',
                              [[sg.Text(usuario_elegido, font=cgen.FUENTE_COMBO)]],
@@ -57,7 +44,7 @@ def armar_layout(tarjeta, dificultad_elegida, dataset_elegido, usuario_elegido):
 
     layout = [[sg.Image(os.path.join(rutas.IMAGENES_DIR, 'titulo_figurace.png'), expand_x=True)],
               [sg.HSep(pad=10)],
-              # [sg.Button('Comenzar', key='-JUEGO_COMENZAR-')],
+              [sg.Button('Comenzar', key='-JUEGO_COMENZAR-')],
               [sg.Push(),
                sg.Column(columna_izq, expand_y=True),
                sg.Push(),
@@ -73,15 +60,15 @@ def armar_layout(tarjeta, dificultad_elegida, dataset_elegido, usuario_elegido):
     return layout_encuadre
 
 
-def armar_ventana(tarjeta, dificultad_elegida, dataset_elegido, usuario_elegido):
+def armar_ventana(tarjeta, layout_tarjeta, dificultad_elegida, dataset_elegido, usuario_elegido):
     """Crear y devolver la ventana en la que se juega."""
-    window = sg.Window('Juego', armar_layout(tarjeta, dificultad_elegida, dataset_elegido, usuario_elegido),
+    window = sg.Window('Juego', armar_layout(tarjeta, layout_tarjeta, dificultad_elegida, dataset_elegido, usuario_elegido),
                        size=cgen.TAM_VENTANA, resizable=True, no_titlebar=True,
                        grab_anywhere=True, finalize=True)
     return window
 
 
-def cambiar_tarjeta(tarjeta, window , dificultad, dataset, usuario):
-    nueva_ventana = armar_ventana(tarjeta, dificultad, dataset, usuario)
+def cambiar_tarjeta(tarjeta, layout_tarjeta, window , dificultad, dataset, usuario):
+    nueva_ventana = armar_ventana(tarjeta, layout_tarjeta, dificultad, dataset, usuario)
     window.close()
     return nueva_ventana
