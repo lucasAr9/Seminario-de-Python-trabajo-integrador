@@ -17,10 +17,8 @@ def layout_configuracion_texto():
     """:return: layout del texto."""
     layout = [
         [sg.Push(),
-         sg.Text('CARACTERISTICAS', key='-DIFICULTAD_T-',
+         sg.Text('CARACTERÍSTICAS', key='-DIFICULTAD_T-',
                  expand_x=True, font='Arial 20', justification='center'),
-         sg.Push(),
-
          sg.Push()],
 
         [sg.Push(),
@@ -95,27 +93,27 @@ def layour_config_personalizado(nivel):
 
         [sg.Push(),
          sg.Combo(dificultad.CANT_TIEMPOS, key='-TIEMPO_C-', default_value=nivel['-TIEMPO_C-'],
-                  readonly=True, enable_events=True, size=(10, 5), font=cg.FUENTE_COMBO),
+                  readonly=True, enable_events=True, size=(10, 5), font=cg.FUENTE_BOTONES),
          sg.Push()],
 
         [sg.Push(),
          sg.Combo(dificultad.CANT_RONDAS, key='-RONDAS_C-', default_value=nivel['-RONDAS_C-'],
-                  readonly=True, enable_events=True, size=(10, 5), font=cg.FUENTE_COMBO),
+                  readonly=True, enable_events=True, size=(10, 5), font=cg.FUENTE_BOTONES),
          sg.Push()],
 
         [sg.Push(),
          sg.Combo(dificultad.CANT_CORRECTO, key='-CORRECTO_C-', default_value=nivel['-CORRECTO_C-'],
-                  readonly=True, enable_events=True, size=(10, 5), font=cg.FUENTE_COMBO),
+                  readonly=True, enable_events=True, size=(10, 5), font=cg.FUENTE_BOTONES),
          sg.Push()],
 
         [sg.Push(),
          sg.Combo(dificultad.CANT_INCORRECTO, key='-INCORRECTO_C-', default_value=nivel['-INCORRECTO_C-'],
-                  readonly=True, enable_events=True, size=(10, 5), font=cg.FUENTE_COMBO),
+                  readonly=True, enable_events=True, size=(10, 5), font=cg.FUENTE_BOTONES),
          sg.Push()],
 
         [sg.Push(),
          sg.Combo(dificultad.CANT_NIVELES, key='-CARACTERISTICAS_C-', default_value=nivel['-CARACTERISTICAS_C-'],
-                  readonly=True, enable_events=True, size=(10, 5), font=cg.FUENTE_COMBO),
+                  readonly=True, enable_events=True, size=(10, 5), font=cg.FUENTE_BOTONES),
          sg.Push()]]
     return layout
 
@@ -127,9 +125,9 @@ def crear_ventana():
     """
     datos = dificultad.leer_archivo_json()
     layout_text = layout_configuracion_texto()
-    layout_facil = layout_configuracion_nivel(datos['-FACIL-'], 'FACIL')
+    layout_facil = layout_configuracion_nivel(datos['-FACIL-'], 'FÁCIL')
     layout_normal = layout_configuracion_nivel(datos['-NORMAL-'], 'NORMAL')
-    layout_dificil = layout_configuracion_nivel(datos['-DIFICIL-'], 'DIFICIL')
+    layout_dificil = layout_configuracion_nivel(datos['-DIFICIL-'], 'DIFÍCIL')
     layout_personalizado = layour_config_personalizado(datos['-PERSONALIZADO-'])
     crear_layout = [
         [sg.Image(ruta_titlebar_icon, pad=((60, 0), (20, 20))),
