@@ -36,7 +36,7 @@ def layout_configuracion():
 
 def crear_ventana():
     """
-    Menu de opciones para la configuracion de las caracteristicas del funcionalidad.
+    Menu de opciones para la configuracion de las caracteristicas de la funcionalidad.
     :return: la ventana de configuracion con los niveles de dificultad que se pueden elegir.
     """
     layout = layout_configuracion()
@@ -71,7 +71,7 @@ def layout_nivel(nivel):
     datos = dificultad.leer_archivo_json()
     layout = [
         [sg.Push(),
-         sg.Text(nivel, key='-DIFICULTAD_T-',  # aca va una variable que cambia segun el nivel
+         sg.Text(nivel, key='-DIFICULTAD_T-',
                  expand_x=True, font=cg.FUENTE_BOTONES, justification='center'),
          sg.Push()],
 
@@ -107,7 +107,12 @@ def nivel_elegida(nivel):
     Con los valores de las variables de cada nivel predefinidos muestra los valores
     que el usuario puede elegir.
     """
-    layout = layout_nivel(nivel)
+    try:
+        layout = layout_nivel(nivel)
+    except KeyError:
+        dificultad.establecer_dificultades()
+        layout = layout_nivel(nivel)
+
     crear_layout = [
         [sg.Text(size=(None, 2), )],
         [sg.Col(layout, expand_x=True)],
@@ -185,7 +190,12 @@ def dificultad_personalizada():
     se settean los valores que se muestran en los sg.Combo() con los que el usuario puede elegir.
     Y por defecto muestra el ultimo valores seleccionado por el usuario.
     """
-    layout = layout_personalizado('-PERSONALIZADO-')
+    try:
+        layout = layout_personalizado('-PERSONALIZADO-')
+    except KeyError:
+        dificultad.establecer_dificultades()
+        layout = layout_personalizado('-PERSONALIZADO-')
+
     crear_layout = [
         [sg.Text(size=(None, 2), )],
         [sg.Col(layout, expand_x=True)],

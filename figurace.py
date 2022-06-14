@@ -43,6 +43,8 @@ def abrir_configuracion():
                     break
                 if event == '-CAMBIOS_CONFIRMADOS-':
                     dificultad.guardar_nivel_personalizado(values2)
+                    cg.ventana_popup(window_otra, 'Se guardaron los cambios personalizados.',
+                                     nombre_gif='capoo_sin_usuarios.gif')
             if event == '-VOLVER_PERSONALIZADO-':
                 window_otra.close()
             window_dificultad.un_hide()

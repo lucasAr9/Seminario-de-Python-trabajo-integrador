@@ -1,40 +1,39 @@
-import PySimpleGUI as sg
+import unittest
+import json
+import os
 
-from src.pantallas import configuracion as c_pantalla
 from src.funcionalidad import dificultad as dificultad
+from rutas import CONFIG_DIR
+
+RUTA_JSON = os.path.join(CONFIG_DIR, "configuracion.json")
+
+with open(RUTA_JSON, 'r', encoding='utf-8') as config:
+    leer = json.load(config)
+
+DATOS_JSON = leer['-NORMAL-']
 
 
-def nivel(window_dificultad, elegido):
-    window_otra = c_pantalla.nivel_elegida(elegido)
-    window_dificultad.hide()
-    event, values = window_otra.read()
-    if event == '-VOLVER_VALORES-':
-        window_otra.close()
-    window_dificultad.un_hide()
+class TestCargarValoresDificultad(unittest.TestCase):
+    """Test para probar que los valores de la clase dificultad se cargan correctamente."""
+
+    def test_cargar_facil(self):
+        """Comprobar que los valores de dificultad se cargaron y son correctos desde las constantes definidas."""
+        datos = dificultad.Dificultad('-FACIL-')
+        self.assertEqual(datos.get_tiempo(), dificultad.CANT_TIEMPOS[len(dificultad.CANT_TIEMPOS) - 1])
+        self.assertEqual(datos.get_rondas(), dificultad.CANT_RONDAS[len(dificultad.CANT_RONDAS) - 1])
+        self.assertEqual(datos.get_correctas(), dificultad.CANT_CORRECTO[len(dificultad.CANT_CORRECTO) - 1])
+        self.assertEqual(datos.get_incorrectas(), dificultad.CANT_INCORRECTO[0])
+        self.assertEqual(datos.get_caracteristicas(), dificultad.CANT_NIVELES[len(dificultad.CANT_NIVELES) - 1])
+
+    def test_cargar_normal(self):
+        """Comprobar que los valores de dificultad se cargaron desde el json."""
+        datos = dificultad.Dificultad('-NORMAL-')
+        self.assertEqual(datos.get_tiempo(), DATOS_JSON['-TIEMPO_C-'])
+        self.assertEqual(datos.get_rondas(), DATOS_JSON['-RONDAS_C-'])
+        self.assertEqual(datos.get_correctas(), DATOS_JSON['-CORRECTO_C-'])
+        self.assertEqual(datos.get_incorrectas(), DATOS_JSON['-INCORRECTO_C-'])
+        self.assertEqual(datos.get_caracteristicas(), DATOS_JSON['-CARACTERISTICAS_C-'])
 
 
-window_dificultad = c_pantalla.crear_ventana()
-while True:
-    event, values = window_dificultad.read()
-    if event in (sg.WIN_CLOSED, '-VOLVER_CONFIG-'):
-        break
-    if event == '-FACIL-':
-        nivel(window_dificultad, '-FACIL-')
-    elif event == '-NORMAL-':
-        nivel(window_dificultad, '-NORMAL-')
-    elif event == '-DIFICIL-':
-        nivel(window_dificultad, '-DIFICIL-')
-
-    elif event == '-PERSONALIZADO-':
-        window_otra = c_pantalla.dificultad_personalizada()
-        window_dificultad.hide()
-        while True:
-            event, values2 = window_otra.read()
-            if event in (sg.WIN_CLOSED, '-VOLVER_PERSONALIZADO-'):
-                break
-            if event == '-CAMBIOS_CONFIRMADOS-':
-                dificultad.guardar_nivel_personalizado(values2)
-        if event == '-VOLVER_PERSONALIZADO-':
-            window_otra.close()
-        window_dificultad.un_hide()
-window_dificultad.close()
+if __name__ == '__main__':
+    unittest.main()

@@ -15,7 +15,7 @@ RUTA_JSON = os.path.join(CONFIG_DIR, "configuracion.json")
 
 
 class Dificultad:
-    """Caracteristicas que permite la configuracion del funcionalidad segun su dificultad."""
+    """Caracteristicas que permite la configuracion de la funcionalidad segun su dificultad."""
 
     def __init__(self, dificultad_actual):
         """
@@ -23,11 +23,11 @@ class Dificultad:
         y lo settea a las variables de la clase para poder usarse en la pantalla de funcionalidad.
         :param dificultad_actual: la clave de la dificultad a settear.
         """
-        self.__tiempo_u = None
+        self.__tiempo = None
         self.__rondas = None
         self.__correctas = None
         self.__incorrectas = None
-        self.__nivel = None
+        self.__caracteristicas = None
         try:
             datos = leer_archivo_json()
             actuales = datos[dificultad_actual]
@@ -38,37 +38,31 @@ class Dificultad:
             actuales = datos[dificultad_actual]
             self.settear_dificultad_elegida(actuales)
 
-    """Getters de la dificultad"""
-    @property
-    def tiempo(self):
-        return self.__tiempo_u
+    def get_tiempo(self):
+        return self.__tiempo
 
-    @property
-    def rondas(self):
+    def get_rondas(self):
         return self.__rondas
 
-    @property
-    def correctas(self):
+    def get_correctas(self):
         return self.__correctas
 
-    @property
-    def incorrectas(self):
+    def get_incorrectas(self):
         return self.__incorrectas
 
-    @property
-    def nivel(self):
-        return self.__nivel
+    def get_caracteristicas(self):
+        return self.__caracteristicas
 
     def settear_dificultad_elegida(self, actuales):
         """
         Settear los valores de la clase Dificultad con los valores del archivo configuracion.json.
         :param actuales: el diccionario con los datos de la dificultad elegida.
         """
-        self.__tiempo_u = actuales['-TIEMPO_C-']
+        self.__tiempo = actuales['-TIEMPO_C-']
         self.__rondas = actuales['-RONDAS_C-']
         self.__correctas = actuales['-CORRECTO_C-']
         self.__incorrectas = actuales['-INCORRECTO_C-']
-        self.__nivel = actuales['-CARACTERISTICAS_C-']
+        self.__caracteristicas = actuales['-CARACTERISTICAS_C-']
 
 
 def leer_archivo_json():
@@ -81,7 +75,7 @@ def leer_archivo_json():
         with open(RUTA_JSON, 'r', encoding='utf-8') as config:
             datos = json.load(config)
         return datos
-    except FileNotFoundError:
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
         # si ocurre el error de que no se encontro el archivo, que lo cree con valores por defecto.
         datos = establecer_dificultades()
         return datos
