@@ -8,6 +8,8 @@ from src.pantallas import configuracion as c_pantalla
 from src.pantallas import cuentas as cuentas
 from src.pantallas import puntajes
 from src.pantallas import juego
+from src.funcionalidad import tarjeta_ver_2, juego_ver_2
+from src.pantallas import eleccion_dataset
 
 
 def nivel(window_dificultad, elegido):
@@ -91,20 +93,44 @@ def abrir_perfiles():
 
 def abrir_juego(dificultad_elegida, usuario_elegido):
     """Crear la ventana de juego y responder a los eventos en la misma."""
-    window = juego.armar_ventana(dificultad_elegida, usuario_elegido)
-    tiempo_comienzo = time.time()
-    while True:
-        event, values = window.read(timeout=100)
-        if ((event == '-JUEGO_ABANDONAR-') and
-                (cg.ventana_chequear_accion(window, 'Se darán por perdidas la ronda actual\ny las rondas restantes!\n\n'
-                                                    'Segurx que querés volver al menú?') == 'Sí')):
-            break
-        delta_tiempo = time.time() - tiempo_comienzo
-        tiempo_transcurrido = int(5 - delta_tiempo)
-        minutos, segundos = divmod(tiempo_transcurrido, 60)
-        window['-JUEGO_TIEMPO-'].update(f'{minutos:02d}:{segundos:02d}')
-        window['-JUEGO_BARRA-'].update(current_count=delta_tiempo + 1)
-    window.close()
+    # window = juego.armar_ventana(dificultad_elegida, usuario_elegido)
+    # tiempo_comienzo = time.time()
+    # while True:
+    #    event, values = window.read(timeout=100)
+    #    if ((event == '-JUEGO_ABANDONAR-') and
+    #            (cg.ventana_chequear_accion(window, 'Se darán por perdidas la ronda actual\ny las rondas restantes!\n\n'
+    #                                               'Segurx que querés volver al menú?') == 'Sí')):
+    #        break
+    #    delta_tiempo = time.time() - tiempo_comienzo
+    #    tiempo_transcurrido = int(5 - delta_tiempo)
+    #    minutos, segundos = divmod(tiempo_transcurrido, 60)
+    #    window['-JUEGO_TIEMPO-'].update(f'{minutos:02d}:{segundos:02d}')
+    #    window['-JUEGO_BARRA-'].update(current_count=delta_tiempo + 1)
+    # window.close()
+    dataset_elegido = eleccion_dataset.eleccion_dataset()
+    if dataset_elegido:
+        tarjeta = tarjeta_ver_2.Tarjeta(dataset_elegido, dificultad_elegida)
+        window = juego_ver_2.armar_ventana(tarjeta, dificultad_elegida, dataset_elegido, usuario_elegido)
+        tiempo_comienzo = time.time()
+        while True:
+            event, values = window.read(timeout=100)
+            if ((event == '-JUEGO_ABANDONAR-') and
+                    (cg.ventana_chequear_accion(window,
+                                                'Se darán por perdidas la ronda actual\ny las rondas restantes!\n\n'
+                                                'Segurx que querés volver al menú?') == 'Sí')):
+                break
+            delta_tiempo = time.time() - tiempo_comienzo
+            tiempo_transcurrido = int(tarjeta.get_datos_dificultad().tiempo - delta_tiempo)
+            minutos, segundos = divmod(tiempo_transcurrido, 60)
+            window['-JUEGO_TIEMPO-'].update(f'{minutos:02d}:{segundos:02d}')
+            window['-JUEGO_BARRA-'].update(current_count=delta_tiempo + 1)
+            match event:
+                case '-JUEGO_PASAR-' | '-ELECCION-':
+                    eleccion = (dict(filter(lambda x: x[1], values.items())))
+                    eleccion = (list(eleccion.keys())[0])
+                    tarjeta.analizar_respuesta(eleccion)
+                    print(tarjeta.get_puntos_acumulados())
+        window.close()
 
 
 def main():
@@ -135,7 +161,8 @@ def main():
                     abrir_juego(dificultad_elegida, usuario_elegido)
                     window.un_hide()
                 else:
-                    cg.ventana_popup(window, 'Por favor seleccione una dificultad y usuario, antes de comenzar a jugar.')
+                    cg.ventana_popup(window,
+                                     'Por favor seleccione una dificultad y usuario, antes de comenzar a jugar.')
             case '-CONFIGURACION-':
                 window.hide()
                 abrir_configuracion()
