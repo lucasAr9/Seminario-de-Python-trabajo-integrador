@@ -1,7 +1,7 @@
 import PySimpleGUI as sg
 import os
 import json
-import sys
+import string
 
 import src.pantallas.caracteristicas_generales as cg
 import rutas as ruta
@@ -16,7 +16,7 @@ def cargar_perfiles():
     try:
         with open(archivo_url, "r", encoding="utf-8") as arch_perfiles:
             perfiles = json.load(arch_perfiles)
-    except FileNotFoundError:
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
         with open(archivo_url, "w", encoding="utf-8") as arch_perfiles:
             perfiles = []
             json.dump(perfiles, arch_perfiles)
@@ -54,8 +54,8 @@ def comprobar_perfil(window, values, conf):
         return False
     else:
         try:
-            int(values["-INPUT_EDAD-"])
-            if len(values["-INPUT_EDAD-"]) < 1 or len(values["-INPUT_EDAD-"]) > 2:
+            
+            if int(values["-INPUT_EDAD-"]) > 100 or int(values["-INPUT_EDAD-"]) < 4:
                 window["-MSJ_EDITAR-"].update(value="*Ingrese una edad correcta.")
                 return False
             else:
@@ -82,14 +82,16 @@ def comprobar_nuevo(window, values, conf):
         return False
     else:
         try:
-            int(values["-NUEVO_EDAD-"])
             if len(values["-NUEVO_NOMBRE-"]) > 20:
                 window["-MSJ_CREAR-"].update(value="*El nick puede tener hasta 20 caracteres.")
+                return False
+            elif len([x for x in values["-NUEVO_NOMBRE-"] if not x in string.punctuation + string.digits]) < 3:
+                window["-MSJ_CREAR-"].update(value="*El nick debe tener al menos 3 letras.")
                 return False
             elif [x for x in conf["perfiles"] if x["nombre"] == values["-NUEVO_NOMBRE-"]]:
                 window["-MSJ_CREAR-"].update(value="*El nick ya existe.")
                 return False
-            elif len(values["-NUEVO_EDAD-"]) < 1 or len(values["-NUEVO_EDAD-"]) > 2:
+            elif int(values["-NUEVO_EDAD-"]) > 100 or int(values["-NUEVO_EDAD-"]) < 4:
                 window["-MSJ_CREAR-"].update(value="*Ingrese una edad correcta.")
                 return False
             else:
@@ -126,7 +128,7 @@ def crear_cuentas(conf):
         [sg.Text("Ingrese su Edad:    ", font=cg.FUENTE_BOTONES),
             sg.Input("", key="-NUEVO_EDAD-", font=cg.FUENTE_BOTONES)],
         [sg.Text("Ingrese su Genero:  ", font=cg.FUENTE_BOTONES),
-            sg.Combo(['Masculino', 'Femenino', 'Trans','No Binario', 'Otro'], key="-NUEVO_GENERO-",
+            sg.Combo(['Masculino', 'Femenino', 'Trans','No Binario', 'Otro', 'No Responde'], key="-NUEVO_GENERO-",
                 default_value='Seleccione su género', readonly=True, size=cg.TAM_COMBO, font=cg.FUENTE_COMBO)],
         [sg.Text("Ingrese una edad valida", key="-MSJ_CREAR-", visible=False, font=cg.FUENTE_BOTONES)],
         [sg.Text()],
@@ -156,7 +158,7 @@ def crear_cuentas(conf):
             [sg.Text("Edad:    ", font=cg.FUENTE_BOTONES),
                 sg.Input("", key="-INPUT_EDAD-", font=cg.FUENTE_BOTONES)],
             [sg.Text("Genero:  ", font=cg.FUENTE_BOTONES),
-                sg.Combo(['Masculino', 'Femenino', 'Trans','No Binario', 'Otro'], key="-INPUT_GENERO-",
+                sg.Combo(['Masculino', 'Femenino', 'Trans','No Binario', 'Otro', 'No Responde'], key="-INPUT_GENERO-",
                     default_value='Seleccione su género', readonly=True, size=cg.TAM_COMBO, font=cg.FUENTE_COMBO)],
             [sg.Text("Ingrese una edad valida", key="-MSJ_EDITAR-", visible=False, font=cg.FUENTE_BOTONES)]
     ]
@@ -165,7 +167,7 @@ def crear_cuentas(conf):
         [sg.Push(), sg.Listbox([a["nombre"] for a in conf["perfiles"]], size=(cg.TAM_COLUMNAS[0]//10,
                                                                               cg.TAM_COLUMNAS[0]//80),
                                key="-PERFILES-", font=cg.FUENTE_BOTONES)],
-        [sg.Push(), sg.Button("Aceptar", key="-ACEPTAR_PERFIL-", font=cg.FUENTE_BOTONES),
+        [sg.Push(), sg.Button("Seleccionar", key="-ACEPTAR_PERFIL-", font=cg.FUENTE_BOTONES),
             sg.Button("Crear Perfil", key="-PERFIL_NUEVO-", font=cg.FUENTE_BOTONES), sg.Push()]
     ]
 

@@ -15,7 +15,8 @@ class Tarjeta:
         :param dataset, dificultad_elegida: setado desde el menu_incio_juego
         """
         dataset_ruta = os.path.join(rutas.DATOS_DIR,  f'dataset_{dataset}.csv')
-        self._data_set = pd.read_csv(dataset_ruta, encoding='utf-8')
+        self._data_set = pd.read_csv(dataset_ruta, encoding='utf-8', dtype={"year released":str, "top year":str,
+            "bpm":str, "Year":str, "Volcanic Explosivity Index":str})
         self._datos_dificultad = Dificultad('-' + dificultad_elegida.upper() + '-')
 
         self._respuesta_correcta = ''
@@ -64,6 +65,7 @@ class Tarjeta:
         for i in range(6):
             aux.append(str(pistas.iloc[0, i]))
         pistas = aux
+        
         # hay un error cuando guarda los numeros, los deja con .0 a las fechas, son de tipo class 'numpy.float64' ----??
 
         # Me guardo la respuesta correcta, que se encuentra en la última posición de la lista pistas
