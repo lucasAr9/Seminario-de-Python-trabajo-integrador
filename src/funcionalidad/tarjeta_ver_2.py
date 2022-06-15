@@ -1,8 +1,10 @@
 import pandas as pd
-import rutas
 import os
+import csv
 import random
 import PySimpleGUI as sg
+
+import rutas
 from src.pantallas import caracteristicas_generales as cgen
 from src.funcionalidad.dificultad import Dificultad
 
@@ -15,6 +17,7 @@ class Tarjeta:
         dataset_ruta = os.path.join(rutas.DATOS_DIR,  f'dataset_{dataset}.csv')
         self._data_set = pd.read_csv(dataset_ruta, encoding='utf-8')
         self._datos_dificultad = Dificultad('-' + dificultad_elegida.upper() + '-')
+
         self._respuesta_correcta = ''
         self._dict_respuestas = {}
         self._dict_pistas = {}
@@ -50,12 +53,10 @@ class Tarjeta:
 
         # Me guardo en un dataFrame auxiliar 4 filas al azar (Me queda un DataFrame con 4 filas y las columnas de antes)
         aux = self._data_set.sample(n=4)
-        opciones = []
 
         # Me quedo con el dato de la última columna del dataset (donde estaría la respuesta correcta)
         # y lo guardo en una lista de opciones
-        for i in range(len(aux)):
-            opciones.append(aux.iloc[i, 5])
+        opciones = list(aux.iloc[:, 5])
 
         # Me guardo en formato lista de strings las pistas almacenadas en el DataFrame auxiliar
         # Es decir, el valor de cada columna dentro del DataFrame auxiliar
@@ -63,6 +64,7 @@ class Tarjeta:
         for i in range(6):
             aux.append(str(pistas.iloc[0, i]))
         pistas = aux
+        # hay un error cuando guarda los numeros, los deja con .0 a las fechas, son de tipo class 'numpy.float64'
 
         # Me guardo la respuesta correcta, que se encuentra en la última posición de la lista pistas
         self._respuesta_correcta = pistas[-1]
@@ -74,14 +76,17 @@ class Tarjeta:
         random.shuffle(opciones)
 
         # Guardo en un diccionario las posibles opciones/respuestas a elegir
-        self._dict_respuestas = {'Titulo': cabecera[-1], 'Correcta': self._respuesta_correcta,
-                                 'Posibles': opciones}
+        self._dict_respuestas = {
+            'Titulo': cabecera[-1],
+            'Correcta': self._respuesta_correcta,
+            'Posibles': opciones
+        }
 
         # Guardo en un diccionario las pistas de la respuesta correcta, siendo la clave el nombre de la columna y
         # el valor, el dato almacenado en esa columna
-        self._dict_pistas = {tipo: dato for tipo, dato in
-                             zip(cabecera[:self._datos_dificultad.get_caracteristicas()],
-                                 pistas)}
+        self._dict_pistas = {
+            tipo: dato for tipo, dato in zip(cabecera[:self._datos_dificultad.get_caracteristicas()], pistas)
+        }
 
     def analizar_respuesta(self, eleccion):
         """
@@ -127,3 +132,18 @@ class Tarjeta:
                   expand_x=True
                   )]
         return layout
+
+
+# para guardar los datos de la partida en un csv ---------------------------------------------------------------------??
+def guardar_datos_jugada(datos_jugada):
+    """
+    Guarda los datos de la jugada en un archivo csv.
+    La estructura es:
+    marca_tiempo, numero_id, evento, cant_a_adivinar, uruario, estado, respuesta, nivel
+    """
+    # datos_jugada # aca primero habria que ordenar los datos antes de guardarlos en el csv
+
+    archivo = os.path.join(rutas.DATOS_DIR, 'datos_de_jugadas.csv')
+    with open(archivo, 'a+', encoding='utf-8', newline='') as datos:
+        writer = csv.writer(datos, delimiter=',')
+        writer.writerow(datos_jugada)

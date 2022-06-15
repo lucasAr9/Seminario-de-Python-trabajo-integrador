@@ -1,5 +1,6 @@
 import PySimpleGUI as sg
 import time
+import uuid
 
 from src.pantallas import caracteristicas_generales as cg, juego_ver_2
 from src.funcionalidad import dificultad as dificultad
@@ -68,9 +69,18 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
     """Crear la ventana de juego y responder a los eventos en la misma."""
     dataset_elegido = eleccion_dataset.eleccion_dataset()
     if dataset_elegido:
+        # guardar los datos de la partida ----------------------------------------------------------------------------??
+        datos_de_partida = []
+
         tarjeta = tarjeta_ver_2.Tarjeta(dataset_elegido, dificultad_elegida)
-        window = juego_ver_2.armar_ventana(tarjeta, tarjeta.layout_vacio(), dificultad_elegida, dataset_elegido, usuario_elegido)
+        window = juego_ver_2.armar_ventana(tarjeta, tarjeta.layout_vacio(), dificultad_elegida,
+                                           dataset_elegido, usuario_elegido)
         window['-JUEGO_COMENZAR-'].update(visible=True)
+
+        # generar un id unico para cada partida ----------------------------------------------------------------------??
+        id = uuid.uuid4()
+        datos_de_partida.append(id)
+
         while True:
             event, values = window.read()
             if event == '-JUEGO_ABANDONAR-' and cg.ventana_chequear_accion(window) == 'Sí':
@@ -79,9 +89,11 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
             elif event == '-JUEGO_COMENZAR-':
                 tarjeta.cargar_datos()  # Se cargan los primeros datos de la tarjeta
                 window_a_cerrar = window
-                window = juego_ver_2.armar_ventana(tarjeta, tarjeta.layout_datos(), dificultad_elegida, dataset_elegido, usuario_elegido)
+                window = juego_ver_2.armar_ventana(tarjeta, tarjeta.layout_datos(), dificultad_elegida,
+                                                   dataset_elegido, usuario_elegido)
                 window_a_cerrar.close()
                 tiempo_comienzo = time.time()
+
                 while True:
                     event, values = window.read(timeout=100)
                     # CONTROL DEL TIEMPO DE LA PARTIDA
@@ -90,6 +102,7 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                     minutos, segundos = divmod(tiempo_transcurrido, 60)
                     window['-JUEGO_TIEMPO-'].update(f'{minutos:02d}:{segundos:02d}')
                     window['-JUEGO_BARRA-'].update(current_count=delta_tiempo + 1)
+
                     if event == '-JUEGO_ABANDONAR-':
                         if (cg.ventana_chequear_accion(window,
                                                        'Se darán por perdidas la ronda actual\ny las rondas restantes!\n\n'
@@ -100,12 +113,14 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                             window['-JUEGO_TIEMPO-'].update('00:00')
                             window['-JUEGO_BARRA-'].update(current_count=0)
                             window.refresh()
+
                     if window['-JUEGO_TIEMPO-'].Get() == '00:00':
                         # Si se acaba el tiempo de termina la partida
                         cg.ventana_popup(window, f'SE ACABO EL TIEMPO!. PASASTE TODAS LAS RONDAS!. '
                                                  f'TU PUNTAJE TOTAL ES DE:{tarjeta.get_puntos_acumulados()}')
                         break
                     # CONTROL DE LA ELECCIÓN DE RESPUESTA
+
                     match event:
                         case '-JUEGO_PASAR-' | '-ELECCION-':
                             eleccion = (dict(filter(lambda x: x[1], values.items())))
@@ -120,7 +135,8 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                                     window[eleccion].update(background_color='Red')
                                     window[tarjeta.get_respuesta_correcta()].update(background_color='Green')
                                 tarjeta.analizar_respuesta(eleccion)
-                                window['-JUEGO_TABLA-'].update(values=list(enumerate(tarjeta.get_resultados(), start=1)))
+                                window['-JUEGO_TABLA-'].update(
+                                    values=list(enumerate(tarjeta.get_resultados(), start=1)))
                                 window.refresh()
                                 time.sleep(2)
                             except IndexError:
@@ -129,17 +145,26 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                                 if tarjeta.quedan_rondas():
                                     tarjeta.cargar_datos()  # Se actualizan los datos de la tarjeta
                                     tiempo_comienzo = time.time()
+
+                                    # guardar el tiempo de comienzo --------------------------------------------------??
+                                    datos_de_partida.append(tiempo_comienzo)
+
                                     window = juego_ver_2.cambiar_tarjeta(tarjeta, tarjeta.layout_datos(),
                                                                          window, dificultad_elegida,
                                                                          dataset_elegido, usuario_elegido)
                                 else:
                                     # Si se terminaron las rondas se termina la partida
                                     cg.ventana_popup(window, f'PASASTE TODAS LAS RONDAS!. '
-                                                     f'TU PUNTAJE TOTAL ES DE:{tarjeta.get_puntos_acumulados()}')
+                                                             f'TU PUNTAJE TOTAL ES DE:{tarjeta.get_puntos_acumulados()}')
                                     break
                     # despues con los datos que almacena la tarjeta y este loop hay que armar el csv de la partida
                     # el tema de el cambio de pantallas no me quedo muy bien
                 break
+
+        # enviar los datos a la funcion para que guarde en un csv los datos de la partida ----------------------------??
+        print(datos_de_partida)
+        tarjeta_ver_2.guardar_datos_jugada(datos_de_partida)
+
         window.close()
 
 
