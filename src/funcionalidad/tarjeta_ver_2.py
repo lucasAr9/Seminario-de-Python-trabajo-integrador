@@ -64,7 +64,7 @@ class Tarjeta:
         for i in range(6):
             aux.append(str(pistas.iloc[0, i]))
         pistas = aux
-        # hay un error cuando guarda los numeros, los deja con .0 a las fechas, son de tipo class 'numpy.float64'
+        # hay un error cuando guarda los numeros, los deja con .0 a las fechas, son de tipo class 'numpy.float64' ----??
 
         # Me guardo la respuesta correcta, que se encuentra en la última posición de la lista pistas
         self._respuesta_correcta = pistas[-1]
@@ -141,9 +141,15 @@ def guardar_datos_jugada(datos_jugada):
     La estructura es:
     marca_tiempo, numero_id, evento, cant_a_adivinar, uruario, estado, respuesta, nivel
     """
+
     # datos_jugada # aca primero habria que ordenar los datos antes de guardarlos en el csv
 
-    archivo = os.path.join(rutas.DATOS_DIR, 'datos_de_jugadas.csv')
+    archivo = os.path.join(rutas.DATOS_DIR, 'notebooks', 'datos_de_jugadas.csv')
     with open(archivo, 'a+', encoding='utf-8', newline='') as datos:
         writer = csv.writer(datos, delimiter=',')
+
+        if os.stat(archivo).st_size == 0:
+            writer.writerow(['marca_tiempo', 'numero_id', 'evento', 'cant_a_adivinar',
+                             'usuario', 'estado', 'respuesta', 'nivel'])
+
         writer.writerow(datos_jugada)
