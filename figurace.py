@@ -70,6 +70,7 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
     if dataset_elegido:
         tarjeta = tarjeta_ver_2.Tarjeta(dataset_elegido, dificultad_elegida)
         window = juego_ver_2.armar_ventana(tarjeta, tarjeta.layout_vacio(), dificultad_elegida, dataset_elegido, usuario_elegido)
+        window['-JUEGO_COMENZAR-'].update(visible=True)
         while True:
             event, values = window.read()
             if event == '-JUEGO_ABANDONAR-' and cg.ventana_chequear_accion(window) == 'Sí':
@@ -80,7 +81,6 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                 window_a_cerrar = window
                 window = juego_ver_2.armar_ventana(tarjeta, tarjeta.layout_datos(), dificultad_elegida, dataset_elegido, usuario_elegido)
                 window_a_cerrar.close()
-                window['-JUEGO_COMENZAR-'].update(visible=False)
                 tiempo_comienzo = time.time()
                 while True:
                     event, values = window.read(timeout=100)
@@ -113,13 +113,20 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                             try:
                                 if event == '-JUEGO_PASAR-':
                                     eleccion = None  # Se le asigna un valor None para poder pasar la tarjera sin seleccionar
+                                    for respuesta in tarjeta.get_respuestas()['Posibles']:
+                                        window[respuesta].update(background_color='Red', text='COBARDE')
                                 else:
                                     eleccion = (list(eleccion.keys())[0])
+                                    window[eleccion].update(background_color='Red')
+                                    window[tarjeta.get_respuesta_correcta()].update(background_color='Green')
+                                tarjeta.analizar_respuesta(eleccion)
+                                window['-JUEGO_TABLA-'].update(values=list(enumerate(tarjeta.get_resultados(), start=1)))
+                                window.refresh()
+                                time.sleep(2)
                             except IndexError:
                                 pass
                             else:
-                                if tarjeta.analizar_respuesta(eleccion) == 'SIGUE':
-                                    window['-JUEGO_TABLA-'].update(values=list(enumerate(tarjeta.get_resultados(), start=1)))
+                                if tarjeta.quedan_rondas():
                                     tarjeta.cargar_datos()  # Se actualizan los datos de la tarjeta
                                     tiempo_comienzo = time.time()
                                     window = juego_ver_2.cambiar_tarjeta(tarjeta, tarjeta.layout_datos(),

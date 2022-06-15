@@ -21,6 +21,9 @@ class Tarjeta:
         self._resultados = []
         self._puntos_acumulados = 0
 
+    def get_respuesta_correcta(self):
+        return self._respuesta_correcta
+
     def get_respuestas(self):
         return self._dict_respuestas
 
@@ -93,12 +96,9 @@ class Tarjeta:
             self._resultados.append('Mal')
             self._puntos_acumulados -= self._datos_dificultad.get_incorrectas()
 
-        # Si No quedan más rondas, se retorna el string correspondiente para detener la partida en el manejo
-        # del figurace
-        if len(self._resultados) == self._datos_dificultad.get_rondas():
-            return 'TERMINO_LAS_RONDAS'
-        else:
-            return 'SIGUE'
+    def quedan_rondas(self):
+        """Devolver True si quedan rondas por jugar, False si se terminaron las rondas"""
+        return len(self._resultados) < self._datos_dificultad.get_rondas()
 
     def layout_datos(self):
         layout = [sg.Frame('Tarjeta',
@@ -120,7 +120,7 @@ class Tarjeta:
                   [[sg.Text('')]
                    for nombre, dato in self._dict_pistas.items()] +
                   [[sg.Text('')]] +
-                  [[sg.Radio(['', '', '', '', ''], group_id='respuestas')]] +
+                  [[sg.Radio('', group_id='respuestas')] for radio in range(5)] +
                   [[sg.Button('Confirmar', pad=15, key='-ELECCION-', font=cgen.FUENTE_COMBO, disabled=True),
                     sg.Push(),
                     sg.Button('Pasar >', pad=15, key='-JUEGO_PASAR-', font=cgen.FUENTE_COMBO, disabled=True)]],

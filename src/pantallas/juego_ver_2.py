@@ -17,6 +17,7 @@ def armar_layout(tarjeta, layout_tarjeta, dificultad_elegida, dataset_elegido, u
                              [[sg.Text(dataset_elegido.title(), font=cgen.FUENTE_OPCIONES),
                                sg.Image(os.path.join(rutas.IMAGENES_DIR, f'{dataset_elegido}.png'))]])],
                    [sg.VPush()],
+                   [sg.Button('Comenzar', key='-JUEGO_COMENZAR-', font=cgen.FUENTE_BOTONES, button_color='Green', visible=False)],
                    [sg.Button('Abandonar',
                               key='-JUEGO_ABANDONAR-',
                               tooltip='Volver al menú principal',
@@ -44,7 +45,7 @@ def armar_layout(tarjeta, layout_tarjeta, dificultad_elegida, dataset_elegido, u
 
     layout = [[sg.Image(os.path.join(rutas.IMAGENES_DIR, 'titulo_figurace.png'), expand_x=True)],
               [sg.HSep(pad=10)],
-              [sg.Button('Comenzar', key='-JUEGO_COMENZAR-')],
+
               [sg.Push(),
                sg.Column(columna_izq, expand_y=True),
                sg.Push(),
