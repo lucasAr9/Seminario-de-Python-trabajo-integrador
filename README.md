@@ -68,6 +68,9 @@ un integrante del grupo
   - [capoo_aviso.gif](https://tenor.com/view/capoo-bugcat-blue-cat-computer-gif-19551056)
 - Bajo la [licencia](https://www.freepikcompany.com/legal#nav-flaticon) de libre uso de [Flaticon](https://www.flaticon.es/)
     - [cartas_icon](https://www.flaticon.es/icono-gratis/juego-de-cartas_4072061?term=cartas&page=1&position=16&page=1&position=16&related_id=4072061&origin=search)
+    - [indicador_pista.png](https://www.flaticon.es/icono-gratis/flecha-correcta_3248150?related_id=3248150&origin=search#)
+    - [indicador_tiempo.png](https://www.flaticon.es/icono-gratis/cronografo_3095036?term=tiempo&page=1&position=2&page=1&position=2&related_id=3095036&origin=search)
+    - 
 - Con la cita de autoría requerida <a href="http://www.freepik.com">Designed by gstudioimagen / Freepik</a>
     - [puntajes.py](https://www.freepik.es/vector-gratis/cinta-premio_5254203.htm)
 

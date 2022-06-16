@@ -17,7 +17,7 @@ def _layout_op_principales():
         [sg.Button("Configuración", key='-CONFIGURACION-', expand_x=True, font=cg.FUENTE_BOTONES)],
         [sg.Button("Puntajes", key='-PUNTAJES-', expand_x=True, font=cg.FUENTE_BOTONES)],
         [sg.Button("Perfil", key='-PERFIL-', expand_x=True, font=cg.FUENTE_BOTONES)],
-        [sg.Image(ruta_imagen, key='-INDICADOR-', visible=False)]
+        [sg.Image(ruta_imagen)]
     ]
     return layout
 

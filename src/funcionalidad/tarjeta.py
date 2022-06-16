@@ -86,7 +86,10 @@ class Tarjeta:
 
     def layout_datos(self):
         layout = [sg.Frame('Tarjeta',
-                           [[sg.Text(f'{nombre}: {dato}', font=cgen.FUENTE_OPCIONES)]
+                           [[sg.Image(os.path.join(rutas.IMAGENES_DIR, 'indicador_pista.png')),
+                             sg.Text(f'{nombre.upper()}:', font=cgen.FUENTE_OPCIONES, text_color='#FCC314'),
+                             sg.Text(f'{dato}', font=cgen.FUENTE_OPCIONES, justification='center',
+                                     text_color='#FFDE7D')]
                             for nombre, dato in self.dict_pistas.items()] +
                            [[sg.Text(f'{self.dict_respuestas["Titulo"]}: ', pad=5, font=cgen.FUENTE_COMBO)]] +
                            [[sg.Radio(
@@ -96,19 +99,21 @@ class Tarjeta:
                            [[sg.Button('Confirmar', pad=15, key='-ELECCION-', font=cgen.FUENTE_COMBO),
                              sg.Push(),
                              sg.Button('Pasar >', pad=15, key='-JUEGO_PASAR-', font=cgen.FUENTE_COMBO)]],
-                           expand_x=True
+                           expand_x=True, font=cgen.FUENTE_OPCIONES
                            )]
         return layout
 
     def layout_vacio(self):
         layout = [sg.Frame('Tarjeta',
-                           [[sg.Text('')]
+                           [[sg.Image(os.path.join(rutas.IMAGENES_DIR, 'indicador_pista.png')),
+                             sg.Text(f'{nombre.upper()}:', font=cgen.FUENTE_OPCIONES,
+                                     text_color='#FCC314'), sg.Text(f'{dato}', visible=False)]
                             for nombre, dato in self.dict_pistas.items()] +
                            [[sg.Text('')]] +
                            [[sg.Radio('', group_id='respuestas')] for radio in range(5)] +
                            [[sg.Button('Confirmar', pad=15, key='-ELECCION-', font=cgen.FUENTE_COMBO, disabled=True),
                              sg.Push(),
                              sg.Button('Pasar >', pad=15, key='-JUEGO_PASAR-', font=cgen.FUENTE_COMBO, disabled=True)]],
-                           expand_x=True
+                           expand_x=True, font=cgen.FUENTE_OPCIONES
                            )]
         return layout

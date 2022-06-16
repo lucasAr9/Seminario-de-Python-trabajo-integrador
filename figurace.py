@@ -73,8 +73,10 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
     if dataset_elegido:
 
         tarjeta = tarje.Tarjeta(dataset_elegido, dificultad_elegida)
+        tarjeta.cargar_datos()  # Se cargan los primeros datos de la tarjeta a utilizar
         window = juego.armar_ventana(tarjeta, tarjeta.layout_vacio(), dificultad_elegida,
                                      dataset_elegido, usuario_elegido)
+        window['-JUEGO_TIEMPO-'].update(f'00:{tarjeta.datos_dificultad.tiempo}')
         window['-JUEGO_COMENZAR-'].update(visible=True)
 
         while True:
@@ -103,7 +105,7 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                         if (cg.ventana_chequear_accion(window,
                                                        'Se darán por perdidas la ronda actual\ny las rondas restantes!\n\n'
                                                        'Segurx que querés volver al menú?') == 'Sí'):
-                            tarjeta.set_puntos_acumulados(0)  # si abandona, no suma/resta puntos
+                            tarjeta.puntos_acumulados = 0 # si abandona, no suma/resta puntos
                             break
                         else:
                             window['-JUEGO_TIEMPO-'].update('00:00')
@@ -200,13 +202,6 @@ def main():
                 window.un_hide()
                 window['-USUARIOS-'].update('Seleccione su usuario', values=perfiles)
                 usuario_elegido = ''
-        # Control de indicador_perfiles
-        if not perfiles and not indicador_visible:
-            window['-INDICADOR-'].update(visible=True)
-            indicador_visible = True
-        elif perfiles:
-            window['-INDICADOR-'].update(visible=False)
-            indicador_visible = False
 
     window.close()
 
