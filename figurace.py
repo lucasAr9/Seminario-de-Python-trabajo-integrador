@@ -108,6 +108,7 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                                                        'Se darán por perdidas la ronda actual\ny las rondas restantes!\n\n'
                                                        'Segurx que querés volver al menú?') == 'Sí'):
                             tarjeta.puntos_acumulados = 0 # si abandona, no suma/resta puntos
+                            partida.eventos(time.time(), "fin", "cancelada", None, None)
                             break
                         else:
                             window['-JUEGO_TIEMPO-'].update('00:00')

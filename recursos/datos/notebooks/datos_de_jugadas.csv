@@ -15,3 +15,6 @@ marca_tiempo,numero_id,evento,cant_a_adivinar,usuario,estado,respuesta,nivel
 1655412122.3302746,033351b3-4ed0-4b7c-b252-47d75e77f19d,intento,NEO,80,Masculino,ok,Cujo,Cujo,Facil
 1655412126.1277714,033351b3-4ed0-4b7c-b252-47d75e77f19d,intento,NEO,80,Masculino,error,The Secret Life of Bees,Deliver Us from Evil,Facil
 1655412130.4160147,033351b3-4ed0-4b7c-b252-47d75e77f19d,pasar,NEO,80,Masculino,,,The Incredible Hulk,Facil
+1655413856.978792,b81eb330-8622-46b0-9d70-f548d0f2135a,inicio_partida,NEO,80,Masculino,,,,Facil
+1655413859.8070855,b81eb330-8622-46b0-9d70-f548d0f2135a,intento,NEO,80,Masculino,ok,Sniper,Sniper,Facil
+1655413864.3887908,b81eb330-8622-46b0-9d70-f548d0f2135a,fin,NEO,80,Masculino,cancelada,,,Facil
