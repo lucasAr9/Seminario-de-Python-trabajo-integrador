@@ -75,8 +75,7 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
         partida = p.Partida()
         tarjeta = tarje.Tarjeta(dataset_elegido, dificultad_elegida)
         tarjeta.cargar_datos()  # Se cargan los primeros datos de la tarjeta a utilizar
-        window = juego.armar_ventana(tarjeta, tarjeta.layout_vacio(), dificultad_elegida,
-                                     dataset_elegido, usuario_elegido)
+        window = juego.armar_ventana(tarjeta, tarjeta.layout_vacio(), dificultad_elegida, dataset_elegido, usuario_elegido)
         window['-JUEGO_TIEMPO-'].update(f'00:{tarjeta.datos_dificultad.tiempo}')
         window['-JUEGO_COMENZAR-'].update(visible=True)
 
@@ -88,11 +87,11 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
             elif event == '-JUEGO_COMENZAR-':
                 tarjeta.cargar_datos()  # Se cargan los primeros datos de la tarjeta
                 window_a_cerrar = window
-                window = juego.armar_ventana(tarjeta, tarjeta.layout_datos(), dificultad_elegida,
-                                             dataset_elegido, usuario_elegido)
+                window = juego.armar_ventana(tarjeta, tarjeta.layout_datos(), dificultad_elegida, dataset_elegido, usuario_elegido)
                 window_a_cerrar.close()
                 tiempo_comienzo = time.time()
-                partida.comienzo(tiempo_comienzo, "inicio_partida", uuid.uuid4(), cuentas.usuario(usuario_elegido), dificultad_elegida)
+                partida.comienzo(tiempo_comienzo, "inicio_partida", uuid.uuid4(),
+                                 cuentas.usuario(usuario_elegido), dificultad_elegida)
 
                 while True:
                     event, values = window.read(timeout=100)
@@ -107,7 +106,7 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                         if (cg.ventana_chequear_accion(window,
                                                        'Se darán por perdidas la ronda actual\ny las rondas restantes!\n\n'
                                                        'Segurx que querés volver al menú?') == 'Sí'):
-                            tarjeta.puntos_acumulados = 0 # si abandona, no suma/resta puntos
+                            tarjeta.puntos_acumulados = 0  # si abandona, no suma/resta puntos
                             partida.eventos(time.time(), "fin", "cancelada", None, None)
                             break
                         else:
@@ -120,8 +119,8 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                         cg.ventana_popup(window, f'SE ACABO EL TIEMPO!. PASASTE TODAS LAS RONDAS!. '
                                                  f'TU PUNTAJE TOTAL ES DE:{tarjeta.puntos_acumulados}')
                         break
-                    # CONTROL DE LA ELECCIÓN DE RESPUESTA
 
+                    # CONTROL DE LA ELECCIÓN DE RESPUESTA
                     match event:
                         case '-JUEGO_PASAR-' | '-ELECCION-':
                             eleccion = (dict(filter(lambda x: x[1], values.items())))
@@ -132,11 +131,12 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                                     for respuesta in tarjeta.dict_respuestas['Posibles']:
                                         window[respuesta].update(background_color='Red', text='COBARDE')
                                     partida.eventos(time.time(), "pasar", None, None, tarjeta.respuesta_correcta)
-                                
+
                                 else:
                                     eleccion = (list(eleccion.keys())[0])
                                     window[eleccion].update(background_color='Red')
                                     window[tarjeta.respuesta_correcta].update(background_color='Green')
+
                                     if eleccion == tarjeta.respuesta_correcta:
                                         partida.eventos(time.time(), "intento", "ok", eleccion, tarjeta.respuesta_correcta)
                                     else:

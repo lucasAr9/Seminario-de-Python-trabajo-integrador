@@ -23,21 +23,19 @@ class Partida:
         return [self.timestamp, self.id, self.evento, self.nombre_jugador, self.edad_jugador,
                 self.sexo_jugador, self.estado, self.texto_ingresado, self.respuesta, self.nivel]
 
-    def comienzo(self, timestamp, evento, id, jugador, nivel):
+    def comienzo(self, timestamp, id, evento, jugador, nivel):
         """
         Setea los datos de la jugada.
         :param timestamp: tiempo de la partida en cada momento.
         :param id: de la partida
         :param evento: actual de la partida (inicio_partida, intento, fin)
-        :param nombre_jugador: nombre del jugador actual.
-        :param edad_jugador: su edad.
-        :param sexo_jugador: su sexo.
+        :param jugador: nombre, edad y sexo del jugador actual.
         :param nivel: la dificultad de la partida (facil, normal, dificil, personalizado)
         Guardar los nuevos datos en un archivo csv.
         """
         self.timestamp = timestamp
-        self.evento = evento
         self.id = id
+        self.evento = evento
         self.nombre_jugador = jugador["nombre"]
         self.edad_jugador = jugador["edad"]
         self.sexo_jugador = jugador["genero"]

@@ -1,20 +1,13 @@
-marca_tiempo,numero_id,evento,cant_a_adivinar,usuario,estado,respuesta,nivel
-1655411502.0436149,13fab4bf-3e2e-4b72-bacc-eec499185703,inicio_partida,NEO,80,Masculino,,,,Facil
-1655411511.696806,13fab4bf-3e2e-4b72-bacc-eec499185703,intento,NEO,80,Masculino,error,Blood Diamond,The Amityville Harvest,Facil
-1655411530.9140599,13fab4bf-3e2e-4b72-bacc-eec499185703,intento,NEO,80,Masculino,ok,Small Fry,Small Fry,Facil
-1655411542.2740736,13fab4bf-3e2e-4b72-bacc-eec499185703,intento,NEO,80,Masculino,ok,Savage Dog,Savage Dog,Facil
-1655411555.4175494,13fab4bf-3e2e-4b72-bacc-eec499185703,intento,NEO,80,Masculino,ok,French Kiss,French Kiss,Facil
-1655411569.0108387,13fab4bf-3e2e-4b72-bacc-eec499185703,intento,NEO,80,Masculino,error,Neighbors,Death Sentence,Facil
-1655411586.736793,13fab4bf-3e2e-4b72-bacc-eec499185703,intento,NEO,80,Masculino,ok,Jack Reacher: Never Go Back,Jack Reacher: Never Go Back,Facil
-1655411601.254182,13fab4bf-3e2e-4b72-bacc-eec499185703,pasar,NEO,80,Masculino,,,Legend of the BoneKnapper Dragon,Facil
-1655411609.5385473,13fab4bf-3e2e-4b72-bacc-eec499185703,intento,NEO,80,Masculino,error,Angels with Dirty Faces,The Tax Collector,Facil
-1655411619.4438426,13fab4bf-3e2e-4b72-bacc-eec499185703,pasar,NEO,80,Masculino,,,Finding Neverland,Facil
-1655411639.60904,13fab4bf-3e2e-4b72-bacc-eec499185703,intento,NEO,80,Masculino,error,Bajirao Mastani,Blue Exorcist: The Movie,Facil
-1655411644.4500613,13fab4bf-3e2e-4b72-bacc-eec499185703,fin,NEO,80,Masculino,finalizada,,,Facil
-1655412120.1311967,033351b3-4ed0-4b7c-b252-47d75e77f19d,inicio_partida,NEO,80,Masculino,,,,Facil
-1655412122.3302746,033351b3-4ed0-4b7c-b252-47d75e77f19d,intento,NEO,80,Masculino,ok,Cujo,Cujo,Facil
-1655412126.1277714,033351b3-4ed0-4b7c-b252-47d75e77f19d,intento,NEO,80,Masculino,error,The Secret Life of Bees,Deliver Us from Evil,Facil
-1655412130.4160147,033351b3-4ed0-4b7c-b252-47d75e77f19d,pasar,NEO,80,Masculino,,,The Incredible Hulk,Facil
-1655413856.978792,b81eb330-8622-46b0-9d70-f548d0f2135a,inicio_partida,NEO,80,Masculino,,,,Facil
-1655413859.8070855,b81eb330-8622-46b0-9d70-f548d0f2135a,intento,NEO,80,Masculino,ok,Sniper,Sniper,Facil
-1655413864.3887908,b81eb330-8622-46b0-9d70-f548d0f2135a,fin,NEO,80,Masculino,cancelada,,,Facil
+timestamp,id,evento,nombre_jugador,edad_jugador,sexo_jugador,estado,texto_ingresado,respuesta,nivel
+1655418097.8981123,0667b476-4ac6-4e8d-83f3-b555b33289ff,inicio_partida,NEO,80,Masculino,,,,Facil
+1655418124.9709208,0667b476-4ac6-4e8d-83f3-b555b33289ff,intento,NEO,80,Masculino,ok,Machine Gun Kelly,Machine Gun Kelly,Facil
+1655418128.5004997,0667b476-4ac6-4e8d-83f3-b555b33289ff,intento,NEO,80,Masculino,ok,Adele,Adele,Facil
+1655418131.4426506,0667b476-4ac6-4e8d-83f3-b555b33289ff,intento,NEO,80,Masculino,ok,Maroon 5,Maroon 5,Facil
+1655418134.2819598,0667b476-4ac6-4e8d-83f3-b555b33289ff,intento,NEO,80,Masculino,ok,The Wanted,The Wanted,Facil
+1655418137.456494,0667b476-4ac6-4e8d-83f3-b555b33289ff,intento,NEO,80,Masculino,error,Pitbull,Years & Years,Facil
+1655418140.0516584,0667b476-4ac6-4e8d-83f3-b555b33289ff,pasar,NEO,80,Masculino,,,Coldplay,Facil
+1655418143.0438437,0667b476-4ac6-4e8d-83f3-b555b33289ff,intento,NEO,80,Masculino,error,Iyaz,Mark Ronson,Facil
+1655418146.5568635,0667b476-4ac6-4e8d-83f3-b555b33289ff,intento,NEO,80,Masculino,error,Calvin Harris,Ed Sheeran,Facil
+1655418149.4830284,0667b476-4ac6-4e8d-83f3-b555b33289ff,intento,NEO,80,Masculino,error,Lewis Capaldi,XXXTENTACION,Facil
+1655418152.3719742,0667b476-4ac6-4e8d-83f3-b555b33289ff,intento,NEO,80,Masculino,error,Taylor Swift0,Major Lazer,Facil
+1655418156.9364636,0667b476-4ac6-4e8d-83f3-b555b33289ff,fin,NEO,80,Masculino,finalizada,,,Facil
