@@ -9,6 +9,7 @@ from src.pantallas import cuentas
 from src.pantallas import eleccion_dataset
 from src.pantallas import menu_inicio_juego as menu
 from src.pantallas import caracteristicas_generales as cg
+from src.funcionalidad import partida as p
 from src.funcionalidad import tarjeta as tarje
 from src.funcionalidad import dificultad as dificultad
 
@@ -70,17 +71,11 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
     """Crear la ventana de juego y responder a los eventos en la misma."""
     dataset_elegido = eleccion_dataset.eleccion_dataset()
     if dataset_elegido:
-        # guardar los datos de la partida ----------------------------------------------------------------------------??
-        datos_de_partida = []
 
         tarjeta = tarje.Tarjeta(dataset_elegido, dificultad_elegida)
         window = juego.armar_ventana(tarjeta, tarjeta.layout_vacio(), dificultad_elegida,
                                      dataset_elegido, usuario_elegido)
         window['-JUEGO_COMENZAR-'].update(visible=True)
-
-        # generar un id unico para cada partida ----------------------------------------------------------------------??
-        id = uuid.uuid4()
-        datos_de_partida.append(id)
 
         while True:
             event, values = window.read()
@@ -147,9 +142,6 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                                     tarjeta.cargar_datos()  # Se actualizan los datos de la tarjeta
                                     tiempo_comienzo = time.time()
 
-                                    # guardar el tiempo de comienzo --------------------------------------------------??
-                                    datos_de_partida.append(tiempo_comienzo)
-
                                     window = juego.cambiar_tarjeta(tarjeta, tarjeta.layout_datos(),
                                                                    window, dificultad_elegida,
                                                                    dataset_elegido, usuario_elegido)
@@ -161,10 +153,6 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                     # despues con los datos que almacena la tarjeta y este loop hay que armar el csv de la partida
                     # el tema de el cambio de pantallas no me quedo muy bien
                 break
-
-        # enviar los datos a la funcion para que guarde en un csv los datos de la partida ----------------------------??
-        print(datos_de_partida)
-        tarje.guardar_datos_jugada(datos_de_partida)
 
         window.close()
 

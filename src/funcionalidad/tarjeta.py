@@ -1,7 +1,6 @@
 import PySimpleGUI as sg
 import pandas as pd
 import os
-import csv
 import random
 
 import rutas
@@ -113,24 +112,3 @@ class Tarjeta:
                            expand_x=True
                            )]
         return layout
-
-
-# para guardar los datos de la partida en un csv ---------------------------------------------------------------------??
-def guardar_datos_jugada(datos_jugada):
-    """
-    Guarda los datos de la jugada en un archivo csv.
-    La estructura es:
-    marca_tiempo, numero_id, evento, cant_a_adivinar, uruario, estado, respuesta, nivel
-    """
-
-    # datos_jugada # aca primero habria que ordenar los datos antes de guardarlos en el csv
-
-    archivo = os.path.join(rutas.DATOS_DIR, 'notebooks', 'datos_de_jugadas.csv')
-    with open(archivo, 'a+', encoding='utf-8', newline='') as datos:
-        writer = csv.writer(datos, delimiter=',')
-
-        if os.stat(archivo).st_size == 0:
-            writer.writerow(['marca_tiempo', 'numero_id', 'evento', 'cant_a_adivinar',
-                             'usuario', 'estado', 'respuesta', 'nivel'])
-
-        writer.writerow(datos_jugada)

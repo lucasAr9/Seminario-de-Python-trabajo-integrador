@@ -4,10 +4,10 @@ import os
 from rutas import CONFIG_DIR
 
 """Rango de valores de la pantalla de la configuracion"""
-CANT_TIEMPOS = [x for x in range(5, 31, 5)]  # del 5 al 30, de 5 en 5
-CANT_RONDAS = [x for x in range(1, 11)]  # del 1 al 10
-CANT_CORRECTO = [x for x in range(1, 21)]  # del 1 al 20
-CANT_INCORRECTO = [x for x in range(1, 21)]  # del 1 al 20
+CANT_TIEMPOS = [x for x in range(1, 30)]  # del 5 al 30, de 5 en 5
+CANT_RONDAS = [x for x in range(5, 11)]  # del 1 al 10
+CANT_CORRECTO = [x for x in range(1, 11)]  # del 1 al 20
+CANT_INCORRECTO = [x for x in range(1, 11)]  # del 1 al 20
 CANT_NIVELES = [1, 2, 3, 4, 5]  # del 1 al 5
 
 """Ruta del archivo de configuraciones.json con los ultimos valores guardados"""
@@ -72,11 +72,11 @@ def establecer_dificultades():
     :return: los datos por defecto en un diccionario.
     """
     datos = {'-FACIL-': {
-        '-TIEMPO_C-': CANT_TIEMPOS[len(CANT_TIEMPOS) - 1],
-        '-RONDAS_C-': CANT_RONDAS[len(CANT_RONDAS) - 1],
-        '-CORRECTO_C-': CANT_CORRECTO[len(CANT_CORRECTO) - 1],
+        '-TIEMPO_C-': CANT_TIEMPOS[-1],
+        '-RONDAS_C-': CANT_RONDAS[-1],
+        '-CORRECTO_C-': CANT_CORRECTO[-1],
         '-INCORRECTO_C-': CANT_INCORRECTO[0],
-        '-CARACTERISTICAS_C-': CANT_NIVELES[len(CANT_NIVELES) - 1]
+        '-CARACTERISTICAS_C-': CANT_NIVELES[-1]
     }, '-NORMAL-': {
         '-TIEMPO_C-': CANT_TIEMPOS[len(CANT_TIEMPOS) // 2],
         '-RONDAS_C-': CANT_RONDAS[len(CANT_RONDAS) // 2],
@@ -87,14 +87,14 @@ def establecer_dificultades():
         '-TIEMPO_C-': CANT_TIEMPOS[0],
         '-RONDAS_C-': CANT_RONDAS[0],
         '-CORRECTO_C-': CANT_CORRECTO[0],
-        '-INCORRECTO_C-': CANT_INCORRECTO[len(CANT_INCORRECTO) - 1],
+        '-INCORRECTO_C-': CANT_INCORRECTO[-1],
         '-CARACTERISTICAS_C-': CANT_NIVELES[0]
     }, '-PERSONALIZADO-': {
-        '-TIEMPO_C-': CANT_TIEMPOS[len(CANT_TIEMPOS) - 1],
-        '-RONDAS_C-': CANT_RONDAS[len(CANT_RONDAS) - 1],
-        '-CORRECTO_C-': CANT_CORRECTO[len(CANT_CORRECTO) - 1],
+        '-TIEMPO_C-': CANT_TIEMPOS[-1],
+        '-RONDAS_C-': CANT_RONDAS[-1],
+        '-CORRECTO_C-': CANT_CORRECTO[-1],
         '-INCORRECTO_C-': CANT_INCORRECTO[0],
-        '-CARACTERISTICAS_C-': CANT_NIVELES[len(CANT_NIVELES) - 1]
+        '-CARACTERISTICAS_C-': CANT_NIVELES[-1]
     }}
     guardar_en_json(datos)
     return datos
