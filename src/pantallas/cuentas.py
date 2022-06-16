@@ -22,6 +22,12 @@ def cargar_perfiles():
             json.dump(perfiles, arch_perfiles)
     return perfiles
 
+def usuario(nick):
+    cuentas = cargar_perfiles()
+    for x in cuentas:
+        if x["nombre"] == nick:
+            return x
+
 
 def actualizar_perfiles(perfiles, nuevo_perfil=None):
     """

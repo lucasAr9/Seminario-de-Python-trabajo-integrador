@@ -1,13 +1,17 @@
 marca_tiempo,numero_id,evento,cant_a_adivinar,usuario,estado,respuesta,nivel
-9f87d477-9fa7-461f-b100-2548865193bc,1655315719.5591338
-b967c202-5971-46e6-a458-9bb0d3cca65b,1655315732.7503393
-38bc35c0-434e-478d-88a1-40cc972fd31b,1655315752.2296195
-b0e4fba9-4083-4392-9b28-020b9b52cf9f,1655315766.4377997
-37267bd1-21d4-4c51-b14c-d442491d674c
-901cb108-4064-46b9-90a7-4838f4a6c82b
-19924b72-2220-46fe-8c20-1605230ce47f,1655342988.029264,1655342990.5508235
-6e715184-171c-4133-ade3-a00657bc9c49
-7f61407e-a462-40d4-8775-574961bc7c9d
-52e34f10-d1e2-49bf-9013-de7cc169e29e,1655346483.1878626,1655346486.7591968,1655346489.4800901
-64de7c94-6d18-4db7-86bd-0d74c915c155,1655348232.50373,1655348235.8066905,1655348239.028422
-5c04d355-efe4-4167-86be-f714f94b2e86,1655348414.1165996,1655348417.4730544
+1655411502.0436149,13fab4bf-3e2e-4b72-bacc-eec499185703,inicio_partida,NEO,80,Masculino,,,,Facil
+1655411511.696806,13fab4bf-3e2e-4b72-bacc-eec499185703,intento,NEO,80,Masculino,error,Blood Diamond,The Amityville Harvest,Facil
+1655411530.9140599,13fab4bf-3e2e-4b72-bacc-eec499185703,intento,NEO,80,Masculino,ok,Small Fry,Small Fry,Facil
+1655411542.2740736,13fab4bf-3e2e-4b72-bacc-eec499185703,intento,NEO,80,Masculino,ok,Savage Dog,Savage Dog,Facil
+1655411555.4175494,13fab4bf-3e2e-4b72-bacc-eec499185703,intento,NEO,80,Masculino,ok,French Kiss,French Kiss,Facil
+1655411569.0108387,13fab4bf-3e2e-4b72-bacc-eec499185703,intento,NEO,80,Masculino,error,Neighbors,Death Sentence,Facil
+1655411586.736793,13fab4bf-3e2e-4b72-bacc-eec499185703,intento,NEO,80,Masculino,ok,Jack Reacher: Never Go Back,Jack Reacher: Never Go Back,Facil
+1655411601.254182,13fab4bf-3e2e-4b72-bacc-eec499185703,pasar,NEO,80,Masculino,,,Legend of the BoneKnapper Dragon,Facil
+1655411609.5385473,13fab4bf-3e2e-4b72-bacc-eec499185703,intento,NEO,80,Masculino,error,Angels with Dirty Faces,The Tax Collector,Facil
+1655411619.4438426,13fab4bf-3e2e-4b72-bacc-eec499185703,pasar,NEO,80,Masculino,,,Finding Neverland,Facil
+1655411639.60904,13fab4bf-3e2e-4b72-bacc-eec499185703,intento,NEO,80,Masculino,error,Bajirao Mastani,Blue Exorcist: The Movie,Facil
+1655411644.4500613,13fab4bf-3e2e-4b72-bacc-eec499185703,fin,NEO,80,Masculino,finalizada,,,Facil
+1655412120.1311967,033351b3-4ed0-4b7c-b252-47d75e77f19d,inicio_partida,NEO,80,Masculino,,,,Facil
+1655412122.3302746,033351b3-4ed0-4b7c-b252-47d75e77f19d,intento,NEO,80,Masculino,ok,Cujo,Cujo,Facil
+1655412126.1277714,033351b3-4ed0-4b7c-b252-47d75e77f19d,intento,NEO,80,Masculino,error,The Secret Life of Bees,Deliver Us from Evil,Facil
+1655412130.4160147,033351b3-4ed0-4b7c-b252-47d75e77f19d,pasar,NEO,80,Masculino,,,The Incredible Hulk,Facil

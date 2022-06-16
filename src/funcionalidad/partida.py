@@ -23,7 +23,7 @@ class Partida:
         return [self.timestamp, self.id, self.evento, self.nombre_jugador, self.edad_jugador,
                 self.sexo_jugador, self.estado, self.texto_ingresado, self.respuesta, self.nivel]
 
-    def comienzo(self, timestamp, evento, id, nombre_jugador, edad_jugador, sexo_jugador, nivel):
+    def comienzo(self, timestamp, evento, id, jugador, nivel):
         """
         Setea los datos de la jugada.
         :param timestamp: tiempo de la partida en cada momento.
@@ -38,13 +38,13 @@ class Partida:
         self.timestamp = timestamp
         self.evento = evento
         self.id = id
-        self.nombre_jugador = nombre_jugador
-        self.edad_jugador = edad_jugador
-        self.sexo_jugador = sexo_jugador
+        self.nombre_jugador = jugador["nombre"]
+        self.edad_jugador = jugador["edad"]
+        self.sexo_jugador = jugador["genero"]
         self.nivel = nivel
         self.guardar_datos_jugada()
 
-    def evento(self, timestamp, evento, estado, texto_ingresado, respuesta):
+    def eventos(self, timestamp, evento, estado, texto_ingresado, respuesta):
         """
         Setea los datos de la jugada.
         :param timestamp: tiempo de la partida en cada momento.

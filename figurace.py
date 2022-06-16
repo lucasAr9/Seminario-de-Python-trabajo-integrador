@@ -72,6 +72,7 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
     dataset_elegido = eleccion_dataset.eleccion_dataset()
     if dataset_elegido:
 
+        partida = p.Partida()
         tarjeta = tarje.Tarjeta(dataset_elegido, dificultad_elegida)
         tarjeta.cargar_datos()  # Se cargan los primeros datos de la tarjeta a utilizar
         window = juego.armar_ventana(tarjeta, tarjeta.layout_vacio(), dificultad_elegida,
@@ -91,6 +92,7 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                                              dataset_elegido, usuario_elegido)
                 window_a_cerrar.close()
                 tiempo_comienzo = time.time()
+                partida.comienzo(tiempo_comienzo, "inicio_partida", uuid.uuid4(), cuentas.usuario(usuario_elegido), dificultad_elegida)
 
                 while True:
                     event, values = window.read(timeout=100)
@@ -128,10 +130,17 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                                     eleccion = None  # Se le asigna un valor None para poder pasar la tarjera sin seleccionar
                                     for respuesta in tarjeta.dict_respuestas['Posibles']:
                                         window[respuesta].update(background_color='Red', text='COBARDE')
+                                    partida.eventos(time.time(), "pasar", None, None, tarjeta.respuesta_correcta)
+                                
                                 else:
                                     eleccion = (list(eleccion.keys())[0])
                                     window[eleccion].update(background_color='Red')
                                     window[tarjeta.respuesta_correcta].update(background_color='Green')
+                                    if eleccion == tarjeta.respuesta_correcta:
+                                        partida.eventos(time.time(), "intento", "ok", eleccion, tarjeta.respuesta_correcta)
+                                    else:
+                                        partida.eventos(time.time(), "intento", "error", eleccion, tarjeta.respuesta_correcta)
+
                                 tarjeta.analizar_respuesta(eleccion)
                                 window['-JUEGO_TABLA-'].update(
                                     values=list(enumerate(tarjeta.resultados, start=1)))
@@ -151,6 +160,7 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                                     # Si se terminaron las rondas se termina la partida
                                     cg.ventana_popup(window, f'PASASTE TODAS LAS RONDAS!. '
                                                              f'TU PUNTAJE TOTAL ES DE:{tarjeta.puntos_acumulados}')
+                                    partida.eventos(time.time(), "fin", "finalizada", None, None)
                                     break
                     # despues con los datos que almacena la tarjeta y este loop hay que armar el csv de la partida
                     # el tema de el cambio de pantallas no me quedo muy bien
