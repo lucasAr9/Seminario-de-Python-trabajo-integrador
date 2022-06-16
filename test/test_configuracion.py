@@ -19,20 +19,20 @@ class TestCargarValoresDificultad(unittest.TestCase):
     def test_cargar_facil(self):
         """Comprobar que los valores de dificultad se cargaron y son correctos desde las constantes definidas."""
         datos = dificultad.Dificultad('-FACIL-')
-        self.assertEqual(datos.get_tiempo(), dificultad.CANT_TIEMPOS[len(dificultad.CANT_TIEMPOS) - 1])
-        self.assertEqual(datos.get_rondas(), dificultad.CANT_RONDAS[len(dificultad.CANT_RONDAS) - 1])
-        self.assertEqual(datos.get_correctas(), dificultad.CANT_CORRECTO[len(dificultad.CANT_CORRECTO) - 1])
-        self.assertEqual(datos.get_incorrectas(), dificultad.CANT_INCORRECTO[0])
-        self.assertEqual(datos.get_caracteristicas(), dificultad.CANT_NIVELES[len(dificultad.CANT_NIVELES) - 1])
+        self.assertEqual(datos.tiempo, dificultad.CANT_TIEMPOS[len(dificultad.CANT_TIEMPOS) - 1])
+        self.assertEqual(datos.rondas, dificultad.CANT_RONDAS[len(dificultad.CANT_RONDAS) - 1])
+        self.assertEqual(datos.correctas, dificultad.CANT_CORRECTO[len(dificultad.CANT_CORRECTO) - 1])
+        self.assertEqual(datos.incorrectas, dificultad.CANT_INCORRECTO[0])
+        self.assertEqual(datos.caracteristicas, dificultad.CANT_NIVELES[len(dificultad.CANT_NIVELES) - 1])
 
     def test_cargar_normal(self):
         """Comprobar que los valores de dificultad se cargaron desde el json."""
         datos = dificultad.Dificultad('-NORMAL-')
-        self.assertEqual(datos.get_tiempo(), DATOS_JSON['-TIEMPO_C-'])
-        self.assertEqual(datos.get_rondas(), DATOS_JSON['-RONDAS_C-'])
-        self.assertEqual(datos.get_correctas(), DATOS_JSON['-CORRECTO_C-'])
-        self.assertEqual(datos.get_incorrectas(), DATOS_JSON['-INCORRECTO_C-'])
-        self.assertEqual(datos.get_caracteristicas(), DATOS_JSON['-CARACTERISTICAS_C-'])
+        self.assertEqual(datos.tiempo, DATOS_JSON['-TIEMPO_C-'])
+        self.assertEqual(datos.rondas, DATOS_JSON['-RONDAS_C-'])
+        self.assertEqual(datos.correctas, DATOS_JSON['-CORRECTO_C-'])
+        self.assertEqual(datos.incorrectas, DATOS_JSON['-INCORRECTO_C-'])
+        self.assertEqual(datos.caracteristicas, DATOS_JSON['-CARACTERISTICAS_C-'])
 
 
 if __name__ == '__main__':

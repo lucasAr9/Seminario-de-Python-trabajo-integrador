@@ -1,5 +1,5 @@
-import os
 import PySimpleGUI as sg
+import os
 
 from src.pantallas import caracteristicas_generales as cg
 from src.funcionalidad import dificultad as dificultad

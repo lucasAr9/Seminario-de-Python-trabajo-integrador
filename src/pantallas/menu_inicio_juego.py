@@ -1,7 +1,7 @@
-# Menú de inicio del funcionalidad
 import PySimpleGUI as sg
-import rutas
 import os
+
+import rutas
 from src.pantallas import caracteristicas_generales as cg
 
 
@@ -70,7 +70,3 @@ def crear_menu(usuarios=("",)):
     window = sg.Window("Figurace", layout, size=cg.TAM_VENTANA, finalize=True, use_custom_titlebar=True,
                        titlebar_icon=ruta_icon_png, icon=ruta_icon_ico, enable_close_attempted_event=True)
     return window
-
-
-if __name__ == '__main__':
-    crear_menu()

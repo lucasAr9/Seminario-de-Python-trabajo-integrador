@@ -1,7 +1,8 @@
 import PySimpleGUI as sg
-import rutas
 import csv
 import os
+
+import rutas
 from src.pantallas import caracteristicas_generales as cgen
 
 

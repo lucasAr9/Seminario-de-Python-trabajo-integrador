@@ -23,11 +23,11 @@ class Dificultad:
         y lo settea a las variables de la clase para poder usarse en la pantalla de funcionalidad.
         :param dificultad_actual: la clave de la dificultad a settear.
         """
-        self.__tiempo = None
-        self.__rondas = None
-        self.__correctas = None
-        self.__incorrectas = None
-        self.__caracteristicas = None
+        self.tiempo = None
+        self.rondas = None
+        self.correctas = None
+        self.incorrectas = None
+        self.caracteristicas = None
         try:
             datos = leer_archivo_json()
             actuales = datos[dificultad_actual]
@@ -38,31 +38,16 @@ class Dificultad:
             actuales = datos[dificultad_actual]
             self.settear_dificultad_elegida(actuales)
 
-    def get_tiempo(self):
-        return self.__tiempo
-
-    def get_rondas(self):
-        return self.__rondas
-
-    def get_correctas(self):
-        return self.__correctas
-
-    def get_incorrectas(self):
-        return self.__incorrectas
-
-    def get_caracteristicas(self):
-        return self.__caracteristicas
-
     def settear_dificultad_elegida(self, actuales):
         """
         Settear los valores de la clase Dificultad con los valores del archivo configuracion.json.
         :param actuales: el diccionario con los datos de la dificultad elegida.
         """
-        self.__tiempo = actuales['-TIEMPO_C-']
-        self.__rondas = actuales['-RONDAS_C-']
-        self.__correctas = actuales['-CORRECTO_C-']
-        self.__incorrectas = actuales['-INCORRECTO_C-']
-        self.__caracteristicas = actuales['-CARACTERISTICAS_C-']
+        self.tiempo = actuales['-TIEMPO_C-']
+        self.rondas = actuales['-RONDAS_C-']
+        self.correctas = actuales['-CORRECTO_C-']
+        self.incorrectas = actuales['-INCORRECTO_C-']
+        self.caracteristicas = actuales['-CARACTERISTICAS_C-']
 
 
 def leer_archivo_json():

@@ -1,4 +1,5 @@
 import PySimpleGUI as sg
+
 import src.pantallas.caracteristicas_generales as cgen
 
 
