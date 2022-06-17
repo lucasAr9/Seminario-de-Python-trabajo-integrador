@@ -109,8 +109,7 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                 window = juego.armar_ventana(tarjeta, tarjeta.layout_datos(), dificultad_elegida, dataset_elegido, usuario_elegido)
                 window_a_cerrar.close()
                 tiempo_comienzo = time.time()
-                partida.comienzo(tiempo_comienzo, "inicio_partida", uuid.uuid4(),
-                                 cuentas.usuario(usuario_elegido), dificultad_elegida)
+                partida.comienzo(tiempo_comienzo, uuid.uuid4(), "inicio_partida", cuentas.usuario(usuario_elegido), dificultad_elegida)
 
                 while True:
                     event, values = window.read(timeout=100)
@@ -140,10 +139,9 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                         time.sleep(2)
                         tarjeta.analizar_respuesta('')
                         cg.ventana_popup(window, 'SE ACABO EL TIEMPO!')
-                        tiempo_comienzo, window, cortar = analizar_siguiente(tarjeta, tiempo_comienzo,
-                                                                             partida, window,
-                                                                             dificultad_elegida, dataset_elegido,
-                                                                             usuario_elegido)
+                        tiempo_comienzo, window, cortar = analizar_siguiente(tarjeta, tiempo_comienzo, partida,
+                                                                             window, dificultad_elegida,
+                                                                             dataset_elegido, usuario_elegido)
                         if cortar:
                             break
                     # CONTROL DE LA ELECCIÓN DE RESPUESTA
@@ -176,11 +174,9 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                             except IndexError:
                                 pass
                             else:
-                                tiempo_comienzo, window, cortar = analizar_siguiente(tarjeta, tiempo_comienzo,
-                                                                                     partida, window,
-                                                                                     dificultad_elegida,
-                                                                                     dataset_elegido,
-                                                                                     usuario_elegido)
+                                tiempo_comienzo, window, cortar = analizar_siguiente(tarjeta, tiempo_comienzo, partida,
+                                                                                     window, dificultad_elegida,
+                                                                                     dataset_elegido, usuario_elegido)
                                 if cortar:
                                     break
                     # despues con los datos que almacena la tarjeta y este loop hay que armar el csv de la partida

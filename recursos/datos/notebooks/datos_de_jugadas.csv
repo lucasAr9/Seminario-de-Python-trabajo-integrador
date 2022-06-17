@@ -1,70 +1,31 @@
 timestamp,id,evento,nombre_jugador,edad_jugador,sexo_jugador,estado,texto_ingresado,respuesta,nivel
-1655418097.8981123,0667b476-4ac6-4e8d-83f3-b555b33289ff,inicio_partida,NEO,80,Masculino,,,,Facil
-1655418124.9709208,0667b476-4ac6-4e8d-83f3-b555b33289ff,intento,NEO,80,Masculino,ok,Machine Gun Kelly,Machine Gun Kelly,Facil
-1655418128.5004997,0667b476-4ac6-4e8d-83f3-b555b33289ff,intento,NEO,80,Masculino,ok,Adele,Adele,Facil
-1655418131.4426506,0667b476-4ac6-4e8d-83f3-b555b33289ff,intento,NEO,80,Masculino,ok,Maroon 5,Maroon 5,Facil
-1655418134.2819598,0667b476-4ac6-4e8d-83f3-b555b33289ff,intento,NEO,80,Masculino,ok,The Wanted,The Wanted,Facil
-1655418137.456494,0667b476-4ac6-4e8d-83f3-b555b33289ff,intento,NEO,80,Masculino,error,Pitbull,Years & Years,Facil
-1655418140.0516584,0667b476-4ac6-4e8d-83f3-b555b33289ff,pasar,NEO,80,Masculino,,,Coldplay,Facil
-1655418143.0438437,0667b476-4ac6-4e8d-83f3-b555b33289ff,intento,NEO,80,Masculino,error,Iyaz,Mark Ronson,Facil
-1655418146.5568635,0667b476-4ac6-4e8d-83f3-b555b33289ff,intento,NEO,80,Masculino,error,Calvin Harris,Ed Sheeran,Facil
-1655418149.4830284,0667b476-4ac6-4e8d-83f3-b555b33289ff,intento,NEO,80,Masculino,error,Lewis Capaldi,XXXTENTACION,Facil
-1655418152.3719742,0667b476-4ac6-4e8d-83f3-b555b33289ff,intento,NEO,80,Masculino,error,Taylor Swift0,Major Lazer,Facil
-1655418156.9364636,0667b476-4ac6-4e8d-83f3-b555b33289ff,fin,NEO,80,Masculino,finalizada,,,Facil
-1655427768.6506069,inicio_partida,f65c7c7a-b841-4e1e-96c4-da7520b15466,NEO,80,Masculino,,,,Normal
-1655427773.6553774,inicio_partida,intento,NEO,80,Masculino,error,Fabricated City,The Woman in Red,Normal
-1655427834.404295,inicio_partida,fin,NEO,80,Masculino,cancelada,,,Normal
-1655427884.067489,inicio_partida,43704f33-c8dc-4b91-962d-9d8f028c29dc,NEO,80,Masculino,,,,Normal
-1655427949.8895297,inicio_partida,fin,NEO,80,Masculino,cancelada,,,Normal
-1655428364.9223604,inicio_partida,87bd1a34-fed1-437d-bcb9-428e063ef5fe,NEO,80,Masculino,,,,Normal
-1655428369.7991269,inicio_partida,intento,NEO,80,Masculino,error,Side Effects,Margin Call,Normal
-1655428438.6198533,inicio_partida,fin,NEO,80,Masculino,cancelada,,,Normal
-1655428546.4657302,inicio_partida,98b8a9af-8c8c-477c-b7ae-f2e1b18c95ed,NEO,80,Masculino,,,,Dificil
-1655428564.6000755,inicio_partida,fin,NEO,80,Masculino,cancelada,,,Dificil
-1655428654.8728907,inicio_partida,1be3b277-9209-4875-9d13-e9108c057eb3,NEO,80,Masculino,,,,Dificil
-1655428679.5029957,inicio_partida,intento,NEO,80,Masculino,error,Champions,"Happy Halloween, Scooby-Doo!",Dificil
-1655428683.555995,inicio_partida,fin,NEO,80,Masculino,finalizada,,,Dificil
-1655428690.3065934,inicio_partida,05c0a5ea-37f4-4a2c-98c8-7686badce725,NEO,80,Masculino,,,,Dificil
-1655428691.8869894,inicio_partida,intento,NEO,80,Masculino,error,Sky Captain and the World of Tomorrow,Meet the Parents,Dificil
-1655428697.095455,inicio_partida,fin,NEO,80,Masculino,finalizada,,,Dificil
-1655428713.7464304,inicio_partida,f5773325-051a-454b-a99a-22702710e236,NEO,80,Masculino,,,,Dificil
-1655428716.4079754,inicio_partida,intento,NEO,80,Masculino,error,Jiang Ziya: The Legend of Deification,Rocky II,Dificil
-1655428719.93589,inicio_partida,fin,NEO,80,Masculino,finalizada,,,Dificil
-1655428724.311996,inicio_partida,4b3a7ec5-ee5a-4b0d-b590-9d2404cd612a,NEO,80,Masculino,,,,Dificil
-1655428732.5420754,inicio_partida,fin,NEO,80,Masculino,cancelada,,,Dificil
-1655429404.346465,inicio_partida,4edcf927-48d0-4f97-8ec1-8f4556658005,NEO,80,Masculino,,,,Dificil
-1655429418.8066556,inicio_partida,fin,NEO,80,Masculino,finalizada,,,Dificil
-1655429567.4026184,inicio_partida,1e410e72-cf10-4c17-9dea-52c92d63947d,NEO,80,Masculino,,,,Dificil
-1655429576.3735719,inicio_partida,fin,NEO,80,Masculino,finalizada,,,Dificil
-1655429630.505495,inicio_partida,6b9e54a3-7ca2-4234-80c6-0f72a27baae8,NEO,80,Masculino,,,,Dificil
-1655429640.510585,inicio_partida,fin,NEO,80,Masculino,finalizada,,,Dificil
-1655429681.9050314,inicio_partida,8ef17333-0d7d-4c21-9b15-823caa93795d,NEO,80,Masculino,,,,Personalizado
-1655429698.55156,inicio_partida,intento,NEO,80,Masculino,error,Knockin' on Heaven's Door,Almost Famous,Personalizado
-1655429702.5035574,inicio_partida,intento,NEO,80,Masculino,error,Death Sentence,Macross: Do You Remember Love?,Personalizado
-1655429706.352577,inicio_partida,pasar,NEO,80,Masculino,,,Dancing Queens,Personalizado
-1655429710.8921406,inicio_partida,fin,NEO,80,Masculino,cancelada,,,Personalizado
-1655429768.889227,inicio_partida,4bdfbcad-b12b-48b1-99d0-2f0bcc8e5beb,NEO,80,Masculino,,,,Personalizado
-1655429770.7596662,inicio_partida,intento,NEO,80,Masculino,error,Look Away,Prom,Personalizado
-1655429774.9194887,inicio_partida,pasar,NEO,80,Masculino,,,Wild,Personalizado
-1655429787.2155218,inicio_partida,intento,NEO,80,Masculino,error,The Relic,Knight and Day,Personalizado
-1655429790.7194912,inicio_partida,pasar,NEO,80,Masculino,,,Animal House,Personalizado
-1655429794.923742,inicio_partida,fin,NEO,80,Masculino,cancelada,,,Personalizado
-1655429836.6399896,inicio_partida,0d715f88-1468-4c59-9583-1ae770f754d8,NEO,80,Masculino,,,,Personalizado
-1655429846.0554776,inicio_partida,intento,NEO,80,Masculino,error,Mystic River,(500) Days of Summer,Personalizado
-1655429849.1914546,inicio_partida,pasar,NEO,80,Masculino,,,Trespass Against Us,Personalizado
-1655429853.1195054,inicio_partida,intento,NEO,80,Masculino,ok,Sniper: Assassin's End,Sniper: Assassin's End,Personalizado
-1655430264.5655942,inicio_partida,e4910e31-461a-4164-b516-dd3f93b9d50b,NEO,80,Masculino,,,,Facil
-1655430278.3339107,inicio_partida,fin,NEO,80,Masculino,cancelada,,,Facil
-1655430283.28744,inicio_partida,5344ab78-6dbc-4c88-b7cb-0c269e4e6ba4,NEO,80,Masculino,,,,Personalizado
-1655430284.2074473,inicio_partida,intento,NEO,80,Masculino,error,Predestination,The High Note,Personalizado
-1655430288.5993464,inicio_partida,intento,NEO,80,Masculino,error,A Dog's Purpose,To Live,Personalizado
-1655430292.3836403,inicio_partida,intento,NEO,80,Masculino,error,Naomi and Ely's No Kiss List,High and Low,Personalizado
-1655430305.1034124,inicio_partida,intento,NEO,80,Masculino,error,My Father the Hero,Jaws,Personalizado
-1655430308.8794372,inicio_partida,intento,NEO,80,Masculino,error,American Pie: Revealed,The Host,Personalizado
-1655430313.0303025,inicio_partida,intento,NEO,80,Masculino,error,Ong Bak 3,Collateral,Personalizado
-1655430337.1706564,inicio_partida,fin,NEO,80,Masculino,finalizada,,,Personalizado
-1655430343.2414005,inicio_partida,d10af2fe-50f3-4dce-9def-2f0cb0af3df0,NEO,80,Masculino,,,,Personalizado
-1655430345.1147487,inicio_partida,intento,NEO,80,Masculino,error,Mute,American Factory,Personalizado
-1655430348.0394406,inicio_partida,pasar,NEO,80,Masculino,,,Hibiki,Personalizado
-1655430351.9833183,inicio_partida,intento,NEO,80,Masculino,error,The Ewok Adventure,Blazing Saddles,Personalizado
-1655430363.8033292,inicio_partida,fin,NEO,80,Masculino,cancelada,,,Personalizado
+1655432242.80533,db74505f-3fe3-476c-866d-872fea96a3b2,inicio_partida,NEO,80,Masculino,,,,Facil
+1655432251.0367837,db74505f-3fe3-476c-866d-872fea96a3b2,intento,NEO,80,Masculino,ok,Christina Perri,Christina Perri,Facil
+1655432253.948913,db74505f-3fe3-476c-866d-872fea96a3b2,intento,NEO,80,Masculino,error,Bazzi,Calvin Harris,Facil
+1655432259.7520494,db74505f-3fe3-476c-866d-872fea96a3b2,intento,NEO,80,Masculino,error,Selena Gomez,Rae Sremmurd,Facil
+1655432262.690958,db74505f-3fe3-476c-866d-872fea96a3b2,intento,NEO,80,Masculino,error,Lauv,Edward Maya,Facil
+1655432265.1784065,db74505f-3fe3-476c-866d-872fea96a3b2,pasar,NEO,80,Masculino,,,Natalie La Rose,Facil
+1655432268.5902793,db74505f-3fe3-476c-866d-872fea96a3b2,intento,NEO,80,Masculino,error,XXXTENTACION,Adele,Facil
+1655432271.488929,db74505f-3fe3-476c-866d-872fea96a3b2,intento,NEO,80,Masculino,error,Migos,Future,Facil
+1655432274.0159414,db74505f-3fe3-476c-866d-872fea96a3b2,pasar,NEO,80,Masculino,,,Taylor Swift,Facil
+1655432277.1881802,db74505f-3fe3-476c-866d-872fea96a3b2,intento,NEO,80,Masculino,error,Daya,Iyaz,Facil
+1655432280.5379517,db74505f-3fe3-476c-866d-872fea96a3b2,intento,NEO,80,Masculino,error,NF,Lana Del Rey,Facil
+1655432283.6162822,db74505f-3fe3-476c-866d-872fea96a3b2,fin,NEO,80,Masculino,finalizada,,,Facil
+1655432344.359449,b8d68931-5986-4704-99ac-1f606dac48ae,inicio_partida,El Jose,80,Masculino,,,,Facil
+1655432346.0972135,b8d68931-5986-4704-99ac-1f606dac48ae,intento,El Jose,80,Masculino,ok,David Guetta,David Guetta,Facil
+1655432348.6520405,b8d68931-5986-4704-99ac-1f606dac48ae,pasar,El Jose,80,Masculino,,,Usher,Facil
+1655432351.177747,b8d68931-5986-4704-99ac-1f606dac48ae,pasar,El Jose,80,Masculino,,,Rihanna,Facil
+1655432354.3010337,b8d68931-5986-4704-99ac-1f606dac48ae,intento,El Jose,80,Masculino,error,Portugal. The Man,Dennis Lloyd,Facil
+1655432357.4031804,b8d68931-5986-4704-99ac-1f606dac48ae,intento,El Jose,80,Masculino,error,Hozier,Taylor Swift,Facil
+1655432360.7637186,b8d68931-5986-4704-99ac-1f606dac48ae,intento,El Jose,80,Masculino,error,Jason Derulo,Kehlani,Facil
+1655432363.6523871,b8d68931-5986-4704-99ac-1f606dac48ae,intento,El Jose,80,Masculino,error,Tom Odell,B.o.B,Facil
+1655432366.6296325,b8d68931-5986-4704-99ac-1f606dac48ae,intento,El Jose,80,Masculino,error,Rihanna,Echosmith,Facil
+1655432369.5509381,b8d68931-5986-4704-99ac-1f606dac48ae,intento,El Jose,80,Masculino,error,Vance Joy,Chris Brown,Facil
+1655432373.104697,b8d68931-5986-4704-99ac-1f606dac48ae,pasar,El Jose,80,Masculino,,,John Legend,Facil
+1655432376.6515663,b8d68931-5986-4704-99ac-1f606dac48ae,fin,El Jose,80,Masculino,finalizada,,,Facil
+1655432384.9997685,3c3f6710-3cef-459e-9013-0fbaf8af05f5,inicio_partida,El Jose,80,Masculino,,,,Facil
+1655432386.1346774,3c3f6710-3cef-459e-9013-0fbaf8af05f5,intento,El Jose,80,Masculino,ok,Snoop Dogg,Snoop Dogg,Facil
+1655432388.6636176,3c3f6710-3cef-459e-9013-0fbaf8af05f5,pasar,El Jose,80,Masculino,,,Calvin Harris,Facil
+1655432391.70214,3c3f6710-3cef-459e-9013-0fbaf8af05f5,intento,El Jose,80,Masculino,error,Kodak Black,Taylor Swift,Facil
+1655432394.5406597,3c3f6710-3cef-459e-9013-0fbaf8af05f5,pasar,El Jose,80,Masculino,,,Imagine Dragons,Facil
+1655432398.4583833,3c3f6710-3cef-459e-9013-0fbaf8af05f5,fin,El Jose,80,Masculino,cancelada,,,Facil

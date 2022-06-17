@@ -4,7 +4,7 @@ import os
 from rutas import CONFIG_DIR
 
 """Rango de valores de la pantalla de la configuracion"""
-CANT_TIEMPOS = [x for x in range(1, 30)]  # del 5 al 30, de 5 en 5
+CANT_TIEMPOS = [x for x in range(5, 31)]  # del 5 al 30, de 5 en 5
 CANT_RONDAS = [x for x in range(5, 11)]  # del 1 al 10
 CANT_CORRECTO = [x for x in range(1, 11)]  # del 1 al 20
 CANT_INCORRECTO = [x for x in range(1, 11)]  # del 1 al 20
