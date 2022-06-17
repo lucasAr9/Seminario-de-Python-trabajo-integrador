@@ -100,9 +100,9 @@ class Tarjeta:
                                self.dict_respuestas['Posibles'][i], group_id='respuestas',
                                font=cgen.FUENTE_OPCIONES, key=self.dict_respuestas['Posibles'][i])]
                                for i in range(cgen.CANT_RESPUESTAS)] +
-                           [[sg.Button('Confirmar', pad=15, key='-ELECCION-', font=cgen.FUENTE_COMBO),
+                           [[sg.Button('Confirmar', pad=15, key='-ELECCION-', font=cgen.FUENTE_BOTONES),
                              sg.Push(),
-                             sg.Button('Pasar >', pad=15, key='-JUEGO_PASAR-', font=cgen.FUENTE_COMBO)]],
+                             sg.Button('Pasar >', pad=15, key='-JUEGO_PASAR-', font=cgen.FUENTE_BOTONES)]],
                            expand_x=True, font=cgen.FUENTE_OPCIONES
                            )]
         return layout
@@ -115,9 +115,9 @@ class Tarjeta:
                             for nombre, dato in self.dict_pistas.items()] +
                            [[sg.Text(f'{self.dict_respuestas["Titulo"].upper()}: ', pad=5, font=cgen.FUENTE_COMBO)]] +
                            [[sg.Radio('', group_id='respuestas')] for radio in range(5)] +
-                           [[sg.Button('Confirmar', pad=15, key='-ELECCION-', font=cgen.FUENTE_COMBO, disabled=True),
+                           [[sg.Button('Confirmar', pad=((15, 0), (1, 3)), size=(9, 0), key='-ELECCION-', font=cgen.FUENTE_BOTONES, disabled=True),
                              sg.Push(),
-                             sg.Button('Pasar >', pad=15, key='-JUEGO_PASAR-', font=cgen.FUENTE_COMBO, disabled=True)]],
+                             sg.Button('Pasar >', pad=((0, 15), (1, 3)), key='-JUEGO_PASAR-', font=cgen.FUENTE_BOTONES, disabled=True)]],
                            expand_x=True, font=cgen.FUENTE_OPCIONES
                            )]
         return layout

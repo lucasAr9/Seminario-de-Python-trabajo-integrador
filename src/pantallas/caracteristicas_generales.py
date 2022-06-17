@@ -6,16 +6,17 @@ import rutas
 # tamaños de ventanas y botones
 ancho, alto = sg.Window.get_screen_size()
 ancho_ventana = int(ancho*90/100)
-alto_ventana = int(alto*98/100)
+alto_ventana = int(alto*95/100)
 TAM_VENTANA = (ancho_ventana, alto_ventana)
 TAM_COLUMNAS = (int(ancho_ventana/3), int(alto_ventana/3))
-TAM_COMBO = (int(ancho/80), int(alto/80))
+TAM_COMBO = (int(ancho/70), int(alto/70))
 
 # fuentes de los textos y botones (La anterior fuente era Verdana)
 FUENTE = 'Verdana'
 FUENTE_TITULO = f'{FUENTE} 48'
 FUENTE_INDICADOR = f'{FUENTE} 28'
-FUENTE_BOTONES = f'{FUENTE} 22'
+FUENTE_BOTONES = f'{FUENTE} 18'
+FUENTE_BOTONES_DESTACADOS = f'{FUENTE} 22 bold'
 FUENTE_PRUEBA = f'{FUENTE} 22'
 FUENTE_COMBO = f'{FUENTE} 18'
 FUENTE_POPUP = f'{FUENTE} 12'

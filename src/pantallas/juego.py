@@ -16,20 +16,21 @@ def armar_layout(tarjeta, layout_tarjeta, dificultad_elegida, dataset_elegido, u
                            [sg.Image(os.path.join(rutas.IMAGENES_DIR, f'{dataset_elegido}.png'))]],
                   font=cgen.FUENTE_OPCIONES)],
         [sg.VPush()],
-        [sg.Button('Comenzar', key='-JUEGO_COMENZAR-', font=cgen.FUENTE_BOTONES, button_color='Green', visible=False)],
+        [sg.Button('Comenzar', key='-JUEGO_COMENZAR-', font=cgen.FUENTE_BOTONES_DESTACADOS, button_color='Green', visible=False)],
         [sg.Button('Abandonar', key='-JUEGO_ABANDONAR-', tooltip='Volver al menú principal', font=cgen.FUENTE_OPCIONES)]
     ]
 
     columna_centro = [
-         [sg.Frame('Tiempo restante',
-                   [[sg.Image(os.path.join(rutas.IMAGENES_DIR, 'indicador_tiempo.png'), pad=((8, 0), (0, 0))),
-                    sg.Text(f'00:00', key='-JUEGO_TIEMPO-', font=cgen.FUENTE_COMBO),
-                    sg.ProgressBar(datos.tiempo, orientation='h', size=(18, 20), key='-JUEGO_BARRA-')]],
-                   font=cgen.FUENTE_OPCIONES)],
+
          layout_tarjeta
     ]
 
     columna_der = [
+        [sg.Frame('Tiempo restante',
+                  [[sg.Image(os.path.join(rutas.IMAGENES_DIR, 'indicador_tiempo.png'), pad=((8, 0), (0, 0))),
+                    sg.Text(f'00:00', key='-JUEGO_TIEMPO-', font=cgen.FUENTE_COMBO),
+                    sg.ProgressBar(datos.tiempo, orientation='h', size=(18, 20), key='-JUEGO_BARRA-')]],
+                  font=cgen.FUENTE_OPCIONES)],
         [sg.Frame('Usuario', [[sg.Text(usuario_elegido, font=cgen.FUENTE_COMBO)]], expand_x=True,
                   font=cgen.FUENTE_OPCIONES)],
         [sg.Table(values=tarjeta.resultados_para_tabla(), headings=['Pregunta', 'Resultados'],
