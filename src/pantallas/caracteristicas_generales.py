@@ -12,10 +12,10 @@ TAM_COLUMNAS = (int(ancho_ventana/3), int(alto_ventana/3))
 TAM_COMBO = (int(ancho/80), int(alto/80))
 
 # fuentes de los textos y botones (La anterior fuente era Verdana)
-FUENTE = 'Impact'
+FUENTE = 'Verdana'
 FUENTE_TITULO = f'{FUENTE} 48'
 FUENTE_INDICADOR = f'{FUENTE} 28'
-FUENTE_BOTONES = f'{FUENTE} 26'
+FUENTE_BOTONES = f'{FUENTE} 22'
 FUENTE_PRUEBA = f'{FUENTE} 22'
 FUENTE_COMBO = f'{FUENTE} 18'
 FUENTE_POPUP = f'{FUENTE} 12'

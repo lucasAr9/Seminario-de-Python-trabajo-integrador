@@ -22,12 +22,12 @@ def armar_layout(tarjeta, layout_tarjeta, dificultad_elegida, dataset_elegido, u
     ]
 
     columna_centro = [
-        [sg.Image(os.path.join(rutas.IMAGENES_DIR, 'indicador_tiempo.png')),
-         sg.Frame('Tiempo restante', [[sg.Text(f'00:00', key='-JUEGO_TIEMPO-', font=cgen.FUENTE_COMBO),
-                                       sg.ProgressBar(datos.tiempo, orientation='h',
-                                                      size=(18, 20), key='-JUEGO_BARRA-')]],
-                  font=cgen.FUENTE_OPCIONES)],
-        layout_tarjeta
+         [sg.Frame('Tiempo restante',
+                   [[sg.Image(os.path.join(rutas.IMAGENES_DIR, 'indicador_tiempo.png'), pad=((8, 0), (0, 0))),
+                    sg.Text(f'00:00', key='-JUEGO_TIEMPO-', font=cgen.FUENTE_COMBO),
+                    sg.ProgressBar(datos.tiempo, orientation='h', size=(18, 20), key='-JUEGO_BARRA-')]],
+                   font=cgen.FUENTE_OPCIONES)],
+         layout_tarjeta
     ]
 
     columna_der = [

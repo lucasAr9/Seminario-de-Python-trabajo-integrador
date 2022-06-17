@@ -91,7 +91,7 @@ class Tarjeta:
                              sg.Text(f'{dato}', font=cgen.FUENTE_OPCIONES, justification='center',
                                      text_color='#FFDE7D')]
                             for nombre, dato in self.dict_pistas.items()] +
-                           [[sg.Text(f'{self.dict_respuestas["Titulo"]}: ', pad=5, font=cgen.FUENTE_COMBO)]] +
+                           [[sg.Text(f'{self.dict_respuestas["Titulo"].upper()}: ', pad=5, font=cgen.FUENTE_COMBO)]] +
                            [[sg.Radio(
                                self.dict_respuestas['Posibles'][i], group_id='respuestas',
                                font=cgen.FUENTE_OPCIONES, key=self.dict_respuestas['Posibles'][i])]
@@ -109,7 +109,7 @@ class Tarjeta:
                              sg.Text(f'{nombre.upper()}:', font=cgen.FUENTE_OPCIONES,
                                      text_color='#FCC314'), sg.Text(f'{dato}', visible=False)]
                             for nombre, dato in self.dict_pistas.items()] +
-                           [[sg.Text('')]] +
+                           [[sg.Text(f'{self.dict_respuestas["Titulo"].upper()}: ', pad=5, font=cgen.FUENTE_COMBO)]] +
                            [[sg.Radio('', group_id='respuestas')] for radio in range(5)] +
                            [[sg.Button('Confirmar', pad=15, key='-ELECCION-', font=cgen.FUENTE_COMBO, disabled=True),
                              sg.Push(),
