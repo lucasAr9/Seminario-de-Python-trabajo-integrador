@@ -67,15 +67,16 @@ def abrir_perfiles():
     return nicks_perfiles
 
 
-def analizar_siguiente(tarjeta, tiempo_comienzo, partida, window,
+def analizar_siguiente(tarjeta, partida, window,
                        dificultad_elegida, dataset_elegido, usuario_elegido):
     if tarjeta.quedan_rondas():
         tarjeta.cargar_datos()  # Se actualizan los datos de la tarjeta
+        tarjeta.actual += 1
         tiempo_comienzo = time.time()
-
         window = juego.cambiar_tarjeta(tarjeta, tarjeta.layout_datos(),
                                        window, dificultad_elegida,
                                        dataset_elegido, usuario_elegido)
+        # window['-JUEGO_TABLA-'].update(select_rows=(tarjeta.actual - 1,))
         window.refresh()
         return tiempo_comienzo, window, False
     else:
@@ -139,7 +140,7 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                         time.sleep(2)
                         tarjeta.analizar_respuesta('')
                         cg.ventana_popup(window, 'SE ACABO EL TIEMPO!')
-                        tiempo_comienzo, window, cortar = analizar_siguiente(tarjeta, tiempo_comienzo, partida,
+                        tiempo_comienzo, window, cortar = analizar_siguiente(tarjeta, partida,
                                                                              window, dificultad_elegida,
                                                                              dataset_elegido, usuario_elegido)
                         if cortar:
@@ -168,13 +169,13 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
 
                                 tarjeta.analizar_respuesta(eleccion)
                                 window['-JUEGO_TABLA-'].update(
-                                    values=list(enumerate(tarjeta.resultados, start=1)))
+                                    values=tarjeta.resultados_para_tabla())
                                 window.refresh()
                                 time.sleep(2)
                             except IndexError:
                                 pass
                             else:
-                                tiempo_comienzo, window, cortar = analizar_siguiente(tarjeta, tiempo_comienzo, partida,
+                                tiempo_comienzo, window, cortar = analizar_siguiente(tarjeta, partida,
                                                                                      window, dificultad_elegida,
                                                                                      dataset_elegido, usuario_elegido)
                                 if cortar:

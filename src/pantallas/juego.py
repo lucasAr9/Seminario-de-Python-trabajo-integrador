@@ -7,7 +7,6 @@ from src.pantallas import caracteristicas_generales as cgen
 
 def armar_layout(tarjeta, layout_tarjeta, dificultad_elegida, dataset_elegido, usuario_elegido):
     """Devolver la organización de botones de la ventana de juego."""
-    result = tarjeta.resultados
     datos = tarjeta.datos_dificultad
 
     columna_izq = [
@@ -33,9 +32,10 @@ def armar_layout(tarjeta, layout_tarjeta, dificultad_elegida, dataset_elegido, u
     columna_der = [
         [sg.Frame('Usuario', [[sg.Text(usuario_elegido, font=cgen.FUENTE_COMBO)]], expand_x=True,
                   font=cgen.FUENTE_OPCIONES)],
-        [sg.Table(values=list(enumerate(result, start=1)), headings=['Pregunta', 'Resultados'],
+        [sg.Table(values=tarjeta.resultados_para_tabla(), headings=['Pregunta', 'Resultados'],
                   max_col_width=25, auto_size_columns=False, justification='center', num_rows=10,
-                  key='-JUEGO_TABLA-', row_height=25, font=cgen.FUENTE_OPCIONES, expand_x=True)]
+                  key='-JUEGO_TABLA-', row_height=25, font=cgen.FUENTE_OPCIONES, expand_x=True,
+                  selected_row_colors=('Black', sg.theme_text_color()))]
     ]
 
     layout = [

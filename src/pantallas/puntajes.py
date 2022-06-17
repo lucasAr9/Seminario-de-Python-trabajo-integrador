@@ -23,7 +23,7 @@ def procesar_archivo():
     En caso de no existir el archivo devolver listas vacías.
     """
     try:
-        with(open(os.path.join(rutas.CONFIG_DIR, 'puntajes.csv'), 'r', encoding='utf-8', newline='')) as archivo:
+        with(open(os.path.join(rutas.REGISTROS_DIR, 'puntajes.csv'), 'r', encoding='utf-8', newline='')) as archivo:
             csv_reader = csv.reader(archivo, delimiter=',')
             cabecera, contenido = csv_reader.__next__(), [linea for linea in csv_reader]
     except FileNotFoundError:

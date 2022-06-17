@@ -22,8 +22,9 @@ class Tarjeta:
         self.respuesta_correcta = ''
         self.dict_respuestas = {}
         self.dict_pistas = {}
-        self.resultados = []
+        self.resultados = {i: '-' for i in range(1, self.datos_dificultad.rondas+1)}
         self.puntos_acumulados = 0
+        self.actual = 1
 
     def set_puntos_acumulados(self, puntos):
         self.puntos_acumulados = puntos
@@ -67,6 +68,9 @@ class Tarjeta:
             tipo: dato for tipo, dato in zip(cabecera[:self.datos_dificultad.caracteristicas], pistas)
         }
 
+    def resultados_para_tabla(self):
+        return [[x, y] for x, y in zip(self.resultados.keys(), self.resultados.values())]
+
     def analizar_respuesta(self, eleccion):
         """
         Analiza la respuesta seleccionada, si coincide con la respuesta correcta
@@ -74,15 +78,15 @@ class Tarjeta:
         Se actualiza la lista de resultados y los puntos acumulados
         """
         if eleccion == self.respuesta_correcta:
-            self.resultados.append('Bien!')
+            self.resultados[self.actual] = 'Bien!'
             self.puntos_acumulados += self.datos_dificultad.correctas
         else:
-            self.resultados.append('Mal')
+            self.resultados[self.actual] = 'Mal'
             self.puntos_acumulados -= self.datos_dificultad.incorrectas
 
     def quedan_rondas(self):
         """Devolver True si quedan rondas por jugar, False si se terminaron las rondas"""
-        return len(self.resultados) < self.datos_dificultad.rondas
+        return self.actual < self.datos_dificultad.rondas
 
     def layout_datos(self):
         layout = [sg.Frame('Tarjeta',
