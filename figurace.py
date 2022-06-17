@@ -191,7 +191,6 @@ def main():
     """Crear la ventana menú inicial y responder a los eventos en la misma."""
     usuario_elegido = False
     dificultad_elegida = False
-    indicador_visible = False
     perfiles = cuentas.nombre_perfiles()
     window = menu.crear_menu(perfiles)
     while True:
@@ -211,7 +210,9 @@ def main():
             case '-JUGAR-':
                 if usuario_elegido and dificultad_elegida:
                     window.hide()
+                    cg.ventana_de_carga()
                     abrir_juego(dificultad_elegida, usuario_elegido)
+                    cg.ventana_de_carga()
                     window.un_hide()
                 else:
                     cg.ventana_popup(window,

@@ -29,3 +29,5 @@ timestamp,id,evento,nombre_jugador,edad_jugador,sexo_jugador,estado,texto_ingres
 1655432391.70214,3c3f6710-3cef-459e-9013-0fbaf8af05f5,intento,El Jose,80,Masculino,error,Kodak Black,Taylor Swift,Facil
 1655432394.5406597,3c3f6710-3cef-459e-9013-0fbaf8af05f5,pasar,El Jose,80,Masculino,,,Imagine Dragons,Facil
 1655432398.4583833,3c3f6710-3cef-459e-9013-0fbaf8af05f5,fin,El Jose,80,Masculino,cancelada,,,Facil
+1655495490.9993305,e1edc516-b996-42e9-97c3-a56a4080eaab,inicio_partida,NEO,80,Masculino,,,,Personalizado
+1655495493.2302186,e1edc516-b996-42e9-97c3-a56a4080eaab,fin,NEO,80,Masculino,cancelada,,,Personalizado

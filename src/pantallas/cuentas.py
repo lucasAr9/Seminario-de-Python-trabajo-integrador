@@ -3,6 +3,7 @@ import os
 import json
 import string
 
+import rutas
 import src.pantallas.caracteristicas_generales as cg
 import rutas as ruta
 
@@ -21,6 +22,7 @@ def cargar_perfiles():
             perfiles = []
             json.dump(perfiles, arch_perfiles)
     return perfiles
+
 
 def usuario(nick):
     cuentas = cargar_perfiles()
@@ -176,9 +178,13 @@ def crear_cuentas(conf):
         [sg.Push(), sg.Button("Seleccionar", key="-ACEPTAR_PERFIL-", font=cg.FUENTE_BOTONES),
             sg.Button("Crear Perfil", key="-PERFIL_NUEVO-", font=cg.FUENTE_BOTONES), sg.Push()]
     ]
-
+    ruta_titulo = os.path.join(rutas.IMAGENES_DIR, "t_perfiles.png")
+    ruta_elem_titulo = os.path.join(rutas.IMAGENES_DIR, "e_perfiles.png")
     layout = [
-            [sg.Push(), sg.Text("Editar Perfil", font=cg.FUENTE_TITULO), sg.Push()],
+            [sg.Push(), sg.Image(ruta_elem_titulo, pad=((60, 0), (20, 20))),
+             sg.Image(ruta_titulo),
+             sg.Image(ruta_elem_titulo, pad=((0, 60), (20, 20))),
+             sg.Push()],
             [sg.HSep()],
             [sg.VPush()],
             [sg.Push(), sg.pin(sg.Col(menu_prin, key="-BTN_PRIN-", visible=True)), sg.Push()],
@@ -193,7 +199,7 @@ def crear_cuentas(conf):
         ]
     ruta_titlebar_icon = os.path.join(ruta.IMAGENES_DIR, "cartas_icon.png")
     ruta_icon = os.path.join(ruta.IMAGENES_DIR, "cartas_icon.ico")
-    return sg.Window("Figurace - Edición de Perfil", layout, size=cg.TAM_VENTANA, finalize=True,
+    return sg.Window("Perfiles", layout, size=cg.TAM_VENTANA, finalize=True,
                      use_custom_titlebar=True, titlebar_icon=ruta_titlebar_icon, icon=ruta_icon)
 
 
@@ -208,7 +214,6 @@ def crear_perfil(window):
     window["-BTNS_EDITAR-"].update(visible=False)
     window["-MSJ_CREAR-"].update(visible=False)
     window["-NUEVO_GENERO-"].update(value='Seleccione su género')
-
 
 
 def cancelar_crear(window):

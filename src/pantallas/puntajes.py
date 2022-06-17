@@ -62,7 +62,7 @@ def armar_layout():
                             expand_y=True, expand_x=True, pad=30, font=cgen.FUENTE_COMBO)
 
     layout = [[sg.Push(), sg.Image(os.path.join(rutas.IMAGENES_DIR, 'puntaje.png'), pad=10), sg.Push(),
-               sg.Column([[sg.Text('Puntajes', font=cgen.FUENTE_TITULO, justification='c', expand_x=True)],
+               sg.Column([[sg.Image(os.path.join(rutas.IMAGENES_DIR, "t_puntajes.png"))],
                           [sg.Text('Los 20 mejores puntajes y promedios por nivel',
                                    font=cgen.FUENTE_COMBO, justification='c', expand_x=True)]]),
                sg.Push(), sg.Image(os.path.join(rutas.IMAGENES_DIR, 'puntaje.png'), pad=10), sg.Push()],

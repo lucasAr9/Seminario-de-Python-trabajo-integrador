@@ -8,6 +8,8 @@ from rutas import IMAGENES_DIR
 """Ruta de las imagenes de la ventana de configuracion"""
 ruta_titlebar_icon = os.path.join(IMAGENES_DIR, "cartas_icon.png")
 ruta_icon = os.path.join(IMAGENES_DIR, "cartas_icon.ico")
+ruta_titulo = os.path.join(IMAGENES_DIR, "t_configuracion.png")
+ruta_elem_titulo = os.path.join(IMAGENES_DIR, "e_configuracion.png")
 
 """tema de las ventanas"""
 sg.theme(cg.TEMA)
@@ -130,9 +132,10 @@ def crear_ventana():
     layout_dificil = layout_configuracion_nivel(datos['-DIFICIL-'], 'DIFÍCIL')
     layout_personalizado = layour_config_personalizado(datos['-PERSONALIZADO-'])
     crear_layout = [
-        [sg.Image(ruta_titlebar_icon, pad=((60, 0), (20, 20))),
-         sg.Text("CONFIGURACIÓN", key="-TITULO-", expand_x=True, font='Arial 40', justification='center'),
-         sg.Image(ruta_titlebar_icon, pad=((0, 60), (20, 20)))],
+        [sg.Push(), sg.Image(ruta_elem_titulo, pad=((60, 0), (20, 20))),
+         sg.Image(ruta_titulo),
+         sg.Image(ruta_elem_titulo, pad=((0, 60), (20, 20))),
+         sg.Push()],
         [sg.HSep()],
 
         [sg.Text(size=(None, 1), )],

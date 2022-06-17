@@ -1,6 +1,6 @@
 import PySimpleGUI as sg
 import os
-
+import time
 import rutas
 
 # tamaños de ventanas y botones
@@ -73,3 +73,19 @@ def ventana_popup(ventana_actual, mensaje='?', nombre_gif='capoo_aviso.gif'):
     window.close()
     ventana_actual.un_hide()
     return event
+
+
+def ventana_de_carga():
+    ruta_gif = os.path.join(rutas.IMAGENES_DIR, 'cargando.gif')
+    layout = [[sg.VPush()], [sg.Push(), sg.Image(ruta_gif, key='-GIF-'), sg.Push()], [sg.VPush()]]
+    window = sg.Window('cargando', layout, size=TAM_VENTANA, no_titlebar=True)
+    tiempo_inicial = time.time()
+    while True:
+        window['-GIF-'].update_animation(ruta_gif, time_between_frames=20)
+        window.read(timeout=100)
+        delta_tiempo = time.time() - tiempo_inicial
+        tiempo_espera = int(6 - delta_tiempo)
+        if tiempo_espera == 0:
+            break
+
+    window.close()
