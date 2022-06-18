@@ -107,9 +107,9 @@ class Tarjeta:
                                self.dict_respuestas['Posibles'][i], group_id='respuestas',
                                font=cgen.FUENTE_OPCIONES, key=self.dict_respuestas['Posibles'][i])]
                                for i in range(cgen.CANT_RESPUESTAS)] +
-                           [[sg.Button('Confirmar', pad=15, key='-ELECCION-', font=cgen.FUENTE_BOTONES),
+                           [[sg.Button('Confirmar', pad=((15, 0), (1, 3)), key='-ELECCION-', font=cgen.FUENTE_BOTONES),
                              sg.Push(),
-                             sg.Button('Pasar >', pad=15, key='-JUEGO_PASAR-', font=cgen.FUENTE_BOTONES)]],
+                             sg.Button('Pasar >', pad=((0, 15), (1, 3)), key='-JUEGO_PASAR-', font=cgen.FUENTE_BOTONES)]],
                            expand_x=True, font=cgen.FUENTE_OPCIONES
                            )]
         return layout

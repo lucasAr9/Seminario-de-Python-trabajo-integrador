@@ -213,9 +213,9 @@ def main():
             case '-JUGAR-':
                 if usuario_elegido and dificultad_elegida:
                     window.hide()
-                    cg.ventana_de_carga()
+                    # cg.ventana_de_carga()
                     abrir_juego(dificultad_elegida, usuario_elegido)
-                    cg.ventana_de_carga()
+                    # cg.ventana_de_carga()
                     window.un_hide()
                 else:
                     cg.ventana_popup(window,
