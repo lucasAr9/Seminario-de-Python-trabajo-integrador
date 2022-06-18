@@ -31,3 +31,44 @@ timestamp,id,evento,nombre_jugador,edad_jugador,sexo_jugador,estado,texto_ingres
 1655432398.4583833,3c3f6710-3cef-459e-9013-0fbaf8af05f5,fin,El Jose,80,Masculino,cancelada,,,Facil
 1655495490.9993305,e1edc516-b996-42e9-97c3-a56a4080eaab,inicio_partida,NEO,80,Masculino,,,,Personalizado
 1655495493.2302186,e1edc516-b996-42e9-97c3-a56a4080eaab,fin,NEO,80,Masculino,cancelada,,,Personalizado
+1655524660.1977274,40d2a50d-2f04-44cc-9665-44a0f720d9a7,inicio_partida,Yayo,56,No Responde,,,,Normal
+1655524669.0035539,40d2a50d-2f04-44cc-9665-44a0f720d9a7,intento,Yayo,56,No Responde,ok,Son of God,Son of God,Normal
+1655524681.6198845,40d2a50d-2f04-44cc-9665-44a0f720d9a7,intento,Yayo,56,No Responde,error,Barton Fink,Jack Frost,Normal
+1655524692.3482656,40d2a50d-2f04-44cc-9665-44a0f720d9a7,intento,Yayo,56,No Responde,error,The Last Stand,Operation Finale,Normal
+1655524700.651766,40d2a50d-2f04-44cc-9665-44a0f720d9a7,intento,Yayo,56,No Responde,error,Contract Killer,The Fanatic,Normal
+1655524710.1877773,40d2a50d-2f04-44cc-9665-44a0f720d9a7,intento,Yayo,56,No Responde,error,The Boy,Paparazzi,Normal
+1655524720.971968,40d2a50d-2f04-44cc-9665-44a0f720d9a7,intento,Yayo,56,No Responde,ok,Barbie as the Island Princess,Barbie as the Island Princess,Normal
+1655524724.7267914,40d2a50d-2f04-44cc-9665-44a0f720d9a7,fin,Yayo,56,No Responde,finalizada,,,Normal
+1655525139.747745,8bb4f470-0e9b-4584-a181-df7cf94d801d,inicio_partida,Yayo,56,No Responde,,,,Dificil
+1655525143.164549,8bb4f470-0e9b-4584-a181-df7cf94d801d,intento,Yayo,56,No Responde,error,A Knight's Tale,My Best Friend's Girl,Dificil
+1655525149.2682273,8bb4f470-0e9b-4584-a181-df7cf94d801d,pasar,Yayo,56,No Responde,,,Die Hard: With a Vengeance,Dificil
+1655525155.8356779,8bb4f470-0e9b-4584-a181-df7cf94d801d,intento,Yayo,56,No Responde,error,The Secret in Their Eyes,Spoiled Brats,Dificil
+1655525161.148503,8bb4f470-0e9b-4584-a181-df7cf94d801d,intento,Yayo,56,No Responde,error,Boy Erased,Lovelace,Dificil
+1655525166.564068,8bb4f470-0e9b-4584-a181-df7cf94d801d,intento,Yayo,56,No Responde,error,Money Monster,Friday the 13th Part VI: Jason Lives,Dificil
+1655525171.1890802,8bb4f470-0e9b-4584-a181-df7cf94d801d,fin,Yayo,56,No Responde,finalizada,,,Dificil
+1655525223.5720317,0d173ffa-5cb1-4980-bb53-a21beb15b960,inicio_partida,Yayo,56,No Responde,,,,Facil
+1655525234.3731112,0d173ffa-5cb1-4980-bb53-a21beb15b960,intento,Yayo,56,No Responde,ok,Primer,Primer,Facil
+1655525249.901184,0d173ffa-5cb1-4980-bb53-a21beb15b960,intento,Yayo,56,No Responde,error,Scary Stories to Tell in the Dark,The Bad Guys,Facil
+1655525263.1401293,0d173ffa-5cb1-4980-bb53-a21beb15b960,intento,Yayo,56,No Responde,ok,Sam,Sam,Facil
+1655525273.1727488,0d173ffa-5cb1-4980-bb53-a21beb15b960,intento,Yayo,56,No Responde,error,Bordertown: The Mural Murders,The Outlaws,Facil
+1655525283.9011436,0d173ffa-5cb1-4980-bb53-a21beb15b960,intento,Yayo,56,No Responde,ok,Pokémon: Jirachi Wish Maker,Pokémon: Jirachi Wish Maker,Facil
+1655525293.9807794,0d173ffa-5cb1-4980-bb53-a21beb15b960,intento,Yayo,56,No Responde,error,Problem Child 3: Junior in Love,Sexo Animal,Facil
+1655525304.0691636,0d173ffa-5cb1-4980-bb53-a21beb15b960,intento,Yayo,56,No Responde,ok,Seed of Chucky,Seed of Chucky,Facil
+1655525320.8149521,0d173ffa-5cb1-4980-bb53-a21beb15b960,intento,Yayo,56,No Responde,error,Avengers: Infinity War,The Absent-Minded Professor,Facil
+1655525335.260843,0d173ffa-5cb1-4980-bb53-a21beb15b960,intento,Yayo,56,No Responde,error,Paddington,"I, Frankenstein",Facil
+1655525342.5004508,0d173ffa-5cb1-4980-bb53-a21beb15b960,intento,Yayo,56,No Responde,ok,Mother's Day,Mother's Day,Facil
+1655525345.9432013,0d173ffa-5cb1-4980-bb53-a21beb15b960,fin,Yayo,56,No Responde,finalizada,,,Facil
+1655525481.9623935,5eb7f781-192d-4851-a93b-f9ed8cd99af4,inicio_partida,Yayo,56,No Responde,,,,Dificil
+1655525484.564106,5eb7f781-192d-4851-a93b-f9ed8cd99af4,intento,Yayo,56,No Responde,ok,The Commando,The Commando,Dificil
+1655525488.992355,5eb7f781-192d-4851-a93b-f9ed8cd99af4,intento,Yayo,56,No Responde,error,Young Mother 3,Omen III: The Final Conflict,Dificil
+1655525493.5162787,5eb7f781-192d-4851-a93b-f9ed8cd99af4,intento,Yayo,56,No Responde,error,Bright: Samurai Soul,Rogue City,Dificil
+1655525498.4616578,5eb7f781-192d-4851-a93b-f9ed8cd99af4,intento,Yayo,56,No Responde,ok,Pokémon the Movie: I Choose You!,Pokémon the Movie: I Choose You!,Dificil
+1655525503.156283,5eb7f781-192d-4851-a93b-f9ed8cd99af4,intento,Yayo,56,No Responde,ok,Demons,Demons,Dificil
+1655525509.0456965,5eb7f781-192d-4851-a93b-f9ed8cd99af4,fin,Yayo,56,No Responde,finalizada,,,Dificil
+1655525533.9360526,6b9d2661-0e18-4985-8a64-39ae8618154f,inicio_partida,Yayo,56,No Responde,,,,Dificil
+1655525535.3245046,6b9d2661-0e18-4985-8a64-39ae8618154f,intento,Yayo,56,No Responde,error,The Interview,Walking with Dinosaurs,Dificil
+1655525540.9724224,6b9d2661-0e18-4985-8a64-39ae8618154f,intento,Yayo,56,No Responde,error,Casper,Down,Dificil
+1655525545.6133168,6b9d2661-0e18-4985-8a64-39ae8618154f,pasar,Yayo,56,No Responde,,,The Disaster Artist,Dificil
+1655525548.4210627,6b9d2661-0e18-4985-8a64-39ae8618154f,pasar,Yayo,56,No Responde,,,Tooth Fairy 2,Dificil
+1655525551.1419175,6b9d2661-0e18-4985-8a64-39ae8618154f,pasar,Yayo,56,No Responde,,,I've Always Liked You,Dificil
+1655525554.6927557,6b9d2661-0e18-4985-8a64-39ae8618154f,fin,Yayo,56,No Responde,finalizada,,,Dificil

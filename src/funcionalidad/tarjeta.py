@@ -2,6 +2,7 @@ import PySimpleGUI as sg
 import pandas as pd
 import os
 import random
+import csv
 
 import rutas
 from src.pantallas import caracteristicas_generales as cgen
@@ -28,6 +29,10 @@ class Tarjeta:
 
     def set_puntos_acumulados(self, puntos):
         self.puntos_acumulados = puntos
+
+    def puntos_por_tiempo(self, tiempo):
+        puntos = 100 / self.datos_dificultad.tiempo * (self.datos_dificultad.tiempo - tiempo)
+        self.puntos_acumulados += int(puntos)
 
     def cargar_datos(self):
         cabecera = self.data_set.columns
@@ -83,6 +88,8 @@ class Tarjeta:
         else:
             self.resultados[self.actual] = 'Mal'
             self.puntos_acumulados -= self.datos_dificultad.incorrectas
+            if self.puntos_acumulados < 0:
+                self.puntos_acumulados = 0
 
     def quedan_rondas(self):
         """Devolver True si quedan rondas por jugar, False si se terminaron las rondas"""
@@ -121,3 +128,23 @@ class Tarjeta:
                            expand_x=True, font=cgen.FUENTE_OPCIONES
                            )]
         return layout
+
+    def guardar_puntos(self, dia_hora, nivel, usuario):
+        if self.puntos_acumulados < 0:
+            self.puntos_acumulados = 0
+
+        match nivel:
+            case 'Facil':
+                nivel ='Fácil'
+            case 'Dificil':
+                 nivel ='Difícil'
+        
+        data = [dia_hora, nivel, usuario["nombre"], self.puntos_acumulados, usuario["edad"], usuario["genero"]]
+
+        archivo = os.path.join(rutas.REGISTROS_DIR, "puntajes.csv")
+        with open(archivo, 'a+', encoding='utf-8', newline='') as datos:
+            writer = csv.writer(datos, delimiter=',')
+
+            if os.stat(archivo).st_size == 0:
+                writer.writerow(['Día y hora', 'Nivel', 'Nick', 'Puntaje', 'Edad', 'Género autopercibido'])
+            writer.writerow(data)

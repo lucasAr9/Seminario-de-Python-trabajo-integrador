@@ -3,7 +3,6 @@ import os
 import json
 import string
 
-import rutas
 import src.pantallas.caracteristicas_generales as cg
 import rutas as ruta
 
@@ -178,8 +177,8 @@ def crear_cuentas(conf):
         [sg.Push(), sg.Button("Seleccionar", key="-ACEPTAR_PERFIL-", font=cg.FUENTE_BOTONES),
             sg.Button("Crear Perfil", key="-PERFIL_NUEVO-", font=cg.FUENTE_BOTONES), sg.Push()]
     ]
-    ruta_titulo = os.path.join(rutas.IMAGENES_DIR, "t_perfiles.png")
-    ruta_elem_titulo = os.path.join(rutas.IMAGENES_DIR, "e_perfiles.png")
+    ruta_titulo = os.path.join(ruta.IMAGENES_DIR, "t_perfiles.png")
+    ruta_elem_titulo = os.path.join(ruta.IMAGENES_DIR, "e_perfiles.png")
     layout = [
             [sg.Push(), sg.Image(ruta_elem_titulo, pad=((60, 0), (20, 20))),
              sg.Image(ruta_titulo),

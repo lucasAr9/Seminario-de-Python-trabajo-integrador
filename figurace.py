@@ -1,6 +1,7 @@
 import PySimpleGUI as sg
 import time
 import uuid
+from datetime import datetime
 
 from src.pantallas import juego
 from src.pantallas import configuracion
@@ -84,6 +85,7 @@ def analizar_siguiente(tarjeta, partida, window,
         cg.ventana_popup(window, f'PASASTE TODAS LAS RONDAS!. '
                                  f'TU PUNTAJE TOTAL ES DE: {tarjeta.puntos_acumulados}')
         partida.eventos(time.time(), "fin", "finalizada", None, None)
+        tarjeta.guardar_puntos(str(datetime.now())[:16], dificultad_elegida, cuentas.usuario(usuario_elegido))
         return None, window, True
 
 
@@ -137,6 +139,7 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                         # Si se acaba el tiempo de termina la partida
                         window['-JUEGO_TIEMPO-'].update(background_color='Red')
                         window.refresh()
+                        partida.eventos(time.time(), "pasar", None, None, tarjeta.respuesta_correcta)
                         time.sleep(2)
                         tarjeta.analizar_respuesta('')
                         cg.ventana_popup(window, 'SE ACABO EL TIEMPO!')
@@ -164,6 +167,7 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
 
                                     if eleccion == tarjeta.respuesta_correcta:
                                         partida.eventos(time.time(), "intento", "ok", eleccion, tarjeta.respuesta_correcta)
+                                        tarjeta.puntos_por_tiempo(tiempo_transcurrido)
                                     else:
                                         partida.eventos(time.time(), "intento", "error", eleccion, tarjeta.respuesta_correcta)
 
