@@ -28,7 +28,7 @@ class Partida:
         Setea los datos de la jugada.
         :param timestamp: tiempo de la partida en cada momento.
         :param id: de la partida
-        :param evento: actual de la partida (inicio_partida, intento, fin)
+        :param evento: actual de la partida (inicio_partida, intento, pasar, fin)
         :param jugador: nombre, edad y sexo del jugador actual.
         :param nivel: la dificultad de la partida (facil, normal, dificil, personalizado)
         Guardar los nuevos datos en un archivo csv.
@@ -46,9 +46,9 @@ class Partida:
         """
         Setea los datos de la jugada.
         :param timestamp: tiempo de la partida en cada momento.
-        :param evento: actual de la partida (inicio_partida, intento, fin)
-        :param estado: estado de la partida (error, ok, finalizada)
-        :param texto_ingresado: texto ingresado por el jugador.
+        :param evento: actual de la partida (inicio_partida, intento, pasar, fin)
+        :param estado: estado de la partida (error, ok, cancelado, finalizada)
+        :param texto_ingresado: texto ingresado por el usuario.
         :param respuesta: respuesta del sistema.
         Guardar los nuevos datos en un archivo csv.
         """
@@ -65,7 +65,7 @@ class Partida:
         La estructura es:
         marca_tiempo, numero_id, evento, cant_a_adivinar, uruario, estado, respuesta, nivel
         """
-        archivo = os.path.join(rutas.DATOS_DIR, 'notebooks', 'datos_de_jugadas.csv')
+        archivo = os.path.join(rutas.REGISTROS_DIR, 'datos_de_jugadas.csv')
         with open(archivo, 'a+', encoding='utf-8', newline='') as datos:
             writer = csv.writer(datos, delimiter=',')
 

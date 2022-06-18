@@ -68,8 +68,7 @@ def abrir_perfiles():
     return nicks_perfiles
 
 
-def analizar_siguiente(tarjeta, partida, window,
-                       dificultad_elegida, dataset_elegido, usuario_elegido):
+def analizar_siguiente(tarjeta, partida, window, dificultad_elegida, dataset_elegido, usuario_elegido):
     if tarjeta.quedan_rondas():
         tarjeta.cargar_datos()  # Se actualizan los datos de la tarjeta
         tarjeta.actual += 1

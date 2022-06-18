@@ -72,3 +72,31 @@ timestamp,id,evento,nombre_jugador,edad_jugador,sexo_jugador,estado,texto_ingres
 1655525548.4210627,6b9d2661-0e18-4985-8a64-39ae8618154f,pasar,Yayo,56,No Responde,,,Tooth Fairy 2,Dificil
 1655525551.1419175,6b9d2661-0e18-4985-8a64-39ae8618154f,pasar,Yayo,56,No Responde,,,I've Always Liked You,Dificil
 1655525554.6927557,6b9d2661-0e18-4985-8a64-39ae8618154f,fin,Yayo,56,No Responde,finalizada,,,Dificil
+1655553924.3651478,734bd10c-d566-450d-89c7-c3296dcb487b,inicio_partida,NEO,80,Masculino,,,,Facil
+1655553926.6695306,734bd10c-d566-450d-89c7-c3296dcb487b,intento,NEO,80,Masculino,error,Eminem,George Ezra,Facil
+1655553929.1983557,734bd10c-d566-450d-89c7-c3296dcb487b,pasar,NEO,80,Masculino,,,Jack Ü,Facil
+1655553939.9259758,734bd10c-d566-450d-89c7-c3296dcb487b,fin,NEO,80,Masculino,cancelada,,,Facil
+1655554743.2940998,281241cf-bbc9-42d8-9ce2-5ea4efbd7793,inicio_partida,NEO,80,Masculino,,,,Facil
+1655554746.0603285,281241cf-bbc9-42d8-9ce2-5ea4efbd7793,intento,NEO,80,Masculino,error,Taylor Swift,Florida Georgia Line,Facil
+1655554748.459158,281241cf-bbc9-42d8-9ce2-5ea4efbd7793,pasar,NEO,80,Masculino,,,3OH!3,Facil
+1655554751.8303235,281241cf-bbc9-42d8-9ce2-5ea4efbd7793,intento,NEO,80,Masculino,ok,Taylor Swift,Taylor Swift,Facil
+1655554756.2230232,281241cf-bbc9-42d8-9ce2-5ea4efbd7793,fin,NEO,80,Masculino,cancelada,,,Facil
+1655556445.890672,718a9b56-c344-4ac3-bb30-869ace043bac,inicio_partida,Yoda,90,Otro,,,,Facil
+1655556447.171071,718a9b56-c344-4ac3-bb30-869ace043bac,intento,Yoda,90,Otro,error,Marvin Mehlem,Haroune Camara,Facil
+1655556450.0055716,718a9b56-c344-4ac3-bb30-869ace043bac,intento,Yoda,90,Otro,ok,Dan N'Lundulu,Dan N'Lundulu,Facil
+1655556453.4140704,718a9b56-c344-4ac3-bb30-869ace043bac,intento,Yoda,90,Otro,error,Mikkel Maigaard,Henri Lansbury,Facil
+1655556456.6491988,718a9b56-c344-4ac3-bb30-869ace043bac,intento,Yoda,90,Otro,error,Daiki Watari,Mu Kanazaki,Facil
+1655556459.5854504,718a9b56-c344-4ac3-bb30-869ace043bac,intento,Yoda,90,Otro,ok,Uroš Duranovic,Uroš Duranovic,Facil
+1655556462.5240626,718a9b56-c344-4ac3-bb30-869ace043bac,intento,Yoda,90,Otro,error,Alexander Brunst,Jonathan Bumbu,Facil
+1655556467.9370494,718a9b56-c344-4ac3-bb30-869ace043bac,intento,Yoda,90,Otro,error,Ricardo Mangas,Sacramentinho,Facil
+1655556471.1470215,718a9b56-c344-4ac3-bb30-869ace043bac,intento,Yoda,90,Otro,ok,Przemyslaw Frankowski,Przemyslaw Frankowski,Facil
+1655556474.5150597,718a9b56-c344-4ac3-bb30-869ace043bac,pasar,Yoda,90,Otro,,,Callum Morton,Facil
+1655556477.4904866,718a9b56-c344-4ac3-bb30-869ace043bac,pasar,Yoda,90,Otro,,,Alan Carvalho,Facil
+1655556485.0730257,718a9b56-c344-4ac3-bb30-869ace043bac,fin,Yoda,90,Otro,finalizada,,,Facil
+1655556935.0720918,62f039e0-2ca2-4635-b067-8785e3c73a3f,inicio_partida,Yoda,90,Otro,,,,Dificil
+1655556936.5732534,62f039e0-2ca2-4635-b067-8785e3c73a3f,intento,Yoda,90,Otro,error,"Chichon, El (Mexico)",Komaga-take (Japan),Dificil
+1655556939.6163366,62f039e0-2ca2-4635-b067-8785e3c73a3f,intento,Yoda,90,Otro,error,Pago (Papua New Guinea),Reventador (Ecuador),Dificil
+1655556942.3232472,62f039e0-2ca2-4635-b067-8785e3c73a3f,intento,Yoda,90,Otro,error,Tinakula (Solomon Is.),Shishaldin (United States),Dificil
+1655556945.1052444,62f039e0-2ca2-4635-b067-8785e3c73a3f,intento,Yoda,90,Otro,ok,Lokon-Empung (Indonesia),Lokon-Empung (Indonesia),Dificil
+1655556949.2051213,62f039e0-2ca2-4635-b067-8785e3c73a3f,intento,Yoda,90,Otro,error,Usu (Japan),Raung (Indonesia),Dificil
+1655556952.4012568,62f039e0-2ca2-4635-b067-8785e3c73a3f,fin,Yoda,90,Otro,finalizada,,,Dificil

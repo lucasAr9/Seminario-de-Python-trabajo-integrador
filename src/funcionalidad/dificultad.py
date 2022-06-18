@@ -4,11 +4,11 @@ import os
 from rutas import CONFIG_DIR
 
 """Rango de valores de la pantalla de la configuracion"""
-CANT_TIEMPOS = [x for x in range(5, 31)]  # del 5 al 30, de 5 en 5
+CANT_TIEMPOS = [x for x in range(5, 26)]  # del 5 al 25
 CANT_RONDAS = [x for x in range(5, 11)]  # del 1 al 10
-CANT_CORRECTO = [x for x in range(1, 11)]  # del 1 al 20
-CANT_INCORRECTO = [x for x in range(1, 11)]  # del 1 al 20
-CANT_NIVELES = [1, 2, 3, 4, 5]  # del 1 al 5
+CANT_CORRECTO = [x for x in range(7, 16)]  # del 7 al 15
+CANT_INCORRECTO = [x for x in range(3, 6)]  # del 3 al 5
+CANT_NIVELES = [2, 3, 4, 5]  # del 2 al 5
 
 """Ruta del archivo de configuraciones.json con los ultimos valores guardados"""
 RUTA_JSON = os.path.join(CONFIG_DIR, "configuracion.json")

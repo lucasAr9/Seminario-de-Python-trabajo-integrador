@@ -1,30 +1,30 @@
 {
     "-FACIL-": {
-        "-TIEMPO_C-": 30,
+        "-TIEMPO_C-": 25,
         "-RONDAS_C-": 10,
-        "-CORRECTO_C-": 20,
-        "-INCORRECTO_C-": 1,
+        "-CORRECTO_C-": 15,
+        "-INCORRECTO_C-": 3,
         "-CARACTERISTICAS_C-": 5
     },
     "-NORMAL-": {
-        "-TIEMPO_C-": 20,
-        "-RONDAS_C-": 6,
+        "-TIEMPO_C-": 15,
+        "-RONDAS_C-": 8,
         "-CORRECTO_C-": 11,
-        "-INCORRECTO_C-": 11,
-        "-CARACTERISTICAS_C-": 3
+        "-INCORRECTO_C-": 4,
+        "-CARACTERISTICAS_C-": 4
     },
     "-DIFICIL-": {
         "-TIEMPO_C-": 5,
-        "-RONDAS_C-": 1,
-        "-CORRECTO_C-": 1,
-        "-INCORRECTO_C-": 20,
-        "-CARACTERISTICAS_C-": 1
+        "-RONDAS_C-": 5,
+        "-CORRECTO_C-": 7,
+        "-INCORRECTO_C-": 5,
+        "-CARACTERISTICAS_C-": 2
     },
     "-PERSONALIZADO-": {
-        "-TIEMPO_C-": 10,
-        "-RONDAS_C-": 7,
-        "-CORRECTO_C-": 20,
-        "-INCORRECTO_C-": 1,
-        "-CARACTERISTICAS_C-": 1
+        "-TIEMPO_C-": 25,
+        "-RONDAS_C-": 10,
+        "-CORRECTO_C-": 15,
+        "-INCORRECTO_C-": 3,
+        "-CARACTERISTICAS_C-": 5
     }
 }
