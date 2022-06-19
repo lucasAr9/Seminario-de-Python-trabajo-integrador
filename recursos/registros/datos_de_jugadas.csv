@@ -100,3 +100,15 @@ timestamp,id,evento,nombre_jugador,edad_jugador,sexo_jugador,estado,texto_ingres
 1655556945.1052444,62f039e0-2ca2-4635-b067-8785e3c73a3f,intento,Yoda,90,Otro,ok,Lokon-Empung (Indonesia),Lokon-Empung (Indonesia),Dificil
 1655556949.2051213,62f039e0-2ca2-4635-b067-8785e3c73a3f,intento,Yoda,90,Otro,error,Usu (Japan),Raung (Indonesia),Dificil
 1655556952.4012568,62f039e0-2ca2-4635-b067-8785e3c73a3f,fin,Yoda,90,Otro,finalizada,,,Dificil
+1655671141.0801113,abfb306f-6836-4214-ad94-7d59c08930dc,inicio_partida,NEO,80,Masculino,,,,Facil
+1655671165.1105604,abfb306f-6836-4214-ad94-7d59c08930dc,pasar,NEO,80,Masculino,,,The Last Survivors,Facil
+1655671169.5257404,abfb306f-6836-4214-ad94-7d59c08930dc,intento,NEO,80,Masculino,error,Worth,G-Force,Facil
+1655671172.5821626,abfb306f-6836-4214-ad94-7d59c08930dc,intento,NEO,80,Masculino,error,Rise of the Footsoldier: Origins,I Want You,Facil
+1655671175.7699723,abfb306f-6836-4214-ad94-7d59c08930dc,intento,NEO,80,Masculino,error,Kung Fu Panda 3,Rush Hour 2,Facil
+1655671178.8855922,abfb306f-6836-4214-ad94-7d59c08930dc,pasar,NEO,80,Masculino,,,The Jacket,Facil
+1655671181.8140013,abfb306f-6836-4214-ad94-7d59c08930dc,intento,NEO,80,Masculino,error,Madea's Big Happy Family,Lost and Delirious,Facil
+1655671187.3911364,abfb306f-6836-4214-ad94-7d59c08930dc,intento,NEO,80,Masculino,error,Hancock,Cat Ballou,Facil
+1655671191.4123151,abfb306f-6836-4214-ad94-7d59c08930dc,intento,NEO,80,Masculino,error,Pokémon Ranger and the Temple of the Sea,Elisa & Marcela,Facil
+1655671194.8148725,abfb306f-6836-4214-ad94-7d59c08930dc,intento,NEO,80,Masculino,error,The Cutting Edge: Going for the Gold,Teen Titans: The Judas Contract,Facil
+1655671197.9246957,abfb306f-6836-4214-ad94-7d59c08930dc,intento,NEO,80,Masculino,ok,Under the Tuscan Sun,Under the Tuscan Sun,Facil
+1655671201.4908824,abfb306f-6836-4214-ad94-7d59c08930dc,fin,NEO,80,Masculino,finalizada,,,Facil

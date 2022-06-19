@@ -23,7 +23,7 @@ class Tarjeta:
         self.respuesta_correcta = ''
         self.dict_respuestas = {}
         self.dict_pistas = {}
-        self.resultados = {i: '-' for i in range(1, self.datos_dificultad.rondas+1)}
+        self.resultados = {i: '-' for i in range(1, self.datos_dificultad.rondas + 1)}
         self.puntos_acumulados = 0
         self.actual = 1
 
@@ -82,10 +82,15 @@ class Tarjeta:
         se suman los puntos correspondientes. Caso contrario, se restan.
         Se actualiza la lista de resultados y los puntos acumulados
         """
-        if eleccion == self.respuesta_correcta:
+        if eleccion is None:
+            self.resultados[self.actual] = 'Paso'
+            self.puntos_acumulados -= int(self.datos_dificultad.incorrectas / 2) # resto la mitad de puntos
+            if self.puntos_acumulados < 0:
+                self.puntos_acumulados = 0
+        elif eleccion == self.respuesta_correcta:
             self.resultados[self.actual] = 'Bien!'
             self.puntos_acumulados += self.datos_dificultad.correctas
-        else:
+        elif eleccion != self.respuesta_correcta:
             self.resultados[self.actual] = 'Mal'
             self.puntos_acumulados -= self.datos_dificultad.incorrectas
             if self.puntos_acumulados < 0:
@@ -109,7 +114,8 @@ class Tarjeta:
                                for i in range(cgen.CANT_RESPUESTAS)] +
                            [[sg.Button('Confirmar', pad=((15, 0), (1, 3)), key='-ELECCION-', font=cgen.FUENTE_BOTONES),
                              sg.Push(),
-                             sg.Button('Pasar >', pad=((0, 15), (1, 3)), key='-JUEGO_PASAR-', font=cgen.FUENTE_BOTONES)]],
+                             sg.Button('Pasar >', pad=((0, 15), (1, 3)), key='-JUEGO_PASAR-',
+                                       font=cgen.FUENTE_BOTONES)]],
                            expand_x=True, font=cgen.FUENTE_OPCIONES
                            )]
         return layout
@@ -122,9 +128,11 @@ class Tarjeta:
                             for nombre, dato in self.dict_pistas.items()] +
                            [[sg.Text(f'{self.dict_respuestas["Titulo"].upper()}: ', pad=5, font=cgen.FUENTE_COMBO)]] +
                            [[sg.Radio('', group_id='respuestas')] for radio in range(5)] +
-                           [[sg.Button('Confirmar', pad=((15, 0), (1, 3)), size=(9, 0), key='-ELECCION-', font=cgen.FUENTE_BOTONES, disabled=True),
+                           [[sg.Button('Confirmar', pad=((15, 0), (1, 3)), size=(9, 0), key='-ELECCION-',
+                                       font=cgen.FUENTE_BOTONES, disabled=True),
                              sg.Push(),
-                             sg.Button('Pasar >', pad=((0, 15), (1, 3)), key='-JUEGO_PASAR-', font=cgen.FUENTE_BOTONES, disabled=True)]],
+                             sg.Button('Pasar >', pad=((0, 15), (1, 3)), key='-JUEGO_PASAR-', font=cgen.FUENTE_BOTONES,
+                                       disabled=True)]],
                            expand_x=True, font=cgen.FUENTE_OPCIONES
                            )]
         return layout
@@ -135,10 +143,10 @@ class Tarjeta:
 
         match nivel:
             case 'Facil':
-                nivel ='Fácil'
+                nivel = 'Fácil'
             case 'Dificil':
-                 nivel ='Difícil'
-        
+                nivel = 'Difícil'
+
         data = [dia_hora, nivel, usuario["nombre"], self.puntos_acumulados, usuario["edad"], usuario["genero"]]
 
         archivo = os.path.join(rutas.REGISTROS_DIR, "puntajes.csv")
