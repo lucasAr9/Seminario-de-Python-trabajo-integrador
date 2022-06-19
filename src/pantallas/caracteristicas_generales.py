@@ -4,7 +4,7 @@ import time
 import rutas
 
 # tamaños de ventanas y botones
-ancho, alto = 1280, 720
+ancho, alto = sg.Window.get_screen_size()
 ancho_ventana = int(ancho*90/100)
 alto_ventana = int(alto*95/100)
 TAM_VENTANA = (ancho_ventana, alto_ventana)
