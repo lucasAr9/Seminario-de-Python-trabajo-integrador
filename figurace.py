@@ -171,8 +171,7 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                                         partida.eventos(time.time(), "intento", "error", eleccion, tarjeta.respuesta_correcta)
 
                                 tarjeta.analizar_respuesta(eleccion)
-                                window['-JUEGO_TABLA-'].update(
-                                    values=tarjeta.resultados_para_tabla())
+                                window['-JUEGO_TABLA-'].update(values=tarjeta.resultados_para_tabla())
                                 window.refresh()
                                 time.sleep(2)
                             except IndexError:

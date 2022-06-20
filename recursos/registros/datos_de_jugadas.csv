@@ -100,3 +100,17 @@ timestamp,id,evento,nombre_jugador,edad_jugador,sexo_jugador,estado,texto_ingres
 1655556945.1052444,62f039e0-2ca2-4635-b067-8785e3c73a3f,intento,Yoda,90,Otro,ok,Lokon-Empung (Indonesia),Lokon-Empung (Indonesia),Dificil
 1655556949.2051213,62f039e0-2ca2-4635-b067-8785e3c73a3f,intento,Yoda,90,Otro,error,Usu (Japan),Raung (Indonesia),Dificil
 1655556952.4012568,62f039e0-2ca2-4635-b067-8785e3c73a3f,fin,Yoda,90,Otro,finalizada,,,Dificil
+1655597875.0034852,d053a3d5-d2f3-4099-b89b-1b545af68f22,inicio_partida,Yoda,90,Otro,,,,Facil
+1655597876.9687161,d053a3d5-d2f3-4099-b89b-1b545af68f22,intento,Yoda,90,Otro,error,Ella Mai,Drake,Facil
+1655597880.022396,d053a3d5-d2f3-4099-b89b-1b545af68f22,intento,Yoda,90,Otro,error,Lil Tecca,Future,Facil
+1655597883.2479088,d053a3d5-d2f3-4099-b89b-1b545af68f22,intento,Yoda,90,Otro,ok,Nicki Minaj,Nicki Minaj,Facil
+1655597886.1106207,d053a3d5-d2f3-4099-b89b-1b545af68f22,intento,Yoda,90,Otro,error,Galantis,One Direction,Facil
+1655597889.103057,d053a3d5-d2f3-4099-b89b-1b545af68f22,intento,Yoda,90,Otro,ok,Florence + The Machine,Florence + The Machine,Facil
+1655597892.0693624,d053a3d5-d2f3-4099-b89b-1b545af68f22,intento,Yoda,90,Otro,error,Beyoncé,Astrid S,Facil
+1655597895.7632155,d053a3d5-d2f3-4099-b89b-1b545af68f22,intento,Yoda,90,Otro,error,Stormzy,The Vamps,Facil
+1655597899.8163748,d053a3d5-d2f3-4099-b89b-1b545af68f22,intento,Yoda,90,Otro,error,Bruno Mars,Lewis Capaldi,Facil
+1655597903.2086334,d053a3d5-d2f3-4099-b89b-1b545af68f22,intento,Yoda,90,Otro,error,Migos,Childish Gambino,Facil
+1655597906.1113238,d053a3d5-d2f3-4099-b89b-1b545af68f22,intento,Yoda,90,Otro,error,Miguel,Kiesza,Facil
+1655597909.5604599,d053a3d5-d2f3-4099-b89b-1b545af68f22,fin,Yoda,90,Otro,finalizada,,,Facil
+1655599146.9313083,9bd27b9a-cb82-47ea-bd48-101902dba60b,inicio_partida,NEO,80,Masculino,,,,Facil
+1655599150.5643654,9bd27b9a-cb82-47ea-bd48-101902dba60b,fin,NEO,80,Masculino,cancelada,,,Facil
