@@ -4,7 +4,6 @@ import rutas
 import src.pantallas.caracteristicas_generales as cg
 
 
-# hacer constante datasets como dict con las imágenes como valores
 def eleccion_dataset():
     sg.theme(cg.TEMA)
     ruta_icon_png = os.path.join(rutas.IMAGENES_DIR, 'cartas_icon.png')

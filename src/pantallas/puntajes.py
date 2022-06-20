@@ -6,15 +6,42 @@ import rutas
 from src.pantallas import caracteristicas_generales as cgen
 
 
-niveles = ['Fácil', 'Normal', 'Difícil', 'Personalizado']
+def enumerar(lista):
+    """Insertar numeración ordenada a cada elemento de la lista de listas recibida como parámetro"""
+    return list(map(lambda x, y: x.insert(0, y), lista, list(range(1, 21))))
 
 
-def procesar_dificultad(puntajes_ordenados, nivel):
-    """Procesar la lista recibida para devolver las primeras 20 posiciones del nivel recibido."""
-    nivel = [linea[2:4] for linea in puntajes_ordenados if linea[1] == niveles[nivel]]
-    list(map(lambda x, y: x.insert(0, y), nivel, list(range(1, 21))))
-    nivel = nivel[:20]
-    return nivel
+def ordenar_y_cortar(lista, num):
+    """Devolver la lista recibida ordenada y con 'num' cantidad de elementos"""
+    return sorted(lista, key=lambda x: int(x[1]), reverse=True)[:num]
+
+
+def procesar_dificultad(contenido, nivel):
+    """Procesar la lista de listas recibida para devolver los 20 puntajes más altos del nivel recibido."""
+    lista = [linea[2:4] for linea in contenido if linea[1] == list(cgen.NIVELES.keys())[nivel]]
+    lista = ordenar_y_cortar(lista, 20)
+    enumerar(lista)
+    return lista
+
+
+def promedio(lista):
+    """Devolver el valor promedio entre los valores de la lista recibida como parámetro"""
+    return round(sum([int(num) for num in lista]) / len(lista), 2)
+
+
+def procesar_promedios(contenido, nivel):
+    """Procesar la lista de listas recibida para devolver los 20 promedios más altos del nivel recibido."""
+    nombres = set([contenido[i][2] for i in range(len(contenido)) if contenido[i][1] == list(cgen.NIVELES.keys())[nivel]])
+    # dicc = {}
+    lista = []
+    for nombre in nombres:
+        # dicc[nombre] = [contenido[i][3] for i in range(len(contenido)) if contenido[i][2] == nombre]
+        lista.append([nombre, [contenido[i][3] for i in range(len(contenido)) if contenido[i][2] == nombre and contenido[i][1] == list(cgen.NIVELES.keys())[nivel]]])
+    # dicc = {clave: promedio(lista) for clave, lista in dicc.items()}
+    lista = [[nombre, promedio(puntajes)] for nombre, puntajes in lista]
+    lista = ordenar_y_cortar(lista, 20)
+    enumerar(lista)
+    return lista
 
 
 def procesar_archivo():
@@ -27,24 +54,28 @@ def procesar_archivo():
             csv_reader = csv.reader(archivo, delimiter=',')
             cabecera, contenido = csv_reader.__next__(), [linea for linea in csv_reader]
     except FileNotFoundError:
-        sg.popup('No existe registro de puntajes, juegue al menos una vez para crearlo',
-                 no_titlebar=True, grab_anywhere=True, keep_on_top=True)
-        nivel_1, nivel_2, nivel_3, nivel_4 = [], [], [], []
+        sg.popup('No existe registro de puntajes,\njugá al menos una vez para crearlo',
+                 no_titlebar=True, grab_anywhere=True, keep_on_top=True, font=cgen.FUENTE_POPUP,
+                 image=os.path.join(rutas.IMAGENES_DIR, 'indicador_pista.png'),)
+        puntajes_mas_altos = [[] for i in range(len(cgen.NIVELES))]
+        promedios_mas_altos = [[] for i in range(len(cgen.NIVELES))]
+        print(puntajes_mas_altos)
+        print(promedios_mas_altos)
     else:
-        puntajes_ordenados = sorted(contenido, key=lambda x: int(x[3]), reverse=True)
-        nivel_1, nivel_2, nivel_3, nivel_4 = [procesar_dificultad(puntajes_ordenados, i) for i in range(4)]
-    return nivel_1, nivel_2, nivel_3, nivel_4
+        puntajes_mas_altos = [procesar_dificultad(contenido, i) for i in range(4)]
+        promedios_mas_altos = [procesar_promedios(contenido, i) for i in range(4)]
+    return puntajes_mas_altos, promedios_mas_altos
 
 
-def layouts_pestanias(mejores_puntajes, mejores_promedios):
+def layouts_pestanias(puntajes, promedios):
     """Devolver la estructura de tabla en la que se muestran los puntajes del juego."""
     titulos = [['Puesto', 'Nick', 'Puntaje'], ['Puesto', 'Nick', 'Promedio']]    # mejorar
-    layout = [[sg.Table(values=mejores_puntajes, headings=titulos[0],
+    layout = [[sg.Table(values=puntajes, headings=titulos[0],
                         max_col_width=25, auto_size_columns=True,
                         justification='center', key='-JUEGO_TABLA-',
                         row_height=25, expand_x=True, expand_y=True,
                         font=cgen.FUENTE_OPCIONES),
-               sg.Table(values=mejores_promedios, headings=titulos[1],
+               sg.Table(values=promedios, headings=titulos[1],
                         max_col_width=25, auto_size_columns=True,
                         justification='center', key='-JUEGO_TABLA-',
                         row_height=25, expand_x=True, expand_y=True,
@@ -55,9 +86,9 @@ def layouts_pestanias(mejores_puntajes, mejores_promedios):
 
 def armar_layout():
     """Devolver la organización de botones de una ventana de puntajes."""
-    mejores_por_nivel = procesar_archivo()
-    tab_group = sg.TabGroup([[sg.Tab(niveles[i],
-                                     layouts_pestanias(mejores_por_nivel[i], mejores_por_nivel[i]),
+    puntajes_por_nivel, promedios_por_nivel = procesar_archivo()
+    tab_group = sg.TabGroup([[sg.Tab(list(cgen.NIVELES.keys())[i],
+                                     layouts_pestanias(puntajes_por_nivel[i], promedios_por_nivel[i]),
                                      key=f'-PANTALLA_TAB{str(i)}-')] for i in range(4)],
                             expand_y=True, expand_x=True, pad=30, font=cgen.FUENTE_COMBO)
 

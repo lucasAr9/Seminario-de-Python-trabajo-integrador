@@ -38,7 +38,10 @@ sg.LOOK_AND_FEEL_TABLE['figurace_tema'] = {'BACKGROUND': '#3e206d',
 TEMA = 'figurace_tema'
 
 # datasets
-datasets = ['volcanes', 'peliculas', 'spotify', 'fifa']
+DATASETS = ['volcanes', 'peliculas', 'spotify', 'fifa']
+
+# diccionario de niveles, claves sin acento.
+NIVELES = {'Fácil': 'Facil', 'Normal': 'Normal', 'Difícil': 'Dificil', 'Personalizado': 'Personalizado'}
 
 # LISTA DE TUTORIALES, el int indica la cant de imagenes
 TUTORIALES = [{'Como Jugar': ['como_jugar', 8]}, {'Creación de Perfil': ['creacion_de_perfil', 4]},
