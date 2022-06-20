@@ -15,9 +15,9 @@ def _layout_op_principales():
         [sg.Text("Menú", justification='center', expand_x=True, font=cg.FUENTE_INDICADOR, size=(14, None), )],
         [sg.Button("Jugar", key='-JUGAR-', expand_x=True, font=cg.FUENTE_BOTONES_DESTACADOS)],
         [sg.Button("Configuración", key='-CONFIGURACION-', expand_x=True, font=cg.FUENTE_BOTONES),
-        sg.Button("Puntajes", key='-PUNTAJES-', expand_x=True, font=cg.FUENTE_BOTONES)],
+         sg.Button("Puntajes", key='-PUNTAJES-', expand_x=True, font=cg.FUENTE_BOTONES)],
         [sg.Button("Perfiles", key='-PERFIL-', expand_x=True, font=cg.FUENTE_BOTONES),
-        sg.Button("Instrucciones", key='-INSTRUCCIONES-', expand_x=True, font=cg.FUENTE_BOTONES)],
+         sg.Button("Instrucciones", key='-INSTRUCCIONES-', expand_x=True, font=cg.FUENTE_BOTONES)],
         [sg.Push(), sg.Image(ruta_imagen), sg.Push()],
         [sg.VPush()],
         [sg.Button("Salir", key='-SALIR-', font=cg.FUENTE_COMBO, pad=((0, 0), (10, 0))), sg.Push()]

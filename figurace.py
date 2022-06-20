@@ -1,18 +1,60 @@
 import PySimpleGUI as sg
 import time
 import uuid
-from datetime import datetime
+import os
+import rutas
 
+from datetime import datetime
 from src.pantallas import juego
 from src.pantallas import configuracion
 from src.pantallas import puntajes
 from src.pantallas import cuentas
 from src.pantallas import eleccion_dataset
+from src.pantallas import instrucciones
 from src.pantallas import menu_inicio_juego as menu
 from src.pantallas import caracteristicas_generales as cg
 from src.funcionalidad import partida as p
 from src.funcionalidad import tarjeta as tarje
 from src.funcionalidad import dificultad as dificultad
+
+
+def abrir_instrucciones():
+    """
+    Crea la ventana de instrucciones y maneja sus eventos
+    """
+    window = instrucciones.crear_ventana()
+    indice = 1  # Para llevar el cambio de imagen en orden
+    nro_tutorial = 0  # Para acceder al tutorial correcto
+    while True:
+        event, values = window.read()
+        if event in (sg.WIN_CLOSED, '-VOLVER-'):
+            break
+        match event:
+            case '-SIG-':
+                # verifico no salir del rango de cant de imagenes de cada tutorial
+                # 0 = la ruta de la imagen, 1 = la cantidad de imagenes
+                if indice + 1 <= list(cg.TUTORIALES[nro_tutorial].values())[0][1]:
+                    indice += 1
+                    # obtengo la ruta de la imagen que sigue, segun el nro de tutorial
+                    ruta = os.path.join(rutas.TUTORIALES_DIR, list(cg.TUTORIALES[nro_tutorial].values())[0][0],
+                                        f'paso_{indice}.png')
+                    window['-IMAGEN_TUTO-'].update(ruta)
+            case '-ATRAS-':
+                if indice - 1 > 0:
+                    indice -= 1
+                    # obtengo la ruta de la imagen que antecede, segun el nro de tutorial
+                    ruta = os.path.join(rutas.TUTORIALES_DIR, list(cg.TUTORIALES[nro_tutorial].values())[0][0],
+                                        f'paso_{indice}.png')
+                    window['-IMAGEN_TUTO-'].update(ruta)
+            case _:
+                # Evento de elegir el tutorial con sus respectivos botones
+                indice = 1
+                nro_tutorial = instrucciones.obtener_indice(event)
+                eleccion = os.path.join(rutas.TUTORIALES_DIR, (cg.TUTORIALES[nro_tutorial][event])[0],
+                                        f'paso_{indice}.png')
+                window['-IMAGEN_TUTO-'].update(eleccion)
+
+    window.close()
 
 
 def abrir_configuracion():
@@ -81,7 +123,7 @@ def analizar_siguiente(tarjeta, partida, window, dificultad_elegida, dataset_ele
         return tiempo_comienzo, window, False
     else:
         # Si se terminaron las rondas se termina la partida
-        cg.ventana_popup(window, f'PASASTE TODAS LAS RONDAS!. '
+        cg.ventana_popup(window, f'SE ACABARON LAS RONDAS!. '
                                  f'TU PUNTAJE TOTAL ES DE: {tarjeta.puntos_acumulados}')
         partida.eventos(time.time(), "fin", "finalizada", None, None)
         tarjeta.guardar_puntos(str(datetime.now())[:16], dificultad_elegida, cuentas.usuario(usuario_elegido))
@@ -92,11 +134,12 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
     """Crear la ventana de juego y responder a los eventos en la misma."""
     dataset_elegido = eleccion_dataset.eleccion_dataset()
     if dataset_elegido:
-
+        cg.ventana_de_carga()
         partida = p.Partida()
         tarjeta = tarje.Tarjeta(dataset_elegido, dificultad_elegida)
         tarjeta.cargar_datos()  # Se cargan los primeros datos de la tarjeta a utilizar
-        window = juego.armar_ventana(tarjeta, tarjeta.layout_vacio(), dificultad_elegida, dataset_elegido, usuario_elegido)
+        window = juego.armar_ventana(tarjeta, tarjeta.layout_vacio(), dificultad_elegida, dataset_elegido,
+                                     usuario_elegido)
         window['-JUEGO_TIEMPO-'].update(f'00:{tarjeta.datos_dificultad.tiempo}')
         window['-JUEGO_COMENZAR-'].update(visible=True)
 
@@ -106,12 +149,13 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                 tarjeta.set_puntos_acumulados(0)  # si abandona, no suma/resta puntos
                 break
             elif event == '-JUEGO_COMENZAR-':
-                tarjeta.cargar_datos()  # Se cargan los primeros datos de la tarjeta
                 window_a_cerrar = window
-                window = juego.armar_ventana(tarjeta, tarjeta.layout_datos(), dificultad_elegida, dataset_elegido, usuario_elegido)
+                window = juego.armar_ventana(tarjeta, tarjeta.layout_datos(), dificultad_elegida, dataset_elegido,
+                                             usuario_elegido)
                 window_a_cerrar.close()
                 tiempo_comienzo = time.time()
-                partida.comienzo(tiempo_comienzo, uuid.uuid4(), "inicio_partida", cuentas.usuario(usuario_elegido), dificultad_elegida)
+                partida.comienzo(tiempo_comienzo, uuid.uuid4(), "inicio_partida", cuentas.usuario(usuario_elegido),
+                                 dificultad_elegida)
 
                 while True:
                     event, values = window.read(timeout=100)
@@ -135,7 +179,7 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                             window.refresh()
 
                     if window['-JUEGO_TIEMPO-'].Get() == '00:00':
-                        # Si se acaba el tiempo de termina la partida
+                        # Si se acaba el tiempo se pasa de ronda
                         window['-JUEGO_TIEMPO-'].update(background_color='Red')
                         window.refresh()
                         partida.eventos(time.time(), "pasar", None, None, tarjeta.respuesta_correcta)
@@ -154,7 +198,7 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                             # Si intenta confirmar sin seleccionar respuesta, no ocurre nada
                             try:
                                 if event == '-JUEGO_PASAR-':
-                                    eleccion = None  # Se le asigna un valor None para poder pasar la tarjera sin seleccionar
+                                    eleccion = None  # Se le asigna None para poder pasar la tarjera sin seleccionar
                                     for respuesta in tarjeta.dict_respuestas['Posibles']:
                                         window[respuesta].update(background_color='#FEC260', text_color='Black')
                                     partida.eventos(time.time(), "pasar", None, None, tarjeta.respuesta_correcta)
@@ -162,13 +206,16 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                                 else:
                                     eleccion = (list(eleccion.keys())[0])
                                     window[eleccion].update(background_color='Red', text_color='Black')
-                                    window[tarjeta.respuesta_correcta].update(background_color='Green', text_color='Black')
+                                    window[tarjeta.respuesta_correcta].update(background_color='Green',
+                                                                              text_color='Black')
 
                                     if eleccion == tarjeta.respuesta_correcta:
-                                        partida.eventos(time.time(), "intento", "ok", eleccion, tarjeta.respuesta_correcta)
+                                        partida.eventos(time.time(), "intento", "ok", eleccion,
+                                                        tarjeta.respuesta_correcta)
                                         tarjeta.puntos_por_tiempo(tiempo_transcurrido)
                                     else:
-                                        partida.eventos(time.time(), "intento", "error", eleccion, tarjeta.respuesta_correcta)
+                                        partida.eventos(time.time(), "intento", "error", eleccion,
+                                                        tarjeta.respuesta_correcta)
 
                                 tarjeta.analizar_respuesta(eleccion)
                                 window['-JUEGO_TABLA-'].update(values=tarjeta.resultados_para_tabla())
@@ -182,8 +229,6 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                                                                                      dataset_elegido, usuario_elegido)
                                 if cortar:
                                     break
-                    # despues con los datos que almacena la tarjeta y este loop hay que armar el csv de la partida
-                    # el tema de el cambio de pantallas no me quedo muy bien
                 break
 
         window.close()
@@ -196,10 +241,13 @@ def main():
     perfiles = cuentas.nombre_perfiles()
     window = menu.crear_menu(perfiles)
     while True:
-        event, values = window.read(timeout=100)
+        event, values = window.read()
+        # MANEJO DE SALIDA DEL MENU PRINCIPAL
         if (event in (sg.WINDOW_CLOSE_ATTEMPTED_EVENT, '-SALIR-') and
                 (cg.ventana_chequear_accion(window) == 'Sí')):
             break
+
+        # MANEJO DE EVENTOS DEL MENU PRINCIPAL
         match event:
             case '-USUARIOS-':
                 usuario_elegido = window['-USUARIOS-'].Get()
@@ -212,9 +260,8 @@ def main():
             case '-JUGAR-':
                 if usuario_elegido and dificultad_elegida:
                     window.hide()
-                    # cg.ventana_de_carga()
                     abrir_juego(dificultad_elegida, usuario_elegido)
-                    # cg.ventana_de_carga()
+                    cg.ventana_de_carga()
                     window.un_hide()
                 else:
                     cg.ventana_popup(window,
@@ -233,6 +280,10 @@ def main():
                 window.un_hide()
                 window['-USUARIOS-'].update('Seleccione su usuario', values=perfiles)
                 usuario_elegido = ''
+            case '-INSTRUCCIONES-':
+                window.hide()
+                abrir_instrucciones()
+                window.un_hide()
 
     window.close()
 

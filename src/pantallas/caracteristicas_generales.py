@@ -11,7 +11,7 @@ TAM_VENTANA = (ancho_ventana, alto_ventana)
 TAM_COLUMNAS = (int(ancho_ventana/3), int(alto_ventana/3))
 TAM_COMBO = (int(ancho/70), int(alto/70))
 
-# fuentes de los textos y botones (La anterior fuente era Verdana)
+# fuentes de los textos y botones
 FUENTE = 'Verdana'
 FUENTE_TITULO = f'{FUENTE} 48'
 FUENTE_INDICADOR = f'{FUENTE} 28'
@@ -21,6 +21,7 @@ FUENTE_PRUEBA = f'{FUENTE} 22'
 FUENTE_COMBO = f'{FUENTE} 18'
 FUENTE_POPUP = f'{FUENTE} 12'
 FUENTE_OPCIONES = f'{FUENTE} 11'
+FUENTE_CONFIG = f'{FUENTE} 16'
 
 CANT_RESPUESTAS = 5
 
@@ -38,6 +39,10 @@ TEMA = 'figurace_tema'
 
 # datasets
 datasets = ['volcanes', 'peliculas', 'spotify', 'fifa']
+
+# LISTA DE TUTORIALES, el int indica la cant de imagenes
+TUTORIALES = [{'Como Jugar': ['como_jugar', 8]}, {'Creación de Perfil': ['creacion_de_perfil', 4]},
+              {'Edición de Perfil': ['edicion_de_perfil', 4]}]
 
 
 # ventana para chequear salidas
@@ -85,7 +90,7 @@ def ventana_de_carga():
         window['-GIF-'].update_animation(ruta_gif, time_between_frames=20)
         window.read(timeout=100)
         delta_tiempo = time.time() - tiempo_inicial
-        tiempo_espera = int(6 - delta_tiempo)
+        tiempo_espera = int(5 - delta_tiempo)
         if tiempo_espera == 0:
             break
 

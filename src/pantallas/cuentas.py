@@ -185,15 +185,12 @@ def crear_cuentas(conf):
              sg.Image(ruta_elem_titulo, pad=((0, 60), (20, 20))),
              sg.Push()],
             [sg.HSep()],
-            [sg.VPush()],
             [sg.Push(), sg.pin(sg.Col(menu_prin, key="-BTN_PRIN-", visible=True)), sg.Push()],
-            [sg.VPush()],
             [sg.pin(sg.Col(crear, key="-NUEVO_USUARIO-", visible=False))],
             [sg.Push(), sg.pin(sg.Col(datos, key="-MOSTRAR_DATOS-", visible=False)), sg.Push(), sg.Push()],
             [sg.pin(sg.Col(datos_edit, key="-EDITAR_DATOS-", visible=False))],
             [sg.VPush()],
             [sg.Push(), sg.Push(), sg.pin(sg.Col(editar, key="-BTNS_EDITAR-", visible=False)), sg.Push()],
-            [sg.VPush()],
             [sg.Button("Volver", key='-VOLVER_PERFILES-', font=cg.FUENTE_COMBO), sg.Push()]
         ]
     ruta_titlebar_icon = os.path.join(ruta.IMAGENES_DIR, "cartas_icon.png")
