@@ -6,7 +6,7 @@
 
 ___
 
-## Hola usuario de FiguRace!
+## Hola usuarix de FiguRace!
 FiguRace es un juego para probar tu conocimiento.
 Consta de cuatro temáticas: Música, Volcanes, Fútbol y películas.
 Podrás elegir el nivel de dificultad o personalizarlo como vos quieras.

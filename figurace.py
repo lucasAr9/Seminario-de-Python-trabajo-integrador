@@ -123,8 +123,9 @@ def analizar_siguiente(tarjeta, partida, window, dificultad_elegida, dataset_ele
         return tiempo_comienzo, window, False
     else:
         # Si se terminaron las rondas se termina la partida
-        cg.ventana_popup(window, f'SE ACABARON LAS RONDAS!. '
-                                 f'TU PUNTAJE TOTAL ES DE: {tarjeta.puntos_acumulados}')
+        cg.ventana_popup(window, f'SE ACABARON LAS RONDAS!\n\n'
+                                 f'TU PUNTAJE TOTAL ES DE: '
+                                 f'{tarjeta.puntos_acumulados}')
         partida.eventos(time.time(), "fin", "finalizada", None, None)
         tarjeta.guardar_puntos(str(datetime.now())[:16], dificultad_elegida, cuentas.usuario(usuario_elegido))
         return None, window, True
