@@ -71,6 +71,6 @@ class Partida:
 
             if os.stat(archivo).st_size == 0:
                 writer.writerow(['timestamp', 'id', 'evento', 'nombre_jugador', 'edad_jugador',
-                                 'sexo_jugador', 'estado', 'texto_ingresado', 'respuesta', 'nivel'])
+                                 'genero_jugador', 'estado', 'texto_ingresado', 'respuesta', 'nivel'])
 
             writer.writerow(self.get_todos_datos())

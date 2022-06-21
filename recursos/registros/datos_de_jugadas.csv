@@ -1,4 +1,4 @@
-timestamp,id,evento,nombre_jugador,edad_jugador,sexo_jugador,estado,texto_ingresado,respuesta,nivel
+timestamp,id,evento,nombre_jugador,edad_jugador,genero_jugador,estado,texto_ingresado,respuesta,nivel
 1655432242.80533,db74505f-3fe3-476c-866d-872fea96a3b2,inicio_partida,NEO,80,Masculino,,,,Facil
 1655432251.0367837,db74505f-3fe3-476c-866d-872fea96a3b2,intento,NEO,80,Masculino,ok,Christina Perri,Christina Perri,Facil
 1655432253.948913,db74505f-3fe3-476c-866d-872fea96a3b2,intento,NEO,80,Masculino,error,Bazzi,Calvin Harris,Facil
@@ -126,3 +126,49 @@ timestamp,id,evento,nombre_jugador,edad_jugador,sexo_jugador,estado,texto_ingres
 1655671194.8148725,abfb306f-6836-4214-ad94-7d59c08930dc,intento,NEO,80,Masculino,error,The Cutting Edge: Going for the Gold,Teen Titans: The Judas Contract,Facil
 1655671197.9246957,abfb306f-6836-4214-ad94-7d59c08930dc,intento,NEO,80,Masculino,ok,Under the Tuscan Sun,Under the Tuscan Sun,Facil
 1655671201.4908824,abfb306f-6836-4214-ad94-7d59c08930dc,fin,NEO,80,Masculino,finalizada,,,Facil
+1655735850.287313,6cffd964-552e-4fb8-890d-f235c9d3e92a,inicio_partida,Yoda,90,Otro,,,,Facil
+1655735851.7378347,6cffd964-552e-4fb8-890d-f235c9d3e92a,intento,Yoda,90,Otro,error,Kid Ink,Meghan Trainor,Facil
+1655735855.10785,6cffd964-552e-4fb8-890d-f235c9d3e92a,intento,Yoda,90,Otro,error,Lana Del Rey,Frank Ocean,Facil
+1655735858.507823,6cffd964-552e-4fb8-890d-f235c9d3e92a,intento,Yoda,90,Otro,error,Lizzo,Selena Gomez,Facil
+1655735861.347653,6cffd964-552e-4fb8-890d-f235c9d3e92a,intento,Yoda,90,Otro,ok,The xx,The xx,Facil
+1655735864.6475322,6cffd964-552e-4fb8-890d-f235c9d3e92a,intento,Yoda,90,Otro,error,Bruno Mars,Logic,Facil
+1655735867.5474982,6cffd964-552e-4fb8-890d-f235c9d3e92a,intento,Yoda,90,Otro,error,Hozier,Meghan Trainor,Facil
+1655735870.3174396,6cffd964-552e-4fb8-890d-f235c9d3e92a,intento,Yoda,90,Otro,ok,Calvin Harris,Calvin Harris,Facil
+1655735873.1776614,6cffd964-552e-4fb8-890d-f235c9d3e92a,intento,Yoda,90,Otro,ok,Daya,Daya,Facil
+1655735876.2177558,6cffd964-552e-4fb8-890d-f235c9d3e92a,intento,Yoda,90,Otro,error,Anne-Marie,Marc E. Bassy,Facil
+1655735879.0174725,6cffd964-552e-4fb8-890d-f235c9d3e92a,intento,Yoda,90,Otro,error,Alexandra Stan,One Direction,Facil
+1655735881.9076447,6cffd964-552e-4fb8-890d-f235c9d3e92a,fin,Yoda,90,Otro,finalizada,,,Facil
+1655776395.8346064,2fdeb1a7-8258-49fc-a9b5-7e0e674d651d,inicio_partida,NEO,80,Masculino,,,,Facil
+1655776400.2235916,2fdeb1a7-8258-49fc-a9b5-7e0e674d651d,intento,NEO,80,Masculino,error,Jamie Paterson,Nizamdin Ependi,Facil
+1655776403.0195043,2fdeb1a7-8258-49fc-a9b5-7e0e674d651d,intento,NEO,80,Masculino,error,Fernando Cornejo,Granit Xhaka,Facil
+1655776405.780695,2fdeb1a7-8258-49fc-a9b5-7e0e674d651d,intento,NEO,80,Masculino,error,Hjörtur Hermannsson,Ibrahima Konaté,Facil
+1655776409.3817935,2fdeb1a7-8258-49fc-a9b5-7e0e674d651d,intento,NEO,80,Masculino,error,Robert Mudrazija,Mads Døhr Thychosen,Facil
+1655776413.066421,2fdeb1a7-8258-49fc-a9b5-7e0e674d651d,intento,NEO,80,Masculino,error,Christoph Monschein,Jesús Marimón,Facil
+1655776415.9868321,2fdeb1a7-8258-49fc-a9b5-7e0e674d651d,intento,NEO,80,Masculino,ok,Ablie Jallow,Ablie Jallow,Facil
+1655776418.955599,2fdeb1a7-8258-49fc-a9b5-7e0e674d651d,intento,NEO,80,Masculino,ok,Conor Masterson,Conor Masterson,Facil
+1655776421.9512,2fdeb1a7-8258-49fc-a9b5-7e0e674d651d,intento,NEO,80,Masculino,error,Quincy Promes,Ben Coker,Facil
+1655776425.2896743,2fdeb1a7-8258-49fc-a9b5-7e0e674d651d,intento,NEO,80,Masculino,error,Sandro Manoel,Flávio Rebeilo,Facil
+1655776429.1866379,2fdeb1a7-8258-49fc-a9b5-7e0e674d651d,intento,NEO,80,Masculino,error,Konstantinos Triantafyllopoulos,Numa Lavanchy,Facil
+1655776433.162586,2fdeb1a7-8258-49fc-a9b5-7e0e674d651d,fin,NEO,80,Masculino,finalizada,,,Facil
+1655817723.3670168,2e702a5d-dfdf-4919-9650-bb50404cd4d6,inicio_partida,Trinity,55,Femenino,,,,Facil
+1655817728.32692,2e702a5d-dfdf-4919-9650-bb50404cd4d6,intento,Trinity,55,Femenino,ok,The Dark Crystal,The Dark Crystal,Facil
+1655817732.4768882,2e702a5d-dfdf-4919-9650-bb50404cd4d6,intento,Trinity,55,Femenino,error,Meet the Blacks,The Sandman,Facil
+1655817736.3867414,2e702a5d-dfdf-4919-9650-bb50404cd4d6,intento,Trinity,55,Femenino,error,The Lady Vanishes,The Conjuring: The Devil Made Me Do It,Facil
+1655817739.6068585,2e702a5d-dfdf-4919-9650-bb50404cd4d6,intento,Trinity,55,Femenino,error,The Italian Job,Ghost in the Shell 2.0,Facil
+1655817743.050993,2e702a5d-dfdf-4919-9650-bb50404cd4d6,intento,Trinity,55,Femenino,error,Beirut,Reign of Fire,Facil
+1655817745.8986454,2e702a5d-dfdf-4919-9650-bb50404cd4d6,intento,Trinity,55,Femenino,ok,A Funny Thing Happened on the Way to Thor's Hammer,A Funny Thing Happened on the Way to Thor's Hammer,Facil
+1655817748.7966816,2e702a5d-dfdf-4919-9650-bb50404cd4d6,intento,Trinity,55,Femenino,error,Riley's First Date?,Resident Evil: Degeneration,Facil
+1655817753.3710737,2e702a5d-dfdf-4919-9650-bb50404cd4d6,intento,Trinity,55,Femenino,error,Pulling Strings,Oculus,Facil
+1655817756.3270917,2e702a5d-dfdf-4919-9650-bb50404cd4d6,intento,Trinity,55,Femenino,error,Magical Girl Lyrical Nanoha: Detonation,In the Shadow of the Moon,Facil
+1655817759.8168106,2e702a5d-dfdf-4919-9650-bb50404cd4d6,intento,Trinity,55,Femenino,error,Domino,Yu-Gi-Oh! 3D: Bonds Beyond Time,Facil
+1655817764.3289392,2e702a5d-dfdf-4919-9650-bb50404cd4d6,fin,Trinity,55,Femenino,finalizada,,,Facil
+1655817776.9369419,efb72c7b-2471-4875-a556-d6a40715a60d,inicio_partida,Trinity,55,Femenino,,,,Facil
+1655817778.5285125,efb72c7b-2471-4875-a556-d6a40715a60d,intento,Trinity,55,Femenino,error,Swedish House Mafia,Imagine Dragons,Facil
+1655817781.4969208,efb72c7b-2471-4875-a556-d6a40715a60d,intento,Trinity,55,Femenino,ok,Ariana Grande,Ariana Grande,Facil
+1655817784.076785,efb72c7b-2471-4875-a556-d6a40715a60d,pasar,Trinity,55,Femenino,,,B Young,Facil
+1655817787.8568254,efb72c7b-2471-4875-a556-d6a40715a60d,pasar,Trinity,55,Femenino,,,Taio Cruz,Facil
+1655817795.2286997,efb72c7b-2471-4875-a556-d6a40715a60d,fin,Trinity,55,Femenino,cancelada,,,Facil
+1655818148.7011893,315ec352-94fc-4fdf-a19d-4452c1c7fe05,inicio_partida,Trinity,55,Femenino,,,,Dificil
+1655818152.7467446,315ec352-94fc-4fdf-a19d-4452c1c7fe05,pasar,Trinity,55,Femenino,,,Toma Niga,Dificil
+1655818161.1567643,315ec352-94fc-4fdf-a19d-4452c1c7fe05,pasar,Trinity,55,Femenino,,,Tom Duponchelle,Dificil
+1655818167.0633268,315ec352-94fc-4fdf-a19d-4452c1c7fe05,fin,Trinity,55,Femenino,cancelada,,,Dificil
