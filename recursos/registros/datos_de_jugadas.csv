@@ -172,3 +172,74 @@ timestamp,id,evento,nombre_jugador,edad_jugador,genero_jugador,estado,texto_ingr
 1655818152.7467446,315ec352-94fc-4fdf-a19d-4452c1c7fe05,pasar,Trinity,55,Femenino,,,Toma Niga,Dificil
 1655818161.1567643,315ec352-94fc-4fdf-a19d-4452c1c7fe05,pasar,Trinity,55,Femenino,,,Tom Duponchelle,Dificil
 1655818167.0633268,315ec352-94fc-4fdf-a19d-4452c1c7fe05,fin,Trinity,55,Femenino,cancelada,,,Dificil
+1655855070.8578293,9f8dcef1-e708-46ed-9114-50591adf57d5,inicio_partida,Trinity,55,Femenino,,,,Personalizado
+1655855072.4716585,9f8dcef1-e708-46ed-9114-50591adf57d5,intento,Trinity,55,Femenino,error,Rae Sremmurd,Big Sean,Personalizado
+1655855075.802635,9f8dcef1-e708-46ed-9114-50591adf57d5,intento,Trinity,55,Femenino,error,Linkin Park,Calvin Harris,Personalizado
+1655855079.23663,9f8dcef1-e708-46ed-9114-50591adf57d5,intento,Trinity,55,Femenino,error,Ozuna,Ludacris,Personalizado
+1655855082.0284438,9f8dcef1-e708-46ed-9114-50591adf57d5,intento,Trinity,55,Femenino,error,Big Shaq,Piso 21,Personalizado
+1655855085.2450955,9f8dcef1-e708-46ed-9114-50591adf57d5,intento,Trinity,55,Femenino,error,Bad Bunny,Sidney Samson,Personalizado
+1655855088.9821713,9f8dcef1-e708-46ed-9114-50591adf57d5,intento,Trinity,55,Femenino,error,KALEO,Clean Bandit,Personalizado
+1655855092.0826652,9f8dcef1-e708-46ed-9114-50591adf57d5,intento,Trinity,55,Femenino,ok,Kris Allen,Kris Allen,Personalizado
+1655855095.0881038,9f8dcef1-e708-46ed-9114-50591adf57d5,intento,Trinity,55,Femenino,error,K'NAAN,Tyga,Personalizado
+1655855098.406695,9f8dcef1-e708-46ed-9114-50591adf57d5,intento,Trinity,55,Femenino,error,Demi Lovato,Matt Cardle,Personalizado
+1655855101.2518914,9f8dcef1-e708-46ed-9114-50591adf57d5,intento,Trinity,55,Femenino,error,Calvin Harris,Fetty Wap,Personalizado
+1655855104.7092538,9f8dcef1-e708-46ed-9114-50591adf57d5,fin,Trinity,55,Femenino,finalizada,,,Personalizado
+1655855118.1225915,eea14e95-9cbb-4e8d-99b4-86bc8773340b,inicio_partida,Trinity,55,Femenino,,,,Personalizado
+1655855119.2346275,eea14e95-9cbb-4e8d-99b4-86bc8773340b,intento,Trinity,55,Femenino,ok,Adam Hloušek,Adam Hloušek,Personalizado
+1655855122.31202,eea14e95-9cbb-4e8d-99b4-86bc8773340b,intento,Trinity,55,Femenino,error,Juan Sánchez Miño,Nery Leyes,Personalizado
+1655855125.708877,eea14e95-9cbb-4e8d-99b4-86bc8773340b,intento,Trinity,55,Femenino,error,Lucas Sanseviero,Raphaelito Anjos,Personalizado
+1655855128.5626311,eea14e95-9cbb-4e8d-99b4-86bc8773340b,intento,Trinity,55,Femenino,error,Omar Bertel,Mihai Bala?a,Personalizado
+1655855131.791653,eea14e95-9cbb-4e8d-99b4-86bc8773340b,intento,Trinity,55,Femenino,error,Fredrik Jensen,Ángel González,Personalizado
+1655855135.1456091,eea14e95-9cbb-4e8d-99b4-86bc8773340b,intento,Trinity,55,Femenino,error,Park Gi Dong,Christian Tabó,Personalizado
+1655855139.1616375,eea14e95-9cbb-4e8d-99b4-86bc8773340b,intento,Trinity,55,Femenino,error,Peter Kurzweg,Ersin Zehir,Personalizado
+1655855142.483801,eea14e95-9cbb-4e8d-99b4-86bc8773340b,intento,Trinity,55,Femenino,error,Marcos Ovejero,Stephane Acka,Personalizado
+1655855145.418143,eea14e95-9cbb-4e8d-99b4-86bc8773340b,intento,Trinity,55,Femenino,error,Marko Kolar,Massimiliano Busellato,Personalizado
+1655855148.532507,eea14e95-9cbb-4e8d-99b4-86bc8773340b,intento,Trinity,55,Femenino,ok,Rodrigo Bogarín,Rodrigo Bogarín,Personalizado
+1655855152.3876598,eea14e95-9cbb-4e8d-99b4-86bc8773340b,fin,Trinity,55,Femenino,finalizada,,,Personalizado
+1655855164.6178842,40a0a930-4a62-47f0-ab03-4ebfb4827310,inicio_partida,Trinity,55,Femenino,,,,Personalizado
+1655855165.9088507,40a0a930-4a62-47f0-ab03-4ebfb4827310,intento,Trinity,55,Femenino,error,All American Bikini Car Wash,FernGully: The Last Rainforest,Personalizado
+1655855181.3506076,40a0a930-4a62-47f0-ab03-4ebfb4827310,intento,Trinity,55,Femenino,error,Doomsday,You've Got Mail,Personalizado
+1655855184.6165204,40a0a930-4a62-47f0-ab03-4ebfb4827310,intento,Trinity,55,Femenino,error,Hotel Artemis,The Rookie,Personalizado
+1655855187.8495822,40a0a930-4a62-47f0-ab03-4ebfb4827310,intento,Trinity,55,Femenino,error,Enron: The Smartest Guys in the Room,Poseidon Rex,Personalizado
+1655855190.6996176,40a0a930-4a62-47f0-ab03-4ebfb4827310,intento,Trinity,55,Femenino,ok,Phineas and Ferb: Star Wars,Phineas and Ferb: Star Wars,Personalizado
+1655855193.578601,40a0a930-4a62-47f0-ab03-4ebfb4827310,intento,Trinity,55,Femenino,error,Robot,The Haunting in Connecticut 2: Ghosts of Georgia,Personalizado
+1655855196.5969636,40a0a930-4a62-47f0-ab03-4ebfb4827310,intento,Trinity,55,Femenino,ok,Empire of the Sun,Empire of the Sun,Personalizado
+1655855199.549138,40a0a930-4a62-47f0-ab03-4ebfb4827310,intento,Trinity,55,Femenino,error,Mother's Day,The Boss Baby: Get That Baby!,Personalizado
+1655855202.657541,40a0a930-4a62-47f0-ab03-4ebfb4827310,intento,Trinity,55,Femenino,error,Disturbia,La Cantera,Personalizado
+1655855205.5438156,40a0a930-4a62-47f0-ab03-4ebfb4827310,intento,Trinity,55,Femenino,ok,Funeral Parade of Roses,Funeral Parade of Roses,Personalizado
+1655855208.8319817,40a0a930-4a62-47f0-ab03-4ebfb4827310,fin,Trinity,55,Femenino,finalizada,,,Personalizado
+1655908920.1048052,f9fe2aea-cb60-49d7-a8a5-b0b8bdd6916d,inicio_partida,Yayo,56,No Responde,,,,Dificil
+1655908921.1348572,f9fe2aea-cb60-49d7-a8a5-b0b8bdd6916d,intento,Yayo,56,No Responde,error,The Hot Spot,Street Kings,Dificil
+1655908926.1665776,f9fe2aea-cb60-49d7-a8a5-b0b8bdd6916d,timeout,Yayo,56,No Responde,error,,Dragonfly,Dificil
+1655908934.3314493,f9fe2aea-cb60-49d7-a8a5-b0b8bdd6916d,timeout,Yayo,56,No Responde,error,,PAW Patrol: Jet To The Rescue,Dificil
+1655908943.2632165,f9fe2aea-cb60-49d7-a8a5-b0b8bdd6916d,timeout,Yayo,56,No Responde,error,,Lords of Scam,Dificil
+1655908949.5648966,f9fe2aea-cb60-49d7-a8a5-b0b8bdd6916d,intento,Yayo,56,No Responde,error,The Ring,Star Trek: First Contact,Dificil
+1655908955.9656188,f9fe2aea-cb60-49d7-a8a5-b0b8bdd6916d,fin,Yayo,56,No Responde,finalizada,,,Dificil
+1655909109.2374709,c5156743-15e6-4de0-aec7-459646efa7f5,inicio_partida,Yayo,56,No Responde,,,,Personalizado
+1655909113.268061,c5156743-15e6-4de0-aec7-459646efa7f5,timeout,Yayo,56,No Responde,error,,Rachid Bouhenna,Personalizado
+1655909120.3377862,c5156743-15e6-4de0-aec7-459646efa7f5,timeout,Yayo,56,No Responde,error,,Kwame Poku,Personalizado
+1655909123.7633276,c5156743-15e6-4de0-aec7-459646efa7f5,intento,Yayo,56,No Responde,error,Lloyd Palun,Haris Belkebla,Personalizado
+1655909127.0161424,c5156743-15e6-4de0-aec7-459646efa7f5,intento,Yayo,56,No Responde,error,Jonathan Augustinsson,Alessandro Rosina,Personalizado
+1655909130.8929608,c5156743-15e6-4de0-aec7-459646efa7f5,pasar,Yayo,56,No Responde,,,Shaun Whalley,Personalizado
+1655909133.254171,c5156743-15e6-4de0-aec7-459646efa7f5,fin,Yayo,56,No Responde,finalizada,,,Personalizado
+1655909146.656967,d6fb22cd-017d-429f-bdbc-d81433386241,inicio_partida,NEO,80,Masculino,,,,Personalizado
+1655909148.0509567,d6fb22cd-017d-429f-bdbc-d81433386241,intento,NEO,80,Masculino,error,Driving Miss Daisy,Ranma ½: The Movie 2 — The Battle of Togenkyo: Rescue the Brides!,Personalizado
+1655909153.1689825,d6fb22cd-017d-429f-bdbc-d81433386241,timeout,NEO,80,Masculino,error,,Transporter 2,Personalizado
+1655909156.107502,d6fb22cd-017d-429f-bdbc-d81433386241,intento,NEO,80,Masculino,error,Moon Crash,Blade of the Immortal,Personalizado
+1655909158.0195658,d6fb22cd-017d-429f-bdbc-d81433386241,pasar,NEO,80,Masculino,,,On a Magical Night,Personalizado
+1655909163.1201816,d6fb22cd-017d-429f-bdbc-d81433386241,timeout,NEO,80,Masculino,error,,Blue Crush,Personalizado
+1655909166.285156,d6fb22cd-017d-429f-bdbc-d81433386241,fin,NEO,80,Masculino,finalizada,,,Personalizado
+1655909183.8157108,3cc17575-8550-4bc1-958c-efa101095025,inicio_partida,NEO,80,Masculino,,,,Personalizado
+1655909184.958819,3cc17575-8550-4bc1-958c-efa101095025,intento,NEO,80,Masculino,error,Sideshow,Tapped Out,Personalizado
+1655909190.0002124,3cc17575-8550-4bc1-958c-efa101095025,timeout,NEO,80,Masculino,error,,Saint Seiya: Legend of Crimson Youth,Personalizado
+1655909193.3949187,3cc17575-8550-4bc1-958c-efa101095025,intento,NEO,80,Masculino,ok,Dragons: Rescue Riders: Secrets of the Songwing,Dragons: Rescue Riders: Secrets of the Songwing,Personalizado
+1655909195.540044,3cc17575-8550-4bc1-958c-efa101095025,intento,NEO,80,Masculino,ok,Marriage Story,Marriage Story,Personalizado
+1655909197.692933,3cc17575-8550-4bc1-958c-efa101095025,intento,NEO,80,Masculino,ok,Sissi: The Fateful Years of an Empress,Sissi: The Fateful Years of an Empress,Personalizado
+1655909200.4006534,3cc17575-8550-4bc1-958c-efa101095025,fin,NEO,80,Masculino,finalizada,,,Personalizado
+1655909214.2901845,735d47d3-faf4-4d01-8d71-3c25c224adfa,inicio_partida,Trinity,55,Femenino,,,,Personalizado
+1655909215.3888674,735d47d3-faf4-4d01-8d71-3c25c224adfa,intento,Trinity,55,Femenino,error,Martha Marcy May Marlene,Honey 2,Personalizado
+1655909217.6074245,735d47d3-faf4-4d01-8d71-3c25c224adfa,intento,Trinity,55,Femenino,error,EverAfter,The King of Fighters,Personalizado
+1655909222.711224,735d47d3-faf4-4d01-8d71-3c25c224adfa,timeout,Trinity,55,Femenino,error,,The Fixies: Top Secret,Personalizado
+1655909228.824483,735d47d3-faf4-4d01-8d71-3c25c224adfa,timeout,Trinity,55,Femenino,error,,I Give My First Love to You,Personalizado
+1655909232.2520163,735d47d3-faf4-4d01-8d71-3c25c224adfa,intento,Trinity,55,Femenino,error,Scooby-Doo! and the Legend of the Vampire,A Man Apart,Personalizado
+1655909234.610778,735d47d3-faf4-4d01-8d71-3c25c224adfa,fin,Trinity,55,Femenino,finalizada,,,Personalizado

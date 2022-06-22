@@ -28,7 +28,7 @@ class Partida:
         Setea los datos de la jugada.
         :param timestamp: tiempo de la partida en cada momento.
         :param id: de la partida
-        :param evento: actual de la partida (inicio_partida, intento, pasar, fin)
+        :param evento: actual de la partida (inicio_partida, intento, pasar, timeout, fin)
         :param jugador: nombre, edad y sexo del jugador actual.
         :param nivel: la dificultad de la partida (facil, normal, dificil, personalizado)
         Guardar los nuevos datos en un archivo csv.
@@ -46,7 +46,7 @@ class Partida:
         """
         Setea los datos de la jugada.
         :param timestamp: tiempo de la partida en cada momento.
-        :param evento: actual de la partida (inicio_partida, intento, pasar, fin)
+        :param evento: actual de la partida (inicio_partida, intento, pasar, timeout, fin)
         :param estado: estado de la partida (error, ok, cancelado, finalizada)
         :param texto_ingresado: texto ingresado por el usuario.
         :param respuesta: respuesta del sistema.

@@ -183,8 +183,8 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                         # Si se acaba el tiempo se pasa de ronda
                         window['-JUEGO_TIEMPO-'].update(background_color='Red')
                         window.refresh()
-                        partida.eventos(time.time(), "pasar", None, None, tarjeta.respuesta_correcta)
-                        time.sleep(2)
+                        partida.eventos(time.time(), "timeout", "error", None, tarjeta.respuesta_correcta)
+                        time.sleep(1)
                         tarjeta.analizar_respuesta('')
                         cg.ventana_popup(window, 'SE ACABO EL TIEMPO!')
                         tiempo_comienzo, window, cortar = analizar_siguiente(tarjeta, partida,
@@ -221,7 +221,7 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                                 tarjeta.analizar_respuesta(eleccion)
                                 window['-JUEGO_TABLA-'].update(values=tarjeta.resultados_para_tabla())
                                 window.refresh()
-                                time.sleep(2)
+                                time.sleep(1)
                             except IndexError:
                                 pass
                             else:
