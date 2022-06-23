@@ -246,3 +246,17 @@ timestamp,id,evento,nombre_jugador,edad_jugador,genero_jugador,estado,texto_ingr
 1655933965.3686192,be0dd805-d28a-49c8-a9e7-145da44e0e1f,inicio_partida,NEO,80,Masculino,,,,Facil
 1655933969.1718254,be0dd805-d28a-49c8-a9e7-145da44e0e1f,intento,NEO,80,Masculino,error,In for a Murder,The Hunchback of Notre Dame II,Facil
 1655933974.3846571,be0dd805-d28a-49c8-a9e7-145da44e0e1f,fin,NEO,80,Masculino,cancelada,,,Facil
+1655996132.7380774,7cdf0cf8-8636-40f5-bc37-c869585dd67c,inicio_partida,Amelia,30,Femenino,,,,Dificil
+1655996133.625599,7cdf0cf8-8636-40f5-bc37-c869585dd67c,intento,Amelia,30,Femenino,error,Trust,Ringu 2,Dificil
+1655996135.4962144,7cdf0cf8-8636-40f5-bc37-c869585dd67c,intento,Amelia,30,Femenino,error,Tailgate,Match Point,Dificil
+1655996137.3204906,7cdf0cf8-8636-40f5-bc37-c869585dd67c,intento,Amelia,30,Femenino,error,PlayTime,Wildling,Dificil
+1655996139.1404161,7cdf0cf8-8636-40f5-bc37-c869585dd67c,intento,Amelia,30,Femenino,error,Monster High: Scaris City of Frights,Suicide Squad,Dificil
+1655996140.9143558,7cdf0cf8-8636-40f5-bc37-c869585dd67c,intento,Amelia,30,Femenino,error,Curly Sue,Host,Dificil
+1655996142.9154098,7cdf0cf8-8636-40f5-bc37-c869585dd67c,fin,Amelia,30,Femenino,finalizada,,,Dificil
+1655996202.6903925,8dabcb34-bff7-4013-a5e7-4c180016b695,inicio_partida,kaggel,28,No Binario,,,,Dificil
+1655996203.829676,8dabcb34-bff7-4013-a5e7-4c180016b695,intento,kaggel,28,No Binario,ok,Tullu Moje (Ethiopia),Tullu Moje (Ethiopia),Dificil
+1655996206.1159284,8dabcb34-bff7-4013-a5e7-4c180016b695,intento,kaggel,28,No Binario,error,Merapi (Indonesia),Akita-Yake-yama (Japan),Dificil
+1655996207.9350579,8dabcb34-bff7-4013-a5e7-4c180016b695,intento,kaggel,28,No Binario,error,Soufriere Guadeloupe (Guadeloupe),Kuwae (Vanuatu),Dificil
+1655996213.0554175,8dabcb34-bff7-4013-a5e7-4c180016b695,timeout,kaggel,28,No Binario,error,,Fayal (Portugal),Dificil
+1655996217.3555741,8dabcb34-bff7-4013-a5e7-4c180016b695,pasar,kaggel,28,No Binario,,,"Negro, Cerro (Nicaragua)",Dificil
+1655996219.5555577,8dabcb34-bff7-4013-a5e7-4c180016b695,fin,kaggel,28,No Binario,finalizada,,,Dificil
