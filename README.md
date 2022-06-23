@@ -69,15 +69,16 @@ un integrante del grupo
     - [t_perfiles.png](https://www.canva.com/design/DAFD5FIp6DI/vSD45kjmqCT8ABUml7vgBQ/view?utm_content=DAFD5FIp6DI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
     - [e_perfiles.png](https://www.canva.com/design/DAFD5IOGRVw/wsgxtRz3KQyVI81jvdCMVQ/view?utm_content=DAFD5IOGRVw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
     - [t_puntajes.png](https://www.canva.com/design/DAFD5Ff-K7A/xQzYzCBnd2XrcDKxFcYnKw/view?utm_content=DAFD5Ff-K7A&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+    - [e_puntajes.png](https://www.canva.com/design/DAFEY7Ff6_M/NeBImwq096_OSsM7a0vLUQ/view?utm_content=DAFEY7Ff6_M&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+    - [tutorial_titulo.png](https://www.canva.com/design/DAFEY2AiKjY/bFV8eDr3NW39S9dsb60frQ/view?utm_content=DAFEY2AiKjY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+    - [gif_tutorial](https://www.canva.com/design/DAFEZO6XM4I/uzMpwWbdyKUAIyPNw4MTEQ/watch?utm_content=DAFEZO6XM4I&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 - Bajo la [licencia](https://tenor.com/assets/dist/licenses.txt) de [Tenor](https://tenor.com/). Creador [Yara](https://linktr.ee/capoo)
   - [capoo_aviso.gif](https://tenor.com/view/capoo-bugcat-blue-cat-computer-gif-19551056)
 - Bajo la [licencia](https://www.freepikcompany.com/legal#nav-flaticon) de libre uso de [Flaticon](https://www.flaticon.es/)
     - [cartas_icon](https://www.flaticon.es/icono-gratis/juego-de-cartas_4072061?term=cartas&page=1&position=16&page=1&position=16&related_id=4072061&origin=search)
     - [indicador_pista.png](https://www.flaticon.es/icono-gratis/flecha-correcta_3248150?related_id=3248150&origin=search#)
     - [indicador_tiempo.png](https://www.flaticon.es/icono-gratis/cronografo_3095036?term=tiempo&page=1&position=2&page=1&position=2&related_id=3095036&origin=search)
-    - 
-- Con la cita de autoría requerida <a href="http://www.freepik.com">Designed by gstudioimagen / Freepik</a>
-    - [puntajes.py](https://www.freepik.es/vector-gratis/cinta-premio_5254203.htm)
+    - [adya_boton.png](https://www.flaticon.com/free-icon/circle_5853933?term=circle&page=1&position=70&page=1&position=70&related_id=5853933&origin=style)
 
 ### __Librerías usadas__
 

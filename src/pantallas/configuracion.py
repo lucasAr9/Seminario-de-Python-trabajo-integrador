@@ -142,9 +142,9 @@ def crear_ventana():
     layout_dificil = layout_configuracion_nivel(datos['-DIFICIL-'], 'DIFÍCIL')
     layout_personalizado = layour_config_personalizado(datos['-PERSONALIZADO-'])
     crear_layout = [
-        [sg.Push(), sg.Image(ruta_elem_titulo, pad=((60, 0), (20, 20))),
+        [sg.Push(), sg.Image(ruta_elem_titulo, pad=((60, 0), (5, 5))),
          sg.Image(ruta_titulo),
-         sg.Image(ruta_elem_titulo, pad=((0, 60), (20, 20))),
+         sg.Image(ruta_elem_titulo, pad=((0, 60), (5, 5))),
          sg.Push()],
         [sg.HSep()],
 
@@ -156,7 +156,9 @@ def crear_ventana():
          sg.Col(layout_dificil, expand_x=True),
          sg.Col(layout_personalizado, expand_x=True),
          sg.Push()],
-
+        [sg.Push(), sg.Text('Sí decides [PASAR], se te restaran la mitad de los puntos correspondientes a una '
+                            'respuesta incorrecta.', font=cg.FUENTE_CONFIG), sg.Push()],
+        [sg.VPush()],
         [sg.Push(), sg.Button("Confirmar cambios", key="-CONFIRMAR_CAMBIOS-", font=cg.FUENTE_CONFIG), sg.Push()],
         [sg.Button("Volver", key='-VOLVER_CONFIG-', font=cg.FUENTE_CONFIG), sg.Push()]
     ]

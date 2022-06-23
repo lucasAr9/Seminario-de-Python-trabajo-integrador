@@ -76,7 +76,7 @@ class Tarjeta:
     def resultados_para_tabla(self):
         return [[x, y] for x, y in zip(self.resultados.keys(), self.resultados.values())]
 
-    def analizar_respuesta(self, eleccion):
+    def analizar_respuesta(self, eleccion, window):
         """
         Analiza la respuesta seleccionada, si coincide con la respuesta correcta
         se suman los puntos correspondientes. Caso contrario, se restan.
@@ -84,17 +84,20 @@ class Tarjeta:
         """
         if eleccion is None:
             self.resultados[self.actual] = 'Paso'
-            self.puntos_acumulados -= int(self.datos_dificultad.incorrectas / 2) # resto la mitad de puntos
-            if self.puntos_acumulados < 0:
-                self.puntos_acumulados = 0
+            self.puntos_acumulados -= int(self.datos_dificultad.incorrectas / 2)  # resto la mitad de puntos
+            window['-CANT_PUNTOS-'].update(f'-{int(self.datos_dificultad.incorrectas / 2)}', background_color='yellow')
         elif eleccion == self.respuesta_correcta:
             self.resultados[self.actual] = 'Bien!'
             self.puntos_acumulados += self.datos_dificultad.correctas
+            window['-CANT_PUNTOS-'].update(f'+{self.datos_dificultad.correctas}', background_color='green')
         elif eleccion != self.respuesta_correcta:
             self.resultados[self.actual] = 'Mal'
             self.puntos_acumulados -= self.datos_dificultad.incorrectas
-            if self.puntos_acumulados < 0:
-                self.puntos_acumulados = 0
+            window['-CANT_PUNTOS-'].update(f'-{self.datos_dificultad.incorrectas}', background_color='red')
+
+        if self.puntos_acumulados < 0:
+            self.puntos_acumulados = 0
+        window['-PUNTOS_ACUMULADOS-'].update(f'PUNTOS ACUMULADOS: {self.puntos_acumulados}')
 
     def quedan_rondas(self):
         """Devolver True si quedan rondas por jugar, False si se terminaron las rondas"""

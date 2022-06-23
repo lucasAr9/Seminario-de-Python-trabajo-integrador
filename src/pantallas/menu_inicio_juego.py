@@ -30,7 +30,7 @@ def _layout_usuario_dificultad(usuarios):
     :return: el layout que contendra la selccion de usuario y dificultad
     """
     # ruta para la imagen
-    ruta_imagen = os.path.join(rutas.IMAGENES_DIR, 'imagen_menu_principal_2.png')
+    ruta_imagen = os.path.join(rutas.IMAGENES_DIR, 'imagen_menu_principal.png')
     ruta_imagen_aviso = os.path.join(rutas.IMAGENES_DIR, 'tip_personalizado.png')
     # layout
     layout = [

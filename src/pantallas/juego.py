@@ -36,7 +36,11 @@ def armar_layout(tarjeta, layout_tarjeta, dificultad_elegida, dataset_elegido, u
         [sg.Table(values=tarjeta.resultados_para_tabla(), headings=['Pregunta', 'Resultados'],
                   max_col_width=25, auto_size_columns=False, justification='center', num_rows=10,
                   key='-JUEGO_TABLA-', row_height=25, font=cgen.FUENTE_OPCIONES, expand_x=True,
-                  selected_row_colors=('Black', sg.theme_text_color()))]
+                  selected_row_colors=('Black', sg.theme_text_color()))],
+        [sg.Text(text=f'PUNTOS ACUMULADOS: {tarjeta.puntos_acumulados}',
+                 key='-PUNTOS_ACUMULADOS-', font=cgen.FUENTE_OPCIONES, background_color='#D6C5F0', text_color='black'),
+         sg.Text(text='-', key='-CANT_PUNTOS-', font=cgen.FUENTE_OPCIONES, background_color='#D6C5F0',
+                 text_color='black')]
     ]
 
     layout = [
