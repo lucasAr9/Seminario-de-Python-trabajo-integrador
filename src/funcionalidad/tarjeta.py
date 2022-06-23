@@ -139,23 +139,3 @@ class Tarjeta:
                            expand_x=True, font=cgen.FUENTE_OPCIONES
                            )]
         return layout
-
-    def guardar_puntos(self, dia_hora, nivel, usuario):
-        if self.puntos_acumulados < 0:
-            self.puntos_acumulados = 0
-
-        match nivel:
-            case 'Facil':
-                nivel = 'Fácil'
-            case 'Dificil':
-                nivel = 'Difícil'
-
-        data = [dia_hora, nivel, usuario["nombre"], self.puntos_acumulados, usuario["edad"], usuario["genero"]]
-
-        archivo = os.path.join(rutas.REGISTROS_DIR, "puntajes.csv")
-        with open(archivo, 'a+', encoding='utf-8', newline='') as datos:
-            writer = csv.writer(datos, delimiter=',')
-
-            if os.stat(archivo).st_size == 0:
-                writer.writerow(['Día y hora', 'Nivel', 'Nick', 'Puntaje', 'Edad', 'Género autopercibido'])
-            writer.writerow(data)

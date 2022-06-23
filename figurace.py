@@ -131,7 +131,8 @@ def analizar_siguiente(tarjeta, partida, window, dificultad_elegida, dataset_ele
                                  f'TU PUNTAJE TOTAL ES DE: '
                                  f'{tarjeta.puntos_acumulados}')
         partida.eventos(time.time(), "fin", "finalizada", None, None)
-        tarjeta.guardar_puntos(str(datetime.now())[:16], dificultad_elegida, cuentas.usuario(usuario_elegido))
+        partida.guardar_puntos(str(datetime.now())[:16], dificultad_elegida, cuentas.usuario(usuario_elegido), 
+                                tarjeta.puntos_acumulados)
         return None, window, True
 
 
