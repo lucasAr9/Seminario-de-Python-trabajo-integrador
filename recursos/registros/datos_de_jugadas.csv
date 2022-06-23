@@ -260,3 +260,24 @@ timestamp,id,evento,nombre_jugador,edad_jugador,genero_jugador,estado,texto_ingr
 1655996213.0554175,8dabcb34-bff7-4013-a5e7-4c180016b695,timeout,kaggel,28,No Binario,error,,Fayal (Portugal),Dificil
 1655996217.3555741,8dabcb34-bff7-4013-a5e7-4c180016b695,pasar,kaggel,28,No Binario,,,"Negro, Cerro (Nicaragua)",Dificil
 1655996219.5555577,8dabcb34-bff7-4013-a5e7-4c180016b695,fin,kaggel,28,No Binario,finalizada,,,Dificil
+1656009674.7735054,d556c8fc-aebb-47a6-907c-061865b4c4cc,inicio_partida,NEO,80,Masculino,,,,Dificil
+1656009676.111682,d556c8fc-aebb-47a6-907c-061865b4c4cc,intento,NEO,80,Masculino,error,Jérôme Hergault,Marco Mancosu,Dificil
+1656009678.531638,d556c8fc-aebb-47a6-907c-061865b4c4cc,intento,NEO,80,Masculino,error,Dmitry Markitesov,Darius Olaru,Dificil
+1656009681.2715542,d556c8fc-aebb-47a6-907c-061865b4c4cc,intento,NEO,80,Masculino,error,Andrea Meroni,Martín Nervo,Dificil
+1656009683.1019912,d556c8fc-aebb-47a6-907c-061865b4c4cc,intento,NEO,80,Masculino,ok,Tobias Kainz,Tobias Kainz,Dificil
+1656009685.1917841,d556c8fc-aebb-47a6-907c-061865b4c4cc,intento,NEO,80,Masculino,error,Alexander Szymanowski,Sergio Herrera,Dificil
+1656009689.810834,d556c8fc-aebb-47a6-907c-061865b4c4cc,fin,NEO,80,Masculino,finalizada,,,Dificil
+1656009702.031546,7d3980e5-8462-4c6a-a495-787b6af1e816,inicio_partida,NEO,80,Masculino,,,,Dificil
+1656009702.851941,7d3980e5-8462-4c6a-a495-787b6af1e816,intento,NEO,80,Masculino,error,Invisible Sister,Ocean's Eleven,Dificil
+1656009704.7118506,7d3980e5-8462-4c6a-a495-787b6af1e816,intento,NEO,80,Masculino,error,Blood Out,Dreamcatcher,Dificil
+1656009706.6616375,7d3980e5-8462-4c6a-a495-787b6af1e816,intento,NEO,80,Masculino,error,Escape from Sobibor,Gurren Lagann the Movie: Childhood's End,Dificil
+1656009708.4862278,7d3980e5-8462-4c6a-a495-787b6af1e816,intento,NEO,80,Masculino,ok,The Legend of Drunken Master,The Legend of Drunken Master,Dificil
+1656009711.2416391,7d3980e5-8462-4c6a-a495-787b6af1e816,intento,NEO,80,Masculino,error,Paranormal Activity: Tokyo Night,The Fall of the Roman Empire,Dificil
+1656009713.4615467,7d3980e5-8462-4c6a-a495-787b6af1e816,fin,NEO,80,Masculino,finalizada,,,Dificil
+1656011152.4566238,ee2040c5-fd84-42d7-8806-54ce7073621b,inicio_partida,kaggel,28,No Binario,,,,Dificil
+1656011156.539787,ee2040c5-fd84-42d7-8806-54ce7073621b,timeout,kaggel,28,No Binario,error,,Vilyuchik (Russia),Dificil
+1656011159.3457997,ee2040c5-fd84-42d7-8806-54ce7073621b,intento,kaggel,28,No Binario,error,Ambalatungan Group (Philippines),Karthala (Comoros),Dificil
+1656011162.6672537,ee2040c5-fd84-42d7-8806-54ce7073621b,pasar,kaggel,28,No Binario,,,Stromboli (Italy),Dificil
+1656011164.9957635,ee2040c5-fd84-42d7-8806-54ce7073621b,intento,kaggel,28,No Binario,error,Pacaya (Guatemala),Hekla (Iceland),Dificil
+1656011167.11261,ee2040c5-fd84-42d7-8806-54ce7073621b,intento,kaggel,28,No Binario,error,Masaya (Nicaragua),Mayon (Philippines),Dificil
+1656011169.656674,ee2040c5-fd84-42d7-8806-54ce7073621b,fin,kaggel,28,No Binario,finalizada,,,Dificil
