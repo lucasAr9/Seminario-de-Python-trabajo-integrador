@@ -24,7 +24,7 @@ def layout_configuracion_texto():
          sg.Push()],
 
         [sg.Push(),
-         sg.Text('Tiempo límite: ', key='-TIEMPO_T-',
+         sg.Text('Tiempo límite en segundos: ', key='-TIEMPO_T-',
                  expand_x=True, font=cg.FUENTE_CONFIG, justification='center'),
          sg.Push()],
 
@@ -59,7 +59,7 @@ def layout_configuracion_nivel(nivel, nombre_nivel):
          sg.Push()],
 
         [sg.Push(),
-         sg.Text(str(nivel['-TIEMPO_C-']), key='-TIEMPO_T-',
+         sg.Text(f"{str(nivel['-TIEMPO_C-'])} seg.", key='-TIEMPO_T-',
                  expand_x=True, font=cg.FUENTE_CONFIG, justification='center'),
          sg.Push()],
 
@@ -69,12 +69,12 @@ def layout_configuracion_nivel(nivel, nombre_nivel):
          sg.Push()],
 
         [sg.Push(),
-         sg.Text(str(nivel['-CORRECTO_C-']), key='-CORRECTO_T-',
+         sg.Text(f"+{str(nivel['-CORRECTO_C-'])}", key='-CORRECTO_T-',
                  expand_x=True, font=cg.FUENTE_CONFIG, justification='center'),
          sg.Push()],
 
         [sg.Push(),
-         sg.Text(str(nivel['-INCORRECTO_C-']), key='-INCORRECTO_T-',
+         sg.Text(f"-{str(nivel['-INCORRECTO_C-'])}", key='-INCORRECTO_T-',
                  expand_x=True, font=cg.FUENTE_CONFIG, justification='center'),
          sg.Push()],
 

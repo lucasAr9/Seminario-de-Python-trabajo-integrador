@@ -243,3 +243,6 @@ timestamp,id,evento,nombre_jugador,edad_jugador,genero_jugador,estado,texto_ingr
 1655909228.824483,735d47d3-faf4-4d01-8d71-3c25c224adfa,timeout,Trinity,55,Femenino,error,,I Give My First Love to You,Personalizado
 1655909232.2520163,735d47d3-faf4-4d01-8d71-3c25c224adfa,intento,Trinity,55,Femenino,error,Scooby-Doo! and the Legend of the Vampire,A Man Apart,Personalizado
 1655909234.610778,735d47d3-faf4-4d01-8d71-3c25c224adfa,fin,Trinity,55,Femenino,finalizada,,,Personalizado
+1655933965.3686192,be0dd805-d28a-49c8-a9e7-145da44e0e1f,inicio_partida,NEO,80,Masculino,,,,Facil
+1655933969.1718254,be0dd805-d28a-49c8-a9e7-145da44e0e1f,intento,NEO,80,Masculino,error,In for a Murder,The Hunchback of Notre Dame II,Facil
+1655933974.3846571,be0dd805-d28a-49c8-a9e7-145da44e0e1f,fin,NEO,80,Masculino,cancelada,,,Facil
