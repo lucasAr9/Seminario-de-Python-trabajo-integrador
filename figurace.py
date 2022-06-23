@@ -26,10 +26,12 @@ def abrir_instrucciones():
     indice = 1  # Para llevar el cambio de imagen en orden
     nro_tutorial = 0  # Para acceder al tutorial correcto
     while True:
-        event, values = window.read()
+        event, values = window.read(timeout=100)
         if event in (sg.WIN_CLOSED, '-VOLVER-'):
             break
         match event:
+            case '__TIMEOUT__':
+                pass
             case '-SIG-':
                 # verifico no salir del rango de cant de imagenes de cada tutorial
                 # 0 = la ruta de la imagen, 1 = la cantidad de imagenes
@@ -53,6 +55,8 @@ def abrir_instrucciones():
                 eleccion = os.path.join(rutas.TUTORIALES_DIR, (cg.TUTORIALES[nro_tutorial][event])[0],
                                         f'paso_{indice}.png')
                 window['-IMAGEN_TUTO-'].update(eleccion)
+            # control del gif al principio, para que no tarde en empezar
+        window['-GIF_TUTO-'].update_animation(os.path.join(rutas.TUTORIALES_DIR, 'gif_tutorial.gif'))
 
     window.close()
 
@@ -188,7 +192,7 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                             window[respuesta].update(background_color='Red', text_color='Black')
                         window.refresh()
                         time.sleep(1)
-                        tarjeta.analizar_respuesta('')
+                        tarjeta.analizar_respuesta('', window)
 
                         tiempo_comienzo, window, cortar = analizar_siguiente(tarjeta, partida,
                                                                              window, dificultad_elegida,
@@ -221,7 +225,7 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                                         partida.eventos(time.time(), "intento", "error", eleccion,
                                                         tarjeta.respuesta_correcta)
 
-                                tarjeta.analizar_respuesta(eleccion)
+                                tarjeta.analizar_respuesta(eleccion, window)
                                 window['-JUEGO_TABLA-'].update(values=tarjeta.resultados_para_tabla())
                                 window.refresh()
                                 time.sleep(1)
@@ -234,7 +238,7 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                                 if cortar:
                                     break
                 break
-
+        cg.ventana_de_carga()
         window.close()
 
 

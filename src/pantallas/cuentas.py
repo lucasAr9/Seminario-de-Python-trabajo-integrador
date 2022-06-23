@@ -180,9 +180,9 @@ def crear_cuentas(conf):
     ruta_titulo = os.path.join(ruta.IMAGENES_DIR, "t_perfiles.png")
     ruta_elem_titulo = os.path.join(ruta.IMAGENES_DIR, "e_perfiles.png")
     layout = [
-            [sg.Push(), sg.Image(ruta_elem_titulo, pad=((60, 0), (20, 20))),
+            [sg.Push(), sg.Image(ruta_elem_titulo, pad=((60, 0), (5, 5))),
              sg.Image(ruta_titulo),
-             sg.Image(ruta_elem_titulo, pad=((0, 60), (20, 20))),
+             sg.Image(ruta_elem_titulo, pad=((0, 60), (5, 5))),
              sg.Push()],
             [sg.HSep()],
             [sg.Push(), sg.pin(sg.Col(menu_prin, key="-BTN_PRIN-", visible=True)), sg.Push()],
