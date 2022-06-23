@@ -141,7 +141,8 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
         tarjeta.cargar_datos()  # Se cargan los primeros datos de la tarjeta a utilizar
         window = juego.armar_ventana(tarjeta, tarjeta.layout_vacio(), dificultad_elegida, dataset_elegido,
                                      usuario_elegido)
-        window['-JUEGO_TIEMPO-'].update(f'00:{tarjeta.datos_dificultad.tiempo}')
+        minutos, segundos = divmod(tarjeta.datos_dificultad.tiempo, 60)
+        window['-JUEGO_TIEMPO-'].update(f'{minutos:02d}:{segundos:02d}')
         window['-JUEGO_COMENZAR-'].update(visible=True)
 
         while True:
@@ -181,12 +182,14 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
 
                     if window['-JUEGO_TIEMPO-'].Get() == '00:00':
                         # Si se acaba el tiempo se pasa de ronda
-                        window['-JUEGO_TIEMPO-'].update(background_color='Red')
-                        window.refresh()
                         partida.eventos(time.time(), "timeout", "error", None, tarjeta.respuesta_correcta)
+                        window['-JUEGO_TIEMPO-'].update(background_color='Red')
+                        for respuesta in tarjeta.dict_respuestas['Posibles']:
+                            window[respuesta].update(background_color='Red', text_color='Black')
+                        window.refresh()
                         time.sleep(1)
                         tarjeta.analizar_respuesta('')
-                        cg.ventana_popup(window, 'SE ACABO EL TIEMPO!')
+
                         tiempo_comienzo, window, cortar = analizar_siguiente(tarjeta, partida,
                                                                              window, dificultad_elegida,
                                                                              dataset_elegido, usuario_elegido)
@@ -262,7 +265,6 @@ def main():
                 if usuario_elegido and dificultad_elegida:
                     window.hide()
                     abrir_juego(dificultad_elegida, usuario_elegido)
-                    cg.ventana_de_carga()
                     window.un_hide()
                 else:
                     cg.ventana_popup(window,
