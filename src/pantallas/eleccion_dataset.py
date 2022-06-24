@@ -34,7 +34,6 @@ def eleccion_dataset():
                             button_color=(sg.theme_background_color(), sg.theme_background_color()),
                             border_width=3, key='volcanes')]
                  ]
-    columna_5 = ''  # agregar opción random
 
     layout = [[sg.Frame('', [[sg.Text('Elegí la temática para jugar:', font=cg.FUENTE_INDICADOR, pad=((10, 0), (2, 20)))],
               [sg.Column(columna_1, element_justification='c', pad=20),

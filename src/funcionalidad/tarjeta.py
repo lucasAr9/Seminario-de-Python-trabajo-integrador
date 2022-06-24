@@ -37,29 +37,22 @@ class Tarjeta:
 
     def cargar_datos(self):
         cabecera = self.data_set.columns
-        # Me quedo con los datos de una fila al azar, que será la respuesta correcta. Por lo que serán las pistas
-        # de la tarjeta
-        pistas = self.data_set.sample()  # elige una fila al azar
+        # fila al azar que tendrá la respuesta correcta.
+        fila = self.data_set.sample()
 
-        # Me guardo en un dataFrame auxiliar 4 filas al azar (Me queda un DataFrame con 4 filas y las columnas de antes)
-        aux = self.data_set.sample(n=4)
+        # respuestas incorrectas al azar
+        opciones = list(self.data_set.iloc[:, -1].sample(n=4))
 
-        # Me quedo con el dato de la última columna del dataset (donde estaría la respuesta correcta)
-        # y lo guardo en una lista de opciones
-        opciones = list(aux.iloc[:, 5])
+        # resto de datos de la fila con la respuesta correcta, pistas de la tarjeta
+        pistas = list(fila.iloc[0, 0:5])
 
-        # Me guardo en formato lista de strings las pistas almacenadas en el DataFrame auxiliar
-        # Es decir, el valor de cada columna dentro del DataFrame auxiliar
-        pistas = list(pistas.iloc[0, :])
+        # respuesta correcta, última columna de la fila elegida
+        self.respuesta_correcta = str(fila.iloc[0, -1])
 
-        # Me guardo la respuesta correcta, que se encuentra en la última posición de la lista pistas
-        self.respuesta_correcta = pistas[-1]
-
-        # Agrego a la lista de opciones posibles, la respuesta correcta
-        opciones.append(self.respuesta_correcta)
+        # la respuesta correcta se agrega a una posición al azar en las respuestas posibles
+        opciones.insert(random.randrange(cgen.CANT_RESPUESTAS), self.respuesta_correcta)
 
         # Reordeno al azar la lista de opciones posibles, para que la respuesta correcta, no siempre este a lo ultimo
-        random.shuffle(opciones)
 
         # Guardo en un diccionario las posibles opciones/respuestas a elegir
         self.dict_respuestas = {
@@ -83,18 +76,21 @@ class Tarjeta:
         se suman los puntos correspondientes. Caso contrario, se restan.
         Se actualiza la lista de resultados y los puntos acumulados
         """
-        if eleccion is None:
-            self.resultados[self.actual] = 'Paso'
-            self.puntos_acumulados -= int(self.datos_dificultad.incorrectas / 2)  # resto la mitad de puntos
-            window['-CANT_PUNTOS-'].update(f'-{int(self.datos_dificultad.incorrectas / 2)}', background_color='yellow')
-        elif eleccion == self.respuesta_correcta:
-            self.resultados[self.actual] = 'Bien!'
-            self.puntos_acumulados += self.datos_dificultad.correctas
-            window['-CANT_PUNTOS-'].update(f'+{self.datos_dificultad.correctas}', background_color='green')
-        elif eleccion != self.respuesta_correcta:
-            self.resultados[self.actual] = 'Mal'
-            self.puntos_acumulados -= self.datos_dificultad.incorrectas
-            window['-CANT_PUNTOS-'].update(f'-{self.datos_dificultad.incorrectas}', background_color='red')
+        match eleccion:
+            case None:
+                self.resultados[self.actual] = 'Paso'
+                self.puntos_acumulados -= int(self.datos_dificultad.incorrectas / 2)  # resto la mitad de puntos
+                window['-CANT_PUNTOS-'].update(f'-{int(self.datos_dificultad.incorrectas / 2)}', background_color='yellow')
+            case self.respuesta_correcta:
+                self.resultados[self.actual] = 'Bien!'
+                self.puntos_acumulados += self.datos_dificultad.correctas
+                window['-CANT_PUNTOS-'].update(f'+{self.datos_dificultad.correctas}', background_color='green')
+            case _:
+                self.resultados[self.actual] = 'Mal'
+                if eleccion == 'tiempo':
+                    self.resultados[self.actual] += ' (tiempo)'
+                self.puntos_acumulados -= self.datos_dificultad.incorrectas
+                window['-CANT_PUNTOS-'].update(f'-{self.datos_dificultad.incorrectas}', background_color='red')
 
         if self.puntos_acumulados < 0:
             self.puntos_acumulados = 0

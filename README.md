@@ -49,7 +49,7 @@ de los archivos se obtuvo luego de realizar cambios a archivos descargados de la
 
 Para conocer con más detalle el procesamiento de los dataset, podés consultar
 las guías en los cuadernos de Jupyter Notebook que se encuentran en
--> "grupo10" -> "recursos" -> "datos" -> "notebook". Cada uno fue realizada por
+-> "grupo10" -> "recursos" -> "datos" -> "notebooks_pandas". Cada uno fue realizada por
 un integrante del grupo
 
 ### __Imágenes del juego__
@@ -82,8 +82,10 @@ un integrante del grupo
 
 ### __Librerías usadas__
 
-* Jupyter notebook
+* Jupyter Notebook
 * PySimpleGUI
+* pandas
+* Matplotlib
 
 Es necesario instalarlas para poder correr todos los aspectos del juego.
 Están disponibles para su instalación en el archivo requirements.txt.

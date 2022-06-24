@@ -191,10 +191,9 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                         window['-JUEGO_TIEMPO-'].update(background_color='Red')
                         for respuesta in tarjeta.dict_respuestas['Posibles']:
                             window[respuesta].update(background_color='Red', text_color='Black')
+                        tarjeta.analizar_respuesta('tiempo', window)
                         window.refresh()
                         time.sleep(1)
-                        tarjeta.analizar_respuesta('', window)
-
                         tiempo_comienzo, window, cortar = analizar_siguiente(tarjeta, partida,
                                                                              window, dificultad_elegida,
                                                                              dataset_elegido, usuario_elegido)
@@ -239,7 +238,6 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                                 if cortar:
                                     break
                 break
-        cg.ventana_de_carga()
         window.close()
 
 

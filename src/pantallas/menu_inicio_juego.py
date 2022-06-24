@@ -55,14 +55,14 @@ def crear_menu(usuarios=("",)):
     :return: la ventana del menu principal
     """
     sg.theme(cg.TEMA)
-    # rutas para las imagenes
+    # rutas para las imágenes
     ruta_icon_png = os.path.join(rutas.IMAGENES_DIR, 'cartas_icon.png')
     ruta_icon_ico = os.path.join(rutas.IMAGENES_DIR, 'cartas_icon.ico')
     ruta_image_titulo = os.path.join(rutas.IMAGENES_DIR, 'titulo_figurace.png')
     # layouts
     l_principal = _layout_op_principales()
     l_user_dif = _layout_usuario_dificultad(usuarios)
-    layout = [[sg.Frame('',[
+    layout = [[sg.Frame('', [
         [sg.Push(), sg.Image(ruta_image_titulo), sg.Push()],
         [sg.Push(), sg.Col(l_principal, size=cg.TAM_COLUMNAS, expand_y=True), sg.Col(l_user_dif,  size=cg.TAM_COLUMNAS,
                                                                                      expand_y=True,

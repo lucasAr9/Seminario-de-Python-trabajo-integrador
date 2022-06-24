@@ -23,6 +23,7 @@ FUENTE_POPUP = f'{FUENTE} 12'
 FUENTE_OPCIONES = f'{FUENTE} 11'
 FUENTE_CONFIG = f'{FUENTE} 16'
 
+# respuestas posibles por tarjeta
 CANT_RESPUESTAS = 5
 
 # colores
@@ -48,7 +49,7 @@ TUTORIALES = [{'Como Jugar': ['como_jugar', 8]}, {'Creación de Perfil': ['creac
               {'Edición de Perfil': ['edicion_de_perfil', 4]}]
 
 
-# ventana para chequear salidas
+# ventanas auxiliares
 def ventana_chequear_accion(ventana_actual, mensaje='Segurx que querés salir?', imagen='confirmacion.png'):
     """"""
     ruta_imagen = os.path.join(rutas.IMAGENES_DIR, imagen)

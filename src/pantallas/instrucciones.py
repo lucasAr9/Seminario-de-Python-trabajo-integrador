@@ -39,7 +39,7 @@ def crear_ventana():
 
     layout = [[sg.VPush()], [sg.Push(), sg.Col(layout_botones, expand_x=True, expand_y=True), sg.Push(),
                              sg.Col(layout_navegar, expand_x=True, expand_y=True)],
-              [sg.Button('VOLVER', key='-VOLVER-', font=cg.FUENTE_BOTONES)]]
+              [sg.Button('Volver', key='-VOLVER-', font=cg.FUENTE_BOTONES, pad=((50, 0), (0, 5)))]]
 
     window = sg.Window('TUTORIALES', layout, size=cg.TAM_VENTANA, finalize=True, grab_anywhere=True, no_titlebar=True)
 

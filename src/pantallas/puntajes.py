@@ -101,7 +101,7 @@ def armar_layout():
               [tab_group],
               [sg.VPush()],
               [sg.Button('Volver', key='-VOLVER_AL_MENU-', font=cgen.FUENTE_COMBO,
-                         tooltip='Volver al menú principal', pad=5), sg.Push(), sg.Sizegrip()]
+                         tooltip='Volver al menú principal', pad=((50, 0), (0, 5))), sg.Push(), sg.Sizegrip()]
               ]
 
     layout_marco = [[sg.Frame("", layout, expand_x=True, expand_y=True)]]
