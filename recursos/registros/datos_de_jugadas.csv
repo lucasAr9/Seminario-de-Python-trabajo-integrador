@@ -10,7 +10,6 @@ timestamp,id,evento,nombre_jugador,edad_jugador,genero_jugador,estado,texto_ingr
 1655432274.0159414,db74505f-3fe3-476c-866d-872fea96a3b2,pasar,NEO,80,Masculino,,,Taylor Swift,Facil
 1655432277.1881802,db74505f-3fe3-476c-866d-872fea96a3b2,intento,NEO,80,Masculino,error,Daya,Iyaz,Facil
 1655432280.5379517,db74505f-3fe3-476c-866d-872fea96a3b2,intento,NEO,80,Masculino,error,NF,Lana Del Rey,Facil
-1655432283.6162822,db74505f-3fe3-476c-866d-872fea96a3b2,fin,NEO,80,Masculino,finalizada,,,Facil
 1655432344.359449,b8d68931-5986-4704-99ac-1f606dac48ae,inicio_partida,El Jose,80,Masculino,,,,Facil
 1655432346.0972135,b8d68931-5986-4704-99ac-1f606dac48ae,intento,El Jose,80,Masculino,ok,David Guetta,David Guetta,Facil
 1655432348.6520405,b8d68931-5986-4704-99ac-1f606dac48ae,pasar,El Jose,80,Masculino,,,Usher,Facil
