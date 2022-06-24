@@ -10,7 +10,6 @@ timestamp,id,evento,nombre_jugador,edad_jugador,genero_jugador,estado,texto_ingr
 1655432274.0159414,db74505f-3fe3-476c-866d-872fea96a3b2,pasar,NEO,80,Masculino,,,Taylor Swift,Facil
 1655432277.1881802,db74505f-3fe3-476c-866d-872fea96a3b2,intento,NEO,80,Masculino,error,Daya,Iyaz,Facil
 1655432280.5379517,db74505f-3fe3-476c-866d-872fea96a3b2,intento,NEO,80,Masculino,error,NF,Lana Del Rey,Facil
-1655432283.6162822,db74505f-3fe3-476c-866d-872fea96a3b2,fin,NEO,80,Masculino,finalizada,,,Facil
 1655432344.359449,b8d68931-5986-4704-99ac-1f606dac48ae,inicio_partida,El Jose,80,Masculino,,,,Facil
 1655432346.0972135,b8d68931-5986-4704-99ac-1f606dac48ae,intento,El Jose,80,Masculino,ok,David Guetta,David Guetta,Facil
 1655432348.6520405,b8d68931-5986-4704-99ac-1f606dac48ae,pasar,El Jose,80,Masculino,,,Usher,Facil
@@ -405,3 +404,25 @@ timestamp,id,evento,nombre_jugador,edad_jugador,genero_jugador,estado,texto_ingr
 1656106790.1687503,85609195-440a-45b4-aac5-ffed387829ca,intento,kaggel,28,No Binario,error,Donkey X,Balto III: Wings of Change,Dificil
 1656106793.8003776,85609195-440a-45b4-aac5-ffed387829ca,intento,kaggel,28,No Binario,error,College,John Wick: Chapter 3 - Parabellum,Dificil
 1656106797.6442375,85609195-440a-45b4-aac5-ffed387829ca,fin,kaggel,28,No Binario,finalizada,,,Dificil
+1656108609.4751506,333749d5-1ff7-45a1-9e83-47f1820a0d50,inicio_partida,Fuwa,19,Femenino,,,,Dificil
+1656108610.6196144,333749d5-1ff7-45a1-9e83-47f1820a0d50,intento,Fuwa,19,Femenino,ok,Kazuki Kozuka,Kazuki Kozuka,Dificil
+1656108614.7967422,333749d5-1ff7-45a1-9e83-47f1820a0d50,pasar,Fuwa,19,Femenino,,,Jesper Lindstrøm,Dificil
+1656108617.1486218,333749d5-1ff7-45a1-9e83-47f1820a0d50,intento,Fuwa,19,Femenino,ok,Rob Dickie,Rob Dickie,Dificil
+1656108619.7079868,333749d5-1ff7-45a1-9e83-47f1820a0d50,intento,Fuwa,19,Femenino,ok,Alex Palmer,Alex Palmer,Dificil
+1656108622.8756852,333749d5-1ff7-45a1-9e83-47f1820a0d50,intento,Fuwa,19,Femenino,error,Pascal Schürpf,Paseka Mako,Dificil
+1656108624.9717357,333749d5-1ff7-45a1-9e83-47f1820a0d50,fin,Fuwa,19,Femenino,finalizada,,,Dificil
+1656113098.8105183,c669cd4d-658f-41a4-aa29-3aa2d4b0aea9,inicio_partida,holaf,20,Trans,,,,Dificil
+1656113102.8125155,c669cd4d-658f-41a4-aa29-3aa2d4b0aea9,timeout,holaf,20,Trans,error,,Kharimkotan (Russia),Dificil
+1656113105.6040568,c669cd4d-658f-41a4-aa29-3aa2d4b0aea9,intento,holaf,20,Trans,error,Pinatubo (Philippines),Vesuvius (Italy),Dificil
+1656113107.534554,c669cd4d-658f-41a4-aa29-3aa2d4b0aea9,pasar,holaf,20,Trans,,,Mayon (Philippines),Dificil
+1656113109.6436512,c669cd4d-658f-41a4-aa29-3aa2d4b0aea9,intento,holaf,20,Trans,ok,Iwo-Tori-shima (Japan),Iwo-Tori-shima (Japan),Dificil
+1656113114.7264493,c669cd4d-658f-41a4-aa29-3aa2d4b0aea9,timeout,holaf,20,Trans,error,,Vesuvius (Italy),Dificil
+1656113117.6793473,c669cd4d-658f-41a4-aa29-3aa2d4b0aea9,fin,holaf,20,Trans,finalizada,,,Dificil
+1656113128.2574804,ea29229a-4817-404f-a4d9-c09a03f17edb,inicio_partida,holaf,20,Trans,,,,Normal
+1656113129.773651,ea29229a-4817-404f-a4d9-c09a03f17edb,intento,holaf,20,Trans,error,Jackass Presents: Bad Grandpa .5,Naruto Shippuden the Movie: Bonds,Normal
+1656113131.5483408,ea29229a-4817-404f-a4d9-c09a03f17edb,pasar,holaf,20,Trans,,,Robinson Crusoe,Normal
+1656113134.177447,ea29229a-4817-404f-a4d9-c09a03f17edb,intento,holaf,20,Trans,error,The Day Naruto Became Hokage,The Legend of Tarzan,Normal
+1656113138.257465,ea29229a-4817-404f-a4d9-c09a03f17edb,timeout,holaf,20,Trans,error,,Mushi-Shi: The Next Chapter - Drops of Bells,Normal
+1656113141.2653484,ea29229a-4817-404f-a4d9-c09a03f17edb,intento,holaf,20,Trans,error,Ocean's Thirteen,Ransom,Normal
+1656113144.0058594,ea29229a-4817-404f-a4d9-c09a03f17edb,pasar,holaf,20,Trans,,,His House,Normal
+1656113147.0434783,ea29229a-4817-404f-a4d9-c09a03f17edb,fin,holaf,20,Trans,cancelada,,,Normal

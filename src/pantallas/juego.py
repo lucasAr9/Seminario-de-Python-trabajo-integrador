@@ -40,7 +40,8 @@ def armar_layout(tarjeta, layout_tarjeta, dificultad_elegida, dataset_elegido, u
         [sg.Text(text=f'PUNTOS ACUMULADOS: {tarjeta.puntos_acumulados}',
                  key='-PUNTOS_ACUMULADOS-', font=cgen.FUENTE_OPCIONES, background_color='#D6C5F0', text_color='black'),
          sg.Text(text='-', key='-CANT_PUNTOS-', font=cgen.FUENTE_OPCIONES, background_color='#D6C5F0',
-                 text_color='black')]
+                 text_color='black'), sg.Text('EXTRA: ', key='-PUNTOS_EXTRA-', background_color='#D6C5F0',
+                                              text_color='black')]
     ]
 
     layout = [

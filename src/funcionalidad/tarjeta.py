@@ -2,7 +2,6 @@ import PySimpleGUI as sg
 import pandas as pd
 import os
 import random
-import csv
 
 import rutas
 from src.pantallas import caracteristicas_generales as cgen
@@ -31,9 +30,10 @@ class Tarjeta:
     def set_puntos_acumulados(self, puntos):
         self.puntos_acumulados = puntos
 
-    def puntos_por_tiempo(self, tiempo):
-        puntos = 100 / self.datos_dificultad.tiempo * (self.datos_dificultad.tiempo - tiempo)
-        self.puntos_acumulados += int(puntos)
+    def puntos_por_tiempo(self, tiempo, window):
+        puntos = int(10 / self.datos_dificultad.tiempo * (self.datos_dificultad.tiempo - tiempo))
+        window['-PUNTOS_EXTRA-'].update(f'EXTRA: {str(puntos)}', background_color='green')
+        self.puntos_acumulados += puntos
 
     def cargar_datos(self):
         cabecera = self.data_set.columns
