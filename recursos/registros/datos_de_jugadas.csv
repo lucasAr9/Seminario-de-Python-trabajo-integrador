@@ -370,3 +370,38 @@ timestamp,id,evento,nombre_jugador,edad_jugador,genero_jugador,estado,texto_ingr
 1656099979.189345,f95db774-0975-4bae-8aea-882cce7e8d49,intento,NEO,80,Masculino,error,House of the Witch,Fantastic Four,Facil
 1656099981.3986244,f95db774-0975-4bae-8aea-882cce7e8d49,intento,NEO,80,Masculino,error,Assassination Classroom: Graduation,Tombstone of the Fireflies,Facil
 1656099983.8087313,f95db774-0975-4bae-8aea-882cce7e8d49,fin,NEO,80,Masculino,finalizada,,,Facil
+1656019965.0089715,b238cc1c-0ba9-4349-a658-ed4a8873db43,inicio_partida,Amelia,30,Femenino,,,,Personalizado
+1656019966.4082527,b238cc1c-0ba9-4349-a658-ed4a8873db43,intento,Amelia,30,Femenino,error,The Land Before Time: The Great Valley Adventure,The Matrix Reloaded,Personalizado
+1656019971.4937747,b238cc1c-0ba9-4349-a658-ed4a8873db43,timeout,Amelia,30,Femenino,error,,Dead Man Down,Personalizado
+1656019974.2447202,b238cc1c-0ba9-4349-a658-ed4a8873db43,intento,Amelia,30,Femenino,error,Kids Return,My Friend's Mom,Personalizado
+1656019976.3762774,b238cc1c-0ba9-4349-a658-ed4a8873db43,pasar,Amelia,30,Femenino,,,Taya,Personalizado
+1656019978.803809,b238cc1c-0ba9-4349-a658-ed4a8873db43,intento,Amelia,30,Femenino,error,Team Thor: Part 2,Gurren Lagann the Movie: The Lights in the Sky Are Stars,Personalizado
+1656019982.3170955,b238cc1c-0ba9-4349-a658-ed4a8873db43,fin,Amelia,30,Femenino,finalizada,,,Personalizado
+1656020014.052792,789e53ea-2893-4232-a532-12085766bdec,inicio_partida,NEO,80,Masculino,,,,Personalizado
+1656020018.1080701,789e53ea-2893-4232-a532-12085766bdec,timeout,NEO,80,Masculino,error,,Scooby-Doo! Abracadabra-Doo,Personalizado
+1656020022.8293629,789e53ea-2893-4232-a532-12085766bdec,intento,NEO,80,Masculino,ok,Barbie & Chelsea: The Lost Birthday,Barbie & Chelsea: The Lost Birthday,Personalizado
+1656020027.8619752,789e53ea-2893-4232-a532-12085766bdec,timeout,NEO,80,Masculino,error,,Cop Land,Personalizado
+1656020030.5072348,789e53ea-2893-4232-a532-12085766bdec,pasar,NEO,80,Masculino,,,El día de los albañiles: Los maistros del amor,Personalizado
+1656020035.5235057,789e53ea-2893-4232-a532-12085766bdec,timeout,NEO,80,Masculino,error,,Von Ryan's Express,Personalizado
+1656020038.4721024,789e53ea-2893-4232-a532-12085766bdec,fin,NEO,80,Masculino,finalizada,,,Personalizado
+1656020056.6135428,159b1130-8876-4f64-9dfa-1f2d0015c1bd,inicio_partida,NEO,80,Masculino,,,,Dificil
+1656020060.6645405,159b1130-8876-4f64-9dfa-1f2d0015c1bd,timeout,NEO,80,Masculino,error,,Marc Cardona,Dificil
+1656020063.1302404,159b1130-8876-4f64-9dfa-1f2d0015c1bd,intento,NEO,80,Masculino,error,Choi Chul Soon,Ben Wiles,Dificil
+1656020065.7745094,159b1130-8876-4f64-9dfa-1f2d0015c1bd,intento,NEO,80,Masculino,error,Lee Cattermole,Adam Larsen Kwarasey,Dificil
+1656020068.123574,159b1130-8876-4f64-9dfa-1f2d0015c1bd,intento,NEO,80,Masculino,error,Serhii Miakushko,David Silva,Dificil
+1656020070.7257862,159b1130-8876-4f64-9dfa-1f2d0015c1bd,intento,NEO,80,Masculino,error,Nobuhisa Urata,Yanick van Osch,Dificil
+1656020073.1438332,159b1130-8876-4f64-9dfa-1f2d0015c1bd,fin,NEO,80,Masculino,finalizada,,,Dificil
+1656020245.0993097,be7e42a2-2acd-4fa4-803d-ad3dff7c57b2,inicio_partida,kaggel,28,No Binario,,,,Dificil
+1656020249.1093566,be7e42a2-2acd-4fa4-803d-ad3dff7c57b2,timeout,kaggel,28,No Binario,error,,Maximiliano Cerato,Dificil
+1656020254.2040162,be7e42a2-2acd-4fa4-803d-ad3dff7c57b2,timeout,kaggel,28,No Binario,error,,Tarek Hamed,Dificil
+1656020259.262075,be7e42a2-2acd-4fa4-803d-ad3dff7c57b2,timeout,kaggel,28,No Binario,error,,Mikhail Ignatov,Dificil
+1656020264.358367,be7e42a2-2acd-4fa4-803d-ad3dff7c57b2,timeout,kaggel,28,No Binario,error,,Welinton Júnior,Dificil
+1656020268.9017065,be7e42a2-2acd-4fa4-803d-ad3dff7c57b2,intento,kaggel,28,No Binario,error,Luis Paezinho,Jan Sobocinski,Dificil
+1656020270.930318,be7e42a2-2acd-4fa4-803d-ad3dff7c57b2,fin,kaggel,28,No Binario,finalizada,,,Dificil
+1656106773.8719916,85609195-440a-45b4-aac5-ffed387829ca,inicio_partida,kaggel,28,No Binario,,,,Dificil
+1656106775.7453294,85609195-440a-45b4-aac5-ffed387829ca,intento,kaggel,28,No Binario,ok,Wild Orchid,Wild Orchid,Dificil
+1656106780.825776,85609195-440a-45b4-aac5-ffed387829ca,timeout,kaggel,28,No Binario,error,,"Madrid, 1987",Dificil
+1656106785.8461022,85609195-440a-45b4-aac5-ffed387829ca,timeout,kaggel,28,No Binario,error,,The Bride,Dificil
+1656106790.1687503,85609195-440a-45b4-aac5-ffed387829ca,intento,kaggel,28,No Binario,error,Donkey X,Balto III: Wings of Change,Dificil
+1656106793.8003776,85609195-440a-45b4-aac5-ffed387829ca,intento,kaggel,28,No Binario,error,College,John Wick: Chapter 3 - Parabellum,Dificil
+1656106797.6442375,85609195-440a-45b4-aac5-ffed387829ca,fin,kaggel,28,No Binario,finalizada,,,Dificil
