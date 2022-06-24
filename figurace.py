@@ -199,43 +199,42 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                         if cortar:
                             break
                     # CONTROL DE LA ELECCIÓN DE RESPUESTA
-                    match event:
-                        case '-JUEGO_PASAR-' | '-ELECCION-':
-                            eleccion = (dict(filter(lambda x: x[1], values.items())))
-                            # Si intenta confirmar sin seleccionar respuesta, no ocurre nada
-                            try:
-                                if event == '-JUEGO_PASAR-':
-                                    eleccion = None  # Se le asigna None para poder pasar la tarjera sin seleccionar
-                                    for respuesta in tarjeta.dict_respuestas['Posibles']:
-                                        window[respuesta].update(background_color='#FEC260', text_color='Black')
-                                    partida.eventos(time.time(), "pasar", None, None, tarjeta.respuesta_correcta)
+                    if event in ('-JUEGO_PASAR-', '-ELECCION-'):
+                        eleccion = (dict(filter(lambda x: x[1], values.items())))
+                        # Si intenta confirmar sin seleccionar respuesta, no ocurre nada
+                        try:
+                            if event == '-JUEGO_PASAR-':
+                                eleccion = None  # Se le asigna None para poder pasar la tarjera sin seleccionar
+                                for respuesta in tarjeta.dict_respuestas['Posibles']:
+                                    window[respuesta].update(background_color='#FEC260', text_color='Black')
+                                partida.eventos(time.time(), "pasar", None, None, tarjeta.respuesta_correcta)
 
-                                else:
-                                    eleccion = (list(eleccion.keys())[0])
-                                    window[eleccion].update(background_color='Red', text_color='Black')
-                                    window[tarjeta.respuesta_correcta].update(background_color='Green',
-                                                                              text_color='Black')
-
-                                    if eleccion == tarjeta.respuesta_correcta:
-                                        partida.eventos(time.time(), "intento", "ok", eleccion,
-                                                        tarjeta.respuesta_correcta)
-                                        tarjeta.puntos_por_tiempo(tiempo_transcurrido)
-                                    else:
-                                        partida.eventos(time.time(), "intento", "error", eleccion,
-                                                        tarjeta.respuesta_correcta)
-
-                                tarjeta.analizar_respuesta(eleccion, window)
-                                window['-JUEGO_TABLA-'].update(values=tarjeta.resultados_para_tabla())
-                                window.refresh()
-                                time.sleep(1)
-                            except IndexError:
-                                pass
                             else:
-                                tiempo_comienzo, window, cortar = analizar_siguiente(tarjeta, partida,
-                                                                                     window, dificultad_elegida,
-                                                                                     dataset_elegido, usuario_elegido)
-                                if cortar:
-                                    break
+                                eleccion = (list(eleccion.keys())[0])
+                                window[eleccion].update(background_color='Red', text_color='Black')
+                                window[tarjeta.respuesta_correcta].update(background_color='Green',
+                                                                          text_color='Black')
+
+                                if eleccion == tarjeta.respuesta_correcta:
+                                    partida.eventos(time.time(), "intento", "ok", eleccion,
+                                                    tarjeta.respuesta_correcta)
+                                    tarjeta.puntos_por_tiempo(tiempo_transcurrido, window)
+                                else:
+                                    partida.eventos(time.time(), "intento", "error", eleccion,
+                                                    tarjeta.respuesta_correcta)
+
+                            tarjeta.analizar_respuesta(eleccion, window)
+                            window['-JUEGO_TABLA-'].update(values=tarjeta.resultados_para_tabla())
+                            window.refresh()
+                            time.sleep(1)
+                        except IndexError:
+                            pass
+                        else:
+                            tiempo_comienzo, window, cortar = analizar_siguiente(tarjeta, partida,
+                                                                                 window, dificultad_elegida,
+                                                                                 dataset_elegido, usuario_elegido)
+                            if cortar:
+                                break
                 break
         window.close()
 

@@ -370,3 +370,10 @@ timestamp,id,evento,nombre_jugador,edad_jugador,genero_jugador,estado,texto_ingr
 1656099979.189345,f95db774-0975-4bae-8aea-882cce7e8d49,intento,NEO,80,Masculino,error,House of the Witch,Fantastic Four,Facil
 1656099981.3986244,f95db774-0975-4bae-8aea-882cce7e8d49,intento,NEO,80,Masculino,error,Assassination Classroom: Graduation,Tombstone of the Fireflies,Facil
 1656099983.8087313,f95db774-0975-4bae-8aea-882cce7e8d49,fin,NEO,80,Masculino,finalizada,,,Facil
+1656108609.4751506,333749d5-1ff7-45a1-9e83-47f1820a0d50,inicio_partida,Fuwa,19,Femenino,,,,Dificil
+1656108610.6196144,333749d5-1ff7-45a1-9e83-47f1820a0d50,intento,Fuwa,19,Femenino,ok,Kazuki Kozuka,Kazuki Kozuka,Dificil
+1656108614.7967422,333749d5-1ff7-45a1-9e83-47f1820a0d50,pasar,Fuwa,19,Femenino,,,Jesper Lindstrøm,Dificil
+1656108617.1486218,333749d5-1ff7-45a1-9e83-47f1820a0d50,intento,Fuwa,19,Femenino,ok,Rob Dickie,Rob Dickie,Dificil
+1656108619.7079868,333749d5-1ff7-45a1-9e83-47f1820a0d50,intento,Fuwa,19,Femenino,ok,Alex Palmer,Alex Palmer,Dificil
+1656108622.8756852,333749d5-1ff7-45a1-9e83-47f1820a0d50,intento,Fuwa,19,Femenino,error,Pascal Schürpf,Paseka Mako,Dificil
+1656108624.9717357,333749d5-1ff7-45a1-9e83-47f1820a0d50,fin,Fuwa,19,Femenino,finalizada,,,Dificil

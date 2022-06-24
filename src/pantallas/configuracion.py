@@ -159,7 +159,9 @@ def crear_ventana():
         [sg.Push(), sg.Text('PASAR resta la mitad de los puntos de una '
                             'respuesta incorrecta.', font=cg.FUENTE_CONFIG), sg.Push()],
         [sg.VPush()],
-        [sg.Push(), sg.Button("Confirmar cambios", key="-CONFIRMAR_CAMBIOS-", font=cg.FUENTE_CONFIG), sg.Push()],
+        [sg.Push(), sg.Push(), sg.Button("Confirmar cambios", key="-CONFIRMAR_CAMBIOS-", font=cg.FUENTE_CONFIG),
+         sg.Push(), sg.Text('Puntos extra por \n respuestas rápidas!!', font=cg.FUENTE_POPUP,
+                            background_color='Green', justification='c'), sg.Push()],
         [sg.Button("Volver", key='-VOLVER_CONFIG-', font=cg.FUENTE_CONFIG, pad=((50, 0), (0, 5))), sg.Push()]
     ]
     window = sg.Window("Configuracion", crear_layout, size=cg.TAM_VENTANA, finalize=True,
