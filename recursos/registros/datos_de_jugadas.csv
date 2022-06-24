@@ -281,3 +281,73 @@ timestamp,id,evento,nombre_jugador,edad_jugador,genero_jugador,estado,texto_ingr
 1656011164.9957635,ee2040c5-fd84-42d7-8806-54ce7073621b,intento,kaggel,28,No Binario,error,Pacaya (Guatemala),Hekla (Iceland),Dificil
 1656011167.11261,ee2040c5-fd84-42d7-8806-54ce7073621b,intento,kaggel,28,No Binario,error,Masaya (Nicaragua),Mayon (Philippines),Dificil
 1656011169.656674,ee2040c5-fd84-42d7-8806-54ce7073621b,fin,kaggel,28,No Binario,finalizada,,,Dificil
+1656090727.192059,b4076edd-a2a3-4989-92a4-8371656b9400,inicio_partida,Fuwa,19,Femenino,,,,Normal
+1656090730.863001,b4076edd-a2a3-4989-92a4-8371656b9400,intento,Fuwa,19,Femenino,error,Nicolás Colazo,Juan Angulo,Normal
+1656090735.0082204,b4076edd-a2a3-4989-92a4-8371656b9400,intento,Fuwa,19,Femenino,error,Bright Edomwonyi,Sori Mané,Normal
+1656090739.8310797,b4076edd-a2a3-4989-92a4-8371656b9400,intento,Fuwa,19,Femenino,error,Daniel Anyembe,Jamie Murphy,Normal
+1656090745.10337,b4076edd-a2a3-4989-92a4-8371656b9400,intento,Fuwa,19,Femenino,error,Ha Chang Rae,Rémy Riou,Normal
+1656090751.6222076,b4076edd-a2a3-4989-92a4-8371656b9400,intento,Fuwa,19,Femenino,error,Marcus Mathisen,Gadi Kinda,Normal
+1656090757.3740041,b4076edd-a2a3-4989-92a4-8371656b9400,intento,Fuwa,19,Femenino,error,Hardy Cavero,Brandon Thomas,Normal
+1656090761.8380349,b4076edd-a2a3-4989-92a4-8371656b9400,intento,Fuwa,19,Femenino,ok,Koji Miyoshi,Koji Miyoshi,Normal
+1656090769.1512735,b4076edd-a2a3-4989-92a4-8371656b9400,intento,Fuwa,19,Femenino,error,Florian Dietz,Caio,Normal
+1656090771.359966,b4076edd-a2a3-4989-92a4-8371656b9400,fin,Fuwa,19,Femenino,finalizada,,,Normal
+1656090783.4242456,21f0f683-db78-4c7c-a158-8f75d152ec1b,inicio_partida,Fuwa,19,Femenino,,,,Dificil
+1656090785.5189977,21f0f683-db78-4c7c-a158-8f75d152ec1b,intento,Fuwa,19,Femenino,ok,Alexander Sørloth,Alexander Sørloth,Dificil
+1656090790.5470557,21f0f683-db78-4c7c-a158-8f75d152ec1b,timeout,Fuwa,19,Femenino,error,,Isak Magnusson,Dificil
+1656090793.1437476,21f0f683-db78-4c7c-a158-8f75d152ec1b,intento,Fuwa,19,Femenino,ok,Ronald Vargas,Ronald Vargas,Dificil
+1656090798.2758994,21f0f683-db78-4c7c-a158-8f75d152ec1b,timeout,Fuwa,19,Femenino,error,,Sindrit Guri,Dificil
+1656090800.7752256,21f0f683-db78-4c7c-a158-8f75d152ec1b,intento,Fuwa,19,Femenino,error,Dario Tadic,Michele Marconi,Dificil
+1656090802.9664426,21f0f683-db78-4c7c-a158-8f75d152ec1b,fin,Fuwa,19,Femenino,finalizada,,,Dificil
+1656090812.70783,7d15943d-e8ed-456e-9bb8-75b760d6c310,inicio_partida,Fuwa,19,Femenino,,,,Facil
+1656090824.8616796,7d15943d-e8ed-456e-9bb8-75b760d6c310,intento,Fuwa,19,Femenino,error,One Million Years B.C.,Primal: Tales of Savagery,Facil
+1656090832.311022,7d15943d-e8ed-456e-9bb8-75b760d6c310,intento,Fuwa,19,Femenino,ok,Being the Ricardos,Being the Ricardos,Facil
+1656090841.590579,7d15943d-e8ed-456e-9bb8-75b760d6c310,intento,Fuwa,19,Femenino,ok,Barbie: A Perfect Christmas,Barbie: A Perfect Christmas,Facil
+1656090852.0378792,7d15943d-e8ed-456e-9bb8-75b760d6c310,intento,Fuwa,19,Femenino,ok,Scooby-Doo! in Where's My Mummy?,Scooby-Doo! in Where's My Mummy?,Facil
+1656090860.005918,7d15943d-e8ed-456e-9bb8-75b760d6c310,intento,Fuwa,19,Femenino,error,One Piece Episode of Merry: The Tale of One More Friend,Miracles from Heaven,Facil
+1656090867.1258216,7d15943d-e8ed-456e-9bb8-75b760d6c310,intento,Fuwa,19,Femenino,ok,Sex Appeal,Sex Appeal,Facil
+1656090871.983015,7d15943d-e8ed-456e-9bb8-75b760d6c310,intento,Fuwa,19,Femenino,error,100 Girls,The Guru,Facil
+1656090877.0793269,7d15943d-e8ed-456e-9bb8-75b760d6c310,intento,Fuwa,19,Femenino,error,Leatherface: The Texas Chainsaw Massacre III,Black as Night,Facil
+1656090883.4137661,7d15943d-e8ed-456e-9bb8-75b760d6c310,intento,Fuwa,19,Femenino,error,Peach Girl,Django Unchained,Facil
+1656090889.8470643,7d15943d-e8ed-456e-9bb8-75b760d6c310,intento,Fuwa,19,Femenino,ok,Marriage Story,Marriage Story,Facil
+1656090891.8058171,7d15943d-e8ed-456e-9bb8-75b760d6c310,fin,Fuwa,19,Femenino,finalizada,,,Facil
+1656090904.5366116,925f94f0-4b0c-489d-b069-9ee470d5c06d,inicio_partida,Fuwa,19,Femenino,,,,Facil
+1656090910.5014663,925f94f0-4b0c-489d-b069-9ee470d5c06d,intento,Fuwa,19,Femenino,error,Demi Lovato,Kesha,Facil
+1656090916.81887,925f94f0-4b0c-489d-b069-9ee470d5c06d,intento,Fuwa,19,Femenino,ok,Imagine Dragons,Imagine Dragons,Facil
+1656090921.7256358,925f94f0-4b0c-489d-b069-9ee470d5c06d,intento,Fuwa,19,Femenino,ok,BØRNS,BØRNS,Facil
+1656090929.5908256,925f94f0-4b0c-489d-b069-9ee470d5c06d,intento,Fuwa,19,Femenino,error,Ashley O,Diddy - Dirty Money,Facil
+1656090934.269618,925f94f0-4b0c-489d-b069-9ee470d5c06d,intento,Fuwa,19,Femenino,error,Taylor Swift,Ariana Grande,Facil
+1656090942.8707254,925f94f0-4b0c-489d-b069-9ee470d5c06d,intento,Fuwa,19,Femenino,ok,Bruno Mars,Bruno Mars,Facil
+1656090947.1348279,925f94f0-4b0c-489d-b069-9ee470d5c06d,intento,Fuwa,19,Femenino,error,The Weeknd,Omarion,Facil
+1656090960.2389154,925f94f0-4b0c-489d-b069-9ee470d5c06d,intento,Fuwa,19,Femenino,error,Florida Georgia Line,Sam Smith,Facil
+1656090965.3256917,925f94f0-4b0c-489d-b069-9ee470d5c06d,intento,Fuwa,19,Femenino,error,Rihanna,Adele,Facil
+1656090970.8056436,925f94f0-4b0c-489d-b069-9ee470d5c06d,intento,Fuwa,19,Femenino,error,OneRepublic,The 1975,Facil
+1656090973.3056116,925f94f0-4b0c-489d-b069-9ee470d5c06d,fin,Fuwa,19,Femenino,finalizada,,,Facil
+1656090981.0533638,3c9ccd86-acf5-44e2-b4fc-8ce8c65a582f,inicio_partida,Fuwa,19,Femenino,,,,Facil
+1656090990.2454755,3c9ccd86-acf5-44e2-b4fc-8ce8c65a582f,intento,Fuwa,19,Femenino,ok,Michoacan-Guanajuato (Mexico),Michoacan-Guanajuato (Mexico),Facil
+1656090998.6856482,3c9ccd86-acf5-44e2-b4fc-8ce8c65a582f,intento,Fuwa,19,Femenino,error,Asama (Japan),Papandayan (Indonesia),Facil
+1656091006.1014917,3c9ccd86-acf5-44e2-b4fc-8ce8c65a582f,intento,Fuwa,19,Femenino,error,Semeru (Indonesia),Aso (Japan),Facil
+1656091012.694524,3c9ccd86-acf5-44e2-b4fc-8ce8c65a582f,intento,Fuwa,19,Femenino,error,Sakura-jima (Japan),Karangetang [Api Siau] (Indonesia),Facil
+1656091018.6132088,3c9ccd86-acf5-44e2-b4fc-8ce8c65a582f,intento,Fuwa,19,Femenino,error,Sakura-jima (Japan),Gamalama (Indonesia),Facil
+1656091027.4775527,3c9ccd86-acf5-44e2-b4fc-8ce8c65a582f,intento,Fuwa,19,Femenino,error,Sinabung (Indonesia),Etna (Italy),Facil
+1656091031.2547169,3c9ccd86-acf5-44e2-b4fc-8ce8c65a582f,intento,Fuwa,19,Femenino,error,Camiguin (Philippines),"Cameroon, Mt. (Cameroon)",Facil
+1656091034.3251693,3c9ccd86-acf5-44e2-b4fc-8ce8c65a582f,intento,Fuwa,19,Femenino,error,Savo (Solomon Is.),Tungurahua (Ecuador),Facil
+1656091036.8375506,3c9ccd86-acf5-44e2-b4fc-8ce8c65a582f,intento,Fuwa,19,Femenino,error,Merapi (Indonesia)0,Redoubt (United States),Facil
+1656091039.4454973,3c9ccd86-acf5-44e2-b4fc-8ce8c65a582f,intento,Fuwa,19,Femenino,error,Aso (Japan),Vesuvius (Italy),Facil
+1656091041.5847087,3c9ccd86-acf5-44e2-b4fc-8ce8c65a582f,fin,Fuwa,19,Femenino,finalizada,,,Facil
+1656091058.105797,199c5821-5a42-46c9-8158-aec3f24a4def,inicio_partida,Fuwa,19,Femenino,,,,Normal
+1656091064.0786743,199c5821-5a42-46c9-8158-aec3f24a4def,intento,Fuwa,19,Femenino,error,David Guetta,Example,Normal
+1656091070.3506541,199c5821-5a42-46c9-8158-aec3f24a4def,intento,Fuwa,19,Femenino,error,Justin Bieber,MK,Normal
+1656091077.533501,199c5821-5a42-46c9-8158-aec3f24a4def,intento,Fuwa,19,Femenino,ok,Linkin Park,Linkin Park,Normal
+1656091084.2292254,199c5821-5a42-46c9-8158-aec3f24a4def,intento,Fuwa,19,Femenino,ok,Bruno Mars,Bruno Mars,Normal
+1656091093.4453762,199c5821-5a42-46c9-8158-aec3f24a4def,intento,Fuwa,19,Femenino,error,Ashley O,Drake,Normal
+1656091101.8454676,199c5821-5a42-46c9-8158-aec3f24a4def,intento,Fuwa,19,Femenino,ok,Young Thug,Young Thug,Normal
+1656091109.4704978,199c5821-5a42-46c9-8158-aec3f24a4def,intento,Fuwa,19,Femenino,error,One Direction,INNA,Normal
+1656091116.2706857,199c5821-5a42-46c9-8158-aec3f24a4def,intento,Fuwa,19,Femenino,error,Black Eyed Peas,Rihanna,Normal
+1656091118.3097453,199c5821-5a42-46c9-8158-aec3f24a4def,fin,Fuwa,19,Femenino,finalizada,,,Normal
+1656091130.848675,3338aad0-abde-4f60-97b0-43fc97ab37be,inicio_partida,Fuwa,19,Femenino,,,,Dificil
+1656091133.6213036,3338aad0-abde-4f60-97b0-43fc97ab37be,intento,Fuwa,19,Femenino,error,Anomalisa,Gringo,Dificil
+1656091136.4944773,3338aad0-abde-4f60-97b0-43fc97ab37be,intento,Fuwa,19,Femenino,error,Wotakoi: Love is Hard for Otaku,High Plains Drifter,Dificil
+1656091139.862449,3338aad0-abde-4f60-97b0-43fc97ab37be,intento,Fuwa,19,Femenino,error,A Boy Called Christmas,Sierra Burgess Is a Loser,Dificil
+1656091142.031332,3338aad0-abde-4f60-97b0-43fc97ab37be,intento,Fuwa,19,Femenino,ok,Beverly Hills Cop III,Beverly Hills Cop III,Dificil
+1656091144.7906442,3338aad0-abde-4f60-97b0-43fc97ab37be,intento,Fuwa,19,Femenino,error,All Dogs Go to Heaven,The Fan,Dificil
+1656091147.3776028,3338aad0-abde-4f60-97b0-43fc97ab37be,fin,Fuwa,19,Femenino,finalizada,,,Dificil

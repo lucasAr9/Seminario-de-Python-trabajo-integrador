@@ -25,8 +25,9 @@ def abrir_instrucciones():
     window = instrucciones.crear_ventana()
     indice = 1  # Para llevar el cambio de imagen en orden
     nro_tutorial = 0  # Para acceder al tutorial correcto
+    instrucciones.control_gif(window)  # el gif se corta luego de 4 seg
     while True:
-        event, values = window.read(timeout=100)
+        event, values = window.read()
         if event in (sg.WIN_CLOSED, '-VOLVER-'):
             break
         match event:
@@ -55,8 +56,6 @@ def abrir_instrucciones():
                 eleccion = os.path.join(rutas.TUTORIALES_DIR, (cg.TUTORIALES[nro_tutorial][event])[0],
                                         f'paso_{indice}.png')
                 window['-IMAGEN_TUTO-'].update(eleccion)
-            # control del gif al principio, para que no tarde en empezar
-        window['-GIF_TUTO-'].update_animation(os.path.join(rutas.TUTORIALES_DIR, 'gif_tutorial.gif'))
 
     window.close()
 

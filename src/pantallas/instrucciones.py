@@ -1,7 +1,23 @@
 import PySimpleGUI as sg
-import os
 import rutas
+import os
+import time
 import src.pantallas.caracteristicas_generales as cg
+
+
+def control_gif(window):
+    """
+    Control del gif de instrucciones, el gif se frena luego de 5 segundos
+    """
+    tiempo_inicial = time.time()
+    delta_tiempo = time.time() - tiempo_inicial
+    tiempo_espera = int(4 - delta_tiempo)
+    while tiempo_espera > 0:
+        window.read(timeout=100)
+        window['-GIF_TUTO-'].update_animation(os.path.join(rutas.TUTORIALES_DIR, 'gif_tutorial.gif'),
+                                              time_between_frames=20)
+        delta_tiempo = time.time() - tiempo_inicial
+        tiempo_espera = int(4 - delta_tiempo)
 
 
 def obtener_indice(event):
