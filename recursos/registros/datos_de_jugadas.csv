@@ -281,3 +281,10 @@ timestamp,id,evento,nombre_jugador,edad_jugador,genero_jugador,estado,texto_ingr
 1656011164.9957635,ee2040c5-fd84-42d7-8806-54ce7073621b,intento,kaggel,28,No Binario,error,Pacaya (Guatemala),Hekla (Iceland),Dificil
 1656011167.11261,ee2040c5-fd84-42d7-8806-54ce7073621b,intento,kaggel,28,No Binario,error,Masaya (Nicaragua),Mayon (Philippines),Dificil
 1656011169.656674,ee2040c5-fd84-42d7-8806-54ce7073621b,fin,kaggel,28,No Binario,finalizada,,,Dificil
+1656076619.0804877,20791b90-9676-452f-9658-8daad91acdd1,inicio_partida,Amelia,30,Femenino,,,,Dificil
+1656076623.091228,20791b90-9676-452f-9658-8daad91acdd1,timeout,Amelia,30,Femenino,error,,The Collini Case,Dificil
+1656076626.1803203,20791b90-9676-452f-9658-8daad91acdd1,intento,Amelia,30,Femenino,error,Miss Violence,Wallace & Gromit: The Curse of the Were-Rabbit,Dificil
+1656076628.0752983,20791b90-9676-452f-9658-8daad91acdd1,intento,Amelia,30,Femenino,error,Hulk vs. Wolverine,Assassins,Dificil
+1656076629.8963332,20791b90-9676-452f-9658-8daad91acdd1,intento,Amelia,30,Femenino,error,Eragon,The Tin Drum,Dificil
+1656076631.8028584,20791b90-9676-452f-9658-8daad91acdd1,intento,Amelia,30,Femenino,error,Birds of Prey (and the Fantabulous Emancipation of One Harley Quinn),Someone Like You...,Dificil
+1656076634.4896948,20791b90-9676-452f-9658-8daad91acdd1,fin,Amelia,30,Femenino,finalizada,,,Dificil
