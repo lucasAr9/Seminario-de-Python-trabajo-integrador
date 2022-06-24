@@ -15,9 +15,10 @@ class Tarjeta:
         :param dataset, dificultad_elegida: setado desde el menu_incio_juego
         """
         dataset_ruta = os.path.join(rutas.DATOS_DIR, f'dataset_{dataset}.csv')
-        self.data_set = pd.read_csv(dataset_ruta, encoding='utf-8', dtype={"year released": str, "top year": str,
-                                                                           "bpm": str, "Year": str,
-                                                                           "Volcanic Explosivity Index": str})
+        self.data_set = pd.read_csv(dataset_ruta, encoding='utf-8',
+                                    keep_default_na=False, dtype={"year released": str, "top year": str,
+                                                                  "bpm": str, "Year": str,
+                                                                  "Volcanic Explosivity Index": str})
         self.datos_dificultad = Dificultad('-' + dificultad_elegida.upper() + '-')
 
         self.respuesta_correcta = ''
