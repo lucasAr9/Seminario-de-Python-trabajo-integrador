@@ -18,24 +18,29 @@ para poder acertar.
 Para correr el juego, ejecutá el archivo figurace.py desde tu editor o IDE
 favorito y se abrirá la ventana del menú proncipal.
 Desde allí podrás ingresar a todas las opciones del juego a través de los botones.<br>
-![menu_inicio](https://user-images.githubusercontent.com/101846040/171327746-710ceb02-8970-4894-a169-0f40f4431d28.png)
+![menu](https://user-images.githubusercontent.com/101846040/175750776-de06c698-de68-480d-ade7-972bcf6cc22b.png)
+
+Botón Instrucciones: te lleva a la pantalla con las explicaciones de cómo usar Figurace.<br>
+![instrucciones](https://user-images.githubusercontent.com/101846040/175750840-0015a73b-d7d1-4529-b693-521319c3e629.png)
 
 Botón Perfiles: te lleva a la pantalla _Editar Perfil_ en la que podés crear un perfil nuevo
 o seleccionar alguno ya creado para modificar los datos o eliminarlo.<br>
-![perfiles](https://user-images.githubusercontent.com/101846040/171329671-965bb9bb-342f-407f-83c1-800e9fd6ae42.png)
+![perfiles](https://user-images.githubusercontent.com/101846040/175750862-51bc439a-4cc7-436c-8422-12feb0703f19.png)
 
 Botón Configuración: accedés a la pantalla _Configuración_ en la que podés ver las características
-de los niveles de dificultad fijos del juego o elegir la opción Personalizado para ajustar las condiciones
-del juego a tus preferencias.<br>
-![configuracion](https://user-images.githubusercontent.com/101846040/171333202-4761c812-4b41-4fba-a58b-5852a2786887.png)
+de los niveles de dificultad fijos del juego o ajustar las condiciones del juego a tus preferencias en Personalizado.<br>
+![configuracion](https://user-images.githubusercontent.com/101846040/175750897-908af291-22c9-422e-94e0-50ad1566eedc.png)
 
 Botón Puntajes: ingresás a la pantalla _Puntajes_ en la que podés visualizar los
-mejores puntajes de cada nivel de dificultad.<br>
-![puntajes](https://user-images.githubusercontent.com/101846040/171333219-4fe91b1f-9e3a-4ec4-96ed-8ddec2c0e618.png)
+mejores puntajes y promedios de cada nivel de dificultad.<br>
+![puntajes](https://user-images.githubusercontent.com/101846040/175750931-ec787593-ea28-46a4-aa0a-b6202bbc8aca.png)
 
 Botón Juego: antes de elegir esta opción tenés que seleccionar tu usuario y nivel deseados
-en la parte derecha del menú de inicio. Este botón te permite comenzar a jugar FiguRace.<br>
-![juego](https://user-images.githubusercontent.com/101846040/171333207-73ebda4c-d10d-430a-a8f8-d62fc82a714b.png)
+en la parte derecha del menú de inicio. La primera pantalla te permite elegir la temática sobre la que deberás adivinar.
+Al elegir te lleva a la pantalla del juego inicial, si estás listo para empezar a jugar debés presionar Comenzar<br>
+![eleccion_tematica](https://user-images.githubusercontent.com/101846040/175750984-67894d69-0f84-47f1-9dba-eca16aac269b.png)
+![juego_inicio](https://user-images.githubusercontent.com/101846040/175750989-66894271-dbf1-4ff6-9620-4b35673bade2.png)
+![juego_corriendo](https://user-images.githubusercontent.com/101846040/175750990-d46c7889-54ef-448b-863f-f0e1b65bbfea.png)
 
 ### __Datasets__
 El juego utiliza como origen de datos para las tarjetas archivos _.csv_. La versión final

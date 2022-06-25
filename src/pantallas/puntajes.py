@@ -55,8 +55,7 @@ def procesar_archivo():
             cabecera, contenido = csv_reader.__next__(), [linea for linea in csv_reader]
     except FileNotFoundError:
         sg.popup('No existe registro de puntajes,\njugá al menos una vez para crearlo',
-                 no_titlebar=True, grab_anywhere=True, keep_on_top=True, font=cgen.FUENTE_POPUP,
-                 image=os.path.join(rutas.IMAGENES_DIR, 'indicador_pista.png'),)
+                 no_titlebar=True, grab_anywhere=True, keep_on_top=True, font=cgen.FUENTE_POPUP)
         puntajes_mas_altos = [[] for i in range(len(cgen.NIVELES))]
         promedios_mas_altos = [[] for i in range(len(cgen.NIVELES))]
         print(puntajes_mas_altos)
