@@ -114,6 +114,7 @@ def abrir_perfiles():
 
 
 def analizar_siguiente(tarjeta, partida, window, dificultad_elegida, dataset_elegido, usuario_elegido):
+    """Realizar las actualizaciones necesarias de acuerdo a si quedan rondas por jugar o no"""
     if tarjeta.quedan_rondas():
         tarjeta.cargar_datos()  # Se actualizan los datos de la tarjeta
         tarjeta.actual += 1
@@ -135,9 +136,23 @@ def analizar_siguiente(tarjeta, partida, window, dificultad_elegida, dataset_ele
         return None, window, True
 
 
+def abrir_elegir_dataset():
+    """Crear la ventana de elección de temática para jugar y responder a los eventos en la misma."""
+    window = eleccion_dataset.eleccion_dataset()
+    while True:
+        event, values = window.read()
+        if event in (sg.WINDOW_CLOSED, 'Cancelar'):
+            break
+        else:
+            window.close()
+            return event
+    window.close()
+    return None
+
+
 def abrir_juego(dificultad_elegida, usuario_elegido):
     """Crear la ventana de juego y responder a los eventos en la misma."""
-    dataset_elegido = eleccion_dataset.eleccion_dataset()
+    dataset_elegido = abrir_elegir_dataset()
     if dataset_elegido:
         cg.ventana_de_carga()
         partida = p.Partida()
@@ -152,7 +167,7 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
         while True:
             event, values = window.read()
             if event == '-JUEGO_ABANDONAR-' and cg.ventana_chequear_accion(window) == 'Sí':
-                tarjeta.set_puntos_acumulados(0)  # si abandona, no suma/resta puntos
+                tarjeta.puntos_acumulados = 0  # si abandona, no suma/resta puntos
                 break
             elif event == '-JUEGO_COMENZAR-':
                 window_a_cerrar = window
@@ -206,7 +221,7 @@ def abrir_juego(dificultad_elegida, usuario_elegido):
                             if event == '-JUEGO_PASAR-':
                                 eleccion = None  # Se le asigna None para poder pasar la tarjera sin seleccionar
                                 for respuesta in tarjeta.dict_respuestas['Posibles']:
-                                    window[respuesta].update(background_color='#FEC260', text_color='Black')
+                                    window[respuesta].update(background_color='Yellow', text_color='Black')
                                 partida.eventos(time.time(), "pasar", None, None, tarjeta.respuesta_correcta)
 
                             else:

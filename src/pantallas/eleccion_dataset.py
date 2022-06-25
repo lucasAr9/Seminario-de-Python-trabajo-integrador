@@ -46,12 +46,4 @@ def eleccion_dataset():
     window = sg.Window('Elección de temática', layout, finalize=True, use_custom_titlebar=True,
                        titlebar_icon=ruta_icon_png, icon=ruta_icon_ico, margins=(20, 20))
 
-    while True:
-        event, values = window.read()
-        if event in (sg.WINDOW_CLOSED, 'Cancelar'):
-            break
-        else:
-            window.close()
-            return event
-    window.close()
-    return None
+    return window

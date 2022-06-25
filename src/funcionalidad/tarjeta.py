@@ -9,6 +9,7 @@ from src.funcionalidad.dificultad import Dificultad
 
 
 class Tarjeta:
+    """El elemento principal del juego que contiene los datos para adivinar y permite determinar el puntaje"""
     def __init__(self, dataset, dificultad_elegida):
         """
         :param dataset, dificultad_elegida: setado desde el menu_incio_juego
@@ -27,47 +28,40 @@ class Tarjeta:
         self.puntos_acumulados = 0
         self.actual = 1
 
-    def set_puntos_acumulados(self, puntos):
-        self.puntos_acumulados = puntos
-
     def puntos_por_tiempo(self, tiempo, window):
+        """Sumar puntos extra si la respuesta es correcta según el tiempo restante"""
         puntos = int(10 / self.datos_dificultad.tiempo * (self.datos_dificultad.tiempo - tiempo))
         window['-PUNTOS_EXTRA-'].update(f'EXTRA: {str(puntos)}', background_color='green')
         self.puntos_acumulados += puntos
 
     def cargar_datos(self):
+        """Procesar los datos del dataset elegido para jugar, para obtener
+        las pistas y opciones de respuesta de la tarjeta
+        """
         cabecera = self.data_set.columns
-        # fila al azar que tendrá la respuesta correcta.
+
+        # fila que contiene la respuesta correcta y las pistas elegida al azar
         fila = self.data_set.sample()
-
-        # respuestas incorrectas al azar
         opciones = list(self.data_set.iloc[:, -1].sample(n=4))
-
-        # resto de datos de la fila con la respuesta correcta, pistas de la tarjeta
         pistas = list(fila.iloc[0, 0:5])
 
-        # respuesta correcta, última columna de la fila elegida
         self.respuesta_correcta = str(fila.iloc[0, -1])
 
-        # la respuesta correcta se agrega a una posición al azar en las respuestas posibles
+        # agrego la respuesta correcta en una posición al azar entre las opciones
         opciones.insert(random.randrange(cgen.CANT_RESPUESTAS), self.respuesta_correcta)
 
-        # Reordeno al azar la lista de opciones posibles, para que la respuesta correcta, no siempre este a lo ultimo
-
-        # Guardo en un diccionario las posibles opciones/respuestas a elegir
         self.dict_respuestas = {
             'Titulo': cabecera[-1],
             'Correcta': self.respuesta_correcta,
             'Posibles': opciones
         }
 
-        # Guardo en un diccionario las pistas de la respuesta correcta, siendo la clave el nombre de la columna y
-        # el valor, el dato almacenado en esa columna
         self.dict_pistas = {
             tipo: dato for tipo, dato in zip(cabecera[:self.datos_dificultad.caracteristicas], pistas)
         }
 
     def resultados_para_tabla(self):
+        """Hacer una lista de listas a partir del diccionario que contiene la tabla de resultados"""
         return [[x, y] for x, y in zip(self.resultados.keys(), self.resultados.values())]
 
     def analizar_respuesta(self, eleccion, window):
@@ -101,6 +95,7 @@ class Tarjeta:
         return self.actual < self.datos_dificultad.rondas
 
     def layout_datos(self):
+        """Devolver la organización de botones de la tarjeta durante el transcurso del juego"""
         layout = [sg.Frame('Tarjeta',
                            [[sg.Image(os.path.join(rutas.IMAGENES_DIR, 'indicador_pista.png')),
                              sg.Text(f'{nombre.upper()}:', font=cgen.FUENTE_OPCIONES, text_color='#FCC314'),
@@ -121,6 +116,9 @@ class Tarjeta:
         return layout
 
     def layout_vacio(self):
+        """Devolver la organización de botones de la tarjeta para la pantalla de juego
+        antes de comenzar a jugar
+        """
         layout = [sg.Frame('Tarjeta',
                            [[sg.Image(os.path.join(rutas.IMAGENES_DIR, 'indicador_pista.png')),
                              sg.Text(f'{nombre.upper()}:', font=cgen.FUENTE_OPCIONES,
